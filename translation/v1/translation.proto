@@ -1,0 +1,169 @@
+// Copyright 2018 Sagittarius LLC.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package sagittarius.translation.v1;
+
+import "google/api/annotations.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "google/cloud/speech/v1/cloud_speech.proto";
+
+option cc_enable_arenas = true;
+option go_package = "translation/v1;translation";
+option java_multiple_files = true;
+option java_outer_classname = "TranslationProto";
+option java_package = "ai.sagittarius.translation.v1";
+
+
+// Service that implements Sagittarius Translation API
+service Translation {
+  // Translate media(audio or video) by media hash
+  rpc TranslateMedia(TranslationRequest) returns (TranslationResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/language/{language_code}/seed/{seed}"
+      body: "*"
+    };
+  }
+
+  rpc PushTrainingData(TrainingData) returns (google.rpc.Status) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/language/{language_code}"
+      body: "*"
+    };
+  }
+
+  rpc DetectLanguage(DetectionRequest) returns (DetectionResponse) {
+    option (google.api.http) = {
+      post: "/v1/translation/detect"
+      body: "*"
+    };
+  }
+
+  // Performs bidirectional streaming audio translation: receive results while
+  // sending audio. This method is only available via the gRPC API (not REST).
+  rpc StreamingTranslation(stream StreamingTranslationRequest)
+    returns (stream StreamingTranslationResponse);
+}
+
+message TranslationRequest {
+  string media_hash      = 1;
+
+  // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
+  string language_code = 2;
+  string format        = 3;
+  int32  seed          = 4;
+
+  google.protobuf.Duration start_time  = 5;
+}
+
+message TranslationResponse {
+  string text_track_id       = 1;
+  string next_text_track     = 2;
+  repeated string transcript = 3;
+}
+
+message TrainingData {
+  string media_hash      = 1;
+  string language_code = 2;
+  string text_track_id = 3;
+  string format        = 4;
+  bytes  payload       = 5;
+}
+
+message DetectionRequest {
+  string text = 1;
+}
+
+message DetectionResponse {
+  string language_code = 1;
+}
+
+
+// The top-level message sent by the client for the `StreamingRecognize` method.
+// Multiple `StreamingTranslationRequest` messages are sent. The first message
+// must contain a `streaming_config` message and must not contain `audio` data.
+// All subsequent messages must contain `audio` data and must not contain a
+// `streaming_config` message.
+message StreamingTranslationRequest {
+  // The streaming request, which is either a streaming config or audio content.
+  oneof streaming_request {
+    // Provides information to the recognizer that specifies how to process the
+    // request. The first `StreamingTranslationRequest` message must contain a
+    // `streaming_config`  message.
+    google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+
+    // The audio data to be recognized. Sequential chunks of audio data are sent
+    // in sequential `StreamingTranslationRequest` messages. The first
+    // `StreamingTranslationRequest` message must not contain `audio_content` data
+    // and all subsequent `StreamingTranslationRequest` messages must contain
+    // `audio_content` data. The audio bytes must be encoded as specified in
+    // `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+    // pure binary representation (not base64). See
+    // [audio limits](https://cloud.google.com/speech/limits#content).
+    bytes audio_content = 2;
+  }
+}
+
+message StreamingTranslationResponse {
+  // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+  // specifies the error for the operation.
+  google.rpc.Status error = 1;
+
+  // *Output-only* This repeated list contains zero or more results that
+  // correspond to consecutive portions of the audio currently being processed.
+  // It contains zero or more `is_final=false` results followed by zero or one
+  // `is_final=true` result (the newly settled portion).
+  repeated StreamingTranslationResult results = 2;
+}
+
+message StreamingTranslationResult {
+  // *Output-only* Transcript text representing the words that the user spoke.
+  string transcript = 1;
+
+  // *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
+  // indicates an estimated greater likelihood that the recognized words are
+  // correct. This field is typically provided only for the top hypothesis, and
+  // only for `is_final=true` results. Clients should not rely on the
+  // `confidence` field as it is not guaranteed to be accurate or consistent.
+  // The default of 0.0 is a sentinel value indicating `confidence` was not set.
+  float confidence = 2;
+
+  // *Output-only* An estimate of the likelihood that the recognizer will not
+  // change its guess about this interim result. Values range from 0.0
+  // (completely unstable) to 1.0 (completely stable).
+  // This field is only provided for interim results (`is_final=false`).
+  // The default of 0.0 is a sentinel value indicating `stability` was not set.
+  float stability = 3;
+
+  // *Output-only* Time offset relative to the beginning of the audio,
+  // and corresponding to the start of the spoken word.
+  // This field is only set if `enable_word_time_offsets=true` and only
+  // in the top hypothesis.
+  // This is an experimental feature and the accuracy of the time offset can
+  // vary.
+  google.protobuf.Duration start_time = 4;
+
+  // *Output-only* Time offset relative to the beginning of the audio,
+  // and corresponding to the end of the spoken word.
+  // This field is only set if `enable_word_time_offsets=true` and only
+  // in the top hypothesis.
+  // This is an experimental feature and the accuracy of the time offset can
+  // vary.
+  google.protobuf.Duration end_time = 5;
+}
