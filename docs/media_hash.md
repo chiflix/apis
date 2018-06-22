@@ -1,6 +1,6 @@
 # Media Quick Hash
 
-media_quickhash is designed for identifying media files quickly.
+Quick hash is designed for identifying files without I/O intensive operations.
 
 ## static files
 

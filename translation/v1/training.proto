@@ -1,0 +1,65 @@
+// Copyright 2018 Sagittarius LLC.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package sagittarius.training.v1;
+
+import "google/api/annotations.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "google/cloud/speech/v1/cloud_speech.proto";
+
+option cc_enable_arenas = true;
+option go_package = "training/v1;training";
+option java_multiple_files = true;
+option java_outer_classname = "TrainingProto";
+option java_package = "ai.sagittarius.training.v1";
+
+// Trainng that implements Sagittarius Translation API
+service Trainng {
+  // Push accture traning metadata to server
+  rpc PushMetaData(MetaData) returns (google.rpc.Status) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_id}/language/{language_code}/training:meta"
+      body: "*"
+    };
+  }
+
+  // Push accture traning data to server
+  rpc PushData(TrainingData) returns (google.rpc.Status) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_id}/language/{language_code}/training:data"
+      body: "*"
+    };
+  }
+}
+
+message TrainingData {
+  string media_id        = 1;
+  string language_code   = 2;
+  string text_uuid       = 3;
+  string format          = 4;
+  bytes  payload         = 5;
+}
+
+message MetaData {
+  string media_id      = 1;
+  string language_code = 2;
+  string text_uuid     = 3;
+  google.protobuf.Duration played_time = 4;
+}

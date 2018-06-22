@@ -33,17 +33,10 @@ option java_package = "ai.sagittarius.translation.v1";
 
 // Service that implements Sagittarius Translation API
 service Translation {
-  // Translate media(audio or video) by media hash
+  // Translate media(audio or video) by media id which can be media quick hash
   rpc TranslateMedia(TranslationRequest) returns (TranslationResponse) {
     option (google.api.http) = {
-      post: "/v1/media/{media_hash}/language/{language_code}/seed/{seed}"
-      body: "*"
-    };
-  }
-
-  rpc PushTrainingData(TrainingData) returns (google.rpc.Status) {
-    option (google.api.http) = {
-      post: "/v1/media/{media_hash}/language/{language_code}"
+      post: "/v1/media/{media_id}/language/{language_code}/filter/{filter}/translate:{format}"
       body: "*"
     };
   }
@@ -57,33 +50,25 @@ service Translation {
 
   // Performs bidirectional streaming audio translation: receive results while
   // sending audio. This method is only available via the gRPC API (not REST).
-  rpc StreamingTranslation(stream StreamingTranslationRequest)
+  rpc Streaming(stream StreamingTranslationRequest)
     returns (stream StreamingTranslationResponse);
 }
 
 message TranslationRequest {
-  string media_hash      = 1;
+  string media_id      = 1;
 
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
   string language_code = 2;
   string format        = 3;
-  int32  seed          = 4;
+  string filter        = 4;
 
   google.protobuf.Duration start_time  = 5;
 }
 
 message TranslationResponse {
-  string text_track_id       = 1;
-  string next_text_track     = 2;
+  string text_uuid           = 1;
+  string next_text_uuid      = 2;
   repeated string transcript = 3;
-}
-
-message TrainingData {
-  string media_hash      = 1;
-  string language_code = 2;
-  string text_track_id = 3;
-  string format        = 4;
-  bytes  payload       = 5;
 }
 
 message DetectionRequest {
