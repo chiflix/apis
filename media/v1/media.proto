@@ -24,7 +24,7 @@ import "google/protobuf/timestamp.proto";
 import "google/rpc/status.proto";
 
 option cc_enable_arenas = true;
-option go_package = "media/v1;media";
+option go_package = "media";
 option java_multiple_files = true;
 option java_outer_classname = "MediaProto";
 option java_package = "ai.sagittarius.media.v1";

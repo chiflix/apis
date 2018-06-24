@@ -42,7 +42,7 @@ protoc -I ../googleapis/ -I . --lint_out=. */*/*.proto
 - generating documents:
 ```
 protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,translation.md translation/*/translation.proto
-protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,training.md translation/*/training.proto
+protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,training.md training/*/training.proto
 protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,media.md media/*/*.proto
 ```
 
@@ -54,5 +54,5 @@ go get -u google.golang.org/grpc
 
 protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ media/*/*.proto
 protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ translation/*/translation.proto
-protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ translation/*/training.proto
+protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ training/*/training.proto
 ```

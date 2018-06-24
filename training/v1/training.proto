@@ -25,7 +25,7 @@ import "google/rpc/status.proto";
 import "google/cloud/speech/v1/cloud_speech.proto";
 
 option cc_enable_arenas = true;
-option go_package = "training/v1;training";
+option go_package = "training";
 option java_multiple_files = true;
 option java_outer_classname = "TrainingProto";
 option java_package = "ai.sagittarius.training.v1";
