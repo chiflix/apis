@@ -59,6 +59,7 @@ message TranslationRequest {
   // Media Identity
   string media_identity = 1;
 
+  // oneof case 1
   // target language
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
   string language_code  = 2;
@@ -66,12 +67,15 @@ message TranslationRequest {
   // the format of the transcripts
   string format         = 3;
 
-  // * filters *
+  // oneof case 2
   // return translate result by transcript_identity
   string transcript_identity  = 4;
 
   // position of the transcript relative to the begginning of the audio or video
   google.protobuf.Duration start_time  = 6;
+
+  // names for more possible results
+  string extra_names    = 7;
 }
 
 message TranslationResponse {

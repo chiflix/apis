@@ -45,3 +45,14 @@ protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,translation.md 
 protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,training.md translation/*/training.proto
 protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,media.md media/*/*.proto
 ```
+
+- generating source code:
+
+```
+go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+go get -u google.golang.org/grpc
+
+protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ media/*/*.proto
+protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ translation/*/translation.proto
+protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ translation/*/training.proto
+```
