@@ -4,9 +4,13 @@
 ## Table of Contents
 
 - [translation/v1/translation.proto](#translation/v1/translation.proto)
-    - [TrainingData](#sagittarius.translation.v1.TrainingData)
-    - [TranslateVideoRequest](#sagittarius.translation.v1.TranslateVideoRequest)
-    - [WebVTTResponse](#sagittarius.translation.v1.WebVTTResponse)
+    - [DetectionRequest](#sagittarius.translation.v1.DetectionRequest)
+    - [DetectionResponse](#sagittarius.translation.v1.DetectionResponse)
+    - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
+    - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
+    - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
+    - [TranslationRequest](#sagittarius.translation.v1.TranslationRequest)
+    - [TranslationResponse](#sagittarius.translation.v1.TranslationResponse)
   
   
   
@@ -24,52 +28,126 @@
 
 
 
-<a name="sagittarius.translation.v1.TrainingData"/>
+<a name="sagittarius.translation.v1.DetectionRequest"/>
 
-### TrainingData
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| media_hash | [string](#string) |  |  |
-| language_code | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="sagittarius.translation.v1.TranslateVideoRequest"/>
-
-### TranslateVideoRequest
+### DetectionRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| media_hash | [string](#string) |  |  |
-| language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
-| format_code | [string](#string) |  |  |
-| seed | [int32](#int32) |  |  |
-| audio_samples | [bytes](#bytes) |  |  |
+| text | [string](#string) |  | the text to be detect |
 
 
 
 
 
 
-<a name="sagittarius.translation.v1.WebVTTResponse"/>
+<a name="sagittarius.translation.v1.DetectionResponse"/>
 
-### WebVTTResponse
+### DetectionResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| vtt_id | [string](#string) |  |  |
-| next_id | [string](#string) |  |  |
-| vtt_text | [string](#string) | repeated |  |
+| language_code | [string](#string) |  | Output-only* the language code of the detection result |
+| confidence | [float](#float) |  | Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the detection result are correct. |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.StreamingTranslationRequest"/>
+
+### StreamingTranslationRequest
+The top-level message sent by the client for the `StreamingRecognize` method.
+Multiple `StreamingTranslationRequest` messages are sent. The first message
+must contain a `streaming_config` message and must not contain `audio` data.
+All subsequent messages must contain `audio` data and must not contain a
+`streaming_config` message.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| streaming_config | [google.cloud.speech.v1.RecognitionConfig](#google.cloud.speech.v1.RecognitionConfig) |  | Provides information to the recognizer that specifies how to process the request. The first `StreamingTranslationRequest` message must contain a `streaming_config` message. |
+| audio_content | [bytes](#bytes) |  | The audio data to be recognized. Sequential chunks of audio data are sent in sequential `StreamingTranslationRequest` messages. The first `StreamingTranslationRequest` message must not contain `audio_content` data and all subsequent `StreamingTranslationRequest` messages must contain `audio_content` data. The audio bytes must be encoded as specified in `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a pure binary representation (not base64). See [audio limits](https://cloud.google.com/speech/limits#content). |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.StreamingTranslationResponse"/>
+
+### StreamingTranslationResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. |
+| results | [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult) | repeated | Output-only* This repeated list contains zero or more results that correspond to consecutive portions of the audio currently being processed. It contains zero or more `is_final=false` results followed by zero or one `is_final=true` result (the newly settled portion). |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.StreamingTranslationResult"/>
+
+### StreamingTranslationResult
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| transcript | [string](#string) |  | Output-only* Transcript text representing the words that the user spoke. |
+| confidence | [float](#float) |  | Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is typically provided only for the top hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence` was not set. |
+| stability | [float](#float) |  | Output-only* An estimate of the likelihood that the recognizer will not change its guess about this interim result. Values range from 0.0 (completely unstable) to 1.0 (completely stable). This field is only provided for interim results (`is_final=false`). The default of 0.0 is a sentinel value indicating `stability` was not set. |
+| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
+| end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TranslationRequest"/>
+
+### TranslationRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| media_identity | [string](#string) |  | Media Identity |
+| language_code | [string](#string) |  | target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| format | [string](#string) |  | the format of the transcripts |
+| transcript_identity | [string](#string) |  | filters * return translate result by transcript_identity |
+| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | position of the transcript relative to the begginning of the audio or video |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TranslationResponse"/>
+
+### TranslationResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
+| transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
+| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | the start and end of the transcripts |
+| end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
+| to_be_continued | [bool](#bool) |  | total line of the transcripts there should be |
+| nextbest_transcript_id | [string](#string) | repeated | next best translation results |
+| transcript | [string](#string) | repeated | each line of the transcript |
 
 
 
@@ -89,8 +167,9 @@ Service that implements Sagittarius Translation API
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| TranslateVideo | [TranslateVideoRequest](#sagittarius.translation.v1.TranslateVideoRequest) | [WebVTTResponse](#sagittarius.translation.v1.TranslateVideoRequest) |  |
-| PutTrainingData | [TrainingData](#sagittarius.translation.v1.TrainingData) | [.google.rpc.Status](#sagittarius.translation.v1.TrainingData) |  |
+| TranslateMedia | [TranslationRequest](#sagittarius.translation.v1.TranslationRequest) | [TranslationResponse](#sagittarius.translation.v1.TranslationRequest) | Translate media(audio or video) by media identity |
+| DetectLanguage | [DetectionRequest](#sagittarius.translation.v1.DetectionRequest) | [DetectionResponse](#sagittarius.translation.v1.DetectionRequest) | detect the language of text |
+| StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
 
  
 

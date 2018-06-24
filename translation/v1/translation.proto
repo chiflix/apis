@@ -33,50 +33,83 @@ option java_package = "ai.sagittarius.translation.v1";
 
 // Service that implements Sagittarius Translation API
 service Translation {
-  // Translate media(audio or video) by media id which can be media quick hash
+  // Translate media(audio or video) by media identity
   rpc TranslateMedia(TranslationRequest) returns (TranslationResponse) {
     option (google.api.http) = {
-      post: "/v1/media/{media_id}/language/{language_code}/filter/{filter}/translate:{format}"
+      get: "/v1/media/{media_identity}/language/{language_code}/transcript:{format}"
       body: "*"
     };
   }
 
+  // detect the language of text
   rpc DetectLanguage(DetectionRequest) returns (DetectionResponse) {
     option (google.api.http) = {
-      post: "/v1/translation/detect"
-      body: "*"
+      get: "/v1/language/detect"
+      body: "text"
     };
   }
 
   // Performs bidirectional streaming audio translation: receive results while
   // sending audio. This method is only available via the gRPC API (not REST).
-  rpc Streaming(stream StreamingTranslationRequest)
+  rpc StreamingTranslation(stream StreamingTranslationRequest)
     returns (stream StreamingTranslationResponse);
 }
 
 message TranslationRequest {
-  string media_id      = 1;
+  // Media Identity
+  string media_identity = 1;
 
+  // target language
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
-  string language_code = 2;
-  string format        = 3;
-  string filter        = 4;
+  string language_code  = 2;
 
-  google.protobuf.Duration start_time  = 5;
+  // the format of the transcripts
+  string format         = 3;
+
+  // * filters *
+  // return translate result by transcript_identity
+  string transcript_identity  = 4;
+
+  // position of the transcript relative to the begginning of the audio or video
+  google.protobuf.Duration start_time  = 6;
 }
 
 message TranslationResponse {
-  string text_uuid           = 1;
-  string next_text_uuid      = 2;
-  repeated string transcript = 3;
+  // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
+  // specifies the error for the operation.
+  // return 404 if no result, in this case, client should use StreamingTranslationRequest
+  google.rpc.Status error             = 1;
+
+  // the identity, can be used in TranslationRequest
+  string transcript_identity          = 2;
+
+  // the start and end of the transcripts
+  google.protobuf.Duration start_time = 3;
+  google.protobuf.Duration end_time   = 4;
+
+  // total line of the transcripts there should be
+  bool to_be_continued                 = 5;
+
+  // next best translation results
+  repeated string nextbest_transcript_id = 6;
+
+  // each line of the transcript
+  repeated string transcript          = 7;
 }
 
 message DetectionRequest {
+  // the text to be detect
   string text = 1;
 }
 
 message DetectionResponse {
+  // *Output-only* the language code of the detection result
   string language_code = 1;
+
+  // *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
+  // indicates an estimated greater likelihood that the detection result are
+  // correct.
+  float  confidence    = 2;
 }
 
 

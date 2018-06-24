@@ -12,42 +12,36 @@ The fourth and the last position is 8192 bytes before the end of the file.
 Concat four hashes by separator `-`.
 
 ```
-56	CString CSVPhash::ComputerFileHash(CString szFilePath)
-57	{
-58	      int stream;
-59	      errno_t err;
-60	      _int64 offset[4];
-61	      DWORD timecost = GetTickCount();
-62	      CString szRet = _T("");
-63	      err = _wsopen_s(&stream, szFilePath, _O_BINARY|_O_RDONLY , _SH_DENYNO , _S_IREAD );
-64	      if(!err){
-65	              __int64 ftotallen  = _filelengthi64( stream );
-66	              if (ftotallen < 8192){
-67	                      //a video file less then 8k? impossible!
-68	                     
-69	              }else{
-70	                      offset[3] = ftotallen - 8192;
-71                        	  offset[2] = ftotallen / 3;
-72	                      offset[1] = ftotallen / 3 * 2;
-73	                      offset[0] = 4096;
-74	                      CMD5Checksum mMd5;
-75	                      BYTE bBuf[4096];
-76	                      for(int i = 0; i < 4;i++){
-77	                              _lseeki64(stream, offset[i], 0);
-78	                              //hash 4k block
-79	                              int readlen = _read( stream, bBuf, 4096);
-80	                              CString szMD5 = mMd5.GetMD5( bBuf , readlen);
-81	                              if(!szRet.IsEmpty()){
-82	                                      szRet.Append( _T(";") );
-83	                              }
-8                                szRet.Append(szMD5);
-85	                      }
-86	              }
-87	              _close(stream);
-88	      }
-89	      timecost =  GetTickCount() - timecost;
-90	      return szRet;
-93	}
+import path from 'path';
+import fs from 'fs';
+import crypto from 'crypto';
+
+export default {
+  methods: {
+    mediaQuickHash(file) {
+      function md5Hex(text) {
+        return crypto.createHash('md5').update(text).digest('hex');
+      }
+      const filePath = path.join(__dirname, file);
+      const fd = fs.openSync(filePath, 'r');
+      const len = fs.statSync(filePath).size;
+      const position = [
+        4096,
+        Math.floor(len / 3),
+        Math.floor(len / 3) * 2,
+        len - 8192,
+      ];
+      const res = [];
+      const buf = Buffer.alloc(4096);
+      for (let i = 0; i < 4; i += 1) {
+        const bufLen = fs.readSync(fd, buf, 0, 4096, position[i]);
+        res[i] = md5Hex(buf.slice(0, bufLen));
+      }
+      fs.closeSync(fd);
+      return res.join('-');
+    },
+  },
+};
 ```
 
 Sample File：  https://docs.google.com/file/d/0B2yI4786fKzdQjNvLWJPUjg3UU0/edit?usp=sharing

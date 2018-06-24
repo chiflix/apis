@@ -32,34 +32,67 @@ option java_package = "ai.sagittarius.training.v1";
 
 // Trainng that implements Sagittarius Translation API
 service Trainng {
-  // Push accture traning metadata to server
-  rpc PushMetaData(MetaData) returns (google.rpc.Status) {
-    option (google.api.http) = {
-      post: "/v1/media/{media_id}/language/{language_code}/training:meta"
-      body: "*"
-    };
-  }
-
   // Push accture traning data to server
   rpc PushData(TrainingData) returns (google.rpc.Status) {
     option (google.api.http) = {
-      post: "/v1/media/{media_id}/language/{language_code}/training:data"
+      post: "/v1/media/{media_identity}/language/{language_code}/training:data"
       body: "*"
     };
   }
+
+  // Performs bidirectional streaming audio translation: receive results while
+  // sending audio. This method is only available via the gRPC API (not REST).
+  rpc StreamingTraining(stream StreamingTrainingRequest)
+    returns (google.rpc.Status);
 }
 
 message TrainingData {
-  string media_id        = 1;
-  string language_code   = 2;
-  string text_uuid       = 3;
-  string format          = 4;
-  bytes  payload         = 5;
+  // the media identity
+  string media_identity        = 1;
+
+  // the language code of the payload
+  string language_code         = 2;
+
+  // the format of the payload
+  string format                = 4;
+
+  // how long does this transcript been played
+  google.protobuf.Duration played_time = 5;
+
+  // how long of the entire video
+  google.protobuf.Duration total_time  = 6;
+
+  oneof data {
+    // transcript identity if any
+    string transcript_identity   = 3;
+
+    // the transcripts payload
+    bytes  payload               = 7;
+  }
 }
 
-message MetaData {
-  string media_id      = 1;
-  string language_code = 2;
-  string text_uuid     = 3;
-  google.protobuf.Duration played_time = 4;
+// TODO:
+message StreamingTrainingRequest {
+  // The streaming request, which is either a streaming config or audio content.
+  oneof streaming_request {
+    // Provides information to the recognizer that specifies how to process the
+    // request. The first `StreamingTranslationRequest` message must contain a
+    // `streaming_config`  message.
+    google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+
+    // The audio data to be trained. Sequential chunks of audio data are sent
+    // in sequential `StreamingTranslationRequest` messages. The first
+    // `StreamingTranslationRequest` message must not contain `audio_content` data
+    // and all subsequent `StreamingTranslationRequest` messages must contain
+    // `audio_content` data. The audio bytes must be encoded as specified in
+    // `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+    // pure binary representation (not base64). See
+    // [audio limits](https://cloud.google.com/speech/limits#content).
+    bytes audio_content = 2;
+  }
+
+  string transcript = 3;
+
+  // the media identity
+  string media_identity        = 4;
 }

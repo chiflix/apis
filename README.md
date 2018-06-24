@@ -41,6 +41,7 @@ protoc -I ../googleapis/ -I . --lint_out=. */*/*.proto
 
 - generating documents:
 ```
-protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,translation.md translation/*/*.proto
+protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,translation.md translation/*/translation.proto
+protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,training.md translation/*/training.proto
 protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,media.md media/*/*.proto
 ```
