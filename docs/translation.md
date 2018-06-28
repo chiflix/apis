@@ -11,6 +11,7 @@
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
     - [TranslationRequest](#sagittarius.translation.v1.TranslationRequest)
     - [TranslationResponse](#sagittarius.translation.v1.TranslationResponse)
+    - [TranslationResponse.Cue](#sagittarius.translation.v1.TranslationResponse.Cue)
   
   
   
@@ -123,10 +124,11 @@ All subsequent messages must contain `audio` data and must not contain a
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | media_identity | [string](#string) |  | Media Identity |
-| language_code | [string](#string) |  | target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| language_code | [string](#string) |  | oneof case 1 target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | format | [string](#string) |  | the format of the transcripts |
-| transcript_identity | [string](#string) |  | filters * return translate result by transcript_identity |
+| transcript_identity | [string](#string) |  | oneof case 2 return translate result by transcript_identity |
 | start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | position of the transcript relative to the begginning of the audio or video |
+| extra_names | [string](#string) |  | names for more possible results |
 
 
 
@@ -143,11 +145,26 @@ All subsequent messages must contain `audio` data and must not contain a
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
 | transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
+| to_be_continued | [bool](#bool) |  | total line of the transcripts there should be |
+| transcripts | [TranslationResponse.Cue](#sagittarius.translation.v1.TranslationResponse.Cue) | repeated | each line of the transcript |
+| nextbest_transcript_id | [string](#string) | repeated | next best translation results |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TranslationResponse.Cue"/>
+
+### TranslationResponse.Cue
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | the start and end of the transcripts |
 | end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
-| to_be_continued | [bool](#bool) |  | total line of the transcripts there should be |
-| nextbest_transcript_id | [string](#string) | repeated | next best translation results |
-| transcript | [string](#string) | repeated | each line of the transcript |
+| text | [string](#string) |  |  |
 
 
 
