@@ -1,0 +1,19 @@
+{
+  "name": "sagi-apis-client",
+  "version": "1.0.3",
+  "description": "sagittarius.ai grpc apis client library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiflix/apis.git"
+  },
+  "author": "tomasen@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiflix/apis/issues"
+  },
+  "homepage": "https://github.com/chiflix/apis#readme"
+}

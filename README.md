@@ -36,14 +36,15 @@ go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
 - lint:
 ```
-protoc -I ../googleapis/ -I . --lint_out=. */*/*.proto
+protoc -I . --lint_out=. translation/*/*.proto training/*/*.proto media/*/*.proto health/*/*.proto
 ```
 
 - generating documents:
 ```
-protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,translation.md translation/*/translation.proto
-protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,training.md training/*/training.proto
-protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,media.md media/*/*.proto
+protoc -I . --doc_out=docs/ --doc_opt=markdown,translation.md translation/*/translation.proto
+protoc -I . --doc_out=docs/ --doc_opt=markdown,training.md training/*/training.proto
+protoc -I . --doc_out=docs/ --doc_opt=markdown,media.md media/*/*.proto
+protoc -I . --doc_out=docs/ --doc_opt=markdown,health.md health/*/*.proto
 ```
 
 - generating source code:
@@ -52,7 +53,15 @@ protoc -I ../googleapis/ -I . --doc_out=docs/ --doc_opt=markdown,media.md media/
 go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
 go get -u google.golang.org/grpc
 
-protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ media/*/*.proto
-protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ translation/*/translation.proto
-protoc -I ../googleapis/ -I . --go_out=plugins=grpc:src/go/ training/*/training.proto
+protoc -I . --go_out=plugins=grpc:src/go/ media/*/*.proto
+protoc -I . --go_out=plugins=grpc:src/go/ health/*/*.proto
+protoc -I . --go_out=plugins=grpc:src/go/ translation/*/translation.proto
+protoc -I . --go_out=plugins=grpc:src/go/ training/*/training.proto
+
+npm install -g grpc-tools
+grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` translation/*/*.proto training/*/*.proto media/*/*.proto health/*/*.proto
+grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` google/*/*.proto
+grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` google/cloud/speech/*/*.proto
+
+# protoc -I ../googleapis/ -I . --js_out=library=translation,binary:src/nodejs translation/*/translation.proto
 ```
