@@ -22,40 +22,40 @@
 var grpc = require('grpc');
 var health_v1_health_pb = require('../../health/v1/health_pb.js');
 
-function serialize_grpc_health_v1_HealthCheckRequest(arg) {
+function serialize_sagittarius_health_v1_HealthCheckRequest(arg) {
   if (!(arg instanceof health_v1_health_pb.HealthCheckRequest)) {
-    throw new Error('Expected argument of type grpc.health.v1.HealthCheckRequest');
+    throw new Error('Expected argument of type sagittarius.health.v1.HealthCheckRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_grpc_health_v1_HealthCheckRequest(buffer_arg) {
+function deserialize_sagittarius_health_v1_HealthCheckRequest(buffer_arg) {
   return health_v1_health_pb.HealthCheckRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_grpc_health_v1_HealthCheckResponse(arg) {
+function serialize_sagittarius_health_v1_HealthCheckResponse(arg) {
   if (!(arg instanceof health_v1_health_pb.HealthCheckResponse)) {
-    throw new Error('Expected argument of type grpc.health.v1.HealthCheckResponse');
+    throw new Error('Expected argument of type sagittarius.health.v1.HealthCheckResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_grpc_health_v1_HealthCheckResponse(buffer_arg) {
+function deserialize_sagittarius_health_v1_HealthCheckResponse(buffer_arg) {
   return health_v1_health_pb.HealthCheckResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 var HealthService = exports.HealthService = {
   check: {
-    path: '/grpc.health.v1.Health/Check',
+    path: '/sagittarius.health.v1.Health/Check',
     requestStream: false,
     responseStream: false,
     requestType: health_v1_health_pb.HealthCheckRequest,
     responseType: health_v1_health_pb.HealthCheckResponse,
-    requestSerialize: serialize_grpc_health_v1_HealthCheckRequest,
-    requestDeserialize: deserialize_grpc_health_v1_HealthCheckRequest,
-    responseSerialize: serialize_grpc_health_v1_HealthCheckResponse,
-    responseDeserialize: deserialize_grpc_health_v1_HealthCheckResponse,
+    requestSerialize: serialize_sagittarius_health_v1_HealthCheckRequest,
+    requestDeserialize: deserialize_sagittarius_health_v1_HealthCheckRequest,
+    responseSerialize: serialize_sagittarius_health_v1_HealthCheckResponse,
+    responseDeserialize: deserialize_sagittarius_health_v1_HealthCheckResponse,
   },
 };
 
