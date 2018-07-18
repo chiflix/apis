@@ -16,7 +16,7 @@
 // limitations under the License.
 //
 'use strict';
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var google_cloud_speech_v1beta1_cloud_speech_pb = require('../../../../google/cloud/speech/v1beta1/cloud_speech_pb.js');
 var google_api_annotations_pb = require('../../../../google/api/annotations_pb.js');
 var google_longrunning_operations_pb = require('../../../../google/longrunning/operations_pb.js');
