@@ -16,7 +16,7 @@
 // limitations under the License.
 //
 'use strict';
-var grpc = require('@grpc/grpc-js');
+var grpc = require('grpc');
 var media_v1_media_pb = require('../../media/v1/media_pb.js');
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 

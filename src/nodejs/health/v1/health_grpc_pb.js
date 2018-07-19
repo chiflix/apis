@@ -19,7 +19,7 @@
 // https://github.com/grpc/grpc-proto/blob/master/grpc/health/v1/health.proto
 //
 'use strict';
-var grpc = require('@grpc/grpc-js');
+var grpc = require('grpc');
 var health_v1_health_pb = require('../../health/v1/health_pb.js');
 
 function serialize_sagittarius_health_v1_HealthCheckRequest(arg) {

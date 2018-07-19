@@ -73,8 +73,6 @@ grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --
 grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` google/*/*.proto
 grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` google/cloud/speech/*/*.proto
 ```
-replace `require('grpc')` to `require('@grpc/grpc-js')` in all `*.js` then `npm publish`
-
 
 # Examples
 

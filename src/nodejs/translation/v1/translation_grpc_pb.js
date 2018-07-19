@@ -16,7 +16,7 @@
 // limitations under the License.
 //
 'use strict';
-var grpc = require('@grpc/grpc-js');
+var grpc = require('grpc');
 var translation_v1_translation_pb = require('../../translation/v1/translation_pb.js');
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');

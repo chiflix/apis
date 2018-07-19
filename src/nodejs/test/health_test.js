@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var messages = require('../health/v1/health_pb');
 var services = require('../health/v1/health_grpc_pb');
 
-var grpc = require('@grpc/grpc-js');
+var grpc = require('grpc');
 var fs = require('fs');
 
 describe('TestHealth()', function () {
