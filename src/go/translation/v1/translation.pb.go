@@ -27,7 +27,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type TranslationRequest struct {
+type MediaTranslationRequest struct {
 	// Media Identity
 	MediaIdentity string `protobuf:"bytes,1,opt,name=media_identity,json=mediaIdentity,proto3" json:"media_identity,omitempty"`
 	// oneof case 1
@@ -36,9 +36,6 @@ type TranslationRequest struct {
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// the format of the transcripts
 	Format string `protobuf:"bytes,3,opt,name=format,proto3" json:"format,omitempty"`
-	// oneof case 2
-	// return translate result by transcript_identity
-	TranscriptIdentity string `protobuf:"bytes,4,opt,name=transcript_identity,json=transcriptIdentity,proto3" json:"transcript_identity,omitempty"`
 	// position of the transcript relative to the begginning of the audio or video
 	StartTime *duration.Duration `protobuf:"bytes,6,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// names for more possible results
@@ -48,73 +45,66 @@ type TranslationRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TranslationRequest) Reset()         { *m = TranslationRequest{} }
-func (m *TranslationRequest) String() string { return proto.CompactTextString(m) }
-func (*TranslationRequest) ProtoMessage()    {}
-func (*TranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{0}
+func (m *MediaTranslationRequest) Reset()         { *m = MediaTranslationRequest{} }
+func (m *MediaTranslationRequest) String() string { return proto.CompactTextString(m) }
+func (*MediaTranslationRequest) ProtoMessage()    {}
+func (*MediaTranslationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{0}
 }
-func (m *TranslationRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TranslationRequest.Unmarshal(m, b)
+func (m *MediaTranslationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MediaTranslationRequest.Unmarshal(m, b)
 }
-func (m *TranslationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TranslationRequest.Marshal(b, m, deterministic)
+func (m *MediaTranslationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MediaTranslationRequest.Marshal(b, m, deterministic)
 }
-func (dst *TranslationRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TranslationRequest.Merge(dst, src)
+func (dst *MediaTranslationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaTranslationRequest.Merge(dst, src)
 }
-func (m *TranslationRequest) XXX_Size() int {
-	return xxx_messageInfo_TranslationRequest.Size(m)
+func (m *MediaTranslationRequest) XXX_Size() int {
+	return xxx_messageInfo_MediaTranslationRequest.Size(m)
 }
-func (m *TranslationRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_TranslationRequest.DiscardUnknown(m)
+func (m *MediaTranslationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaTranslationRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TranslationRequest proto.InternalMessageInfo
+var xxx_messageInfo_MediaTranslationRequest proto.InternalMessageInfo
 
-func (m *TranslationRequest) GetMediaIdentity() string {
+func (m *MediaTranslationRequest) GetMediaIdentity() string {
 	if m != nil {
 		return m.MediaIdentity
 	}
 	return ""
 }
 
-func (m *TranslationRequest) GetLanguageCode() string {
+func (m *MediaTranslationRequest) GetLanguageCode() string {
 	if m != nil {
 		return m.LanguageCode
 	}
 	return ""
 }
 
-func (m *TranslationRequest) GetFormat() string {
+func (m *MediaTranslationRequest) GetFormat() string {
 	if m != nil {
 		return m.Format
 	}
 	return ""
 }
 
-func (m *TranslationRequest) GetTranscriptIdentity() string {
-	if m != nil {
-		return m.TranscriptIdentity
-	}
-	return ""
-}
-
-func (m *TranslationRequest) GetStartTime() *duration.Duration {
+func (m *MediaTranslationRequest) GetStartTime() *duration.Duration {
 	if m != nil {
 		return m.StartTime
 	}
 	return nil
 }
 
-func (m *TranslationRequest) GetExtraNames() string {
+func (m *MediaTranslationRequest) GetExtraNames() string {
 	if m != nil {
 		return m.ExtraNames
 	}
 	return ""
 }
 
-type TranslationResponse struct {
+type MediaTranslationResponse struct {
 	// *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
 	// specifies the error for the operation.
 	// return 404 if no result, in this case, client should use StreamingTranslationRequest
@@ -124,7 +114,7 @@ type TranslationResponse struct {
 	// total line of the transcripts there should be
 	ToBeContinued bool `protobuf:"varint,3,opt,name=to_be_continued,json=toBeContinued,proto3" json:"to_be_continued,omitempty"`
 	// each line of the transcript
-	Transcripts []*TranslationResponse_Cue `protobuf:"bytes,4,rep,name=transcripts,proto3" json:"transcripts,omitempty"`
+	Transcripts []*MediaTranslationResponse_Cue `protobuf:"bytes,4,rep,name=transcripts,proto3" json:"transcripts,omitempty"`
 	// next best translation results
 	NextbestTranscriptId []string `protobuf:"bytes,5,rep,name=nextbest_transcript_id,json=nextbestTranscriptId,proto3" json:"nextbest_transcript_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -132,66 +122,66 @@ type TranslationResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TranslationResponse) Reset()         { *m = TranslationResponse{} }
-func (m *TranslationResponse) String() string { return proto.CompactTextString(m) }
-func (*TranslationResponse) ProtoMessage()    {}
-func (*TranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{1}
+func (m *MediaTranslationResponse) Reset()         { *m = MediaTranslationResponse{} }
+func (m *MediaTranslationResponse) String() string { return proto.CompactTextString(m) }
+func (*MediaTranslationResponse) ProtoMessage()    {}
+func (*MediaTranslationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{1}
 }
-func (m *TranslationResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TranslationResponse.Unmarshal(m, b)
+func (m *MediaTranslationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MediaTranslationResponse.Unmarshal(m, b)
 }
-func (m *TranslationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TranslationResponse.Marshal(b, m, deterministic)
+func (m *MediaTranslationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MediaTranslationResponse.Marshal(b, m, deterministic)
 }
-func (dst *TranslationResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TranslationResponse.Merge(dst, src)
+func (dst *MediaTranslationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaTranslationResponse.Merge(dst, src)
 }
-func (m *TranslationResponse) XXX_Size() int {
-	return xxx_messageInfo_TranslationResponse.Size(m)
+func (m *MediaTranslationResponse) XXX_Size() int {
+	return xxx_messageInfo_MediaTranslationResponse.Size(m)
 }
-func (m *TranslationResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_TranslationResponse.DiscardUnknown(m)
+func (m *MediaTranslationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaTranslationResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TranslationResponse proto.InternalMessageInfo
+var xxx_messageInfo_MediaTranslationResponse proto.InternalMessageInfo
 
-func (m *TranslationResponse) GetError() *status.Status {
+func (m *MediaTranslationResponse) GetError() *status.Status {
 	if m != nil {
 		return m.Error
 	}
 	return nil
 }
 
-func (m *TranslationResponse) GetTranscriptIdentity() string {
+func (m *MediaTranslationResponse) GetTranscriptIdentity() string {
 	if m != nil {
 		return m.TranscriptIdentity
 	}
 	return ""
 }
 
-func (m *TranslationResponse) GetToBeContinued() bool {
+func (m *MediaTranslationResponse) GetToBeContinued() bool {
 	if m != nil {
 		return m.ToBeContinued
 	}
 	return false
 }
 
-func (m *TranslationResponse) GetTranscripts() []*TranslationResponse_Cue {
+func (m *MediaTranslationResponse) GetTranscripts() []*MediaTranslationResponse_Cue {
 	if m != nil {
 		return m.Transcripts
 	}
 	return nil
 }
 
-func (m *TranslationResponse) GetNextbestTranscriptId() []string {
+func (m *MediaTranslationResponse) GetNextbestTranscriptId() []string {
 	if m != nil {
 		return m.NextbestTranscriptId
 	}
 	return nil
 }
 
-type TranslationResponse_Cue struct {
+type MediaTranslationResponse_Cue struct {
 	// the start and end of the transcripts
 	StartTime            *duration.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime              *duration.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
@@ -201,45 +191,45 @@ type TranslationResponse_Cue struct {
 	XXX_sizecache        int32              `json:"-"`
 }
 
-func (m *TranslationResponse_Cue) Reset()         { *m = TranslationResponse_Cue{} }
-func (m *TranslationResponse_Cue) String() string { return proto.CompactTextString(m) }
-func (*TranslationResponse_Cue) ProtoMessage()    {}
-func (*TranslationResponse_Cue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{1, 0}
+func (m *MediaTranslationResponse_Cue) Reset()         { *m = MediaTranslationResponse_Cue{} }
+func (m *MediaTranslationResponse_Cue) String() string { return proto.CompactTextString(m) }
+func (*MediaTranslationResponse_Cue) ProtoMessage()    {}
+func (*MediaTranslationResponse_Cue) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{1, 0}
 }
-func (m *TranslationResponse_Cue) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TranslationResponse_Cue.Unmarshal(m, b)
+func (m *MediaTranslationResponse_Cue) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MediaTranslationResponse_Cue.Unmarshal(m, b)
 }
-func (m *TranslationResponse_Cue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TranslationResponse_Cue.Marshal(b, m, deterministic)
+func (m *MediaTranslationResponse_Cue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MediaTranslationResponse_Cue.Marshal(b, m, deterministic)
 }
-func (dst *TranslationResponse_Cue) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TranslationResponse_Cue.Merge(dst, src)
+func (dst *MediaTranslationResponse_Cue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaTranslationResponse_Cue.Merge(dst, src)
 }
-func (m *TranslationResponse_Cue) XXX_Size() int {
-	return xxx_messageInfo_TranslationResponse_Cue.Size(m)
+func (m *MediaTranslationResponse_Cue) XXX_Size() int {
+	return xxx_messageInfo_MediaTranslationResponse_Cue.Size(m)
 }
-func (m *TranslationResponse_Cue) XXX_DiscardUnknown() {
-	xxx_messageInfo_TranslationResponse_Cue.DiscardUnknown(m)
+func (m *MediaTranslationResponse_Cue) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaTranslationResponse_Cue.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TranslationResponse_Cue proto.InternalMessageInfo
+var xxx_messageInfo_MediaTranslationResponse_Cue proto.InternalMessageInfo
 
-func (m *TranslationResponse_Cue) GetStartTime() *duration.Duration {
+func (m *MediaTranslationResponse_Cue) GetStartTime() *duration.Duration {
 	if m != nil {
 		return m.StartTime
 	}
 	return nil
 }
 
-func (m *TranslationResponse_Cue) GetEndTime() *duration.Duration {
+func (m *MediaTranslationResponse_Cue) GetEndTime() *duration.Duration {
 	if m != nil {
 		return m.EndTime
 	}
 	return nil
 }
 
-func (m *TranslationResponse_Cue) GetText() string {
+func (m *MediaTranslationResponse_Cue) GetText() string {
 	if m != nil {
 		return m.Text
 	}
@@ -258,7 +248,7 @@ func (m *DetectionRequest) Reset()         { *m = DetectionRequest{} }
 func (m *DetectionRequest) String() string { return proto.CompactTextString(m) }
 func (*DetectionRequest) ProtoMessage()    {}
 func (*DetectionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{2}
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{2}
 }
 func (m *DetectionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionRequest.Unmarshal(m, b)
@@ -301,7 +291,7 @@ func (m *DetectionResponse) Reset()         { *m = DetectionResponse{} }
 func (m *DetectionResponse) String() string { return proto.CompactTextString(m) }
 func (*DetectionResponse) ProtoMessage()    {}
 func (*DetectionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{3}
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{3}
 }
 func (m *DetectionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionResponse.Unmarshal(m, b)
@@ -335,6 +325,55 @@ func (m *DetectionResponse) GetConfidence() float32 {
 	return 0
 }
 
+type TranscriptRequest struct {
+	// oneof case 2
+	// return translate result by transcript_identity
+	TranscriptIdentity string `protobuf:"bytes,4,opt,name=transcript_identity,json=transcriptIdentity,proto3" json:"transcript_identity,omitempty"`
+	// position of the transcript relative to the begginning of the audio or video
+	StartTime            *duration.Duration `protobuf:"bytes,6,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *TranscriptRequest) Reset()         { *m = TranscriptRequest{} }
+func (m *TranscriptRequest) String() string { return proto.CompactTextString(m) }
+func (*TranscriptRequest) ProtoMessage()    {}
+func (*TranscriptRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{4}
+}
+func (m *TranscriptRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TranscriptRequest.Unmarshal(m, b)
+}
+func (m *TranscriptRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TranscriptRequest.Marshal(b, m, deterministic)
+}
+func (dst *TranscriptRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TranscriptRequest.Merge(dst, src)
+}
+func (m *TranscriptRequest) XXX_Size() int {
+	return xxx_messageInfo_TranscriptRequest.Size(m)
+}
+func (m *TranscriptRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_TranscriptRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TranscriptRequest proto.InternalMessageInfo
+
+func (m *TranscriptRequest) GetTranscriptIdentity() string {
+	if m != nil {
+		return m.TranscriptIdentity
+	}
+	return ""
+}
+
+func (m *TranscriptRequest) GetStartTime() *duration.Duration {
+	if m != nil {
+		return m.StartTime
+	}
+	return nil
+}
+
 // The top-level message sent by the client for the `StreamingRecognize` method.
 // Multiple `StreamingTranslationRequest` messages are sent. The first message
 // must contain a `streaming_config` message and must not contain `audio` data.
@@ -356,7 +395,7 @@ func (m *StreamingTranslationRequest) Reset()         { *m = StreamingTranslatio
 func (m *StreamingTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationRequest) ProtoMessage()    {}
 func (*StreamingTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{4}
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{5}
 }
 func (m *StreamingTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationRequest.Unmarshal(m, b)
@@ -499,7 +538,7 @@ func (m *StreamingTranslationResponse) Reset()         { *m = StreamingTranslati
 func (m *StreamingTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationResponse) ProtoMessage()    {}
 func (*StreamingTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{5}
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{6}
 }
 func (m *StreamingTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationResponse.Unmarshal(m, b)
@@ -572,7 +611,7 @@ func (m *StreamingTranslationResult) Reset()         { *m = StreamingTranslation
 func (m *StreamingTranslationResult) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationResult) ProtoMessage()    {}
 func (*StreamingTranslationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a3c60fedb27286b3, []int{6}
+	return fileDescriptor_translation_ebe1795ef4329a60, []int{7}
 }
 func (m *StreamingTranslationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationResult.Unmarshal(m, b)
@@ -628,11 +667,12 @@ func (m *StreamingTranslationResult) GetEndTime() *duration.Duration {
 }
 
 func init() {
-	proto.RegisterType((*TranslationRequest)(nil), "sagittarius.translation.v1.TranslationRequest")
-	proto.RegisterType((*TranslationResponse)(nil), "sagittarius.translation.v1.TranslationResponse")
-	proto.RegisterType((*TranslationResponse_Cue)(nil), "sagittarius.translation.v1.TranslationResponse.Cue")
+	proto.RegisterType((*MediaTranslationRequest)(nil), "sagittarius.translation.v1.MediaTranslationRequest")
+	proto.RegisterType((*MediaTranslationResponse)(nil), "sagittarius.translation.v1.MediaTranslationResponse")
+	proto.RegisterType((*MediaTranslationResponse_Cue)(nil), "sagittarius.translation.v1.MediaTranslationResponse.Cue")
 	proto.RegisterType((*DetectionRequest)(nil), "sagittarius.translation.v1.DetectionRequest")
 	proto.RegisterType((*DetectionResponse)(nil), "sagittarius.translation.v1.DetectionResponse")
+	proto.RegisterType((*TranscriptRequest)(nil), "sagittarius.translation.v1.TranscriptRequest")
 	proto.RegisterType((*StreamingTranslationRequest)(nil), "sagittarius.translation.v1.StreamingTranslationRequest")
 	proto.RegisterType((*StreamingTranslationResponse)(nil), "sagittarius.translation.v1.StreamingTranslationResponse")
 	proto.RegisterType((*StreamingTranslationResult)(nil), "sagittarius.translation.v1.StreamingTranslationResult")
@@ -651,9 +691,10 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type TranslationClient interface {
 	// Translate media(audio or video) by media identity
-	TranslateMedia(ctx context.Context, in *TranslationRequest, opts ...grpc.CallOption) (*TranslationResponse, error)
+	TranslateMedia(ctx context.Context, in *MediaTranslationRequest, opts ...grpc.CallOption) (*MediaTranslationResponse, error)
 	// detect the language of text
 	DetectLanguage(ctx context.Context, in *DetectionRequest, opts ...grpc.CallOption) (*DetectionResponse, error)
+	Transcript(ctx context.Context, in *TranscriptRequest, opts ...grpc.CallOption) (*MediaTranslationResponse, error)
 	// Performs bidirectional streaming audio translation: receive results while
 	// sending audio. This method is only available via the gRPC API (not REST).
 	StreamingTranslation(ctx context.Context, opts ...grpc.CallOption) (Translation_StreamingTranslationClient, error)
@@ -667,8 +708,8 @@ func NewTranslationClient(cc *grpc.ClientConn) TranslationClient {
 	return &translationClient{cc}
 }
 
-func (c *translationClient) TranslateMedia(ctx context.Context, in *TranslationRequest, opts ...grpc.CallOption) (*TranslationResponse, error) {
-	out := new(TranslationResponse)
+func (c *translationClient) TranslateMedia(ctx context.Context, in *MediaTranslationRequest, opts ...grpc.CallOption) (*MediaTranslationResponse, error) {
+	out := new(MediaTranslationResponse)
 	err := c.cc.Invoke(ctx, "/sagittarius.translation.v1.Translation/TranslateMedia", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -679,6 +720,15 @@ func (c *translationClient) TranslateMedia(ctx context.Context, in *TranslationR
 func (c *translationClient) DetectLanguage(ctx context.Context, in *DetectionRequest, opts ...grpc.CallOption) (*DetectionResponse, error) {
 	out := new(DetectionResponse)
 	err := c.cc.Invoke(ctx, "/sagittarius.translation.v1.Translation/DetectLanguage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *translationClient) Transcript(ctx context.Context, in *TranscriptRequest, opts ...grpc.CallOption) (*MediaTranslationResponse, error) {
+	out := new(MediaTranslationResponse)
+	err := c.cc.Invoke(ctx, "/sagittarius.translation.v1.Translation/Transcript", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -719,9 +769,10 @@ func (x *translationStreamingTranslationClient) Recv() (*StreamingTranslationRes
 // TranslationServer is the server API for Translation service.
 type TranslationServer interface {
 	// Translate media(audio or video) by media identity
-	TranslateMedia(context.Context, *TranslationRequest) (*TranslationResponse, error)
+	TranslateMedia(context.Context, *MediaTranslationRequest) (*MediaTranslationResponse, error)
 	// detect the language of text
 	DetectLanguage(context.Context, *DetectionRequest) (*DetectionResponse, error)
+	Transcript(context.Context, *TranscriptRequest) (*MediaTranslationResponse, error)
 	// Performs bidirectional streaming audio translation: receive results while
 	// sending audio. This method is only available via the gRPC API (not REST).
 	StreamingTranslation(Translation_StreamingTranslationServer) error
@@ -732,7 +783,7 @@ func RegisterTranslationServer(s *grpc.Server, srv TranslationServer) {
 }
 
 func _Translation_TranslateMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TranslationRequest)
+	in := new(MediaTranslationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -744,7 +795,7 @@ func _Translation_TranslateMedia_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/sagittarius.translation.v1.Translation/TranslateMedia",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TranslationServer).TranslateMedia(ctx, req.(*TranslationRequest))
+		return srv.(TranslationServer).TranslateMedia(ctx, req.(*MediaTranslationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -763,6 +814,24 @@ func _Translation_DetectLanguage_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TranslationServer).DetectLanguage(ctx, req.(*DetectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Translation_Transcript_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TranscriptRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TranslationServer).Transcript(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagittarius.translation.v1.Translation/Transcript",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TranslationServer).Transcript(ctx, req.(*TranscriptRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -805,6 +874,10 @@ var _Translation_serviceDesc = grpc.ServiceDesc{
 			MethodName: "DetectLanguage",
 			Handler:    _Translation_DetectLanguage_Handler,
 		},
+		{
+			MethodName: "Transcript",
+			Handler:    _Translation_Transcript_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
@@ -818,61 +891,64 @@ var _Translation_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("translation/v1/translation.proto", fileDescriptor_translation_a3c60fedb27286b3)
+	proto.RegisterFile("translation/v1/translation.proto", fileDescriptor_translation_ebe1795ef4329a60)
 }
 
-var fileDescriptor_translation_a3c60fedb27286b3 = []byte{
-	// 827 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x55, 0x5f, 0x6f, 0x1b, 0x45,
-	0x10, 0xef, 0xda, 0xf9, 0xd3, 0x8c, 0xe3, 0x34, 0x5d, 0x57, 0xe5, 0xb8, 0x86, 0x62, 0x8c, 0x5a,
-	0xb9, 0x08, 0xee, 0x88, 0x5b, 0x41, 0x95, 0x47, 0xbb, 0x12, 0x45, 0x2a, 0x28, 0xba, 0x06, 0x84,
-	0x78, 0x39, 0xad, 0xef, 0x26, 0xc7, 0x4a, 0xf6, 0xae, 0xd9, 0xdd, 0x8b, 0x82, 0xa2, 0xbc, 0x20,
-	0x5e, 0x78, 0x40, 0x42, 0xe2, 0x8d, 0x6f, 0xd1, 0x0f, 0xc1, 0x27, 0xe0, 0x2b, 0xf0, 0xc4, 0x27,
-	0xe8, 0x23, 0xba, 0xbd, 0xbb, 0xdc, 0x39, 0xd8, 0x69, 0xdc, 0xb7, 0xdb, 0x99, 0xdf, 0xec, 0xfe,
-	0x66, 0xe6, 0x37, 0x73, 0xd0, 0x35, 0x8a, 0x09, 0x3d, 0x61, 0x86, 0x4b, 0xe1, 0x9f, 0xec, 0xfb,
-	0xb5, 0xa3, 0x37, 0x53, 0xd2, 0x48, 0xea, 0x6a, 0x96, 0x70, 0x63, 0x98, 0xe2, 0xa9, 0xf6, 0xea,
-	0xee, 0x93, 0x7d, 0x77, 0x2f, 0x91, 0x32, 0x99, 0xa0, 0xcf, 0x66, 0xdc, 0x67, 0x42, 0x48, 0x63,
-	0x3d, 0x3a, 0x8f, 0x74, 0xef, 0x17, 0x5e, 0x7b, 0x1a, 0xa7, 0xc7, 0x7e, 0x9c, 0xaa, 0xda, 0xcd,
-	0xee, 0x3b, 0x85, 0x5f, 0xcd, 0x22, 0x5f, 0x1b, 0x66, 0xd2, 0x32, 0xf0, 0x51, 0xe1, 0x88, 0x26,
-	0x32, 0x8d, 0x7d, 0x3d, 0x43, 0x8c, 0x7e, 0xc8, 0xc8, 0xd9, 0x73, 0x98, 0x9f, 0x73, 0x68, 0xef,
-	0x97, 0x06, 0xd0, 0xa3, 0x8a, 0x54, 0x80, 0x3f, 0xa6, 0xa8, 0x0d, 0x7d, 0x00, 0x3b, 0x53, 0x8c,
-	0x39, 0x0b, 0x79, 0x8c, 0xc2, 0x70, 0xf3, 0x93, 0x43, 0xba, 0xa4, 0xbf, 0x15, 0xb4, 0xad, 0xf5,
-	0xcb, 0xc2, 0x48, 0x3f, 0x84, 0xf6, 0x84, 0x89, 0x24, 0x65, 0x09, 0x86, 0x91, 0x8c, 0xd1, 0x69,
-	0x58, 0xd4, 0x76, 0x69, 0x1c, 0xc9, 0x18, 0xe9, 0x5d, 0xd8, 0x38, 0x96, 0x6a, 0xca, 0x8c, 0xd3,
-	0xb4, 0xde, 0xe2, 0x44, 0x7d, 0xe8, 0xd8, 0x72, 0x44, 0x8a, 0xcf, 0x4c, 0xf5, 0xd0, 0x9a, 0x05,
-	0xd1, 0xca, 0x75, 0xf1, 0xda, 0x53, 0x00, 0x6d, 0x98, 0x32, 0xa1, 0xe1, 0x53, 0x74, 0x36, 0xba,
-	0xa4, 0xdf, 0x1a, 0xbc, 0xeb, 0xe5, 0xb9, 0x7a, 0x65, 0x91, 0xbc, 0x67, 0x45, 0x91, 0x82, 0x2d,
-	0x0b, 0x3e, 0xe2, 0x53, 0xa4, 0xef, 0x43, 0x0b, 0x4f, 0x8d, 0x62, 0xa1, 0x60, 0x53, 0xd4, 0xce,
-	0xa6, 0x7d, 0x02, 0xac, 0xe9, 0xeb, 0xcc, 0xd2, 0x7b, 0xd5, 0x84, 0xce, 0x5c, 0x19, 0xf4, 0x4c,
-	0x0a, 0x8d, 0xb4, 0x0f, 0xeb, 0xa8, 0x94, 0x54, 0x36, 0xfd, 0xd6, 0x80, 0x96, 0xaf, 0xa9, 0x59,
-	0xe4, 0xbd, 0xb4, 0x25, 0x0f, 0x72, 0xc0, 0xb2, 0x6c, 0x1a, 0x4b, 0xb3, 0x79, 0x08, 0xb7, 0x8c,
-	0x0c, 0xc7, 0x59, 0xe1, 0x84, 0xe1, 0x22, 0xc5, 0xd8, 0xd6, 0xe7, 0x66, 0xd0, 0x36, 0x72, 0x88,
-	0xa3, 0xd2, 0x48, 0xbf, 0x81, 0x56, 0x15, 0xad, 0x9d, 0xb5, 0x6e, 0xb3, 0xdf, 0x1a, 0x3c, 0xf6,
-	0x96, 0xab, 0xca, 0x5b, 0x90, 0x88, 0x37, 0x4a, 0x31, 0xa8, 0xdf, 0x43, 0x9f, 0xc0, 0x5d, 0x81,
-	0xa7, 0x66, 0x8c, 0xda, 0x84, 0x73, 0xc4, 0x9d, 0xf5, 0x6e, 0xb3, 0xbf, 0x15, 0xdc, 0x29, 0xbd,
-	0x47, 0x35, 0xea, 0xee, 0xaf, 0x04, 0x9a, 0xa3, 0x14, 0x2f, 0xb5, 0x82, 0xac, 0xd0, 0x8a, 0x27,
-	0x70, 0x13, 0x45, 0x9c, 0xc7, 0x35, 0xde, 0x14, 0xb7, 0x89, 0x22, 0xb6, 0x51, 0x14, 0xd6, 0x0c,
-	0x9e, 0x96, 0x0a, 0xb2, 0xdf, 0xbd, 0x87, 0xb0, 0xfb, 0x0c, 0x0d, 0x46, 0x75, 0xdd, 0x96, 0x38,
-	0x52, 0xc3, 0x7d, 0x07, 0xb7, 0x6b, 0xb8, 0xa2, 0xb1, 0xff, 0x53, 0x2e, 0x59, 0xa0, 0xdc, 0xfb,
-	0x00, 0x91, 0x14, 0xc7, 0x59, 0x33, 0xa3, 0x9c, 0x6d, 0x23, 0xa8, 0x59, 0x7a, 0xaf, 0x08, 0xdc,
-	0x7b, 0x69, 0x14, 0xb2, 0x29, 0x17, 0xc9, 0x82, 0x29, 0xfa, 0x16, 0x76, 0x75, 0xe9, 0x0e, 0x6d,
-	0x5c, 0x52, 0xd4, 0xea, 0x51, 0x99, 0xb3, 0x1d, 0x49, 0xaf, 0x18, 0xc9, 0x93, 0x7d, 0x2f, 0xc0,
-	0x48, 0x26, 0x82, 0x67, 0xb7, 0x8c, 0x6c, 0xc0, 0xf3, 0x1b, 0xc1, 0xad, 0x8b, 0x4b, 0x72, 0x13,
-	0x7d, 0x00, 0x6d, 0x96, 0xc6, 0x5c, 0x5a, 0xe9, 0xa0, 0x30, 0x96, 0xda, 0xf6, 0xf3, 0x1b, 0xc1,
-	0xb6, 0x35, 0x8f, 0x72, 0xeb, 0xb0, 0x03, 0xb7, 0xab, 0xe7, 0x55, 0xce, 0xa9, 0xf7, 0x27, 0x81,
-	0xbd, 0xc5, 0x9c, 0x57, 0x96, 0xfc, 0x21, 0x6c, 0x2a, 0xd4, 0xe9, 0xc4, 0x68, 0xa7, 0x61, 0x55,
-	0xf9, 0xd9, 0x55, 0xaa, 0x5c, 0xf2, 0x68, 0x3a, 0x31, 0x41, 0x79, 0x4d, 0xef, 0x5f, 0x02, 0xee,
-	0x72, 0x5c, 0xd6, 0x8f, 0x4a, 0xaa, 0x45, 0xc7, 0x6a, 0x96, 0x37, 0xf5, 0x8b, 0xee, 0x41, 0x26,
-	0xc4, 0x31, 0x9f, 0x64, 0x93, 0xd9, 0xb4, 0xee, 0xca, 0x70, 0x49, 0xd3, 0x6b, 0x6f, 0xa9, 0xe9,
-	0xf5, 0xeb, 0x6a, 0x7a, 0xf0, 0xba, 0x09, 0xad, 0x5a, 0x8e, 0xf4, 0x2f, 0x02, 0x3b, 0xe5, 0x19,
-	0xbf, 0xca, 0xf6, 0x2c, 0xf5, 0xae, 0x3d, 0xe6, 0xb6, 0xb9, 0xae, 0xbf, 0xe2, 0x5a, 0xe8, 0x05,
-	0x3f, 0xff, 0xfd, 0xcf, 0x1f, 0x8d, 0x17, 0xf4, 0x8b, 0xec, 0xf7, 0x60, 0x77, 0xbb, 0x7f, 0x36,
-	0xbf, 0xf8, 0xcf, 0xfd, 0x72, 0x24, 0xfc, 0xb3, 0xb9, 0x89, 0x39, 0xf7, 0xab, 0xca, 0x1f, 0x9c,
-	0xe5, 0x3b, 0xfd, 0xfc, 0x80, 0x7c, 0x44, 0x7f, 0x27, 0xb0, 0x93, 0x0f, 0xdc, 0x8b, 0x02, 0x4f,
-	0x3f, 0xbe, 0x8a, 0xd7, 0xe5, 0x21, 0x76, 0x3f, 0xb9, 0x26, 0xba, 0xc8, 0xe1, 0x03, 0x9b, 0xc3,
-	0x3d, 0xda, 0xc9, 0x72, 0xb8, 0x20, 0x1b, 0x5b, 0xdc, 0x81, 0x5d, 0x01, 0xf4, 0x37, 0x02, 0x77,
-	0x16, 0xe9, 0x8a, 0x7e, 0xbe, 0xba, 0x62, 0x73, 0x8e, 0x4f, 0xdf, 0x42, 0xea, 0x96, 0x6e, 0x9f,
-	0x7c, 0x4a, 0x86, 0x23, 0x78, 0x8f, 0xf1, 0x2b, 0x6e, 0x18, 0xee, 0xd6, 0x22, 0x0f, 0x33, 0x09,
-	0x1d, 0x92, 0xef, 0x5b, 0x35, 0xcc, 0x6b, 0x42, 0xc6, 0x1b, 0x56, 0x5b, 0x8f, 0xff, 0x0b, 0x00,
-	0x00, 0xff, 0xff, 0xa7, 0xf9, 0xd2, 0x43, 0x83, 0x08, 0x00, 0x00,
+var fileDescriptor_translation_ebe1795ef4329a60 = []byte{
+	// 876 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0x4f, 0x6f, 0x1b, 0x45,
+	0x14, 0xef, 0xd8, 0xf9, 0xd3, 0x3c, 0x27, 0x69, 0x32, 0xa9, 0xda, 0xc5, 0x0d, 0xc5, 0x2c, 0x6a,
+	0x71, 0x11, 0xdd, 0x25, 0x69, 0x04, 0x51, 0x8e, 0x71, 0x25, 0x8a, 0x54, 0x50, 0xb4, 0x8d, 0x10,
+	0xea, 0xc5, 0x1a, 0xef, 0xbe, 0x98, 0x95, 0xec, 0x19, 0x33, 0x33, 0x1b, 0x05, 0x45, 0xe1, 0xc0,
+	0x8d, 0x03, 0x12, 0x12, 0x37, 0x4e, 0x5c, 0xf8, 0x00, 0x9c, 0xf9, 0x10, 0x1c, 0xb8, 0xf0, 0x01,
+	0x38, 0xf1, 0x09, 0x38, 0xa2, 0x7d, 0xbb, 0x9b, 0xdd, 0x24, 0x76, 0x1a, 0xfb, 0xe6, 0x79, 0xef,
+	0xcd, 0xdb, 0xdf, 0x7b, 0xef, 0xf7, 0x7b, 0x63, 0x68, 0x59, 0x2d, 0xa4, 0x19, 0x08, 0x1b, 0x2b,
+	0xe9, 0x1f, 0x6f, 0xf9, 0x95, 0xa3, 0x37, 0xd2, 0xca, 0x2a, 0xde, 0x34, 0xa2, 0x1f, 0x5b, 0x2b,
+	0x74, 0x9c, 0x18, 0xaf, 0xea, 0x3e, 0xde, 0x6a, 0x6e, 0xf6, 0x95, 0xea, 0x0f, 0xd0, 0x17, 0xa3,
+	0xd8, 0x17, 0x52, 0x2a, 0x4b, 0x1e, 0x93, 0xdd, 0x6c, 0x3e, 0xcc, 0xbd, 0x74, 0xea, 0x25, 0x47,
+	0x7e, 0x94, 0xe8, 0x4a, 0xe6, 0xe6, 0xfd, 0xdc, 0xaf, 0x47, 0xa1, 0x6f, 0xac, 0xb0, 0x49, 0x71,
+	0xf1, 0x49, 0xee, 0x08, 0x07, 0x2a, 0x89, 0x7c, 0x33, 0x42, 0x0c, 0xbf, 0x4e, 0xc1, 0xd1, 0xb9,
+	0x9b, 0x9d, 0xb3, 0x50, 0xf7, 0x6f, 0x06, 0xf7, 0x3f, 0xc7, 0x28, 0x16, 0x87, 0x25, 0xb2, 0x00,
+	0xbf, 0x49, 0xd0, 0x58, 0xfe, 0x08, 0x56, 0x87, 0xa9, 0xab, 0x1b, 0x47, 0x28, 0x6d, 0x6c, 0xbf,
+	0x75, 0x58, 0x8b, 0xb5, 0x97, 0x82, 0x15, 0xb2, 0x7e, 0x96, 0x1b, 0xf9, 0x7b, 0xb0, 0x32, 0x10,
+	0xb2, 0x9f, 0x88, 0x3e, 0x76, 0x43, 0x15, 0xa1, 0x53, 0xa3, 0xa8, 0xe5, 0xc2, 0xd8, 0x51, 0x11,
+	0xf2, 0x7b, 0xb0, 0x70, 0xa4, 0xf4, 0x50, 0x58, 0xa7, 0x4e, 0xde, 0xfc, 0xc4, 0x77, 0x01, 0x8c,
+	0x15, 0xda, 0x76, 0x6d, 0x3c, 0x44, 0x67, 0xa1, 0xc5, 0xda, 0x8d, 0xed, 0xb7, 0xbc, 0x0c, 0xbf,
+	0x57, 0x14, 0xee, 0x3d, 0xcf, 0x0b, 0x0f, 0x96, 0x28, 0xf8, 0x30, 0x1e, 0x22, 0x7f, 0x07, 0x1a,
+	0x78, 0x62, 0xb5, 0xe8, 0x4a, 0x31, 0x44, 0xe3, 0x2c, 0x52, 0x5a, 0x20, 0xd3, 0x17, 0xa9, 0xc5,
+	0xfd, 0xa3, 0x0e, 0xce, 0xd5, 0xd2, 0xcc, 0x48, 0x49, 0x83, 0xbc, 0x0d, 0xf3, 0xa8, 0xb5, 0xd2,
+	0x54, 0x52, 0x63, 0x9b, 0x17, 0x9f, 0xd4, 0xa3, 0xd0, 0x7b, 0x45, 0xbd, 0x0c, 0xb2, 0x00, 0xee,
+	0xc3, 0x06, 0x4d, 0x2d, 0xd4, 0xf1, 0xc8, 0x96, 0xad, 0xc8, 0x8a, 0xe4, 0xa5, 0xeb, 0xbc, 0x1f,
+	0x8f, 0xe1, 0x8e, 0x55, 0xdd, 0x5e, 0xda, 0x0c, 0x69, 0x63, 0x99, 0x60, 0x44, 0x35, 0xdf, 0x0e,
+	0x56, 0xac, 0xda, 0xc7, 0x4e, 0x61, 0xe4, 0xaf, 0xa1, 0x51, 0xde, 0x36, 0xce, 0x5c, 0xab, 0xde,
+	0x6e, 0x6c, 0xef, 0x7a, 0x93, 0xe9, 0xe2, 0x4d, 0xaa, 0xc6, 0xeb, 0x24, 0x18, 0x54, 0x93, 0xf1,
+	0x1d, 0xb8, 0x27, 0xf1, 0xc4, 0xf6, 0xd0, 0xd8, 0xee, 0x05, 0xf4, 0xce, 0x7c, 0xab, 0xde, 0x5e,
+	0x0a, 0xee, 0x16, 0xde, 0xc3, 0x0a, 0xfe, 0xe6, 0x0f, 0x0c, 0xea, 0x9d, 0x04, 0x2f, 0x0d, 0x85,
+	0x4d, 0x31, 0x94, 0x1d, 0xb8, 0x8d, 0x32, 0xca, 0xee, 0xd5, 0xde, 0x74, 0x6f, 0x11, 0x65, 0x44,
+	0xb7, 0x38, 0xcc, 0x59, 0x3c, 0x29, 0xa8, 0x41, 0xbf, 0xdd, 0xc7, 0xb0, 0xf6, 0x1c, 0x2d, 0x86,
+	0x55, 0x42, 0x16, 0x71, 0xac, 0x12, 0xf7, 0x15, 0xac, 0x57, 0xe2, 0xf2, 0xe9, 0x5e, 0xa1, 0x24,
+	0x1b, 0x43, 0xc9, 0x87, 0x00, 0xa1, 0x92, 0x47, 0xe9, 0x44, 0xc3, 0x0c, 0x6d, 0x2d, 0xa8, 0x58,
+	0xdc, 0xef, 0x60, 0xbd, 0xec, 0x4e, 0x01, 0x61, 0x02, 0x1b, 0xe6, 0x26, 0xb2, 0x61, 0x66, 0x82,
+	0xbb, 0xbf, 0x33, 0x78, 0xf0, 0xca, 0x6a, 0x14, 0xc3, 0x58, 0xf6, 0xc7, 0xc8, 0xf3, 0x4b, 0x58,
+	0x33, 0x85, 0xbb, 0x4b, 0xb8, 0xfb, 0xf9, 0xac, 0x9e, 0x14, 0xf9, 0x49, 0xf0, 0x5e, 0x2e, 0xf8,
+	0xe3, 0x2d, 0x2f, 0xc0, 0x50, 0xf5, 0x65, 0x9c, 0x66, 0xe9, 0xd0, 0x85, 0x17, 0xb7, 0x82, 0x3b,
+	0xe7, 0x49, 0x32, 0x13, 0x7f, 0x04, 0x2b, 0x22, 0x89, 0x62, 0x45, 0xfc, 0x45, 0x69, 0xa9, 0x35,
+	0xcb, 0x2f, 0x6e, 0x05, 0xcb, 0x64, 0xee, 0x64, 0xd6, 0xfd, 0x0d, 0x58, 0x2f, 0x3f, 0xaf, 0x33,
+	0x4c, 0xee, 0x2f, 0x0c, 0x36, 0xc7, 0x63, 0x9e, 0x5a, 0x77, 0x07, 0xb0, 0xa8, 0xd1, 0x24, 0x03,
+	0x6b, 0x9c, 0x1a, 0x49, 0xe3, 0xe3, 0xeb, 0xa4, 0x31, 0xe1, 0xa3, 0xc9, 0xc0, 0x06, 0x45, 0x1a,
+	0xf7, 0x5f, 0x06, 0xcd, 0xc9, 0x71, 0x29, 0x1f, 0xca, 0xf9, 0xe5, 0x8c, 0xa9, 0x58, 0xde, 0xc4,
+	0x17, 0xbe, 0x09, 0xe9, 0xf0, 0x7a, 0xf1, 0x20, 0x25, 0x44, 0x9d, 0xdc, 0xa5, 0xe1, 0x12, 0x0f,
+	0xe6, 0x66, 0xd4, 0xd4, 0xfc, 0x4d, 0x35, 0xb5, 0xfd, 0xdb, 0x3c, 0x34, 0x2a, 0x35, 0xf2, 0x3f,
+	0x19, 0xac, 0x16, 0x67, 0xa4, 0x45, 0xc2, 0x9f, 0x4d, 0xb7, 0x6b, 0x68, 0xc2, 0xcd, 0x9d, 0x59,
+	0x16, 0x94, 0x1b, 0x7c, 0xff, 0xd7, 0x3f, 0x3f, 0xd7, 0x5e, 0xf2, 0x4f, 0xd3, 0x67, 0x88, 0x9e,
+	0x0f, 0xff, 0xf4, 0xe2, 0xdb, 0x72, 0xe6, 0x17, 0xe2, 0xf4, 0x4f, 0x2f, 0x68, 0xf7, 0xcc, 0x2f,
+	0x67, 0xb0, 0x77, 0x9a, 0x3d, 0x1b, 0x67, 0x7b, 0xec, 0x03, 0xfe, 0x13, 0x83, 0xd5, 0x4c, 0xfa,
+	0x2f, 0xf3, 0x78, 0xfe, 0xe1, 0x75, 0xe0, 0x2e, 0xaf, 0x93, 0xe6, 0xd3, 0x1b, 0x46, 0xe7, 0x35,
+	0xbc, 0x4b, 0x35, 0x3c, 0xe0, 0x1b, 0x69, 0x0d, 0xe7, 0x60, 0x23, 0x8a, 0xdb, 0xa3, 0x65, 0xc4,
+	0x7f, 0x65, 0x00, 0xe5, 0xce, 0xe0, 0xd7, 0x7e, 0xe0, 0xca, 0x6e, 0x99, 0xb1, 0xb5, 0x4f, 0x09,
+	0xd6, 0xfb, 0xdc, 0x3d, 0xff, 0xfb, 0x41, 0x49, 0xfd, 0x31, 0x6b, 0x2a, 0xed, 0xda, 0x8f, 0x0c,
+	0xee, 0x8e, 0x13, 0x01, 0xff, 0x64, 0x7a, 0x79, 0x65, 0xb0, 0x77, 0x67, 0xd0, 0x25, 0x41, 0x6f,
+	0xb3, 0x8f, 0xd8, 0x7e, 0x07, 0xde, 0x16, 0xf1, 0x35, 0x19, 0xf6, 0xd7, 0x2a, 0x37, 0x0f, 0x52,
+	0xbe, 0x1f, 0xb0, 0xd7, 0x8d, 0x4a, 0xcc, 0x7f, 0x8c, 0xf5, 0x16, 0x48, 0x08, 0xcf, 0xfe, 0x0f,
+	0x00, 0x00, 0xff, 0xff, 0x00, 0xd6, 0x4e, 0xf1, 0x8e, 0x09, 0x00, 0x00,
 }

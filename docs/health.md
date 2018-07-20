@@ -4,13 +4,13 @@
 ## Table of Contents
 
 - [health/v1/health.proto](#health/v1/health.proto)
-    - [HealthCheckRequest](#grpc.health.v1.HealthCheckRequest)
-    - [HealthCheckResponse](#grpc.health.v1.HealthCheckResponse)
+    - [HealthCheckRequest](#sagittarius.health.v1.HealthCheckRequest)
+    - [HealthCheckResponse](#sagittarius.health.v1.HealthCheckResponse)
   
-    - [HealthCheckResponse.ServingStatus](#grpc.health.v1.HealthCheckResponse.ServingStatus)
+    - [HealthCheckResponse.ServingStatus](#sagittarius.health.v1.HealthCheckResponse.ServingStatus)
   
   
-    - [Health](#grpc.health.v1.Health)
+    - [Health](#sagittarius.health.v1.Health)
   
 
 - [Scalar Value Types](#scalar-value-types)
@@ -24,7 +24,7 @@
 
 
 
-<a name="grpc.health.v1.HealthCheckRequest"/>
+<a name="sagittarius.health.v1.HealthCheckRequest"/>
 
 ### HealthCheckRequest
 
@@ -39,7 +39,7 @@
 
 
 
-<a name="grpc.health.v1.HealthCheckResponse"/>
+<a name="sagittarius.health.v1.HealthCheckResponse"/>
 
 ### HealthCheckResponse
 
@@ -47,7 +47,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| status | [HealthCheckResponse.ServingStatus](#grpc.health.v1.HealthCheckResponse.ServingStatus) |  |  |
+| status | [HealthCheckResponse.ServingStatus](#sagittarius.health.v1.HealthCheckResponse.ServingStatus) |  |  |
 
 
 
@@ -56,7 +56,7 @@
  
 
 
-<a name="grpc.health.v1.HealthCheckResponse.ServingStatus"/>
+<a name="sagittarius.health.v1.HealthCheckResponse.ServingStatus"/>
 
 ### HealthCheckResponse.ServingStatus
 
@@ -73,14 +73,14 @@
  
 
 
-<a name="grpc.health.v1.Health"/>
+<a name="sagittarius.health.v1.Health"/>
 
 ### Health
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Check | [HealthCheckRequest](#grpc.health.v1.HealthCheckRequest) | [HealthCheckResponse](#grpc.health.v1.HealthCheckRequest) |  |
+| Check | [HealthCheckRequest](#sagittarius.health.v1.HealthCheckRequest) | [HealthCheckResponse](#sagittarius.health.v1.HealthCheckRequest) |  |
 
  
 

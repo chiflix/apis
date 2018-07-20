@@ -31,7 +31,7 @@ option java_package = "ai.sagittarius.translation.v1";
 // Service that implements Sagittarius Translation API
 service Translation {
   // Translate media(audio or video) by media identity
-  rpc TranslateMedia(TranslationRequest) returns (TranslationResponse) {
+  rpc TranslateMedia(MediaTranslationRequest) returns (MediaTranslationResponse) {
     option (google.api.http) = {
       get: "/v1/media/{media_identity}/language/{language_code}/transcript:{format}"
       body: "*"
@@ -46,13 +46,20 @@ service Translation {
     };
   }
 
+  rpc Transcript(TranscriptRequest) returns (MediaTranslationResponse) {
+    option (google.api.http) = {
+      get: "/v1/transcript/transcript_identity"
+      body: "*"
+    };
+  }
+
   // Performs bidirectional streaming audio translation: receive results while
   // sending audio. This method is only available via the gRPC API (not REST).
   rpc StreamingTranslation(stream StreamingTranslationRequest)
     returns (stream StreamingTranslationResponse);
 }
 
-message TranslationRequest {
+message MediaTranslationRequest {
   // Media Identity
   string media_identity = 1;
 
@@ -64,10 +71,6 @@ message TranslationRequest {
   // the format of the transcripts
   string format         = 3;
 
-  // oneof case 2
-  // return translate result by transcript_identity
-  string transcript_identity  = 4;
-
   // position of the transcript relative to the begginning of the audio or video
   google.protobuf.Duration start_time  = 6;
 
@@ -75,7 +78,7 @@ message TranslationRequest {
   string extra_names    = 7;
 }
 
-message TranslationResponse {
+message MediaTranslationResponse {
   message Cue {
     // the start and end of the transcripts
     google.protobuf.Duration start_time = 1;
@@ -117,6 +120,14 @@ message DetectionResponse {
   float  confidence    = 2;
 }
 
+message TranscriptRequest {
+  // oneof case 2
+  // return translate result by transcript_identity
+  string transcript_identity  = 4;
+
+  // position of the transcript relative to the begginning of the audio or video
+  google.protobuf.Duration start_time  = 6;
+}
 
 // The top-level message sent by the client for the `StreamingRecognize` method.
 // Multiple `StreamingTranslationRequest` messages are sent. The first message

@@ -45,6 +45,28 @@ function deserialize_sagittarius_translation_v1_DetectionResponse(buffer_arg) {
   return translation_v1_translation_pb.DetectionResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sagittarius_translation_v1_MediaTranslationRequest(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.MediaTranslationRequest)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.MediaTranslationRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_MediaTranslationRequest(buffer_arg) {
+  return translation_v1_translation_pb.MediaTranslationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sagittarius_translation_v1_MediaTranslationResponse(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.MediaTranslationResponse)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.MediaTranslationResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_MediaTranslationResponse(buffer_arg) {
+  return translation_v1_translation_pb.MediaTranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sagittarius_translation_v1_StreamingTranslationRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationRequest');
@@ -67,26 +89,15 @@ function deserialize_sagittarius_translation_v1_StreamingTranslationResponse(buf
   return translation_v1_translation_pb.StreamingTranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sagittarius_translation_v1_TranslationRequest(arg) {
-  if (!(arg instanceof translation_v1_translation_pb.TranslationRequest)) {
-    throw new Error('Expected argument of type sagittarius.translation.v1.TranslationRequest');
+function serialize_sagittarius_translation_v1_TranscriptRequest(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.TranscriptRequest)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.TranscriptRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_sagittarius_translation_v1_TranslationRequest(buffer_arg) {
-  return translation_v1_translation_pb.TranslationRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sagittarius_translation_v1_TranslationResponse(arg) {
-  if (!(arg instanceof translation_v1_translation_pb.TranslationResponse)) {
-    throw new Error('Expected argument of type sagittarius.translation.v1.TranslationResponse');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_sagittarius_translation_v1_TranslationResponse(buffer_arg) {
-  return translation_v1_translation_pb.TranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sagittarius_translation_v1_TranscriptRequest(buffer_arg) {
+  return translation_v1_translation_pb.TranscriptRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -97,12 +108,12 @@ var TranslationService = exports.TranslationService = {
     path: '/sagittarius.translation.v1.Translation/TranslateMedia',
     requestStream: false,
     responseStream: false,
-    requestType: translation_v1_translation_pb.TranslationRequest,
-    responseType: translation_v1_translation_pb.TranslationResponse,
-    requestSerialize: serialize_sagittarius_translation_v1_TranslationRequest,
-    requestDeserialize: deserialize_sagittarius_translation_v1_TranslationRequest,
-    responseSerialize: serialize_sagittarius_translation_v1_TranslationResponse,
-    responseDeserialize: deserialize_sagittarius_translation_v1_TranslationResponse,
+    requestType: translation_v1_translation_pb.MediaTranslationRequest,
+    responseType: translation_v1_translation_pb.MediaTranslationResponse,
+    requestSerialize: serialize_sagittarius_translation_v1_MediaTranslationRequest,
+    requestDeserialize: deserialize_sagittarius_translation_v1_MediaTranslationRequest,
+    responseSerialize: serialize_sagittarius_translation_v1_MediaTranslationResponse,
+    responseDeserialize: deserialize_sagittarius_translation_v1_MediaTranslationResponse,
   },
   // detect the language of text
   detectLanguage: {
@@ -115,6 +126,17 @@ var TranslationService = exports.TranslationService = {
     requestDeserialize: deserialize_sagittarius_translation_v1_DetectionRequest,
     responseSerialize: serialize_sagittarius_translation_v1_DetectionResponse,
     responseDeserialize: deserialize_sagittarius_translation_v1_DetectionResponse,
+  },
+  transcript: {
+    path: '/sagittarius.translation.v1.Translation/Transcript',
+    requestStream: false,
+    responseStream: false,
+    requestType: translation_v1_translation_pb.TranscriptRequest,
+    responseType: translation_v1_translation_pb.MediaTranslationResponse,
+    requestSerialize: serialize_sagittarius_translation_v1_TranscriptRequest,
+    requestDeserialize: deserialize_sagittarius_translation_v1_TranscriptRequest,
+    responseSerialize: serialize_sagittarius_translation_v1_MediaTranslationResponse,
+    responseDeserialize: deserialize_sagittarius_translation_v1_MediaTranslationResponse,
   },
   // Performs bidirectional streaming audio translation: receive results while
   // sending audio. This method is only available via the gRPC API (not REST).
