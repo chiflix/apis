@@ -9,6 +9,7 @@
     - [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest)
     - [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationResponse)
     - [MediaTranslationResponse.Cue](#sagittarius.translation.v1.MediaTranslationResponse.Cue)
+    - [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo)
     - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
@@ -70,7 +71,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | media_identity | [string](#string) |  | Media Identity |
-| language_code | [string](#string) |  | oneof case 1 target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| language_code | [string](#string) |  | target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | format | [string](#string) |  | the format of the transcripts |
 | start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | position of the transcript relative to the begginning of the audio or video |
 | extra_names | [string](#string) |  | names for more possible results |
@@ -89,10 +90,10 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
-| transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
-| to_be_continued | [bool](#bool) |  | total line of the transcripts there should be |
+| info | [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo) |  |  |
 | transcripts | [MediaTranslationResponse.Cue](#sagittarius.translation.v1.MediaTranslationResponse.Cue) | repeated | each line of the transcript |
-| nextbest_transcript_id | [string](#string) | repeated | next best translation results |
+| is_end_of_transcript | [bool](#bool) |  | if transcripts ended in this result |
+| more_results | [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo) | repeated | next best translation results |
 
 
 
@@ -110,6 +111,24 @@
 | start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | the start and end of the transcripts |
 | end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
 | text | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo"/>
+
+### MediaTranslationResponse.TranscriptInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
+| language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| ranking | [float](#float) |  |  |
+| tags | [string](#string) | repeated |  |
 
 
 

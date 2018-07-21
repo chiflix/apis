@@ -38,7 +38,7 @@ service Media {
   rpc UpdateInfo(UpdateInfoRequest) returns (Info) {
     option (google.api.http) = {
       post: "/v1/media/{media_hash}/info"
-      body: "book"
+      body: "*"
     };
   };
 }

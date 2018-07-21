@@ -63,7 +63,6 @@ message MediaTranslationRequest {
   // Media Identity
   string media_identity = 1;
 
-  // oneof case 1
   // target language
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
   string language_code  = 2;
@@ -87,22 +86,33 @@ message MediaTranslationResponse {
     string text = 3;
   }
 
+  message TranscriptInfo {
+    // the identity, can be used in TranslationRequest
+    string transcript_identity = 1;
+
+    // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
+    string language_code       = 2;
+
+    float  ranking             = 3;
+
+    repeated string tags       = 4;
+  }
+
   // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
   // specifies the error for the operation.
   // return 404 if no result, in this case, client should use StreamingTranslationRequest
   google.rpc.Status error             = 1;
 
-  // the identity, can be used in TranslationRequest
-  string transcript_identity          = 2;
-
-  // total line of the transcripts there should be
-  bool to_be_continued                = 3;
+  TranscriptInfo info                 = 2;
 
   // each line of the transcript
-  repeated Cue transcripts            = 4;
+  repeated Cue transcripts            = 3;
+
+  // if transcripts ended in this result
+  bool is_end_of_transcript              = 4;
 
   // next best translation results
-  repeated string nextbest_transcript_id = 5;
+  repeated TranscriptInfo more_results = 5;
 }
 
 message DetectionRequest {

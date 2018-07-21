@@ -20,6 +20,7 @@ goog.exportSymbol('proto.sagittarius.translation.v1.DetectionResponse', null, gl
 goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationResponse.Cue', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationResult', null, global);
@@ -314,7 +315,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.repeatedFields_ = [4,5];
+proto.sagittarius.translation.v1.MediaTranslationResponse.repeatedFields_ = [3,5];
 
 
 
@@ -346,11 +347,12 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.toObject = f
 proto.sagittarius.translation.v1.MediaTranslationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     error: (f = msg.getError()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
-    transcriptIdentity: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    toBeContinued: jspb.Message.getFieldWithDefault(msg, 3, false),
+    info: (f = msg.getInfo()) && proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject(includeInstance, f),
     transcriptsList: jspb.Message.toObjectList(msg.getTranscriptsList(),
     proto.sagittarius.translation.v1.MediaTranslationResponse.Cue.toObject, includeInstance),
-    nextbestTranscriptIdList: jspb.Message.getRepeatedField(msg, 5)
+    isEndOfTranscript: jspb.Message.getFieldWithDefault(msg, 4, false),
+    moreResultsList: jspb.Message.toObjectList(msg.getMoreResultsList(),
+    proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -393,21 +395,23 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.deserializeBinaryFromR
       msg.setError(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTranscriptIdentity(value);
+      var value = new proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader);
+      msg.setInfo(value);
       break;
     case 3:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setToBeContinued(value);
-      break;
-    case 4:
       var value = new proto.sagittarius.translation.v1.MediaTranslationResponse.Cue;
       reader.readMessage(value,proto.sagittarius.translation.v1.MediaTranslationResponse.Cue.deserializeBinaryFromReader);
       msg.addTranscripts(value);
       break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsEndOfTranscript(value);
+      break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.addNextbestTranscriptId(value);
+      var value = new proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader);
+      msg.addMoreResults(value);
       break;
     default:
       reader.skipField();
@@ -446,33 +450,35 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.serializeBinaryToWrite
       google_rpc_status_pb.Status.serializeBinaryToWriter
     );
   }
-  f = message.getTranscriptIdentity();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getInfo();
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
-    );
-  }
-  f = message.getToBeContinued();
-  if (f) {
-    writer.writeBool(
-      3,
-      f
+      f,
+      proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter
     );
   }
   f = message.getTranscriptsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      4,
+      3,
       f,
       proto.sagittarius.translation.v1.MediaTranslationResponse.Cue.serializeBinaryToWriter
     );
   }
-  f = message.getNextbestTranscriptIdList();
-  if (f.length > 0) {
-    writer.writeRepeatedString(
-      5,
+  f = message.getIsEndOfTranscript();
+  if (f) {
+    writer.writeBool(
+      4,
       f
+    );
+  }
+  f = message.getMoreResultsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      5,
+      f,
+      proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter
     );
   }
 };
@@ -708,6 +714,250 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.Cue.prototype.setText 
 };
 
 
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.repeatedFields_, null);
+};
+goog.inherits(proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.displayName = 'proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.repeatedFields_ = [4];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    transcriptIdentity: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    ranking: +jspb.Message.getFieldWithDefault(msg, 3, 0.0),
+    tagsList: jspb.Message.getRepeatedField(msg, 4)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo;
+  return proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTranscriptIdentity(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setRanking(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addTags(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTranscriptIdentity();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getRanking();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      3,
+      f
+    );
+  }
+  f = message.getTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string transcript_identity = 1;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getTranscriptIdentity = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setTranscriptIdentity = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional string language_code = 2;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setLanguageCode = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional float ranking = 3;
+ * @return {number}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getRanking = function() {
+  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 3, 0.0));
+};
+
+
+/** @param {number} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setRanking = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * repeated string tags = 4;
+ * @return {!Array.<string>}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getTagsList = function() {
+  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 4));
+};
+
+
+/** @param {!Array.<string>} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setTagsList = function(value) {
+  jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {!string} value
+ * @param {number=} opt_index
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.addTags = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.clearTagsList = function() {
+  this.setTagsList([]);
+};
+
+
 /**
  * optional google.rpc.Status error = 1;
  * @return {?proto.google.rpc.Status}
@@ -739,50 +989,48 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.hasError = f
 
 
 /**
- * optional string transcript_identity = 2;
- * @return {string}
+ * optional TranscriptInfo info = 2;
+ * @return {?proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getTranscriptIdentity = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getInfo = function() {
+  return /** @type{?proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, 2));
 };
 
 
-/** @param {string} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setTranscriptIdentity = function(value) {
-  jspb.Message.setField(this, 2, value);
+/** @param {?proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo|undefined} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setInfo = function(value) {
+  jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearInfo = function() {
+  this.setInfo(undefined);
 };
 
 
 /**
- * optional bool to_be_continued = 3;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
+ * Returns whether this field is set.
+ * @return {!boolean}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getToBeContinued = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
-};
-
-
-/** @param {boolean} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setToBeContinued = function(value) {
-  jspb.Message.setField(this, 3, value);
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.hasInfo = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * repeated Cue transcripts = 4;
+ * repeated Cue transcripts = 3;
  * @return {!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.Cue>}
  */
 proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getTranscriptsList = function() {
   return /** @type{!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.Cue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sagittarius.translation.v1.MediaTranslationResponse.Cue, 4));
+    jspb.Message.getRepeatedWrapperField(this, proto.sagittarius.translation.v1.MediaTranslationResponse.Cue, 3));
 };
 
 
 /** @param {!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.Cue>} value */
 proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setTranscriptsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 4, value);
+  jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
 
@@ -792,7 +1040,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setTranscrip
  * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.Cue}
  */
 proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.addTranscripts = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sagittarius.translation.v1.MediaTranslationResponse.Cue, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sagittarius.translation.v1.MediaTranslationResponse.Cue, opt_index);
 };
 
 
@@ -802,31 +1050,50 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearTranscr
 
 
 /**
- * repeated string nextbest_transcript_id = 5;
- * @return {!Array.<string>}
+ * optional bool is_end_of_transcript = 4;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getNextbestTranscriptIdList = function() {
-  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 5));
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getIsEndOfTranscript = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 4, false));
 };
 
 
-/** @param {!Array.<string>} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setNextbestTranscriptIdList = function(value) {
-  jspb.Message.setField(this, 5, value || []);
+/** @param {boolean} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setIsEndOfTranscript = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * @param {!string} value
- * @param {number=} opt_index
+ * repeated TranscriptInfo more_results = 5;
+ * @return {!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo>}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.addNextbestTranscriptId = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getMoreResultsList = function() {
+  return /** @type{!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, 5));
 };
 
 
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearNextbestTranscriptIdList = function() {
-  this.setNextbestTranscriptIdList([]);
+/** @param {!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo>} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setMoreResultsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 5, value);
+};
+
+
+/**
+ * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.addMoreResults = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, opt_index);
+};
+
+
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearMoreResultsList = function() {
+  this.setMoreResultsList([]);
 };
 
 
