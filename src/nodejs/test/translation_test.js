@@ -1,13 +1,13 @@
 var { expect, assert } = require('chai');
 
-var rpcMsg = require('../health/v1/health_pb');
-var rpcSvc = require('../health/v1/health_grpc_pb');
+var rpcMsg = require('../translation/v1/translation_pb');
+var rpcSvc = require('../translation/v1/translation_grpc_pb');
 
 var grpc = require('grpc');
 var fs = require('fs');
 
-describe('TestHealth()', function () {
-  it('health status should be serving', function (done) {
+describe('TestTranslation()', function () {
+  it('translation should return cue', function (done) {
 
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
@@ -23,12 +23,12 @@ describe('TestHealth()', function () {
       'rejectUnauthorized': 'false',
     };
 
-    var client = new rpcSvc.HealthClient('apis.stage.sagittarius.ai:8443',
+    var client = new rpcSvc.TranslationClient('apis.stage.sagittarius.ai:8443',
                                             ssl_creds, options);
-    var request = new rpcMsg.HealthCheckRequest();
+    var request = new rpcMsg.MediaTranslationRequest();
 
-    client.check(request, function(err, response) {
-      assert.equal(response.getStatus(), rpcMsg.HealthCheckResponse.ServingStatus.SERVING);
+    client.translateMedia(request, function(err, response) {
+      console.log('ERROR:', err, response);
       done();
     });
   });
