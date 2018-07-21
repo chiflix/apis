@@ -28,7 +28,7 @@ describe('TestTranslation()', function () {
     var request = new rpcMsg.MediaTranslationRequest();
 
     client.translateMedia(request, function(err, response) {
-      console.log('ERROR:', err, response);
+      expect(response.getTranscriptsList()[0].getText(), '在线翻译测试\nOnline Translation Test');
       done();
     });
   });
