@@ -28,6 +28,7 @@ go get -u github.com/ckaznocha/protoc-gen-lint
 go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
 npm install -g grpc-tools
+npm install -g ts-protoc-gen
 ```
 
 ### Generators and Scripts
