@@ -177,7 +177,7 @@ proto.sagittarius.media.v1.Info.prototype.getMediaHash = function() {
 
 /** @param {string} value */
 proto.sagittarius.media.v1.Info.prototype.setMediaHash = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -360,7 +360,7 @@ proto.sagittarius.media.v1.TrackInfo.prototype.getTypes = function() {
 
 /** @param {!proto.sagittarius.media.v1.TrackInfo.Type} value */
 proto.sagittarius.media.v1.TrackInfo.prototype.setTypes = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
@@ -502,7 +502,7 @@ proto.sagittarius.media.v1.GetInfoRequest.prototype.getMediaHash = function() {
 
 /** @param {string} value */
 proto.sagittarius.media.v1.GetInfoRequest.prototype.setMediaHash = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -658,7 +658,7 @@ proto.sagittarius.media.v1.UpdateInfoRequest.prototype.getMediaHash = function()
 
 /** @param {string} value */
 proto.sagittarius.media.v1.UpdateInfoRequest.prototype.setMediaHash = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

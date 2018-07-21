@@ -257,7 +257,7 @@ proto.sagittarius.training.v1.TrainingData.prototype.getMediaIdentity = function
 
 /** @param {string} value */
 proto.sagittarius.training.v1.TrainingData.prototype.setMediaIdentity = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -272,7 +272,7 @@ proto.sagittarius.training.v1.TrainingData.prototype.getLanguageCode = function(
 
 /** @param {string} value */
 proto.sagittarius.training.v1.TrainingData.prototype.setLanguageCode = function(value) {
-  jspb.Message.setField(this, 2, value);
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -287,7 +287,7 @@ proto.sagittarius.training.v1.TrainingData.prototype.getFormat = function() {
 
 /** @param {string} value */
 proto.sagittarius.training.v1.TrainingData.prototype.setFormat = function(value) {
-  jspb.Message.setField(this, 4, value);
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -718,7 +718,7 @@ proto.sagittarius.training.v1.StreamingTrainingRequest.prototype.getTranscript =
 
 /** @param {string} value */
 proto.sagittarius.training.v1.StreamingTrainingRequest.prototype.setTranscript = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -733,7 +733,7 @@ proto.sagittarius.training.v1.StreamingTrainingRequest.prototype.getMediaIdentit
 
 /** @param {string} value */
 proto.sagittarius.training.v1.StreamingTrainingRequest.prototype.setMediaIdentity = function(value) {
-  jspb.Message.setField(this, 4, value);
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

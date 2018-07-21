@@ -18,12 +18,12 @@ describe('TestHealth()', function () {
     );
 
     var options = {
-      'grpc.ssl_target_name_override' : 'apis.sagittarius.ai',
-      'grpc.default_authority': 'apis.sagittarius.ai',
+      'grpc.ssl_target_name_override' : 'apis.stage.sagittarius.ai',
+      'grpc.default_authority': 'apis.stage.sagittarius.ai',
       'rejectUnauthorized': 'false',
     };
 
-    var client = new services.HealthClient('apis.sagittarius.ai:8443',
+    var client = new services.HealthClient('apis.stage.sagittarius.ai:8443',
                                             ssl_creds, options);
     var request = new messages.HealthCheckRequest();
 

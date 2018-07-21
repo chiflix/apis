@@ -213,7 +213,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.getMediaIdent
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setMediaIdentity = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -228,7 +228,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.getLanguageCo
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setLanguageCode = function(value) {
-  jspb.Message.setField(this, 2, value);
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -243,7 +243,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.getFormat = f
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setFormat = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -288,7 +288,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.getExtraNames
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setExtraNames = function(value) {
-  jspb.Message.setField(this, 7, value);
+  jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -710,7 +710,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.Cue.prototype.getText 
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationResponse.Cue.prototype.setText = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -895,7 +895,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setTranscriptIdentity = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -910,7 +910,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setLanguageCode = function(value) {
-  jspb.Message.setField(this, 2, value);
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -925,7 +925,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
 
 /** @param {number} value */
 proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setRanking = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setProto3FloatField(this, 3, value);
 };
 
 
@@ -1062,7 +1062,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getIsEndOfTr
 
 /** @param {boolean} value */
 proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setIsEndOfTranscript = function(value) {
-  jspb.Message.setField(this, 4, value);
+  jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 
@@ -1235,7 +1235,7 @@ proto.sagittarius.translation.v1.DetectionRequest.prototype.getText = function()
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.DetectionRequest.prototype.setText = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -1389,7 +1389,7 @@ proto.sagittarius.translation.v1.DetectionResponse.prototype.getLanguageCode = f
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.DetectionResponse.prototype.setLanguageCode = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -1404,7 +1404,7 @@ proto.sagittarius.translation.v1.DetectionResponse.prototype.getConfidence = fun
 
 /** @param {number} value */
 proto.sagittarius.translation.v1.DetectionResponse.prototype.setConfidence = function(value) {
-  jspb.Message.setField(this, 2, value);
+  jspb.Message.setProto3FloatField(this, 2, value);
 };
 
 
@@ -1560,7 +1560,7 @@ proto.sagittarius.translation.v1.TranscriptRequest.prototype.getTranscriptIdenti
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.TranscriptRequest.prototype.setTranscriptIdentity = function(value) {
-  jspb.Message.setField(this, 4, value);
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -2246,7 +2246,7 @@ proto.sagittarius.translation.v1.StreamingTranslationResult.prototype.getTranscr
 
 /** @param {string} value */
 proto.sagittarius.translation.v1.StreamingTranslationResult.prototype.setTranscript = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -2261,7 +2261,7 @@ proto.sagittarius.translation.v1.StreamingTranslationResult.prototype.getConfide
 
 /** @param {number} value */
 proto.sagittarius.translation.v1.StreamingTranslationResult.prototype.setConfidence = function(value) {
-  jspb.Message.setField(this, 2, value);
+  jspb.Message.setProto3FloatField(this, 2, value);
 };
 
 
@@ -2276,7 +2276,7 @@ proto.sagittarius.translation.v1.StreamingTranslationResult.prototype.getStabili
 
 /** @param {number} value */
 proto.sagittarius.translation.v1.StreamingTranslationResult.prototype.setStability = function(value) {
-  jspb.Message.setField(this, 3, value);
+  jspb.Message.setProto3FloatField(this, 3, value);
 };
 
 

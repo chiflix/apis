@@ -152,7 +152,7 @@ proto.sagittarius.health.v1.HealthCheckRequest.prototype.getService = function()
 
 /** @param {string} value */
 proto.sagittarius.health.v1.HealthCheckRequest.prototype.setService = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -303,7 +303,7 @@ proto.sagittarius.health.v1.HealthCheckResponse.prototype.getStatus = function()
 
 /** @param {!proto.sagittarius.health.v1.HealthCheckResponse.ServingStatus} value */
 proto.sagittarius.health.v1.HealthCheckResponse.prototype.setStatus = function(value) {
-  jspb.Message.setField(this, 1, value);
+  jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
