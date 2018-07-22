@@ -100,6 +100,17 @@ function deserialize_sagittarius_translation_v1_TranscriptRequest(buffer_arg) {
   return translation_v1_translation_pb.TranscriptRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sagittarius_translation_v1_TranscriptResponse(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.TranscriptResponse)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.TranscriptResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_TranscriptResponse(buffer_arg) {
+  return translation_v1_translation_pb.TranscriptResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 // Service that implements Sagittarius Translation API
 var TranslationService = exports.TranslationService = {
@@ -132,11 +143,11 @@ var TranslationService = exports.TranslationService = {
     requestStream: false,
     responseStream: false,
     requestType: translation_v1_translation_pb.TranscriptRequest,
-    responseType: translation_v1_translation_pb.MediaTranslationResponse,
+    responseType: translation_v1_translation_pb.TranscriptResponse,
     requestSerialize: serialize_sagittarius_translation_v1_TranscriptRequest,
     requestDeserialize: deserialize_sagittarius_translation_v1_TranscriptRequest,
-    responseSerialize: serialize_sagittarius_translation_v1_MediaTranslationResponse,
-    responseDeserialize: deserialize_sagittarius_translation_v1_MediaTranslationResponse,
+    responseSerialize: serialize_sagittarius_translation_v1_TranscriptResponse,
+    responseDeserialize: deserialize_sagittarius_translation_v1_TranscriptResponse,
   },
   // Performs bidirectional streaming audio translation: receive results while
   // sending audio. This method is only available via the gRPC API (not REST).

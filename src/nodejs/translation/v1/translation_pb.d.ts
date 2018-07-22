@@ -55,24 +55,10 @@ export class MediaTranslationResponse extends jspb.Message {
     getError(): google_rpc_status_pb.Status | undefined;
     setError(value?: google_rpc_status_pb.Status): void;
 
-
-    hasInfo(): boolean;
-    clearInfo(): void;
-    getInfo(): MediaTranslationResponse.TranscriptInfo | undefined;
-    setInfo(value?: MediaTranslationResponse.TranscriptInfo): void;
-
-    clearTranscriptsList(): void;
-    getTranscriptsList(): Array<MediaTranslationResponse.Cue>;
-    setTranscriptsList(value: Array<MediaTranslationResponse.Cue>): void;
-    addTranscripts(value?: MediaTranslationResponse.Cue, index?: number): MediaTranslationResponse.Cue;
-
-    getIsEndOfTranscript(): boolean;
-    setIsEndOfTranscript(value: boolean): void;
-
-    clearMoreResultsList(): void;
-    getMoreResultsList(): Array<MediaTranslationResponse.TranscriptInfo>;
-    setMoreResultsList(value: Array<MediaTranslationResponse.TranscriptInfo>): void;
-    addMoreResults(value?: MediaTranslationResponse.TranscriptInfo, index?: number): MediaTranslationResponse.TranscriptInfo;
+    clearResultsList(): void;
+    getResultsList(): Array<MediaTranslationResponse.TranscriptInfo>;
+    setResultsList(value: Array<MediaTranslationResponse.TranscriptInfo>): void;
+    addResults(value?: MediaTranslationResponse.TranscriptInfo, index?: number): MediaTranslationResponse.TranscriptInfo;
 
 
     serializeBinary(): Uint8Array;
@@ -88,47 +74,9 @@ export class MediaTranslationResponse extends jspb.Message {
 export namespace MediaTranslationResponse {
     export type AsObject = {
         error?: google_rpc_status_pb.Status.AsObject,
-        info?: MediaTranslationResponse.TranscriptInfo.AsObject,
-        transcriptsList: Array<MediaTranslationResponse.Cue.AsObject>,
-        isEndOfTranscript: boolean,
-        moreResultsList: Array<MediaTranslationResponse.TranscriptInfo.AsObject>,
+        resultsList: Array<MediaTranslationResponse.TranscriptInfo.AsObject>,
     }
 
-
-    export class Cue extends jspb.Message { 
-
-    hasStartTime(): boolean;
-    clearStartTime(): void;
-    getStartTime(): google_protobuf_duration_pb.Duration | undefined;
-    setStartTime(value?: google_protobuf_duration_pb.Duration): void;
-
-
-    hasEndTime(): boolean;
-    clearEndTime(): void;
-    getEndTime(): google_protobuf_duration_pb.Duration | undefined;
-    setEndTime(value?: google_protobuf_duration_pb.Duration): void;
-
-    getText(): string;
-    setText(value: string): void;
-
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Cue.AsObject;
-        static toObject(includeInstance: boolean, msg: Cue): Cue.AsObject;
-        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-        static serializeBinaryToWriter(message: Cue, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Cue;
-        static deserializeBinaryFromReader(message: Cue, reader: jspb.BinaryReader): Cue;
-    }
-
-    export namespace Cue {
-        export type AsObject = {
-        startTime?: google_protobuf_duration_pb.Duration.AsObject,
-        endTime?: google_protobuf_duration_pb.Duration.AsObject,
-        text: string,
-        }
-    }
 
     export class TranscriptInfo extends jspb.Message { 
     getTranscriptIdentity(): string;
@@ -144,6 +92,9 @@ export namespace MediaTranslationResponse {
     getTagsList(): Array<string>;
     setTagsList(value: Array<string>): void;
     addTags(value: string, index?: number): string;
+
+    getDelay(): number;
+    setDelay(value: number): void;
 
 
         serializeBinary(): Uint8Array;
@@ -162,6 +113,7 @@ export namespace MediaTranslationResponse {
         languageCode: string,
         ranking: number,
         tagsList: Array<string>,
+        delay: number,
         }
     }
 
@@ -239,6 +191,77 @@ export namespace TranscriptRequest {
         transcriptIdentity: string,
         startTime?: google_protobuf_duration_pb.Duration.AsObject,
     }
+}
+
+export class TranscriptResponse extends jspb.Message { 
+
+    hasError(): boolean;
+    clearError(): void;
+    getError(): google_rpc_status_pb.Status | undefined;
+    setError(value?: google_rpc_status_pb.Status): void;
+
+    clearTranscriptsList(): void;
+    getTranscriptsList(): Array<TranscriptResponse.Cue>;
+    setTranscriptsList(value: Array<TranscriptResponse.Cue>): void;
+    addTranscripts(value?: TranscriptResponse.Cue, index?: number): TranscriptResponse.Cue;
+
+    getIsEndOfTranscript(): boolean;
+    setIsEndOfTranscript(value: boolean): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TranscriptResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: TranscriptResponse): TranscriptResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TranscriptResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TranscriptResponse;
+    static deserializeBinaryFromReader(message: TranscriptResponse, reader: jspb.BinaryReader): TranscriptResponse;
+}
+
+export namespace TranscriptResponse {
+    export type AsObject = {
+        error?: google_rpc_status_pb.Status.AsObject,
+        transcriptsList: Array<TranscriptResponse.Cue.AsObject>,
+        isEndOfTranscript: boolean,
+    }
+
+
+    export class Cue extends jspb.Message { 
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_duration_pb.Duration | undefined;
+    setStartTime(value?: google_protobuf_duration_pb.Duration): void;
+
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_duration_pb.Duration | undefined;
+    setEndTime(value?: google_protobuf_duration_pb.Duration): void;
+
+    getText(): string;
+    setText(value: string): void;
+
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): Cue.AsObject;
+        static toObject(includeInstance: boolean, msg: Cue): Cue.AsObject;
+        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+        static serializeBinaryToWriter(message: Cue, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): Cue;
+        static deserializeBinaryFromReader(message: Cue, reader: jspb.BinaryReader): Cue;
+    }
+
+    export namespace Cue {
+        export type AsObject = {
+        startTime?: google_protobuf_duration_pb.Duration.AsObject,
+        endTime?: google_protobuf_duration_pb.Duration.AsObject,
+        text: string,
+        }
+    }
+
 }
 
 export class StreamingTranslationRequest extends jspb.Message { 

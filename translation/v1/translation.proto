@@ -46,7 +46,7 @@ service Translation {
     };
   }
 
-  rpc Transcript(TranscriptRequest) returns (MediaTranslationResponse) {
+  rpc Transcript(TranscriptRequest) returns (TranscriptResponse) {
     option (google.api.http) = {
       get: "/v1/transcript/transcript_identity"
       body: "*"
@@ -78,14 +78,6 @@ message MediaTranslationRequest {
 }
 
 message MediaTranslationResponse {
-  message Cue {
-    // the start and end of the transcripts
-    google.protobuf.Duration start_time = 1;
-    google.protobuf.Duration end_time   = 2;
-
-    string text = 3;
-  }
-
   message TranscriptInfo {
     // the identity, can be used in TranslationRequest
     string transcript_identity = 1;
@@ -96,6 +88,8 @@ message MediaTranslationResponse {
     float  ranking             = 3;
 
     repeated string tags       = 4;
+
+    int64 delay                = 5;
   }
 
   // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
@@ -103,16 +97,8 @@ message MediaTranslationResponse {
   // return 404 if no result, in this case, client should use StreamingTranslationRequest
   google.rpc.Status error             = 1;
 
-  TranscriptInfo info                 = 2;
-
-  // each line of the transcript
-  repeated Cue transcripts            = 3;
-
-  // if transcripts ended in this result
-  bool is_end_of_transcript              = 4;
-
-  // next best translation results
-  repeated TranscriptInfo more_results = 5;
+  // best translation results
+  repeated TranscriptInfo results     = 2;
 }
 
 message DetectionRequest {
@@ -137,6 +123,24 @@ message TranscriptRequest {
 
   // position of the transcript relative to the begginning of the audio or video
   google.protobuf.Duration start_time  = 6;
+}
+
+message TranscriptResponse {
+  message Cue {
+    // the start and end of the transcripts
+    google.protobuf.Duration start_time = 1;
+    google.protobuf.Duration end_time   = 2;
+
+    string text = 3;
+  }
+
+  google.rpc.Status error               = 1;
+
+  // each line of the transcript
+  repeated Cue transcripts              = 2;
+
+  // if transcripts ended in this result
+  bool is_end_of_transcript             = 3;
 }
 
 // The top-level message sent by the client for the `StreamingRecognize` method.

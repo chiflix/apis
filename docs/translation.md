@@ -8,12 +8,13 @@
     - [DetectionResponse](#sagittarius.translation.v1.DetectionResponse)
     - [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest)
     - [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationResponse)
-    - [MediaTranslationResponse.Cue](#sagittarius.translation.v1.MediaTranslationResponse.Cue)
     - [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo)
     - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
     - [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest)
+    - [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse)
+    - [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue)
   
   
   
@@ -90,27 +91,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
-| info | [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo) |  |  |
-| transcripts | [MediaTranslationResponse.Cue](#sagittarius.translation.v1.MediaTranslationResponse.Cue) | repeated | each line of the transcript |
-| is_end_of_transcript | [bool](#bool) |  | if transcripts ended in this result |
-| more_results | [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo) | repeated | next best translation results |
-
-
-
-
-
-
-<a name="sagittarius.translation.v1.MediaTranslationResponse.Cue"/>
-
-### MediaTranslationResponse.Cue
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | the start and end of the transcripts |
-| end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
-| text | [string](#string) |  |  |
+| results | [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo) | repeated | best translation results |
 
 
 
@@ -129,6 +110,7 @@
 | language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | ranking | [float](#float) |  |  |
 | tags | [string](#string) | repeated |  |
+| delay | [int64](#int64) |  |  |
 
 
 
@@ -205,6 +187,40 @@ All subsequent messages must contain `audio` data and must not contain a
 
 
 
+
+<a name="sagittarius.translation.v1.TranscriptResponse"/>
+
+### TranscriptResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| transcripts | [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue) | repeated | each line of the transcript |
+| is_end_of_transcript | [bool](#bool) |  | if transcripts ended in this result |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TranscriptResponse.Cue"/>
+
+### TranscriptResponse.Cue
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | the start and end of the transcripts |
+| end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
+| text | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -221,7 +237,7 @@ Service that implements Sagittarius Translation API
 | ----------- | ------------ | ------------- | ------------|
 | TranslateMedia | [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest) | [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationRequest) | Translate media(audio or video) by media identity |
 | DetectLanguage | [DetectionRequest](#sagittarius.translation.v1.DetectionRequest) | [DetectionResponse](#sagittarius.translation.v1.DetectionRequest) | detect the language of text |
-| Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [MediaTranslationResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
+| Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
 | StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
 
  
