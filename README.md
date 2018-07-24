@@ -1,4 +1,4 @@
-API definitions of `apis.sagittarius.ai`
+[![Build Status](https://travis-ci.org/chiflix/apis.svg?branch=master)](https://travis-ci.org/chiflix/apis?branch=master)
 
 # Principles
 
@@ -21,6 +21,8 @@ API definitions of `apis.sagittarius.ai`
 ```
 git clone https://github.com/googleapis/googleapis ../
 rsync -av --delete ../googleapis/google/ ./google
+
+brew install -y protoc
 
 go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
 go get -u google.golang.org/grpc

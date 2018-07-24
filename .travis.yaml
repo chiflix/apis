@@ -1,0 +1,35 @@
+sudo: required
+os:
+# Temporary disable CI on linux untils the electron-slim-linux is date out.
+# - linux
+- osx
+dist: trusty
+osx_image: xcode9.2
+language: go
+node_js:
+- 'node'
+matrix:
+  allow_failures:
+cache:
+- apt: true
+- directories:
+before_install:
+- brew install -y protoc
+- go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+- go get -u google.golang.org/grpc
+- go get -u github.com/ckaznocha/protoc-gen-lint
+- go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+install:
+- bash lint.sh
+- bash docgen.sh
+- bash codegen.sh
+before_script:
+script:
+deploy:
+after_success:
+branches:
+addons:
+  apt:
+    packages:
+env:
+  global:
