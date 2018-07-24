@@ -381,3 +381,91 @@ export namespace StreamingTranslationResult {
         endTime?: google_protobuf_duration_pb.Duration.AsObject,
     }
 }
+
+export class TextTranslationRequest extends jspb.Message { 
+    clearTextList(): void;
+    getTextList(): Array<string>;
+    setTextList(value: Array<string>): void;
+    addText(value: string, index?: number): string;
+
+    getTargetLanguageCode(): string;
+    setTargetLanguageCode(value: string): void;
+
+    getSourceLanguageCode(): string;
+    setSourceLanguageCode(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TextTranslationRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: TextTranslationRequest): TextTranslationRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TextTranslationRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TextTranslationRequest;
+    static deserializeBinaryFromReader(message: TextTranslationRequest, reader: jspb.BinaryReader): TextTranslationRequest;
+}
+
+export namespace TextTranslationRequest {
+    export type AsObject = {
+        textList: Array<string>,
+        targetLanguageCode: string,
+        sourceLanguageCode: string,
+    }
+}
+
+export class TextTranslationResponse extends jspb.Message { 
+
+    hasError(): boolean;
+    clearError(): void;
+    getError(): google_rpc_status_pb.Status | undefined;
+    setError(value?: google_rpc_status_pb.Status): void;
+
+    clearResultsList(): void;
+    getResultsList(): Array<TextTranslationResponse.TextInfo>;
+    setResultsList(value: Array<TextTranslationResponse.TextInfo>): void;
+    addResults(value?: TextTranslationResponse.TextInfo, index?: number): TextTranslationResponse.TextInfo;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): TextTranslationResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: TextTranslationResponse): TextTranslationResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: TextTranslationResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): TextTranslationResponse;
+    static deserializeBinaryFromReader(message: TextTranslationResponse, reader: jspb.BinaryReader): TextTranslationResponse;
+}
+
+export namespace TextTranslationResponse {
+    export type AsObject = {
+        error?: google_rpc_status_pb.Status.AsObject,
+        resultsList: Array<TextTranslationResponse.TextInfo.AsObject>,
+    }
+
+
+    export class TextInfo extends jspb.Message { 
+    getSourceLanguage(): string;
+    setSourceLanguage(value: string): void;
+
+    getText(): string;
+    setText(value: string): void;
+
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): TextInfo.AsObject;
+        static toObject(includeInstance: boolean, msg: TextInfo): TextInfo.AsObject;
+        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+        static serializeBinaryToWriter(message: TextInfo, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): TextInfo;
+        static deserializeBinaryFromReader(message: TextInfo, reader: jspb.BinaryReader): TextInfo;
+    }
+
+    export namespace TextInfo {
+        export type AsObject = {
+        sourceLanguage: string,
+        text: string,
+        }
+    }
+
+}

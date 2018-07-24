@@ -89,6 +89,28 @@ function deserialize_sagittarius_translation_v1_StreamingTranslationResponse(buf
   return translation_v1_translation_pb.StreamingTranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sagittarius_translation_v1_TextTranslationRequest(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.TextTranslationRequest)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.TextTranslationRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_TextTranslationRequest(buffer_arg) {
+  return translation_v1_translation_pb.TextTranslationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sagittarius_translation_v1_TextTranslationResponse(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.TextTranslationResponse)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.TextTranslationResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_TextTranslationResponse(buffer_arg) {
+  return translation_v1_translation_pb.TextTranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sagittarius_translation_v1_TranscriptRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.TranscriptRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.TranscriptRequest');
@@ -161,6 +183,18 @@ var TranslationService = exports.TranslationService = {
     requestDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationRequest,
     responseSerialize: serialize_sagittarius_translation_v1_StreamingTranslationResponse,
     responseDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationResponse,
+  },
+  // Translate text by Google Translation Service
+  translateText: {
+    path: '/sagittarius.translation.v1.Translation/TranslateText',
+    requestStream: false,
+    responseStream: false,
+    requestType: translation_v1_translation_pb.TextTranslationRequest,
+    responseType: translation_v1_translation_pb.TextTranslationResponse,
+    requestSerialize: serialize_sagittarius_translation_v1_TextTranslationRequest,
+    requestDeserialize: deserialize_sagittarius_translation_v1_TextTranslationRequest,
+    responseSerialize: serialize_sagittarius_translation_v1_TextTranslationResponse,
+    responseDeserialize: deserialize_sagittarius_translation_v1_TextTranslationResponse,
   },
 };
 

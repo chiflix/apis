@@ -33,7 +33,7 @@ service Translation {
   // Translate media(audio or video) by media identity
   rpc TranslateMedia(MediaTranslationRequest) returns (MediaTranslationResponse) {
     option (google.api.http) = {
-      get: "/v1/media/{media_identity}/language/{language_code}/transcript:{format}"
+      post: "/v1/media/{media_identity}/language/{language_code}/transcript:{format}"
       body: "*"
     };
   }
@@ -41,14 +41,14 @@ service Translation {
   // detect the language of text
   rpc DetectLanguage(DetectionRequest) returns (DetectionResponse) {
     option (google.api.http) = {
-      get: "/v1/language/detect"
+      post: "/v1/language/detect"
       body: "text"
     };
   }
 
   rpc Transcript(TranscriptRequest) returns (TranscriptResponse) {
     option (google.api.http) = {
-      get: "/v1/transcript/transcript_identity"
+      post: "/v1/transcript/transcript_identity"
       body: "*"
     };
   }
@@ -57,6 +57,14 @@ service Translation {
   // sending audio. This method is only available via the gRPC API (not REST).
   rpc StreamingTranslation(stream StreamingTranslationRequest)
     returns (stream StreamingTranslationResponse);
+
+  // Translate text by Google Translation Service
+  rpc TranslateText(TextTranslationRequest) returns (TextTranslationResponse) {
+    option (google.api.http) = {
+      post: "/v1/text/language/{target_language_code}/translation"
+      body: "*"
+    };
+  }
 }
 
 message MediaTranslationRequest {
@@ -228,12 +236,6 @@ message TextTranslationRequest {
 
     // The language of the source text
     string source_language_code = 3;
-
-    // The format of the source text
-    string format = 4;
-
-    // The translation model
-    string model = 5;
 }
 
 message TextTranslationResponse {
@@ -241,11 +243,8 @@ message TextTranslationResponse {
     // The source language of the text detected
     string source_language = 1;
 
-    // The translation model
-    string model = 2;
-
     // The translated Text
-    string text = 3;
+    string text = 2;
   }
 
   google.rpc.Status error = 1;
