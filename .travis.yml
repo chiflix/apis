@@ -14,7 +14,7 @@ cache:
 - apt: true
 - directories:
 before_install:
-- brew install -y protobuf
+- brew install --force grpc -without-python
 - go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
 - go get -u google.golang.org/grpc
 - go get -u github.com/ckaznocha/protoc-gen-lint
