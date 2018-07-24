@@ -14,11 +14,13 @@ cache:
 - apt: true
 - directories:
 before_install:
-- brew install -y protoc
+- brew install -y grpc node
 - go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
 - go get -u google.golang.org/grpc
 - go get -u github.com/ckaznocha/protoc-gen-lint
 - go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+- npm install -g grpc-tools
+- npm install -g grpc_tools_node_protoc_ts
 install:
 - bash lint.sh
 - bash docgen.sh

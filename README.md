@@ -22,7 +22,7 @@
 git clone https://github.com/googleapis/googleapis ../
 rsync -av --delete ../googleapis/google/ ./google
 
-brew install -y protoc
+brew install -y grpc
 
 go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
 go get -u google.golang.org/grpc
