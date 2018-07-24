@@ -12,6 +12,9 @@
     - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
+    - [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest)
+    - [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationResponse)
+    - [TextTranslationResponse.Text](#sagittarius.translation.v1.TextTranslationResponse.Text)
     - [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest)
     - [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse)
     - [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue)
@@ -172,6 +175,56 @@ All subsequent messages must contain `audio` data and must not contain a
 
 
 
+<a name="sagittarius.translation.v1.TextTranslationRequest"/>
+
+### TextTranslationRequest
+We use Google Translation Service for text translation.
+Translation API Reference: https://cloud.google.com/translate/docs/reference/translate
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| text | [string](#string) | repeated | The text to translate |
+| target_language_code | [string](#string) |  | The language to use for translation of the text ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| source_language_code | [string](#string) |  | The language of the source text |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TextTranslationResponse"/>
+
+### TextTranslationResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| results | [TextTranslationResponse.Text](#sagittarius.translation.v1.TextTranslationResponse.Text) | repeated | translation results for the requested text |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TextTranslationResponse.Text"/>
+
+### TextTranslationResponse.Text
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| source_language | [string](#string) |  | The source language of the text detected |
+| text | [string](#string) |  | The translated Text |
+
+
+
+
+
+
 <a name="sagittarius.translation.v1.TranscriptRequest"/>
 
 ### TranscriptRequest
@@ -239,6 +292,7 @@ Service that implements Sagittarius Translation API
 | DetectLanguage | [DetectionRequest](#sagittarius.translation.v1.DetectionRequest) | [DetectionResponse](#sagittarius.translation.v1.DetectionRequest) | detect the language of text |
 | Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
 | StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
+| TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
 
  
 

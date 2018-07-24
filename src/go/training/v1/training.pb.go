@@ -51,7 +51,7 @@ func (m *TrainingData) Reset()         { *m = TrainingData{} }
 func (m *TrainingData) String() string { return proto.CompactTextString(m) }
 func (*TrainingData) ProtoMessage()    {}
 func (*TrainingData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_training_9b992ab2439f50f8, []int{0}
+	return fileDescriptor_training_dce2a1548e604dd6, []int{0}
 }
 func (m *TrainingData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrainingData.Unmarshal(m, b)
@@ -227,7 +227,7 @@ func (m *StreamingTrainingRequest) Reset()         { *m = StreamingTrainingReque
 func (m *StreamingTrainingRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingTrainingRequest) ProtoMessage()    {}
 func (*StreamingTrainingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_training_9b992ab2439f50f8, []int{1}
+	return fileDescriptor_training_dce2a1548e604dd6, []int{1}
 }
 func (m *StreamingTrainingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTrainingRequest.Unmarshal(m, b)
@@ -518,10 +518,10 @@ var _Trainng_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("training/v1/training.proto", fileDescriptor_training_9b992ab2439f50f8)
+	proto.RegisterFile("training/v1/training.proto", fileDescriptor_training_dce2a1548e604dd6)
 }
 
-var fileDescriptor_training_9b992ab2439f50f8 = []byte{
+var fileDescriptor_training_dce2a1548e604dd6 = []byte{
 	// 555 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0xc1, 0x6a, 0xdb, 0x40,
 	0x10, 0xcd, 0xa6, 0xa9, 0x9d, 0xac, 0xed, 0xb6, 0xd9, 0x40, 0xa3, 0x8a, 0x12, 0x8c, 0x4b, 0xc0,

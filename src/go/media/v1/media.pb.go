@@ -50,7 +50,7 @@ func (x TrackInfo_Type) String() string {
 	return proto.EnumName(TrackInfo_Type_name, int32(x))
 }
 func (TrackInfo_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{1, 0}
+	return fileDescriptor_media_8866ff09d86ba311, []int{1, 0}
 }
 
 type Info struct {
@@ -67,7 +67,7 @@ func (m *Info) Reset()         { *m = Info{} }
 func (m *Info) String() string { return proto.CompactTextString(m) }
 func (*Info) ProtoMessage()    {}
 func (*Info) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{0}
+	return fileDescriptor_media_8866ff09d86ba311, []int{0}
 }
 func (m *Info) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Info.Unmarshal(m, b)
@@ -112,7 +112,7 @@ func (m *TrackInfo) Reset()         { *m = TrackInfo{} }
 func (m *TrackInfo) String() string { return proto.CompactTextString(m) }
 func (*TrackInfo) ProtoMessage()    {}
 func (*TrackInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{1}
+	return fileDescriptor_media_8866ff09d86ba311, []int{1}
 }
 func (m *TrackInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrackInfo.Unmarshal(m, b)
@@ -151,7 +151,7 @@ func (m *GetInfoRequest) Reset()         { *m = GetInfoRequest{} }
 func (m *GetInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*GetInfoRequest) ProtoMessage()    {}
 func (*GetInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{2}
+	return fileDescriptor_media_8866ff09d86ba311, []int{2}
 }
 func (m *GetInfoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetInfoRequest.Unmarshal(m, b)
@@ -193,7 +193,7 @@ func (m *UpdateInfoRequest) Reset()         { *m = UpdateInfoRequest{} }
 func (m *UpdateInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateInfoRequest) ProtoMessage()    {}
 func (*UpdateInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{3}
+	return fileDescriptor_media_8866ff09d86ba311, []int{3}
 }
 func (m *UpdateInfoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateInfoRequest.Unmarshal(m, b)
@@ -344,9 +344,9 @@ var _Media_serviceDesc = grpc.ServiceDesc{
 	Metadata: "media/v1/media.proto",
 }
 
-func init() { proto.RegisterFile("media/v1/media.proto", fileDescriptor_media_9c6d8d87ceea1210) }
+func init() { proto.RegisterFile("media/v1/media.proto", fileDescriptor_media_8866ff09d86ba311) }
 
-var fileDescriptor_media_9c6d8d87ceea1210 = []byte{
+var fileDescriptor_media_8866ff09d86ba311 = []byte{
 	// 379 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xc9, 0x4d, 0x4d, 0xc9,
 	0x4c, 0xd4, 0x2f, 0x33, 0xd4, 0x07, 0x33, 0xf4, 0x0a, 0x8a, 0xf2, 0x4b, 0xf2, 0x85, 0x44, 0x8a,
