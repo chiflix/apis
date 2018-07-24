@@ -239,7 +239,7 @@ message TextTranslationRequest {
 }
 
 message TextTranslationResponse {
-  message TextInfo {
+  message Text {
     // The source language of the text detected
     string source_language = 1;
 
@@ -250,5 +250,5 @@ message TextTranslationResponse {
   google.rpc.Status error = 1;
 
   // translation results for the requested text
-  repeated TextInfo results = 2;
+  repeated Text results = 2;
 }

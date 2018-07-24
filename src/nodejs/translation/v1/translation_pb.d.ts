@@ -421,9 +421,9 @@ export class TextTranslationResponse extends jspb.Message {
     setError(value?: google_rpc_status_pb.Status): void;
 
     clearResultsList(): void;
-    getResultsList(): Array<TextTranslationResponse.TextInfo>;
-    setResultsList(value: Array<TextTranslationResponse.TextInfo>): void;
-    addResults(value?: TextTranslationResponse.TextInfo, index?: number): TextTranslationResponse.TextInfo;
+    getResultsList(): Array<TextTranslationResponse.Text>;
+    setResultsList(value: Array<TextTranslationResponse.Text>): void;
+    addResults(value?: TextTranslationResponse.Text, index?: number): TextTranslationResponse.Text;
 
 
     serializeBinary(): Uint8Array;
@@ -439,11 +439,11 @@ export class TextTranslationResponse extends jspb.Message {
 export namespace TextTranslationResponse {
     export type AsObject = {
         error?: google_rpc_status_pb.Status.AsObject,
-        resultsList: Array<TextTranslationResponse.TextInfo.AsObject>,
+        resultsList: Array<TextTranslationResponse.Text.AsObject>,
     }
 
 
-    export class TextInfo extends jspb.Message { 
+    export class Text extends jspb.Message { 
     getSourceLanguage(): string;
     setSourceLanguage(value: string): void;
 
@@ -452,16 +452,16 @@ export namespace TextTranslationResponse {
 
 
         serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): TextInfo.AsObject;
-        static toObject(includeInstance: boolean, msg: TextInfo): TextInfo.AsObject;
+        toObject(includeInstance?: boolean): Text.AsObject;
+        static toObject(includeInstance: boolean, msg: Text): Text.AsObject;
         static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
         static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-        static serializeBinaryToWriter(message: TextInfo, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): TextInfo;
-        static deserializeBinaryFromReader(message: TextInfo, reader: jspb.BinaryReader): TextInfo;
+        static serializeBinaryToWriter(message: Text, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): Text;
+        static deserializeBinaryFromReader(message: Text, reader: jspb.BinaryReader): Text;
     }
 
-    export namespace TextInfo {
+    export namespace Text {
         export type AsObject = {
         sourceLanguage: string,
         text: string,

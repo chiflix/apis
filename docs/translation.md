@@ -14,7 +14,7 @@
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
     - [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest)
     - [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationResponse)
-    - [TextTranslationResponse.TextInfo](#sagittarius.translation.v1.TextTranslationResponse.TextInfo)
+    - [TextTranslationResponse.Text](#sagittarius.translation.v1.TextTranslationResponse.Text)
     - [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest)
     - [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse)
     - [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue)
@@ -202,16 +202,16 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  |  |
-| results | [TextTranslationResponse.TextInfo](#sagittarius.translation.v1.TextTranslationResponse.TextInfo) | repeated | translation results for the requested text |
+| results | [TextTranslationResponse.Text](#sagittarius.translation.v1.TextTranslationResponse.Text) | repeated | translation results for the requested text |
 
 
 
 
 
 
-<a name="sagittarius.translation.v1.TextTranslationResponse.TextInfo"/>
+<a name="sagittarius.translation.v1.TextTranslationResponse.Text"/>
 
-### TextTranslationResponse.TextInfo
+### TextTranslationResponse.Text
 
 
 
