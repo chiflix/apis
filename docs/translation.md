@@ -77,7 +77,7 @@
 | media_identity | [string](#string) |  | Media Identity |
 | language_code | [string](#string) |  | target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | format | [string](#string) |  | the format of the transcripts |
-| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | position of the transcript relative to the begginning of the audio or video |
+| start_time | [double](#double) |  | position of the transcript relative to the begginning of the audio or video |
 | extra_names | [string](#string) |  | names for more possible results |
 
 
@@ -167,8 +167,8 @@ All subsequent messages must contain `audio` data and must not contain a
 | transcript | [string](#string) |  | Output-only* Transcript text representing the words that the user spoke. |
 | confidence | [float](#float) |  | Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is typically provided only for the top hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence` was not set. |
 | stability | [float](#float) |  | Output-only* An estimate of the likelihood that the recognizer will not change its guess about this interim result. Values range from 0.0 (completely unstable) to 1.0 (completely stable). This field is only provided for interim results (`is_final=false`). The default of 0.0 is a sentinel value indicating `stability` was not set. |
-| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
-| end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
+| start_time | [double](#double) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
+| end_time | [double](#double) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
 
 
 
@@ -234,7 +234,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | transcript_identity | [string](#string) |  | oneof case 2 return translate result by transcript_identity |
-| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | position of the transcript relative to the begginning of the audio or video |
+| start_time | [double](#double) |  | position of the transcript relative to the begginning of the audio or video |
 
 
 
@@ -266,8 +266,8 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| start_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | the start and end of the transcripts |
-| end_time | [google.protobuf.Duration](#google.protobuf.Duration) |  |  |
+| start_time | [double](#double) |  | the start and end of the transcripts |
+| end_time | [double](#double) |  |  |
 | text | [string](#string) |  |  |
 
 

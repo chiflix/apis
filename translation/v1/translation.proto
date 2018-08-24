@@ -17,7 +17,6 @@ syntax = "proto3";
 package sagittarius.translation.v1;
 
 import "google/api/annotations.proto";
-import "google/protobuf/duration.proto";
 import "google/rpc/status.proto";
 import "google/cloud/speech/v1/cloud_speech.proto";
 
@@ -79,7 +78,7 @@ message MediaTranslationRequest {
   string format         = 3;
 
   // position of the transcript relative to the begginning of the audio or video
-  google.protobuf.Duration start_time  = 6;
+  double start_time  = 6;
 
   // names for more possible results
   string extra_names    = 7;
@@ -130,14 +129,14 @@ message TranscriptRequest {
   string transcript_identity  = 4;
 
   // position of the transcript relative to the begginning of the audio or video
-  google.protobuf.Duration start_time  = 6;
+  double start_time  = 6;
 }
 
 message TranscriptResponse {
   message Cue {
     // the start and end of the transcripts
-    google.protobuf.Duration start_time = 1;
-    google.protobuf.Duration end_time   = 2;
+    double start_time = 1;
+    double end_time   = 2;
 
     string text = 3;
   }
@@ -213,7 +212,7 @@ message StreamingTranslationResult {
   // in the top hypothesis.
   // This is an experimental feature and the accuracy of the time offset can
   // vary.
-  google.protobuf.Duration start_time = 4;
+  double start_time = 4;
 
   // *Output-only* Time offset relative to the beginning of the audio,
   // and corresponding to the end of the spoken word.
@@ -221,7 +220,7 @@ message StreamingTranslationResult {
   // in the top hypothesis.
   // This is an experimental feature and the accuracy of the time offset can
   // vary.
-  google.protobuf.Duration end_time = 5;
+  double end_time = 5;
 }
 
 // We use Google Translation Service for text translation.

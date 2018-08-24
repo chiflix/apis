@@ -5,7 +5,6 @@
 
 import * as grpc from "grpc";
 import * as training_v1_training_pb from "../../training/v1/training_pb";
-import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
 import * as google_cloud_speech_v1_cloud_speech_pb from "../../google/cloud/speech/v1/cloud_speech_pb";
 

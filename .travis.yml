@@ -1,6 +1,5 @@
 sudo: required
 os:
-# Temporary disable CI on linux untils the electron-slim-linux is date out.
 # - linux
 - osx
 dist: trusty

@@ -46,7 +46,7 @@ func (x HealthCheckResponse_ServingStatus) String() string {
 	return proto.EnumName(HealthCheckResponse_ServingStatus_name, int32(x))
 }
 func (HealthCheckResponse_ServingStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_health_e2435f3f40ed0903, []int{1, 0}
+	return fileDescriptor_health_a4e606e1a13134ba, []int{1, 0}
 }
 
 type HealthCheckRequest struct {
@@ -60,7 +60,7 @@ func (m *HealthCheckRequest) Reset()         { *m = HealthCheckRequest{} }
 func (m *HealthCheckRequest) String() string { return proto.CompactTextString(m) }
 func (*HealthCheckRequest) ProtoMessage()    {}
 func (*HealthCheckRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_health_e2435f3f40ed0903, []int{0}
+	return fileDescriptor_health_a4e606e1a13134ba, []int{0}
 }
 func (m *HealthCheckRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HealthCheckRequest.Unmarshal(m, b)
@@ -98,7 +98,7 @@ func (m *HealthCheckResponse) Reset()         { *m = HealthCheckResponse{} }
 func (m *HealthCheckResponse) String() string { return proto.CompactTextString(m) }
 func (*HealthCheckResponse) ProtoMessage()    {}
 func (*HealthCheckResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_health_e2435f3f40ed0903, []int{1}
+	return fileDescriptor_health_a4e606e1a13134ba, []int{1}
 }
 func (m *HealthCheckResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HealthCheckResponse.Unmarshal(m, b)
@@ -203,9 +203,9 @@ var _Health_serviceDesc = grpc.ServiceDesc{
 	Metadata: "health/v1/health.proto",
 }
 
-func init() { proto.RegisterFile("health/v1/health.proto", fileDescriptor_health_e2435f3f40ed0903) }
+func init() { proto.RegisterFile("health/v1/health.proto", fileDescriptor_health_a4e606e1a13134ba) }
 
-var fileDescriptor_health_e2435f3f40ed0903 = []byte{
+var fileDescriptor_health_a4e606e1a13134ba = []byte{
 	// 253 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcb, 0x48, 0x4d, 0xcc,
 	0x29, 0xc9, 0xd0, 0x2f, 0x33, 0xd4, 0x87, 0xb0, 0xf4, 0x0a, 0x8a, 0xf2, 0x4b, 0xf2, 0x85, 0x44,

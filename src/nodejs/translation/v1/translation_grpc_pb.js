@@ -19,7 +19,6 @@
 var grpc = require('grpc');
 var translation_v1_translation_pb = require('../../translation/v1/translation_pb.js');
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
-var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 var google_rpc_status_pb = require('../../google/rpc/status_pb.js');
 var google_cloud_speech_v1_cloud_speech_pb = require('../../google/cloud/speech/v1/cloud_speech_pb.js');
 

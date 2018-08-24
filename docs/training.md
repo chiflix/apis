@@ -52,8 +52,8 @@ TODO:
 | media_identity | [string](#string) |  | the media identity |
 | language_code | [string](#string) |  | the language code of the payload |
 | format | [string](#string) |  | the format of the payload |
-| played_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | how long does this transcript been played |
-| total_time | [google.protobuf.Duration](#google.protobuf.Duration) |  | how long of the entire video |
+| played_time | [double](#double) |  | how long does this transcript been played |
+| total_time | [double](#double) |  | how long of the entire video |
 | transcript_identity | [string](#string) |  | transcript identity if any |
 | payload | [bytes](#bytes) |  | the transcripts payload |
 

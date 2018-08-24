@@ -31,6 +31,7 @@ go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
 npm install -g grpc-tools
 npm install -g grpc_tools_node_protoc_ts
+npm install -g typedoc
 ```
 
 ### Generators and Scripts
@@ -38,7 +39,7 @@ npm install -g grpc_tools_node_protoc_ts
 - `lint.sh` to check .proto file syntax, etc.
 - `docgen.sh` to generating documents
 - `codegen.sh` generating source code
-- `publish.sh` publish sagi-api-client npm package
+- `publish.sh` publish sagi-api npm package
 
 ### Examples
 

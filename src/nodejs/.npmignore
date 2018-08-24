@@ -1,2 +1,5 @@
-test
-package-lock.json
+src/
+build/
+npm-debug.log
+.babelrc
+commands.txt

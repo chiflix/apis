@@ -4,7 +4,6 @@
 /* tslint:disable */
 
 import * as jspb from "google-protobuf";
-import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
 import * as google_cloud_speech_v1_cloud_speech_pb from "../../google/cloud/speech/v1/cloud_speech_pb";
 
@@ -18,11 +17,8 @@ export class MediaTranslationRequest extends jspb.Message {
     getFormat(): string;
     setFormat(value: string): void;
 
-
-    hasStartTime(): boolean;
-    clearStartTime(): void;
-    getStartTime(): google_protobuf_duration_pb.Duration | undefined;
-    setStartTime(value?: google_protobuf_duration_pb.Duration): void;
+    getStartTime(): number;
+    setStartTime(value: number): void;
 
     getExtraNames(): string;
     setExtraNames(value: string): void;
@@ -43,7 +39,7 @@ export namespace MediaTranslationRequest {
         mediaIdentity: string,
         languageCode: string,
         format: string,
-        startTime?: google_protobuf_duration_pb.Duration.AsObject,
+        startTime: number,
         extraNames: string,
     }
 }
@@ -169,11 +165,8 @@ export class TranscriptRequest extends jspb.Message {
     getTranscriptIdentity(): string;
     setTranscriptIdentity(value: string): void;
 
-
-    hasStartTime(): boolean;
-    clearStartTime(): void;
-    getStartTime(): google_protobuf_duration_pb.Duration | undefined;
-    setStartTime(value?: google_protobuf_duration_pb.Duration): void;
+    getStartTime(): number;
+    setStartTime(value: number): void;
 
 
     serializeBinary(): Uint8Array;
@@ -189,7 +182,7 @@ export class TranscriptRequest extends jspb.Message {
 export namespace TranscriptRequest {
     export type AsObject = {
         transcriptIdentity: string,
-        startTime?: google_protobuf_duration_pb.Duration.AsObject,
+        startTime: number,
     }
 }
 
@@ -228,17 +221,11 @@ export namespace TranscriptResponse {
 
 
     export class Cue extends jspb.Message { 
+    getStartTime(): number;
+    setStartTime(value: number): void;
 
-    hasStartTime(): boolean;
-    clearStartTime(): void;
-    getStartTime(): google_protobuf_duration_pb.Duration | undefined;
-    setStartTime(value?: google_protobuf_duration_pb.Duration): void;
-
-
-    hasEndTime(): boolean;
-    clearEndTime(): void;
-    getEndTime(): google_protobuf_duration_pb.Duration | undefined;
-    setEndTime(value?: google_protobuf_duration_pb.Duration): void;
+    getEndTime(): number;
+    setEndTime(value: number): void;
 
     getText(): string;
     setText(value: string): void;
@@ -256,8 +243,8 @@ export namespace TranscriptResponse {
 
     export namespace Cue {
         export type AsObject = {
-        startTime?: google_protobuf_duration_pb.Duration.AsObject,
-        endTime?: google_protobuf_duration_pb.Duration.AsObject,
+        startTime: number,
+        endTime: number,
         text: string,
         }
     }
@@ -349,17 +336,11 @@ export class StreamingTranslationResult extends jspb.Message {
     getStability(): number;
     setStability(value: number): void;
 
+    getStartTime(): number;
+    setStartTime(value: number): void;
 
-    hasStartTime(): boolean;
-    clearStartTime(): void;
-    getStartTime(): google_protobuf_duration_pb.Duration | undefined;
-    setStartTime(value?: google_protobuf_duration_pb.Duration): void;
-
-
-    hasEndTime(): boolean;
-    clearEndTime(): void;
-    getEndTime(): google_protobuf_duration_pb.Duration | undefined;
-    setEndTime(value?: google_protobuf_duration_pb.Duration): void;
+    getEndTime(): number;
+    setEndTime(value: number): void;
 
 
     serializeBinary(): Uint8Array;
@@ -377,8 +358,8 @@ export namespace StreamingTranslationResult {
         transcript: string,
         confidence: number,
         stability: number,
-        startTime?: google_protobuf_duration_pb.Duration.AsObject,
-        endTime?: google_protobuf_duration_pb.Duration.AsObject,
+        startTime: number,
+        endTime: number,
     }
 }
 

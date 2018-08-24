@@ -12,7 +12,6 @@ var goog = jspb;
 var global = Function('return this')();
 
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
-var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 var google_rpc_status_pb = require('../../google/rpc/status_pb.js');
 var google_cloud_speech_v1_cloud_speech_pb = require('../../google/cloud/speech/v1/cloud_speech_pb.js');
 goog.exportSymbol('proto.sagittarius.training.v1.StreamingTrainingRequest', null, global);
@@ -93,8 +92,8 @@ proto.sagittarius.training.v1.TrainingData.toObject = function(includeInstance, 
     mediaIdentity: jspb.Message.getFieldWithDefault(msg, 1, ""),
     languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
     format: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    playedTime: (f = msg.getPlayedTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
-    totalTime: (f = msg.getTotalTime()) && google_protobuf_duration_pb.Duration.toObject(includeInstance, f),
+    playedTime: +jspb.Message.getFieldWithDefault(msg, 5, 0.0),
+    totalTime: +jspb.Message.getFieldWithDefault(msg, 6, 0.0),
     transcriptIdentity: jspb.Message.getFieldWithDefault(msg, 3, ""),
     payload: msg.getPayload_asB64()
   };
@@ -146,13 +145,11 @@ proto.sagittarius.training.v1.TrainingData.deserializeBinaryFromReader = functio
       msg.setFormat(value);
       break;
     case 5:
-      var value = new google_protobuf_duration_pb.Duration;
-      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setPlayedTime(value);
       break;
     case 6:
-      var value = new google_protobuf_duration_pb.Duration;
-      reader.readMessage(value,google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setTotalTime(value);
       break;
     case 3:
@@ -214,19 +211,17 @@ proto.sagittarius.training.v1.TrainingData.serializeBinaryToWriter = function(me
     );
   }
   f = message.getPlayedTime();
-  if (f != null) {
-    writer.writeMessage(
+  if (f !== 0.0) {
+    writer.writeDouble(
       5,
-      f,
-      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
+      f
     );
   }
   f = message.getTotalTime();
-  if (f != null) {
-    writer.writeMessage(
+  if (f !== 0.0) {
+    writer.writeDouble(
       6,
-      f,
-      google_protobuf_duration_pb.Duration.serializeBinaryToWriter
+      f
     );
   }
   f = /** @type {string} */ (jspb.Message.getField(message, 3));
@@ -292,62 +287,32 @@ proto.sagittarius.training.v1.TrainingData.prototype.setFormat = function(value)
 
 
 /**
- * optional google.protobuf.Duration played_time = 5;
- * @return {?proto.google.protobuf.Duration}
+ * optional double played_time = 5;
+ * @return {number}
  */
 proto.sagittarius.training.v1.TrainingData.prototype.getPlayedTime = function() {
-  return /** @type{?proto.google.protobuf.Duration} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 5));
+  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 5, 0.0));
 };
 
 
-/** @param {?proto.google.protobuf.Duration|undefined} value */
+/** @param {number} value */
 proto.sagittarius.training.v1.TrainingData.prototype.setPlayedTime = function(value) {
-  jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-proto.sagittarius.training.v1.TrainingData.prototype.clearPlayedTime = function() {
-  this.setPlayedTime(undefined);
+  jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.sagittarius.training.v1.TrainingData.prototype.hasPlayedTime = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
-
-/**
- * optional google.protobuf.Duration total_time = 6;
- * @return {?proto.google.protobuf.Duration}
+ * optional double total_time = 6;
+ * @return {number}
  */
 proto.sagittarius.training.v1.TrainingData.prototype.getTotalTime = function() {
-  return /** @type{?proto.google.protobuf.Duration} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 6));
+  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 6, 0.0));
 };
 
 
-/** @param {?proto.google.protobuf.Duration|undefined} value */
+/** @param {number} value */
 proto.sagittarius.training.v1.TrainingData.prototype.setTotalTime = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
-};
-
-
-proto.sagittarius.training.v1.TrainingData.prototype.clearTotalTime = function() {
-  this.setTotalTime(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.sagittarius.training.v1.TrainingData.prototype.hasTotalTime = function() {
-  return jspb.Message.getField(this, 6) != null;
+  jspb.Message.setField(this, 6, value);
 };
 
 

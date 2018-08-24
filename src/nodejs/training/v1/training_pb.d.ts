@@ -4,7 +4,6 @@
 /* tslint:disable */
 
 import * as jspb from "google-protobuf";
-import * as google_protobuf_duration_pb from "google-protobuf/google/protobuf/duration_pb";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
 import * as google_cloud_speech_v1_cloud_speech_pb from "../../google/cloud/speech/v1/cloud_speech_pb";
 
@@ -18,17 +17,11 @@ export class TrainingData extends jspb.Message {
     getFormat(): string;
     setFormat(value: string): void;
 
+    getPlayedTime(): number;
+    setPlayedTime(value: number): void;
 
-    hasPlayedTime(): boolean;
-    clearPlayedTime(): void;
-    getPlayedTime(): google_protobuf_duration_pb.Duration | undefined;
-    setPlayedTime(value?: google_protobuf_duration_pb.Duration): void;
-
-
-    hasTotalTime(): boolean;
-    clearTotalTime(): void;
-    getTotalTime(): google_protobuf_duration_pb.Duration | undefined;
-    setTotalTime(value?: google_protobuf_duration_pb.Duration): void;
+    getTotalTime(): number;
+    setTotalTime(value: number): void;
 
 
     hasTranscriptIdentity(): boolean;
@@ -62,8 +55,8 @@ export namespace TrainingData {
         mediaIdentity: string,
         languageCode: string,
         format: string,
-        playedTime?: google_protobuf_duration_pb.Duration.AsObject,
-        totalTime?: google_protobuf_duration_pb.Duration.AsObject,
+        playedTime: number,
+        totalTime: number,
         transcriptIdentity: string,
         payload: Uint8Array | string,
     }

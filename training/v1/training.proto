@@ -17,7 +17,6 @@ syntax = "proto3";
 package sagittarius.training.v1;
 
 import "google/api/annotations.proto";
-import "google/protobuf/duration.proto";
 import "google/rpc/status.proto";
 import "google/cloud/speech/v1/cloud_speech.proto";
 
@@ -54,10 +53,10 @@ message TrainingData {
   string format                = 4;
 
   // how long does this transcript been played
-  google.protobuf.Duration played_time = 5;
+  double played_time = 5;
 
   // how long of the entire video
-  google.protobuf.Duration total_time  = 6;
+  double total_time  = 6;
 
   oneof data {
     // transcript identity if any

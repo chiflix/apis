@@ -1,4 +1,4 @@
-var { expect, assert } = require('chai');
+import { expect, assert } from 'chai';
 
 var rpcMsg = require('../health/v1/health_pb');
 var rpcSvc = require('../health/v1/health_grpc_pb');
