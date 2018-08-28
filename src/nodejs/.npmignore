@@ -1,5 +1,4 @@
 src/
-build/
 npm-debug.log
 .babelrc
 commands.txt
