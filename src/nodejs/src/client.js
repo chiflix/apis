@@ -7,7 +7,7 @@ import translationRpc from '../translation/v1/translation_grpc_pb';
 const grpc = require('grpc');
 /* eslint-enable */
 
-class Sagi {
+class client {
   constructor(ca, key, cert) {
     this.creds = grpc.credentials.createSsl(
       // How to access resources with fs see:
@@ -32,7 +32,6 @@ class Sagi {
         if (err) {
           reject(err);
         } else {
-          // TODO: fetch real transcripts
           resolve(response);
         }
       });
@@ -48,7 +47,6 @@ class Sagi {
         if (err) {
           reject(err);
         } else {
-          console.log(res);
           resolve(res);
         }
       });
@@ -61,7 +59,6 @@ class Sagi {
       const client = new healthRpc.HealthClient(this.endpoint, this.creds);
       client.check(new healthMsg.HealthCheckRequest(), (err, response) => {
         if (err) {
-          console.log(err);
           reject(err);
         } else {
           resolve(response.getStatus());
@@ -71,4 +68,4 @@ class Sagi {
   }
 }
 
-export default Sagi;
+export default client;

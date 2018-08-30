@@ -1,3 +1,4 @@
+/*
 var { expect, assert } = require('chai');
 
 var rpcMsg = require('../translation/v1/translation_pb');
@@ -33,3 +34,4 @@ describe('TestTranslation()', function () {
     });
   });
 });
+*/

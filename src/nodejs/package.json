@@ -1,6 +1,6 @@
 {
   "name": "sagi-api",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "library of apis.sagittarius.ai",
   "main": "./build/index.js",
   "scripts": {
@@ -45,6 +45,8 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-import": "^2.13.0",
+    "google-protobuf": "^3.6.1",
+    "grpc": "^1.14.1",
     "mocha": "^3.4.2",
     "power-assert": "^1.4.4"
   }

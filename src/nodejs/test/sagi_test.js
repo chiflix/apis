@@ -1,5 +1,3 @@
-import { sagiClient } from '../src';
-
-var client = new sagiClient();
+import { client } from '../src';
 
 console.log(client);
