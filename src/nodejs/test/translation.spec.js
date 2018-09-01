@@ -3,7 +3,6 @@ import { expect, assert } from 'chai';
 import { client } from '../src';
 
 describe('translation api', function () {
-  this.timeout(10000);
   const sagi = new client('./test/ca.pem', './test/key.pem', './test/cert.pem')
 
   it('sagi.mediaTranslate should return OK', function (done) {
@@ -19,12 +18,10 @@ describe('translation api', function () {
       expect(res.length, 'results list length').to.be.above(1);
       done();
     }, (reason) => {
-      console.log(reason);
-      done();
+      done('reject: ' + reason);
     }).catch((err) => {
       // fail the test
-      console.log(err);
-      done();
+      done('error: ' + err);
     });
   });
 });

@@ -9,7 +9,7 @@
     "dist": "./node_modules/.bin/babel src -d dist --presets=babili",
     "lint": "eslint --ext .js -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js -f ./node_modules/eslint-friendly-formatter --fix src",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --reporter spec"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --reporter spec --timeout=10000"
   },
   "repository": {
     "type": "git",
