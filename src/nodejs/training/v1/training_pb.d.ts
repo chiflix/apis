@@ -23,6 +23,9 @@ export class TrainingData extends jspb.Message {
     getTotalTime(): number;
     setTotalTime(value: number): void;
 
+    getDelay(): number;
+    setDelay(value: number): void;
+
 
     hasTranscriptIdentity(): boolean;
     clearTranscriptIdentity(): void;
@@ -57,6 +60,7 @@ export namespace TrainingData {
         format: string,
         playedTime: number,
         totalTime: number,
+        delay: number,
         transcriptIdentity: string,
         payload: Uint8Array | string,
     }

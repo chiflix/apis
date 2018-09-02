@@ -113,7 +113,7 @@
 | language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | ranking | [float](#float) |  |  |
 | tags | [string](#string) | repeated |  |
-| delay | [int64](#int64) |  |  |
+| delay | [int64](#int64) |  | in ms, can be &#43;/- |
 
 
 

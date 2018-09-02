@@ -96,6 +96,7 @@ message MediaTranslationResponse {
 
     repeated string tags       = 4;
 
+    // in ms, can be +/-
     int64 delay                = 5;
   }
 

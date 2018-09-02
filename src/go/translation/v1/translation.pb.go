@@ -47,7 +47,7 @@ func (m *MediaTranslationRequest) Reset()         { *m = MediaTranslationRequest
 func (m *MediaTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*MediaTranslationRequest) ProtoMessage()    {}
 func (*MediaTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{0}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{0}
 }
 func (m *MediaTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaTranslationRequest.Unmarshal(m, b)
@@ -118,7 +118,7 @@ func (m *MediaTranslationResponse) Reset()         { *m = MediaTranslationRespon
 func (m *MediaTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*MediaTranslationResponse) ProtoMessage()    {}
 func (*MediaTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{1}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{1}
 }
 func (m *MediaTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaTranslationResponse.Unmarshal(m, b)
@@ -156,9 +156,10 @@ type MediaTranslationResponse_TranscriptInfo struct {
 	// the identity, can be used in TranslationRequest
 	TranscriptIdentity string `protobuf:"bytes,1,opt,name=transcript_identity,json=transcriptIdentity,proto3" json:"transcript_identity,omitempty"`
 	// ISO-639-1 Code https://cloud.google.com/translate/docs/languages
-	LanguageCode         string   `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
-	Ranking              float32  `protobuf:"fixed32,3,opt,name=ranking,proto3" json:"ranking,omitempty"`
-	Tags                 []string `protobuf:"bytes,4,rep,name=tags,proto3" json:"tags,omitempty"`
+	LanguageCode string   `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	Ranking      float32  `protobuf:"fixed32,3,opt,name=ranking,proto3" json:"ranking,omitempty"`
+	Tags         []string `protobuf:"bytes,4,rep,name=tags,proto3" json:"tags,omitempty"`
+	// in ms, can be +/-
 	Delay                int64    `protobuf:"varint,5,opt,name=delay,proto3" json:"delay,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -171,7 +172,7 @@ func (m *MediaTranslationResponse_TranscriptInfo) Reset() {
 func (m *MediaTranslationResponse_TranscriptInfo) String() string { return proto.CompactTextString(m) }
 func (*MediaTranslationResponse_TranscriptInfo) ProtoMessage()    {}
 func (*MediaTranslationResponse_TranscriptInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{1, 0}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{1, 0}
 }
 func (m *MediaTranslationResponse_TranscriptInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaTranslationResponse_TranscriptInfo.Unmarshal(m, b)
@@ -238,7 +239,7 @@ func (m *DetectionRequest) Reset()         { *m = DetectionRequest{} }
 func (m *DetectionRequest) String() string { return proto.CompactTextString(m) }
 func (*DetectionRequest) ProtoMessage()    {}
 func (*DetectionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{2}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{2}
 }
 func (m *DetectionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionRequest.Unmarshal(m, b)
@@ -281,7 +282,7 @@ func (m *DetectionResponse) Reset()         { *m = DetectionResponse{} }
 func (m *DetectionResponse) String() string { return proto.CompactTextString(m) }
 func (*DetectionResponse) ProtoMessage()    {}
 func (*DetectionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{3}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{3}
 }
 func (m *DetectionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionResponse.Unmarshal(m, b)
@@ -330,7 +331,7 @@ func (m *TranscriptRequest) Reset()         { *m = TranscriptRequest{} }
 func (m *TranscriptRequest) String() string { return proto.CompactTextString(m) }
 func (*TranscriptRequest) ProtoMessage()    {}
 func (*TranscriptRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{4}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{4}
 }
 func (m *TranscriptRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptRequest.Unmarshal(m, b)
@@ -379,7 +380,7 @@ func (m *TranscriptResponse) Reset()         { *m = TranscriptResponse{} }
 func (m *TranscriptResponse) String() string { return proto.CompactTextString(m) }
 func (*TranscriptResponse) ProtoMessage()    {}
 func (*TranscriptResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{5}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{5}
 }
 func (m *TranscriptResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptResponse.Unmarshal(m, b)
@@ -434,7 +435,7 @@ func (m *TranscriptResponse_Cue) Reset()         { *m = TranscriptResponse_Cue{}
 func (m *TranscriptResponse_Cue) String() string { return proto.CompactTextString(m) }
 func (*TranscriptResponse_Cue) ProtoMessage()    {}
 func (*TranscriptResponse_Cue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{5, 0}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{5, 0}
 }
 func (m *TranscriptResponse_Cue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptResponse_Cue.Unmarshal(m, b)
@@ -496,7 +497,7 @@ func (m *StreamingTranslationRequest) Reset()         { *m = StreamingTranslatio
 func (m *StreamingTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationRequest) ProtoMessage()    {}
 func (*StreamingTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{6}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{6}
 }
 func (m *StreamingTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationRequest.Unmarshal(m, b)
@@ -639,7 +640,7 @@ func (m *StreamingTranslationResponse) Reset()         { *m = StreamingTranslati
 func (m *StreamingTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationResponse) ProtoMessage()    {}
 func (*StreamingTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{7}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{7}
 }
 func (m *StreamingTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationResponse.Unmarshal(m, b)
@@ -712,7 +713,7 @@ func (m *StreamingTranslationResult) Reset()         { *m = StreamingTranslation
 func (m *StreamingTranslationResult) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationResult) ProtoMessage()    {}
 func (*StreamingTranslationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{8}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{8}
 }
 func (m *StreamingTranslationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationResult.Unmarshal(m, b)
@@ -786,7 +787,7 @@ func (m *TextTranslationRequest) Reset()         { *m = TextTranslationRequest{}
 func (m *TextTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*TextTranslationRequest) ProtoMessage()    {}
 func (*TextTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{9}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{9}
 }
 func (m *TextTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextTranslationRequest.Unmarshal(m, b)
@@ -840,7 +841,7 @@ func (m *TextTranslationResponse) Reset()         { *m = TextTranslationResponse
 func (m *TextTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*TextTranslationResponse) ProtoMessage()    {}
 func (*TextTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{10}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{10}
 }
 func (m *TextTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextTranslationResponse.Unmarshal(m, b)
@@ -888,7 +889,7 @@ func (m *TextTranslationResponse_Text) Reset()         { *m = TextTranslationRes
 func (m *TextTranslationResponse_Text) String() string { return proto.CompactTextString(m) }
 func (*TextTranslationResponse_Text) ProtoMessage()    {}
 func (*TextTranslationResponse_Text) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_b9a97fcb18e240dd, []int{10, 0}
+	return fileDescriptor_translation_c8a20bc9d81b14ea, []int{10, 0}
 }
 func (m *TextTranslationResponse_Text) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextTranslationResponse_Text.Unmarshal(m, b)
@@ -1187,10 +1188,10 @@ var _Translation_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("translation/v1/translation.proto", fileDescriptor_translation_b9a97fcb18e240dd)
+	proto.RegisterFile("translation/v1/translation.proto", fileDescriptor_translation_c8a20bc9d81b14ea)
 }
 
-var fileDescriptor_translation_b9a97fcb18e240dd = []byte{
+var fileDescriptor_translation_c8a20bc9d81b14ea = []byte{
 	// 1028 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0x4f, 0x6f, 0xdc, 0x44,
 	0x14, 0xef, 0xec, 0x6e, 0x92, 0xe6, 0x6d, 0x92, 0x26, 0x93, 0x55, 0x63, 0xb6, 0x29, 0x2c, 0x46,

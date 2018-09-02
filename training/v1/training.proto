@@ -58,6 +58,9 @@ message TrainingData {
   // how long of the entire video
   double total_time  = 6;
 
+  // in ms, can be +/-
+  int64  delay       = 8;
+
   oneof data {
     // transcript identity if any
     string transcript_identity   = 3;
