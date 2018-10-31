@@ -43,10 +43,17 @@ service Media {
     };
   };
 
-  // Query thumb list by media identity
-  rpc GetThumb(GetThumbRequest) returns (ThumbList) {
+  // Query thumb exist by media identity
+  rpc GetThumbInfo(GetThumbInfoRequest) returns (ThumbInfoResponse) {
     option (google.api.http) = {
-      post: "/v1/media/{media_hash}/thumb/info"
+      get: "/v1/media/{media_hash}/thumb:info"
+    };
+  };
+
+  // Query thumb list
+  rpc GetThumb(GetThumbRequest) returns (ThumbListResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/thumb"
       body: "*"
     };
   };
@@ -94,14 +101,20 @@ message UpdateInfoRequest {
   Info info = 2;
 }
 
-message GetThumbRequest {
+message GetThumbInfoRequest {
   string media_hash = 1;
-  repeated int32 thumb_id = 2;
 }
 
-message ThumbList {
-  string media_hash = 1;
-  map<int32, bytes> thumb = 2;
+
+message ThumbInfoResponse {
+  message Info {
+    string media_hash = 1;
+    repeated int32 have = 2;
+  }
+
+  google.rpc.Status error = 1;
+
+  Info info = 2;
 }
 
 message PutThumbRequest {
@@ -109,4 +122,20 @@ message PutThumbRequest {
   int32 thumb_id = 2;
   string md5 = 3;
   bytes payload = 4;
+}
+
+message GetThumbRequest {
+  string media_hash = 1;
+  repeated int32 thumb_id = 2;
+}
+
+message ThumbListResponse {
+  message List {
+    string media_hash = 1;
+    map<int32, bytes> thumb = 2;
+  }
+
+  google.rpc.Status error = 1;
+
+  List list = 2;
 }

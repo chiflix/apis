@@ -14,10 +14,14 @@ var global = Function('return this')();
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 var google_rpc_status_pb = require('../../google/rpc/status_pb.js');
 goog.exportSymbol('proto.sagittarius.media.v1.GetInfoRequest', null, global);
+goog.exportSymbol('proto.sagittarius.media.v1.GetThumbInfoRequest', null, global);
 goog.exportSymbol('proto.sagittarius.media.v1.GetThumbRequest', null, global);
 goog.exportSymbol('proto.sagittarius.media.v1.Info', null, global);
 goog.exportSymbol('proto.sagittarius.media.v1.PutThumbRequest', null, global);
-goog.exportSymbol('proto.sagittarius.media.v1.ThumbList', null, global);
+goog.exportSymbol('proto.sagittarius.media.v1.ThumbInfoResponse', null, global);
+goog.exportSymbol('proto.sagittarius.media.v1.ThumbInfoResponse.Info', null, global);
+goog.exportSymbol('proto.sagittarius.media.v1.ThumbListResponse', null, global);
+goog.exportSymbol('proto.sagittarius.media.v1.ThumbListResponse.List', null, global);
 goog.exportSymbol('proto.sagittarius.media.v1.TrackInfo', null, global);
 goog.exportSymbol('proto.sagittarius.media.v1.TrackInfo.Type', null, global);
 goog.exportSymbol('proto.sagittarius.media.v1.UpdateInfoRequest', null, global);
@@ -707,20 +711,13 @@ proto.sagittarius.media.v1.UpdateInfoRequest.prototype.hasInfo = function() {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sagittarius.media.v1.GetThumbRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.media.v1.GetThumbRequest.repeatedFields_, null);
+proto.sagittarius.media.v1.GetThumbInfoRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sagittarius.media.v1.GetThumbRequest, jspb.Message);
+goog.inherits(proto.sagittarius.media.v1.GetThumbInfoRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.sagittarius.media.v1.GetThumbRequest.displayName = 'proto.sagittarius.media.v1.GetThumbRequest';
+  proto.sagittarius.media.v1.GetThumbInfoRequest.displayName = 'proto.sagittarius.media.v1.GetThumbInfoRequest';
 }
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.sagittarius.media.v1.GetThumbRequest.repeatedFields_ = [2];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -734,8 +731,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.sagittarius.media.v1.GetThumbRequest.toObject(opt_includeInstance, this);
+proto.sagittarius.media.v1.GetThumbInfoRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.media.v1.GetThumbInfoRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -744,14 +741,13 @@ proto.sagittarius.media.v1.GetThumbRequest.prototype.toObject = function(opt_inc
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sagittarius.media.v1.GetThumbRequest} msg The msg instance to transform.
+ * @param {!proto.sagittarius.media.v1.GetThumbInfoRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sagittarius.media.v1.GetThumbRequest.toObject = function(includeInstance, msg) {
+proto.sagittarius.media.v1.GetThumbInfoRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mediaHash: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    thumbIdList: jspb.Message.getRepeatedField(msg, 2)
+    mediaHash: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -765,23 +761,23 @@ proto.sagittarius.media.v1.GetThumbRequest.toObject = function(includeInstance, 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sagittarius.media.v1.GetThumbRequest}
+ * @return {!proto.sagittarius.media.v1.GetThumbInfoRequest}
  */
-proto.sagittarius.media.v1.GetThumbRequest.deserializeBinary = function(bytes) {
+proto.sagittarius.media.v1.GetThumbInfoRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sagittarius.media.v1.GetThumbRequest;
-  return proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sagittarius.media.v1.GetThumbInfoRequest;
+  return proto.sagittarius.media.v1.GetThumbInfoRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sagittarius.media.v1.GetThumbRequest} msg The message object to deserialize into.
+ * @param {!proto.sagittarius.media.v1.GetThumbInfoRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sagittarius.media.v1.GetThumbRequest}
+ * @return {!proto.sagittarius.media.v1.GetThumbInfoRequest}
  */
-proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.sagittarius.media.v1.GetThumbInfoRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -791,10 +787,6 @@ proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader = functio
     case 1:
       var value = /** @type {string} */ (reader.readString());
       msg.setMediaHash(value);
-      break;
-    case 2:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedInt32());
-      msg.setThumbIdList(value);
       break;
     default:
       reader.skipField();
@@ -809,9 +801,9 @@ proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader = functio
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.serializeBinary = function() {
+proto.sagittarius.media.v1.GetThumbInfoRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sagittarius.media.v1.GetThumbRequest.serializeBinaryToWriter(this, writer);
+  proto.sagittarius.media.v1.GetThumbInfoRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -819,23 +811,16 @@ proto.sagittarius.media.v1.GetThumbRequest.prototype.serializeBinary = function(
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sagittarius.media.v1.GetThumbRequest} message
+ * @param {!proto.sagittarius.media.v1.GetThumbInfoRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sagittarius.media.v1.GetThumbRequest.serializeBinaryToWriter = function(message, writer) {
+proto.sagittarius.media.v1.GetThumbInfoRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMediaHash();
   if (f.length > 0) {
     writer.writeString(
       1,
-      f
-    );
-  }
-  f = message.getThumbIdList();
-  if (f.length > 0) {
-    writer.writePackedInt32(
-      2,
       f
     );
   }
@@ -846,43 +831,14 @@ proto.sagittarius.media.v1.GetThumbRequest.serializeBinaryToWriter = function(me
  * optional string media_hash = 1;
  * @return {string}
  */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.getMediaHash = function() {
+proto.sagittarius.media.v1.GetThumbInfoRequest.prototype.getMediaHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.setMediaHash = function(value) {
+proto.sagittarius.media.v1.GetThumbInfoRequest.prototype.setMediaHash = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * repeated int32 thumb_id = 2;
- * @return {!Array.<number>}
- */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.getThumbIdList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 2));
-};
-
-
-/** @param {!Array.<number>} value */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.setThumbIdList = function(value) {
-  jspb.Message.setField(this, 2, value || []);
-};
-
-
-/**
- * @param {!number} value
- * @param {number=} opt_index
- */
-proto.sagittarius.media.v1.GetThumbRequest.prototype.addThumbId = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
-};
-
-
-proto.sagittarius.media.v1.GetThumbRequest.prototype.clearThumbIdList = function() {
-  this.setThumbIdList([]);
 };
 
 
@@ -897,12 +853,12 @@ proto.sagittarius.media.v1.GetThumbRequest.prototype.clearThumbIdList = function
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sagittarius.media.v1.ThumbList = function(opt_data) {
+proto.sagittarius.media.v1.ThumbInfoResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sagittarius.media.v1.ThumbList, jspb.Message);
+goog.inherits(proto.sagittarius.media.v1.ThumbInfoResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.sagittarius.media.v1.ThumbList.displayName = 'proto.sagittarius.media.v1.ThumbList';
+  proto.sagittarius.media.v1.ThumbInfoResponse.displayName = 'proto.sagittarius.media.v1.ThumbInfoResponse';
 }
 
 
@@ -917,8 +873,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sagittarius.media.v1.ThumbList.prototype.toObject = function(opt_includeInstance) {
-  return proto.sagittarius.media.v1.ThumbList.toObject(opt_includeInstance, this);
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.media.v1.ThumbInfoResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -927,14 +883,14 @@ proto.sagittarius.media.v1.ThumbList.prototype.toObject = function(opt_includeIn
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sagittarius.media.v1.ThumbList} msg The msg instance to transform.
+ * @param {!proto.sagittarius.media.v1.ThumbInfoResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sagittarius.media.v1.ThumbList.toObject = function(includeInstance, msg) {
+proto.sagittarius.media.v1.ThumbInfoResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    mediaHash: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    thumbMap: (f = msg.getThumbMap()) ? f.toObject(includeInstance, undefined) : []
+    error: (f = msg.getError()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
+    info: (f = msg.getInfo()) && proto.sagittarius.media.v1.ThumbInfoResponse.Info.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -948,23 +904,23 @@ proto.sagittarius.media.v1.ThumbList.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sagittarius.media.v1.ThumbList}
+ * @return {!proto.sagittarius.media.v1.ThumbInfoResponse}
  */
-proto.sagittarius.media.v1.ThumbList.deserializeBinary = function(bytes) {
+proto.sagittarius.media.v1.ThumbInfoResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sagittarius.media.v1.ThumbList;
-  return proto.sagittarius.media.v1.ThumbList.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sagittarius.media.v1.ThumbInfoResponse;
+  return proto.sagittarius.media.v1.ThumbInfoResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sagittarius.media.v1.ThumbList} msg The message object to deserialize into.
+ * @param {!proto.sagittarius.media.v1.ThumbInfoResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sagittarius.media.v1.ThumbList}
+ * @return {!proto.sagittarius.media.v1.ThumbInfoResponse}
  */
-proto.sagittarius.media.v1.ThumbList.deserializeBinaryFromReader = function(msg, reader) {
+proto.sagittarius.media.v1.ThumbInfoResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -972,14 +928,14 @@ proto.sagittarius.media.v1.ThumbList.deserializeBinaryFromReader = function(msg,
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setMediaHash(value);
+      var value = new google_rpc_status_pb.Status;
+      reader.readMessage(value,google_rpc_status_pb.Status.deserializeBinaryFromReader);
+      msg.setError(value);
       break;
     case 2:
-      var value = msg.getThumbMap();
-      reader.readMessage(value, function(message, reader) {
-        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readInt32, jspb.BinaryReader.prototype.readBytes);
-         });
+      var value = new proto.sagittarius.media.v1.ThumbInfoResponse.Info;
+      reader.readMessage(value,proto.sagittarius.media.v1.ThumbInfoResponse.Info.deserializeBinaryFromReader);
+      msg.setInfo(value);
       break;
     default:
       reader.skipField();
@@ -994,9 +950,9 @@ proto.sagittarius.media.v1.ThumbList.deserializeBinaryFromReader = function(msg,
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sagittarius.media.v1.ThumbList.prototype.serializeBinary = function() {
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sagittarius.media.v1.ThumbList.serializeBinaryToWriter(this, writer);
+  proto.sagittarius.media.v1.ThumbInfoResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1004,11 +960,159 @@ proto.sagittarius.media.v1.ThumbList.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sagittarius.media.v1.ThumbList} message
+ * @param {!proto.sagittarius.media.v1.ThumbInfoResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sagittarius.media.v1.ThumbList.serializeBinaryToWriter = function(message, writer) {
+proto.sagittarius.media.v1.ThumbInfoResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getError();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_rpc_status_pb.Status.serializeBinaryToWriter
+    );
+  }
+  f = message.getInfo();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.sagittarius.media.v1.ThumbInfoResponse.Info.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.media.v1.ThumbInfoResponse.Info.repeatedFields_, null);
+};
+goog.inherits(proto.sagittarius.media.v1.ThumbInfoResponse.Info, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.media.v1.ThumbInfoResponse.Info.displayName = 'proto.sagittarius.media.v1.ThumbInfoResponse.Info';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.media.v1.ThumbInfoResponse.Info.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.media.v1.ThumbInfoResponse.Info} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    mediaHash: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    haveList: jspb.Message.getRepeatedField(msg, 2)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.media.v1.ThumbInfoResponse.Info}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.media.v1.ThumbInfoResponse.Info;
+  return proto.sagittarius.media.v1.ThumbInfoResponse.Info.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.media.v1.ThumbInfoResponse.Info} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.media.v1.ThumbInfoResponse.Info}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMediaHash(value);
+      break;
+    case 2:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedInt32());
+      msg.setHaveList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.media.v1.ThumbInfoResponse.Info.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.media.v1.ThumbInfoResponse.Info} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMediaHash();
   if (f.length > 0) {
@@ -1017,9 +1121,12 @@ proto.sagittarius.media.v1.ThumbList.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getThumbMap(true);
-  if (f && f.getLength() > 0) {
-    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeInt32, jspb.BinaryWriter.prototype.writeBytes);
+  f = message.getHaveList();
+  if (f.length > 0) {
+    writer.writePackedInt32(
+      2,
+      f
+    );
   }
 };
 
@@ -1028,32 +1135,103 @@ proto.sagittarius.media.v1.ThumbList.serializeBinaryToWriter = function(message,
  * optional string media_hash = 1;
  * @return {string}
  */
-proto.sagittarius.media.v1.ThumbList.prototype.getMediaHash = function() {
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.getMediaHash = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.sagittarius.media.v1.ThumbList.prototype.setMediaHash = function(value) {
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.setMediaHash = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * map<int32, bytes> thumb = 2;
- * @param {boolean=} opt_noLazyCreate Do not create the map if
- * empty, instead returning `undefined`
- * @return {!jspb.Map<number,!(string|Uint8Array)>}
+ * repeated int32 have = 2;
+ * @return {!Array.<number>}
  */
-proto.sagittarius.media.v1.ThumbList.prototype.getThumbMap = function(opt_noLazyCreate) {
-  return /** @type {!jspb.Map<number,!(string|Uint8Array)>} */ (
-      jspb.Message.getMapField(this, 2, opt_noLazyCreate,
-      null));
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.getHaveList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 2));
 };
 
 
-proto.sagittarius.media.v1.ThumbList.prototype.clearThumbMap = function() {
-  this.getThumbMap().clear();
+/** @param {!Array.<number>} value */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.setHaveList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.addHave = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.clearHaveList = function() {
+  this.setHaveList([]);
+};
+
+
+/**
+ * optional google.rpc.Status error = 1;
+ * @return {?proto.google.rpc.Status}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.getError = function() {
+  return /** @type{?proto.google.rpc.Status} */ (
+    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
+};
+
+
+/** @param {?proto.google.rpc.Status|undefined} value */
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.setError = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.clearError = function() {
+  this.setError(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.hasError = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional Info info = 2;
+ * @return {?proto.sagittarius.media.v1.ThumbInfoResponse.Info}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.getInfo = function() {
+  return /** @type{?proto.sagittarius.media.v1.ThumbInfoResponse.Info} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.media.v1.ThumbInfoResponse.Info, 2));
+};
+
+
+/** @param {?proto.sagittarius.media.v1.ThumbInfoResponse.Info|undefined} value */
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.setInfo = function(value) {
+  jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.clearInfo = function() {
+  this.setInfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.media.v1.ThumbInfoResponse.prototype.hasInfo = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -1301,6 +1479,570 @@ proto.sagittarius.media.v1.PutThumbRequest.prototype.getPayload_asU8 = function(
 /** @param {!(string|Uint8Array)} value */
 proto.sagittarius.media.v1.PutThumbRequest.prototype.setPayload = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.media.v1.GetThumbRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.media.v1.GetThumbRequest.repeatedFields_, null);
+};
+goog.inherits(proto.sagittarius.media.v1.GetThumbRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.media.v1.GetThumbRequest.displayName = 'proto.sagittarius.media.v1.GetThumbRequest';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sagittarius.media.v1.GetThumbRequest.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.media.v1.GetThumbRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.media.v1.GetThumbRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.GetThumbRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    mediaHash: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    thumbIdList: jspb.Message.getRepeatedField(msg, 2)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.media.v1.GetThumbRequest}
+ */
+proto.sagittarius.media.v1.GetThumbRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.media.v1.GetThumbRequest;
+  return proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.media.v1.GetThumbRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.media.v1.GetThumbRequest}
+ */
+proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMediaHash(value);
+      break;
+    case 2:
+      var value = /** @type {!Array.<number>} */ (reader.readPackedInt32());
+      msg.setThumbIdList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.media.v1.GetThumbRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.media.v1.GetThumbRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.GetThumbRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getMediaHash();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getThumbIdList();
+  if (f.length > 0) {
+    writer.writePackedInt32(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string media_hash = 1;
+ * @return {string}
+ */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.getMediaHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.setMediaHash = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * repeated int32 thumb_id = 2;
+ * @return {!Array.<number>}
+ */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.getThumbIdList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/** @param {!Array.<number>} value */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.setThumbIdList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.sagittarius.media.v1.GetThumbRequest.prototype.addThumbId = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.sagittarius.media.v1.GetThumbRequest.prototype.clearThumbIdList = function() {
+  this.setThumbIdList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.media.v1.ThumbListResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sagittarius.media.v1.ThumbListResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.media.v1.ThumbListResponse.displayName = 'proto.sagittarius.media.v1.ThumbListResponse';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.media.v1.ThumbListResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.media.v1.ThumbListResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.ThumbListResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    error: (f = msg.getError()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
+    list: (f = msg.getList()) && proto.sagittarius.media.v1.ThumbListResponse.List.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.media.v1.ThumbListResponse}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.media.v1.ThumbListResponse;
+  return proto.sagittarius.media.v1.ThumbListResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.media.v1.ThumbListResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.media.v1.ThumbListResponse}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_rpc_status_pb.Status;
+      reader.readMessage(value,google_rpc_status_pb.Status.deserializeBinaryFromReader);
+      msg.setError(value);
+      break;
+    case 2:
+      var value = new proto.sagittarius.media.v1.ThumbListResponse.List;
+      reader.readMessage(value,proto.sagittarius.media.v1.ThumbListResponse.List.deserializeBinaryFromReader);
+      msg.setList(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.media.v1.ThumbListResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.media.v1.ThumbListResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.ThumbListResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getError();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_rpc_status_pb.Status.serializeBinaryToWriter
+    );
+  }
+  f = message.getList();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.sagittarius.media.v1.ThumbListResponse.List.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sagittarius.media.v1.ThumbListResponse.List, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.media.v1.ThumbListResponse.List.displayName = 'proto.sagittarius.media.v1.ThumbListResponse.List';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.media.v1.ThumbListResponse.List.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.media.v1.ThumbListResponse.List} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    mediaHash: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    thumbMap: (f = msg.getThumbMap()) ? f.toObject(includeInstance, undefined) : []
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.media.v1.ThumbListResponse.List}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.media.v1.ThumbListResponse.List;
+  return proto.sagittarius.media.v1.ThumbListResponse.List.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.media.v1.ThumbListResponse.List} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.media.v1.ThumbListResponse.List}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMediaHash(value);
+      break;
+    case 2:
+      var value = msg.getThumbMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readInt32, jspb.BinaryReader.prototype.readBytes);
+         });
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.media.v1.ThumbListResponse.List.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.media.v1.ThumbListResponse.List} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getMediaHash();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getThumbMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeInt32, jspb.BinaryWriter.prototype.writeBytes);
+  }
+};
+
+
+/**
+ * optional string media_hash = 1;
+ * @return {string}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.prototype.getMediaHash = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.media.v1.ThumbListResponse.List.prototype.setMediaHash = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * map<int32, bytes> thumb = 2;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<number,!(string|Uint8Array)>}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.List.prototype.getThumbMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<number,!(string|Uint8Array)>} */ (
+      jspb.Message.getMapField(this, 2, opt_noLazyCreate,
+      null));
+};
+
+
+proto.sagittarius.media.v1.ThumbListResponse.List.prototype.clearThumbMap = function() {
+  this.getThumbMap().clear();
+};
+
+
+/**
+ * optional google.rpc.Status error = 1;
+ * @return {?proto.google.rpc.Status}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.getError = function() {
+  return /** @type{?proto.google.rpc.Status} */ (
+    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
+};
+
+
+/** @param {?proto.google.rpc.Status|undefined} value */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.setError = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.sagittarius.media.v1.ThumbListResponse.prototype.clearError = function() {
+  this.setError(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.hasError = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional List list = 2;
+ * @return {?proto.sagittarius.media.v1.ThumbListResponse.List}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.getList = function() {
+  return /** @type{?proto.sagittarius.media.v1.ThumbListResponse.List} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.media.v1.ThumbListResponse.List, 2));
+};
+
+
+/** @param {?proto.sagittarius.media.v1.ThumbListResponse.List|undefined} value */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.setList = function(value) {
+  jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+proto.sagittarius.media.v1.ThumbListResponse.prototype.clearList = function() {
+  this.setList(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.media.v1.ThumbListResponse.prototype.hasList = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
