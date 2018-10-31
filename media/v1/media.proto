@@ -17,6 +17,7 @@ syntax = "proto3";
 package sagittarius.media.v1;
 
 import "google/api/annotations.proto";
+import "google/rpc/status.proto";
 
 option cc_enable_arenas = true;
 option go_package = "media";
@@ -38,6 +39,22 @@ service Media {
   rpc UpdateInfo(UpdateInfoRequest) returns (Info) {
     option (google.api.http) = {
       post: "/v1/media/{media_hash}/info"
+      body: "*"
+    };
+  };
+
+  // Query thumb list by media identity
+  rpc GetThumb(GetThumbRequest) returns (ThumbList) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/thumb/info"
+      body: "*"
+    };
+  };
+
+  // Upload thumb
+  rpc PutThumb(PutThumbRequest) returns (google.rpc.Status) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/thumb/{thumb_id}/upload"
       body: "*"
     };
   };
@@ -75,4 +92,21 @@ message UpdateInfoRequest {
   string media_hash = 1;
   // The Book resource to be created. Client must not set the `Book.name` field.
   Info info = 2;
+}
+
+message GetThumbRequest {
+  string media_hash = 1;
+  repeated int32 thumb_id = 2;
+}
+
+message ThumbList {
+  string media_hash = 1;
+  map<int32, bytes> thumb = 2;
+}
+
+message PutThumbRequest {
+  string media_hash = 1;
+  int32 thumb_id = 2;
+  string md5 = 3;
+  bytes payload = 4;
 }

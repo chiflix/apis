@@ -1,5 +1,5 @@
 # Protocol Documentation
-<a name="top"/>
+<a name="top"></a>
 
 ## Table of Contents
 
@@ -19,14 +19,14 @@
 
 
 
-<a name="media/v1/media.proto"/>
+<a name="media/v1/media.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## media/v1/media.proto
 
 
 
-<a name="sagittarius.media.v1.GetInfoRequest"/>
+<a name="sagittarius.media.v1.GetInfoRequest"></a>
 
 ### GetInfoRequest
 
@@ -41,7 +41,7 @@
 
 
 
-<a name="sagittarius.media.v1.Info"/>
+<a name="sagittarius.media.v1.Info"></a>
 
 ### Info
 
@@ -57,7 +57,7 @@
 
 
 
-<a name="sagittarius.media.v1.TrackInfo"/>
+<a name="sagittarius.media.v1.TrackInfo"></a>
 
 ### TrackInfo
 
@@ -72,7 +72,7 @@
 
 
 
-<a name="sagittarius.media.v1.UpdateInfoRequest"/>
+<a name="sagittarius.media.v1.UpdateInfoRequest"></a>
 
 ### UpdateInfoRequest
 
@@ -90,7 +90,7 @@
  
 
 
-<a name="sagittarius.media.v1.TrackInfo.Type"/>
+<a name="sagittarius.media.v1.TrackInfo.Type"></a>
 
 ### TrackInfo.Type
 
@@ -108,15 +108,15 @@
  
 
 
-<a name="sagittarius.media.v1.Media"/>
+<a name="sagittarius.media.v1.Media"></a>
 
 ### Media
 Service that implements Sagittarius Media API
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetInfo | [GetInfoRequest](#sagittarius.media.v1.GetInfoRequest) | [Info](#sagittarius.media.v1.GetInfoRequest) |  |
-| UpdateInfo | [UpdateInfoRequest](#sagittarius.media.v1.UpdateInfoRequest) | [Info](#sagittarius.media.v1.UpdateInfoRequest) |  |
+| GetInfo | [GetInfoRequest](#sagittarius.media.v1.GetInfoRequest) | [Info](#sagittarius.media.v1.Info) |  |
+| UpdateInfo | [UpdateInfoRequest](#sagittarius.media.v1.UpdateInfoRequest) | [Info](#sagittarius.media.v1.Info) |  |
 
  
 

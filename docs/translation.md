@@ -1,5 +1,5 @@
 # Protocol Documentation
-<a name="top"/>
+<a name="top"></a>
 
 ## Table of Contents
 
@@ -28,14 +28,14 @@
 
 
 
-<a name="translation/v1/translation.proto"/>
+<a name="translation/v1/translation.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## translation/v1/translation.proto
 
 
 
-<a name="sagittarius.translation.v1.DetectionRequest"/>
+<a name="sagittarius.translation.v1.DetectionRequest"></a>
 
 ### DetectionRequest
 
@@ -50,7 +50,7 @@
 
 
 
-<a name="sagittarius.translation.v1.DetectionResponse"/>
+<a name="sagittarius.translation.v1.DetectionResponse"></a>
 
 ### DetectionResponse
 
@@ -66,7 +66,7 @@
 
 
 
-<a name="sagittarius.translation.v1.MediaTranslationRequest"/>
+<a name="sagittarius.translation.v1.MediaTranslationRequest"></a>
 
 ### MediaTranslationRequest
 
@@ -85,7 +85,7 @@
 
 
 
-<a name="sagittarius.translation.v1.MediaTranslationResponse"/>
+<a name="sagittarius.translation.v1.MediaTranslationResponse"></a>
 
 ### MediaTranslationResponse
 
@@ -101,7 +101,7 @@
 
 
 
-<a name="sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo"/>
+<a name="sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo"></a>
 
 ### MediaTranslationResponse.TranscriptInfo
 
@@ -120,7 +120,7 @@
 
 
 
-<a name="sagittarius.translation.v1.StreamingTranslationRequest"/>
+<a name="sagittarius.translation.v1.StreamingTranslationRequest"></a>
 
 ### StreamingTranslationRequest
 The top-level message sent by the client for the `StreamingRecognize` method.
@@ -140,7 +140,7 @@ All subsequent messages must contain `audio` data and must not contain a
 
 
 
-<a name="sagittarius.translation.v1.StreamingTranslationResponse"/>
+<a name="sagittarius.translation.v1.StreamingTranslationResponse"></a>
 
 ### StreamingTranslationResponse
 
@@ -156,7 +156,7 @@ All subsequent messages must contain `audio` data and must not contain a
 
 
 
-<a name="sagittarius.translation.v1.StreamingTranslationResult"/>
+<a name="sagittarius.translation.v1.StreamingTranslationResult"></a>
 
 ### StreamingTranslationResult
 
@@ -175,7 +175,7 @@ All subsequent messages must contain `audio` data and must not contain a
 
 
 
-<a name="sagittarius.translation.v1.TextTranslationRequest"/>
+<a name="sagittarius.translation.v1.TextTranslationRequest"></a>
 
 ### TextTranslationRequest
 We use Google Translation Service for text translation.
@@ -193,7 +193,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
 
-<a name="sagittarius.translation.v1.TextTranslationResponse"/>
+<a name="sagittarius.translation.v1.TextTranslationResponse"></a>
 
 ### TextTranslationResponse
 
@@ -209,7 +209,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
 
-<a name="sagittarius.translation.v1.TextTranslationResponse.Text"/>
+<a name="sagittarius.translation.v1.TextTranslationResponse.Text"></a>
 
 ### TextTranslationResponse.Text
 
@@ -225,7 +225,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
 
-<a name="sagittarius.translation.v1.TranscriptRequest"/>
+<a name="sagittarius.translation.v1.TranscriptRequest"></a>
 
 ### TranscriptRequest
 
@@ -241,7 +241,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
 
-<a name="sagittarius.translation.v1.TranscriptResponse"/>
+<a name="sagittarius.translation.v1.TranscriptResponse"></a>
 
 ### TranscriptResponse
 
@@ -258,7 +258,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
 
-<a name="sagittarius.translation.v1.TranscriptResponse.Cue"/>
+<a name="sagittarius.translation.v1.TranscriptResponse.Cue"></a>
 
 ### TranscriptResponse.Cue
 
@@ -281,18 +281,18 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
  
 
 
-<a name="sagittarius.translation.v1.Translation"/>
+<a name="sagittarius.translation.v1.Translation"></a>
 
 ### Translation
 Service that implements Sagittarius Translation API
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| TranslateMedia | [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest) | [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationRequest) | Translate media(audio or video) by media identity |
-| DetectLanguage | [DetectionRequest](#sagittarius.translation.v1.DetectionRequest) | [DetectionResponse](#sagittarius.translation.v1.DetectionRequest) | detect the language of text |
-| Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
-| StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
-| TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
+| TranslateMedia | [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest) | [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationResponse) | Translate media(audio or video) by media identity |
+| DetectLanguage | [DetectionRequest](#sagittarius.translation.v1.DetectionRequest) | [DetectionResponse](#sagittarius.translation.v1.DetectionResponse) | detect the language of text |
+| Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse) |  |
+| StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) stream | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse) stream | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
+| TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationResponse) | Translate text by Google Translation Service |
 
  
 

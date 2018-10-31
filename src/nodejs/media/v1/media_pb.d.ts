@@ -4,6 +4,7 @@
 /* tslint:disable */
 
 import * as jspb from "google-protobuf";
+import * as google_rpc_status_pb from "../../google/rpc/status_pb";
 
 export class Info extends jspb.Message { 
     getMediaHash(): string;
@@ -107,5 +108,94 @@ export namespace UpdateInfoRequest {
     export type AsObject = {
         mediaHash: string,
         info?: Info.AsObject,
+    }
+}
+
+export class GetThumbRequest extends jspb.Message { 
+    getMediaHash(): string;
+    setMediaHash(value: string): void;
+
+    clearThumbIdList(): void;
+    getThumbIdList(): Array<number>;
+    setThumbIdList(value: Array<number>): void;
+    addThumbId(value: number, index?: number): number;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetThumbRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetThumbRequest): GetThumbRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetThumbRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetThumbRequest;
+    static deserializeBinaryFromReader(message: GetThumbRequest, reader: jspb.BinaryReader): GetThumbRequest;
+}
+
+export namespace GetThumbRequest {
+    export type AsObject = {
+        mediaHash: string,
+        thumbIdList: Array<number>,
+    }
+}
+
+export class ThumbList extends jspb.Message { 
+    getMediaHash(): string;
+    setMediaHash(value: string): void;
+
+
+    getThumbMap(): jspb.Map<number, Uint8Array | string>;
+    clearThumbMap(): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ThumbList.AsObject;
+    static toObject(includeInstance: boolean, msg: ThumbList): ThumbList.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ThumbList, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ThumbList;
+    static deserializeBinaryFromReader(message: ThumbList, reader: jspb.BinaryReader): ThumbList;
+}
+
+export namespace ThumbList {
+    export type AsObject = {
+        mediaHash: string,
+
+        thumbMap: Array<[number, Uint8Array | string]>,
+    }
+}
+
+export class PutThumbRequest extends jspb.Message { 
+    getMediaHash(): string;
+    setMediaHash(value: string): void;
+
+    getThumbId(): number;
+    setThumbId(value: number): void;
+
+    getMd5(): string;
+    setMd5(value: string): void;
+
+    getPayload(): Uint8Array | string;
+    getPayload_asU8(): Uint8Array;
+    getPayload_asB64(): string;
+    setPayload(value: Uint8Array | string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PutThumbRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: PutThumbRequest): PutThumbRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PutThumbRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PutThumbRequest;
+    static deserializeBinaryFromReader(message: PutThumbRequest, reader: jspb.BinaryReader): PutThumbRequest;
+}
+
+export namespace PutThumbRequest {
+    export type AsObject = {
+        mediaHash: string,
+        thumbId: number,
+        md5: string,
+        payload: Uint8Array | string,
     }
 }

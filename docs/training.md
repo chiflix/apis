@@ -1,5 +1,5 @@
 # Protocol Documentation
-<a name="top"/>
+<a name="top"></a>
 
 ## Table of Contents
 
@@ -16,14 +16,14 @@
 
 
 
-<a name="training/v1/training.proto"/>
+<a name="training/v1/training.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## training/v1/training.proto
 
 
 
-<a name="sagittarius.training.v1.StreamingTrainingRequest"/>
+<a name="sagittarius.training.v1.StreamingTrainingRequest"></a>
 
 ### StreamingTrainingRequest
 TODO:
@@ -41,7 +41,7 @@ TODO:
 
 
 
-<a name="sagittarius.training.v1.TrainingData"/>
+<a name="sagittarius.training.v1.TrainingData"></a>
 
 ### TrainingData
 
@@ -69,15 +69,15 @@ TODO:
  
 
 
-<a name="sagittarius.training.v1.Trainng"/>
+<a name="sagittarius.training.v1.Trainng"></a>
 
 ### Trainng
 Trainng that implements Sagittarius Translation API
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| PushData | [TrainingData](#sagittarius.training.v1.TrainingData) | [.google.rpc.Status](#sagittarius.training.v1.TrainingData) | Push accture traning data to server |
-| StreamingTraining | [StreamingTrainingRequest](#sagittarius.training.v1.StreamingTrainingRequest) | [.google.rpc.Status](#sagittarius.training.v1.StreamingTrainingRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
+| PushData | [TrainingData](#sagittarius.training.v1.TrainingData) | [.google.rpc.Status](#google.rpc.Status) | Push accture traning data to server |
+| StreamingTraining | [StreamingTrainingRequest](#sagittarius.training.v1.StreamingTrainingRequest) stream | [.google.rpc.Status](#google.rpc.Status) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
 
  
 

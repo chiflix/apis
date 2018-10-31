@@ -1,5 +1,5 @@
 # Protocol Documentation
-<a name="top"/>
+<a name="top"></a>
 
 ## Table of Contents
 
@@ -17,14 +17,14 @@
 
 
 
-<a name="health/v1/health.proto"/>
+<a name="health/v1/health.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## health/v1/health.proto
 
 
 
-<a name="sagittarius.health.v1.HealthCheckRequest"/>
+<a name="sagittarius.health.v1.HealthCheckRequest"></a>
 
 ### HealthCheckRequest
 
@@ -39,7 +39,7 @@
 
 
 
-<a name="sagittarius.health.v1.HealthCheckResponse"/>
+<a name="sagittarius.health.v1.HealthCheckResponse"></a>
 
 ### HealthCheckResponse
 
@@ -56,7 +56,7 @@
  
 
 
-<a name="sagittarius.health.v1.HealthCheckResponse.ServingStatus"/>
+<a name="sagittarius.health.v1.HealthCheckResponse.ServingStatus"></a>
 
 ### HealthCheckResponse.ServingStatus
 
@@ -73,14 +73,14 @@
  
 
 
-<a name="sagittarius.health.v1.Health"/>
+<a name="sagittarius.health.v1.Health"></a>
 
 ### Health
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Check | [HealthCheckRequest](#sagittarius.health.v1.HealthCheckRequest) | [HealthCheckResponse](#sagittarius.health.v1.HealthCheckRequest) |  |
+| Check | [HealthCheckRequest](#sagittarius.health.v1.HealthCheckRequest) | [HealthCheckResponse](#sagittarius.health.v1.HealthCheckResponse) |  |
 
  
 
