@@ -46,7 +46,7 @@ service Media {
   // Query thumb exist by media identity
   rpc GetThumbInfo(GetThumbInfoRequest) returns (ThumbInfoResponse) {
     option (google.api.http) = {
-      get: "/v1/media/{media_hash}/thumb:info"
+      get: "/v1/media/{media_hash}/thumb/info"
     };
   };
 
