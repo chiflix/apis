@@ -109,7 +109,7 @@ message GetThumbInfoRequest {
 message ThumbInfoResponse {
   message Info {
     string media_hash = 1;
-    repeated int32 have = 2;
+    repeated int64 have = 2;
   }
 
   google.rpc.Status error = 1;
@@ -119,20 +119,20 @@ message ThumbInfoResponse {
 
 message PutThumbRequest {
   string media_hash = 1;
-  int32 thumb_id = 2;
+  int64 thumb_id = 2;
   string md5 = 3;
   bytes payload = 4;
 }
 
 message GetThumbRequest {
   string media_hash = 1;
-  repeated int32 thumb_id = 2;
+  repeated int64 thumb_id = 2;
 }
 
 message ThumbListResponse {
   message List {
     string media_hash = 1;
-    map<int32, bytes> thumb = 2;
+    map<int64, bytes> thumb = 2;
   }
 
   google.rpc.Status error = 1;

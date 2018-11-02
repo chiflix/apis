@@ -1082,7 +1082,7 @@ proto.sagittarius.media.v1.ThumbInfoResponse.Info.deserializeBinaryFromReader = 
       msg.setMediaHash(value);
       break;
     case 2:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedInt32());
+      var value = /** @type {!Array.<number>} */ (reader.readPackedInt64());
       msg.setHaveList(value);
       break;
     default:
@@ -1123,7 +1123,7 @@ proto.sagittarius.media.v1.ThumbInfoResponse.Info.serializeBinaryToWriter = func
   }
   f = message.getHaveList();
   if (f.length > 0) {
-    writer.writePackedInt32(
+    writer.writePackedInt64(
       2,
       f
     );
@@ -1147,7 +1147,7 @@ proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.setMediaHash = funct
 
 
 /**
- * repeated int32 have = 2;
+ * repeated int64 have = 2;
  * @return {!Array.<number>}
  */
 proto.sagittarius.media.v1.ThumbInfoResponse.Info.prototype.getHaveList = function() {
@@ -1327,7 +1327,7 @@ proto.sagittarius.media.v1.PutThumbRequest.deserializeBinaryFromReader = functio
       msg.setMediaHash(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setThumbId(value);
       break;
     case 3:
@@ -1376,7 +1376,7 @@ proto.sagittarius.media.v1.PutThumbRequest.serializeBinaryToWriter = function(me
   }
   f = message.getThumbId();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeInt64(
       2,
       f
     );
@@ -1414,7 +1414,7 @@ proto.sagittarius.media.v1.PutThumbRequest.prototype.setMediaHash = function(val
 
 
 /**
- * optional int32 thumb_id = 2;
+ * optional int64 thumb_id = 2;
  * @return {number}
  */
 proto.sagittarius.media.v1.PutThumbRequest.prototype.getThumbId = function() {
@@ -1579,7 +1579,7 @@ proto.sagittarius.media.v1.GetThumbRequest.deserializeBinaryFromReader = functio
       msg.setMediaHash(value);
       break;
     case 2:
-      var value = /** @type {!Array.<number>} */ (reader.readPackedInt32());
+      var value = /** @type {!Array.<number>} */ (reader.readPackedInt64());
       msg.setThumbIdList(value);
       break;
     default:
@@ -1620,7 +1620,7 @@ proto.sagittarius.media.v1.GetThumbRequest.serializeBinaryToWriter = function(me
   }
   f = message.getThumbIdList();
   if (f.length > 0) {
-    writer.writePackedInt32(
+    writer.writePackedInt64(
       2,
       f
     );
@@ -1644,7 +1644,7 @@ proto.sagittarius.media.v1.GetThumbRequest.prototype.setMediaHash = function(val
 
 
 /**
- * repeated int32 thumb_id = 2;
+ * repeated int64 thumb_id = 2;
  * @return {!Array.<number>}
  */
 proto.sagittarius.media.v1.GetThumbRequest.prototype.getThumbIdList = function() {
@@ -1907,7 +1907,7 @@ proto.sagittarius.media.v1.ThumbListResponse.List.deserializeBinaryFromReader = 
     case 2:
       var value = msg.getThumbMap();
       reader.readMessage(value, function(message, reader) {
-        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readInt32, jspb.BinaryReader.prototype.readBytes);
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readInt64, jspb.BinaryReader.prototype.readBytes);
          });
       break;
     default:
@@ -1948,7 +1948,7 @@ proto.sagittarius.media.v1.ThumbListResponse.List.serializeBinaryToWriter = func
   }
   f = message.getThumbMap(true);
   if (f && f.getLength() > 0) {
-    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeInt32, jspb.BinaryWriter.prototype.writeBytes);
+    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeInt64, jspb.BinaryWriter.prototype.writeBytes);
   }
 };
 
@@ -1969,7 +1969,7 @@ proto.sagittarius.media.v1.ThumbListResponse.List.prototype.setMediaHash = funct
 
 
 /**
- * map<int32, bytes> thumb = 2;
+ * map<int64, bytes> thumb = 2;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
  * empty, instead returning `undefined`
  * @return {!jspb.Map<number,!(string|Uint8Array)>}
