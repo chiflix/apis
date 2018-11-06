@@ -133,7 +133,7 @@ message Thumb {
   // Image content
   bytes payload = 1;
   // Image file ext
-  string mime_type = 2;
+  string ext = 2;
 }
 
 message PutThumbRequest {
