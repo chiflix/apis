@@ -54,6 +54,17 @@ function deserialize_sagittarius_media_v1_GetThumbInfoRequest(buffer_arg) {
   return media_v1_media_pb.GetThumbInfoRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sagittarius_media_v1_GetThumbInfoResponse(arg) {
+  if (!(arg instanceof media_v1_media_pb.GetThumbInfoResponse)) {
+    throw new Error('Expected argument of type sagittarius.media.v1.GetThumbInfoResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_media_v1_GetThumbInfoResponse(buffer_arg) {
+  return media_v1_media_pb.GetThumbInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sagittarius_media_v1_GetThumbRequest(arg) {
   if (!(arg instanceof media_v1_media_pb.GetThumbRequest)) {
     throw new Error('Expected argument of type sagittarius.media.v1.GetThumbRequest');
@@ -63,6 +74,17 @@ function serialize_sagittarius_media_v1_GetThumbRequest(arg) {
 
 function deserialize_sagittarius_media_v1_GetThumbRequest(buffer_arg) {
   return media_v1_media_pb.GetThumbRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sagittarius_media_v1_GetThumbResponse(arg) {
+  if (!(arg instanceof media_v1_media_pb.GetThumbResponse)) {
+    throw new Error('Expected argument of type sagittarius.media.v1.GetThumbResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_media_v1_GetThumbResponse(buffer_arg) {
+  return media_v1_media_pb.GetThumbResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sagittarius_media_v1_Info(arg) {
@@ -85,28 +107,6 @@ function serialize_sagittarius_media_v1_PutThumbRequest(arg) {
 
 function deserialize_sagittarius_media_v1_PutThumbRequest(buffer_arg) {
   return media_v1_media_pb.PutThumbRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sagittarius_media_v1_ThumbInfoResponse(arg) {
-  if (!(arg instanceof media_v1_media_pb.ThumbInfoResponse)) {
-    throw new Error('Expected argument of type sagittarius.media.v1.ThumbInfoResponse');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_sagittarius_media_v1_ThumbInfoResponse(buffer_arg) {
-  return media_v1_media_pb.ThumbInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sagittarius_media_v1_ThumbListResponse(arg) {
-  if (!(arg instanceof media_v1_media_pb.ThumbListResponse)) {
-    throw new Error('Expected argument of type sagittarius.media.v1.ThumbListResponse');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_sagittarius_media_v1_ThumbListResponse(buffer_arg) {
-  return media_v1_media_pb.ThumbListResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sagittarius_media_v1_UpdateInfoRequest(arg) {
@@ -153,11 +153,11 @@ var MediaService = exports.MediaService = {
     requestStream: false,
     responseStream: false,
     requestType: media_v1_media_pb.GetThumbInfoRequest,
-    responseType: media_v1_media_pb.ThumbInfoResponse,
+    responseType: media_v1_media_pb.GetThumbInfoResponse,
     requestSerialize: serialize_sagittarius_media_v1_GetThumbInfoRequest,
     requestDeserialize: deserialize_sagittarius_media_v1_GetThumbInfoRequest,
-    responseSerialize: serialize_sagittarius_media_v1_ThumbInfoResponse,
-    responseDeserialize: deserialize_sagittarius_media_v1_ThumbInfoResponse,
+    responseSerialize: serialize_sagittarius_media_v1_GetThumbInfoResponse,
+    responseDeserialize: deserialize_sagittarius_media_v1_GetThumbInfoResponse,
   },
   // Query thumb list
   getThumb: {
@@ -165,11 +165,11 @@ var MediaService = exports.MediaService = {
     requestStream: false,
     responseStream: false,
     requestType: media_v1_media_pb.GetThumbRequest,
-    responseType: media_v1_media_pb.ThumbListResponse,
+    responseType: media_v1_media_pb.GetThumbResponse,
     requestSerialize: serialize_sagittarius_media_v1_GetThumbRequest,
     requestDeserialize: deserialize_sagittarius_media_v1_GetThumbRequest,
-    responseSerialize: serialize_sagittarius_media_v1_ThumbListResponse,
-    responseDeserialize: deserialize_sagittarius_media_v1_ThumbListResponse,
+    responseSerialize: serialize_sagittarius_media_v1_GetThumbResponse,
+    responseDeserialize: deserialize_sagittarius_media_v1_GetThumbResponse,
   },
   // Upload thumb
   putThumb: {

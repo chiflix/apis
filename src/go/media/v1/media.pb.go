@@ -233,8 +233,56 @@ func (m *UpdateInfoRequest) GetInfo() *Info {
 	return nil
 }
 
+type Thumb struct {
+	Payload              []byte   `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
+	MimeType             string   `protobuf:"bytes,2,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Thumb) Reset()         { *m = Thumb{} }
+func (m *Thumb) String() string { return proto.CompactTextString(m) }
+func (*Thumb) ProtoMessage()    {}
+func (*Thumb) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d7bdbb3b37c87733, []int{4}
+}
+
+func (m *Thumb) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Thumb.Unmarshal(m, b)
+}
+func (m *Thumb) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Thumb.Marshal(b, m, deterministic)
+}
+func (m *Thumb) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Thumb.Merge(m, src)
+}
+func (m *Thumb) XXX_Size() int {
+	return xxx_messageInfo_Thumb.Size(m)
+}
+func (m *Thumb) XXX_DiscardUnknown() {
+	xxx_messageInfo_Thumb.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Thumb proto.InternalMessageInfo
+
+func (m *Thumb) GetPayload() []byte {
+	if m != nil {
+		return m.Payload
+	}
+	return nil
+}
+
+func (m *Thumb) GetMimeType() string {
+	if m != nil {
+		return m.MimeType
+	}
+	return ""
+}
+
 type GetThumbInfoRequest struct {
 	MediaHash            string   `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	Total                float64  `protobuf:"fixed64,2,opt,name=total,proto3" json:"total,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -244,7 +292,7 @@ func (m *GetThumbInfoRequest) Reset()         { *m = GetThumbInfoRequest{} }
 func (m *GetThumbInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*GetThumbInfoRequest) ProtoMessage()    {}
 func (*GetThumbInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{4}
+	return fileDescriptor_d7bdbb3b37c87733, []int{5}
 }
 
 func (m *GetThumbInfoRequest) XXX_Unmarshal(b []byte) error {
@@ -272,105 +320,135 @@ func (m *GetThumbInfoRequest) GetMediaHash() string {
 	return ""
 }
 
-type ThumbInfoResponse struct {
-	Error                *status.Status          `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	Info                 *ThumbInfoResponse_Info `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
-	XXX_unrecognized     []byte                  `json:"-"`
-	XXX_sizecache        int32                   `json:"-"`
+func (m *GetThumbInfoRequest) GetTotal() float64 {
+	if m != nil {
+		return m.Total
+	}
+	return 0
 }
 
-func (m *ThumbInfoResponse) Reset()         { *m = ThumbInfoResponse{} }
-func (m *ThumbInfoResponse) String() string { return proto.CompactTextString(m) }
-func (*ThumbInfoResponse) ProtoMessage()    {}
-func (*ThumbInfoResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{5}
+type GetThumbInfoResponse struct {
+	Error                *status.Status                     `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	MediaHash            string                             `protobuf:"bytes,2,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	ThumbId              []int64                            `protobuf:"varint,3,rep,packed,name=thumb_id,json=thumbId,proto3" json:"thumb_id,omitempty"`
+	ThumbNeed            []*GetThumbInfoResponse_ThumbRange `protobuf:"bytes,4,rep,name=thumb_need,json=thumbNeed,proto3" json:"thumb_need,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                           `json:"-"`
+	XXX_unrecognized     []byte                             `json:"-"`
+	XXX_sizecache        int32                              `json:"-"`
 }
 
-func (m *ThumbInfoResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ThumbInfoResponse.Unmarshal(m, b)
-}
-func (m *ThumbInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ThumbInfoResponse.Marshal(b, m, deterministic)
-}
-func (m *ThumbInfoResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ThumbInfoResponse.Merge(m, src)
-}
-func (m *ThumbInfoResponse) XXX_Size() int {
-	return xxx_messageInfo_ThumbInfoResponse.Size(m)
-}
-func (m *ThumbInfoResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ThumbInfoResponse.DiscardUnknown(m)
+func (m *GetThumbInfoResponse) Reset()         { *m = GetThumbInfoResponse{} }
+func (m *GetThumbInfoResponse) String() string { return proto.CompactTextString(m) }
+func (*GetThumbInfoResponse) ProtoMessage()    {}
+func (*GetThumbInfoResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d7bdbb3b37c87733, []int{6}
 }
 
-var xxx_messageInfo_ThumbInfoResponse proto.InternalMessageInfo
+func (m *GetThumbInfoResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetThumbInfoResponse.Unmarshal(m, b)
+}
+func (m *GetThumbInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetThumbInfoResponse.Marshal(b, m, deterministic)
+}
+func (m *GetThumbInfoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetThumbInfoResponse.Merge(m, src)
+}
+func (m *GetThumbInfoResponse) XXX_Size() int {
+	return xxx_messageInfo_GetThumbInfoResponse.Size(m)
+}
+func (m *GetThumbInfoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetThumbInfoResponse.DiscardUnknown(m)
+}
 
-func (m *ThumbInfoResponse) GetError() *status.Status {
+var xxx_messageInfo_GetThumbInfoResponse proto.InternalMessageInfo
+
+func (m *GetThumbInfoResponse) GetError() *status.Status {
 	if m != nil {
 		return m.Error
 	}
 	return nil
 }
 
-func (m *ThumbInfoResponse) GetInfo() *ThumbInfoResponse_Info {
-	if m != nil {
-		return m.Info
-	}
-	return nil
-}
-
-type ThumbInfoResponse_Info struct {
-	MediaHash            string   `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
-	Have                 []int64  `protobuf:"varint,2,rep,packed,name=have,proto3" json:"have,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ThumbInfoResponse_Info) Reset()         { *m = ThumbInfoResponse_Info{} }
-func (m *ThumbInfoResponse_Info) String() string { return proto.CompactTextString(m) }
-func (*ThumbInfoResponse_Info) ProtoMessage()    {}
-func (*ThumbInfoResponse_Info) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{5, 0}
-}
-
-func (m *ThumbInfoResponse_Info) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ThumbInfoResponse_Info.Unmarshal(m, b)
-}
-func (m *ThumbInfoResponse_Info) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ThumbInfoResponse_Info.Marshal(b, m, deterministic)
-}
-func (m *ThumbInfoResponse_Info) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ThumbInfoResponse_Info.Merge(m, src)
-}
-func (m *ThumbInfoResponse_Info) XXX_Size() int {
-	return xxx_messageInfo_ThumbInfoResponse_Info.Size(m)
-}
-func (m *ThumbInfoResponse_Info) XXX_DiscardUnknown() {
-	xxx_messageInfo_ThumbInfoResponse_Info.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ThumbInfoResponse_Info proto.InternalMessageInfo
-
-func (m *ThumbInfoResponse_Info) GetMediaHash() string {
+func (m *GetThumbInfoResponse) GetMediaHash() string {
 	if m != nil {
 		return m.MediaHash
 	}
 	return ""
 }
 
-func (m *ThumbInfoResponse_Info) GetHave() []int64 {
+func (m *GetThumbInfoResponse) GetThumbId() []int64 {
 	if m != nil {
-		return m.Have
+		return m.ThumbId
 	}
 	return nil
+}
+
+func (m *GetThumbInfoResponse) GetThumbNeed() []*GetThumbInfoResponse_ThumbRange {
+	if m != nil {
+		return m.ThumbNeed
+	}
+	return nil
+}
+
+type GetThumbInfoResponse_ThumbRange struct {
+	Begin                float64  `protobuf:"fixed64,1,opt,name=begin,proto3" json:"begin,omitempty"`
+	End                  float64  `protobuf:"fixed64,2,opt,name=end,proto3" json:"end,omitempty"`
+	Interval             float64  `protobuf:"fixed64,3,opt,name=interval,proto3" json:"interval,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetThumbInfoResponse_ThumbRange) Reset()         { *m = GetThumbInfoResponse_ThumbRange{} }
+func (m *GetThumbInfoResponse_ThumbRange) String() string { return proto.CompactTextString(m) }
+func (*GetThumbInfoResponse_ThumbRange) ProtoMessage()    {}
+func (*GetThumbInfoResponse_ThumbRange) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d7bdbb3b37c87733, []int{6, 0}
+}
+
+func (m *GetThumbInfoResponse_ThumbRange) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetThumbInfoResponse_ThumbRange.Unmarshal(m, b)
+}
+func (m *GetThumbInfoResponse_ThumbRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetThumbInfoResponse_ThumbRange.Marshal(b, m, deterministic)
+}
+func (m *GetThumbInfoResponse_ThumbRange) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetThumbInfoResponse_ThumbRange.Merge(m, src)
+}
+func (m *GetThumbInfoResponse_ThumbRange) XXX_Size() int {
+	return xxx_messageInfo_GetThumbInfoResponse_ThumbRange.Size(m)
+}
+func (m *GetThumbInfoResponse_ThumbRange) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetThumbInfoResponse_ThumbRange.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetThumbInfoResponse_ThumbRange proto.InternalMessageInfo
+
+func (m *GetThumbInfoResponse_ThumbRange) GetBegin() float64 {
+	if m != nil {
+		return m.Begin
+	}
+	return 0
+}
+
+func (m *GetThumbInfoResponse_ThumbRange) GetEnd() float64 {
+	if m != nil {
+		return m.End
+	}
+	return 0
+}
+
+func (m *GetThumbInfoResponse_ThumbRange) GetInterval() float64 {
+	if m != nil {
+		return m.Interval
+	}
+	return 0
 }
 
 type PutThumbRequest struct {
 	MediaHash            string   `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
 	ThumbId              int64    `protobuf:"varint,2,opt,name=thumb_id,json=thumbId,proto3" json:"thumb_id,omitempty"`
-	Md5                  string   `protobuf:"bytes,3,opt,name=md5,proto3" json:"md5,omitempty"`
-	Payload              []byte   `protobuf:"bytes,4,opt,name=payload,proto3" json:"payload,omitempty"`
+	Thumb                *Thumb   `protobuf:"bytes,3,opt,name=thumb,proto3" json:"thumb,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -380,7 +458,7 @@ func (m *PutThumbRequest) Reset()         { *m = PutThumbRequest{} }
 func (m *PutThumbRequest) String() string { return proto.CompactTextString(m) }
 func (*PutThumbRequest) ProtoMessage()    {}
 func (*PutThumbRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{6}
+	return fileDescriptor_d7bdbb3b37c87733, []int{7}
 }
 
 func (m *PutThumbRequest) XXX_Unmarshal(b []byte) error {
@@ -415,16 +493,9 @@ func (m *PutThumbRequest) GetThumbId() int64 {
 	return 0
 }
 
-func (m *PutThumbRequest) GetMd5() string {
+func (m *PutThumbRequest) GetThumb() *Thumb {
 	if m != nil {
-		return m.Md5
-	}
-	return ""
-}
-
-func (m *PutThumbRequest) GetPayload() []byte {
-	if m != nil {
-		return m.Payload
+		return m.Thumb
 	}
 	return nil
 }
@@ -441,7 +512,7 @@ func (m *GetThumbRequest) Reset()         { *m = GetThumbRequest{} }
 func (m *GetThumbRequest) String() string { return proto.CompactTextString(m) }
 func (*GetThumbRequest) ProtoMessage()    {}
 func (*GetThumbRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{7}
+	return fileDescriptor_d7bdbb3b37c87733, []int{8}
 }
 
 func (m *GetThumbRequest) XXX_Unmarshal(b []byte) error {
@@ -476,96 +547,57 @@ func (m *GetThumbRequest) GetThumbId() []int64 {
 	return nil
 }
 
-type ThumbListResponse struct {
-	Error                *status.Status          `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	List                 *ThumbListResponse_List `protobuf:"bytes,2,opt,name=list,proto3" json:"list,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
-	XXX_unrecognized     []byte                  `json:"-"`
-	XXX_sizecache        int32                   `json:"-"`
+type GetThumbResponse struct {
+	Error                *status.Status   `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	MediaHash            string           `protobuf:"bytes,2,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	ThumbSet             map[int64]*Thumb `protobuf:"bytes,3,rep,name=thumb_set,json=thumbSet,proto3" json:"thumb_set,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
-func (m *ThumbListResponse) Reset()         { *m = ThumbListResponse{} }
-func (m *ThumbListResponse) String() string { return proto.CompactTextString(m) }
-func (*ThumbListResponse) ProtoMessage()    {}
-func (*ThumbListResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{8}
+func (m *GetThumbResponse) Reset()         { *m = GetThumbResponse{} }
+func (m *GetThumbResponse) String() string { return proto.CompactTextString(m) }
+func (*GetThumbResponse) ProtoMessage()    {}
+func (*GetThumbResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d7bdbb3b37c87733, []int{9}
 }
 
-func (m *ThumbListResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ThumbListResponse.Unmarshal(m, b)
+func (m *GetThumbResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetThumbResponse.Unmarshal(m, b)
 }
-func (m *ThumbListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ThumbListResponse.Marshal(b, m, deterministic)
+func (m *GetThumbResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetThumbResponse.Marshal(b, m, deterministic)
 }
-func (m *ThumbListResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ThumbListResponse.Merge(m, src)
+func (m *GetThumbResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetThumbResponse.Merge(m, src)
 }
-func (m *ThumbListResponse) XXX_Size() int {
-	return xxx_messageInfo_ThumbListResponse.Size(m)
+func (m *GetThumbResponse) XXX_Size() int {
+	return xxx_messageInfo_GetThumbResponse.Size(m)
 }
-func (m *ThumbListResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ThumbListResponse.DiscardUnknown(m)
+func (m *GetThumbResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetThumbResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ThumbListResponse proto.InternalMessageInfo
+var xxx_messageInfo_GetThumbResponse proto.InternalMessageInfo
 
-func (m *ThumbListResponse) GetError() *status.Status {
+func (m *GetThumbResponse) GetError() *status.Status {
 	if m != nil {
 		return m.Error
 	}
 	return nil
 }
 
-func (m *ThumbListResponse) GetList() *ThumbListResponse_List {
-	if m != nil {
-		return m.List
-	}
-	return nil
-}
-
-type ThumbListResponse_List struct {
-	MediaHash            string           `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
-	Thumb                map[int64][]byte `protobuf:"bytes,2,rep,name=thumb,proto3" json:"thumb,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
-}
-
-func (m *ThumbListResponse_List) Reset()         { *m = ThumbListResponse_List{} }
-func (m *ThumbListResponse_List) String() string { return proto.CompactTextString(m) }
-func (*ThumbListResponse_List) ProtoMessage()    {}
-func (*ThumbListResponse_List) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d7bdbb3b37c87733, []int{8, 0}
-}
-
-func (m *ThumbListResponse_List) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ThumbListResponse_List.Unmarshal(m, b)
-}
-func (m *ThumbListResponse_List) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ThumbListResponse_List.Marshal(b, m, deterministic)
-}
-func (m *ThumbListResponse_List) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ThumbListResponse_List.Merge(m, src)
-}
-func (m *ThumbListResponse_List) XXX_Size() int {
-	return xxx_messageInfo_ThumbListResponse_List.Size(m)
-}
-func (m *ThumbListResponse_List) XXX_DiscardUnknown() {
-	xxx_messageInfo_ThumbListResponse_List.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ThumbListResponse_List proto.InternalMessageInfo
-
-func (m *ThumbListResponse_List) GetMediaHash() string {
+func (m *GetThumbResponse) GetMediaHash() string {
 	if m != nil {
 		return m.MediaHash
 	}
 	return ""
 }
 
-func (m *ThumbListResponse_List) GetThumb() map[int64][]byte {
+func (m *GetThumbResponse) GetThumbSet() map[int64]*Thumb {
 	if m != nil {
-		return m.Thumb
+		return m.ThumbSet
 	}
 	return nil
 }
@@ -576,65 +608,70 @@ func init() {
 	proto.RegisterType((*TrackInfo)(nil), "sagittarius.media.v1.TrackInfo")
 	proto.RegisterType((*GetInfoRequest)(nil), "sagittarius.media.v1.GetInfoRequest")
 	proto.RegisterType((*UpdateInfoRequest)(nil), "sagittarius.media.v1.UpdateInfoRequest")
+	proto.RegisterType((*Thumb)(nil), "sagittarius.media.v1.Thumb")
 	proto.RegisterType((*GetThumbInfoRequest)(nil), "sagittarius.media.v1.GetThumbInfoRequest")
-	proto.RegisterType((*ThumbInfoResponse)(nil), "sagittarius.media.v1.ThumbInfoResponse")
-	proto.RegisterType((*ThumbInfoResponse_Info)(nil), "sagittarius.media.v1.ThumbInfoResponse.Info")
+	proto.RegisterType((*GetThumbInfoResponse)(nil), "sagittarius.media.v1.GetThumbInfoResponse")
+	proto.RegisterType((*GetThumbInfoResponse_ThumbRange)(nil), "sagittarius.media.v1.GetThumbInfoResponse.ThumbRange")
 	proto.RegisterType((*PutThumbRequest)(nil), "sagittarius.media.v1.PutThumbRequest")
 	proto.RegisterType((*GetThumbRequest)(nil), "sagittarius.media.v1.GetThumbRequest")
-	proto.RegisterType((*ThumbListResponse)(nil), "sagittarius.media.v1.ThumbListResponse")
-	proto.RegisterType((*ThumbListResponse_List)(nil), "sagittarius.media.v1.ThumbListResponse.List")
-	proto.RegisterMapType((map[int64][]byte)(nil), "sagittarius.media.v1.ThumbListResponse.List.ThumbEntry")
+	proto.RegisterType((*GetThumbResponse)(nil), "sagittarius.media.v1.GetThumbResponse")
+	proto.RegisterMapType((map[int64]*Thumb)(nil), "sagittarius.media.v1.GetThumbResponse.ThumbSetEntry")
 }
 
 func init() { proto.RegisterFile("media/v1/media.proto", fileDescriptor_d7bdbb3b37c87733) }
 
 var fileDescriptor_d7bdbb3b37c87733 = []byte{
-	// 709 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x55, 0x51, 0x4f, 0x13, 0x4f,
-	0x10, 0xff, 0x6f, 0xaf, 0x07, 0xed, 0x40, 0xa0, 0xec, 0x9f, 0x84, 0x7a, 0x42, 0x2c, 0x8b, 0x4a,
-	0x21, 0xe6, 0x2e, 0x2d, 0x1a, 0xa0, 0x4f, 0x4a, 0x68, 0xa0, 0x51, 0x02, 0x39, 0x8b, 0x31, 0x3e,
-	0x48, 0x16, 0xba, 0xd0, 0x0b, 0xa5, 0x77, 0xde, 0xed, 0xd5, 0x54, 0x42, 0x62, 0xf4, 0x99, 0x27,
-	0xbf, 0x87, 0xf1, 0xd9, 0xaf, 0xe1, 0x57, 0xf0, 0x43, 0xf8, 0x68, 0x76, 0xae, 0x85, 0x82, 0x6d,
-	0x29, 0xbc, 0xed, 0xcc, 0xcd, 0xcc, 0xef, 0x37, 0x33, 0xfb, 0xdb, 0x83, 0xc9, 0x13, 0x51, 0x71,
-	0xb8, 0xd5, 0xc8, 0x59, 0x78, 0x30, 0x3d, 0xdf, 0x95, 0x2e, 0x9d, 0x0c, 0xf8, 0x91, 0x23, 0x25,
-	0xf7, 0x9d, 0x30, 0x30, 0xa3, 0x0f, 0x8d, 0x9c, 0x31, 0x7d, 0xe4, 0xba, 0x47, 0x35, 0x61, 0x71,
-	0xcf, 0xb1, 0x78, 0xbd, 0xee, 0x4a, 0x2e, 0x1d, 0xb7, 0x1e, 0x44, 0x39, 0xc6, 0x54, 0xeb, 0xab,
-	0xef, 0x1d, 0x58, 0x81, 0xe4, 0x32, 0x6c, 0x7d, 0x60, 0xef, 0x21, 0x5e, 0xaa, 0x1f, 0xba, 0x74,
-	0x06, 0x00, 0x4b, 0xed, 0x55, 0x79, 0x50, 0x4d, 0x93, 0x0c, 0xc9, 0x26, 0xed, 0x24, 0x7a, 0x36,
-	0x79, 0x50, 0xa5, 0xcb, 0x30, 0x24, 0x7d, 0x7e, 0x70, 0x1c, 0xa4, 0x63, 0x19, 0x2d, 0x3b, 0x92,
-	0x7f, 0x60, 0x76, 0x23, 0x61, 0x96, 0x55, 0x8c, 0xaa, 0x67, 0xb7, 0xc2, 0xd9, 0x27, 0x48, 0x5e,
-	0x38, 0x69, 0x01, 0x74, 0xd9, 0xf4, 0x44, 0x80, 0xf5, 0xc7, 0xf2, 0x0f, 0x6f, 0x28, 0x62, 0x96,
-	0x9b, 0x9e, 0xb0, 0xa3, 0x14, 0x96, 0x83, 0xb8, 0x32, 0x69, 0x12, 0xf4, 0x37, 0xa5, 0xf5, 0xe2,
-	0x76, 0xea, 0x3f, 0x75, 0x7c, 0xb1, 0xbb, 0x5e, 0xda, 0x4e, 0x11, 0x9a, 0x80, 0x78, 0xb9, 0xf8,
-	0xb6, 0x9c, 0x8a, 0x29, 0xe7, 0x76, 0x79, 0xb3, 0x68, 0xa7, 0x34, 0x66, 0xc1, 0xd8, 0x86, 0x90,
-	0x48, 0x47, 0x7c, 0x08, 0x45, 0x20, 0x6f, 0xe8, 0x92, 0xed, 0xc3, 0xc4, 0xae, 0x57, 0xe1, 0x52,
-	0x0c, 0x9e, 0x43, 0x4d, 0x88, 0x3b, 0xf5, 0x43, 0x37, 0x1d, 0xcb, 0x90, 0xec, 0x48, 0xde, 0xe8,
-	0xde, 0x12, 0xd6, 0xc3, 0x38, 0xf6, 0x14, 0xfe, 0xdf, 0x10, 0xb2, 0x5c, 0x0d, 0x4f, 0xf6, 0x6f,
-	0xc1, 0xec, 0x27, 0x81, 0x89, 0x8e, 0x9c, 0xc0, 0x73, 0xeb, 0x81, 0xa0, 0x59, 0xd0, 0x85, 0xef,
-	0xbb, 0x3e, 0xc6, 0x8f, 0xe4, 0xa9, 0x19, 0x6d, 0xd9, 0xf4, 0xbd, 0x03, 0xf3, 0x35, 0x6e, 0xd9,
-	0x8e, 0x02, 0xe8, 0xf3, 0x2b, 0x2c, 0x9f, 0xf4, 0x18, 0xfc, 0x75, 0x80, 0x0e, 0xde, 0xc6, 0xea,
-	0x60, 0x17, 0x85, 0x42, 0xbc, 0xca, 0x1b, 0x02, 0xaf, 0x89, 0x66, 0xe3, 0x99, 0x7d, 0x84, 0xf1,
-	0x9d, 0x30, 0x6a, 0x79, 0xc0, 0xa1, 0xde, 0x83, 0x84, 0x54, 0xe1, 0x7b, 0x4e, 0x05, 0x29, 0x6b,
-	0xf6, 0x30, 0xda, 0xa5, 0x0a, 0x4d, 0x81, 0x76, 0x52, 0x79, 0x96, 0xd6, 0x30, 0x45, 0x1d, 0x69,
-	0x1a, 0x86, 0x3d, 0xde, 0xac, 0xb9, 0xbc, 0x92, 0x8e, 0x67, 0x48, 0x76, 0xd4, 0x6e, 0x9b, 0xec,
-	0x25, 0x8c, 0xb7, 0x67, 0x7d, 0x27, 0x60, 0xad, 0x03, 0x98, 0xfd, 0x88, 0xb5, 0x56, 0xf0, 0xca,
-	0x09, 0xe4, 0xdd, 0x56, 0x50, 0x73, 0x02, 0x39, 0xc0, 0x0a, 0x3a, 0x01, 0x4c, 0x34, 0x30, 0xd3,
-	0xf8, 0x4e, 0x20, 0xae, 0xcc, 0x9b, 0x9a, 0xd8, 0x02, 0x1d, 0x49, 0xb7, 0xb4, 0xba, 0x7c, 0x1b,
-	0xa8, 0xc8, 0x5d, 0xac, 0x4b, 0xbf, 0x69, 0x47, 0x55, 0x8c, 0x15, 0x80, 0x4b, 0xa7, 0x9a, 0xff,
-	0xb1, 0x68, 0x22, 0xa8, 0x66, 0xab, 0x23, 0x9d, 0x04, 0xbd, 0xc1, 0x6b, 0xa1, 0xc0, 0xce, 0x46,
-	0xed, 0xc8, 0x28, 0xc4, 0x56, 0x48, 0xfe, 0x5c, 0x07, 0x7d, 0x4b, 0xe1, 0x51, 0x0f, 0x86, 0x5b,
-	0x52, 0xa4, 0x3d, 0x54, 0x7f, 0x55, 0xa9, 0x46, 0x1f, 0x21, 0xb1, 0xb9, 0x2f, 0xbf, 0x7e, 0x7f,
-	0x8b, 0xcd, 0xd0, 0xfb, 0x17, 0x2f, 0xa3, 0x75, 0x7a, 0x39, 0x8f, 0x33, 0x4b, 0xdd, 0x57, 0xda,
-	0x04, 0xb8, 0xd4, 0x32, 0x9d, 0xef, 0x5e, 0xee, 0x1f, 0xb5, 0xf7, 0xc5, 0x7d, 0x8c, 0xb8, 0x19,
-	0xd6, 0x0f, 0xb7, 0x40, 0x16, 0xe9, 0x39, 0x81, 0xd1, 0x4e, 0x8d, 0xd3, 0x85, 0x9e, 0x2d, 0x5f,
-	0x7f, 0x07, 0x8c, 0xf9, 0x01, 0xa5, 0xc9, 0x16, 0x90, 0xcc, 0x1c, 0x9d, 0xed, 0x41, 0x06, 0x77,
-	0x17, 0x8d, 0xe2, 0x2b, 0x81, 0x44, 0x1b, 0x8b, 0x3e, 0xea, 0xcf, 0x65, 0x10, 0x1e, 0x9d, 0x97,
-	0x86, 0xcd, 0x23, 0x8f, 0x59, 0x36, 0xdd, 0x8f, 0x87, 0x9a, 0xca, 0x67, 0x02, 0x89, 0xf6, 0x33,
-	0xd0, 0x8b, 0xc5, 0xb5, 0x67, 0xc2, 0xe8, 0x22, 0x27, 0xb6, 0x8a, 0x80, 0x4b, 0xcc, 0xec, 0xdb,
-	0xf8, 0x69, 0x5b, 0xc6, 0x67, 0x56, 0xe8, 0xa9, 0xc7, 0xa0, 0x40, 0x16, 0xd7, 0x72, 0x30, 0xc5,
-	0x9d, 0xae, 0xc8, 0x6b, 0x80, 0xf7, 0x74, 0x47, 0xfd, 0x13, 0x77, 0xc8, 0x3b, 0x1d, 0xfd, 0x7f,
-	0x08, 0xd9, 0x1f, 0xc2, 0xdf, 0xe4, 0xd2, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0xbf, 0xfb, 0xba,
-	0xe0, 0x8b, 0x07, 0x00, 0x00,
+	// 788 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0x5f, 0x4f, 0x2b, 0x45,
+	0x14, 0x77, 0x77, 0xbb, 0xd0, 0x9e, 0x22, 0xd4, 0xb1, 0x09, 0x75, 0x81, 0x58, 0x06, 0x84, 0xc2,
+	0xc3, 0x6e, 0x5a, 0x34, 0x6a, 0x1f, 0x4c, 0x24, 0x34, 0x50, 0x8d, 0x52, 0x97, 0x62, 0x88, 0x0f,
+	0x36, 0x53, 0x76, 0x68, 0x37, 0xb4, 0xbb, 0xeb, 0xee, 0xb4, 0x49, 0x25, 0x18, 0xc3, 0x93, 0x6f,
+	0x9a, 0xf8, 0x0d, 0xfc, 0x4a, 0x7e, 0x05, 0x3f, 0x84, 0x8f, 0x37, 0x73, 0xb6, 0xa5, 0x85, 0xdb,
+	0x96, 0xde, 0x9b, 0xfb, 0x36, 0x73, 0xce, 0xec, 0xef, 0xf7, 0x3b, 0x7f, 0x17, 0xb2, 0x5d, 0xee,
+	0xb8, 0xcc, 0xea, 0x17, 0x2d, 0x3c, 0x98, 0x41, 0xe8, 0x0b, 0x9f, 0x64, 0x23, 0xd6, 0x72, 0x85,
+	0x60, 0xa1, 0xdb, 0x8b, 0xcc, 0xd8, 0xd1, 0x2f, 0x1a, 0x9b, 0x2d, 0xdf, 0x6f, 0x75, 0xb8, 0xc5,
+	0x02, 0xd7, 0x62, 0x9e, 0xe7, 0x0b, 0x26, 0x5c, 0xdf, 0x8b, 0xe2, 0x6f, 0x8c, 0xf5, 0xa1, 0x37,
+	0x0c, 0xae, 0xad, 0x48, 0x30, 0xd1, 0x1b, 0x3a, 0xe8, 0xcf, 0x90, 0xa8, 0x7a, 0x37, 0x3e, 0xd9,
+	0x02, 0x40, 0xa8, 0x46, 0x9b, 0x45, 0xed, 0x9c, 0x92, 0x57, 0x0a, 0x29, 0x3b, 0x85, 0x96, 0x33,
+	0x16, 0xb5, 0xc9, 0xe7, 0xb0, 0x24, 0x42, 0x76, 0x7d, 0x1b, 0xe5, 0xd4, 0xbc, 0x56, 0x48, 0x97,
+	0x3e, 0x36, 0xa7, 0x89, 0x30, 0xeb, 0xf2, 0x8d, 0xc4, 0xb3, 0x87, 0xcf, 0xe9, 0xaf, 0x90, 0x7a,
+	0x34, 0x92, 0x32, 0xe8, 0x62, 0x10, 0xf0, 0x08, 0xf1, 0x57, 0x4b, 0xbb, 0x2f, 0x80, 0x98, 0xf5,
+	0x41, 0xc0, 0xed, 0xf8, 0x13, 0x5a, 0x84, 0x84, 0xbc, 0x92, 0x14, 0xe8, 0x3f, 0x56, 0x4f, 0x2a,
+	0xe7, 0x99, 0xf7, 0xe4, 0xf1, 0xeb, 0xcb, 0x93, 0xea, 0x79, 0x46, 0x21, 0x49, 0x48, 0xd4, 0x2b,
+	0x57, 0xf5, 0x8c, 0x2a, 0x8d, 0xe7, 0xf5, 0xb3, 0x8a, 0x9d, 0xd1, 0xa8, 0x05, 0xab, 0xa7, 0x5c,
+	0xa0, 0x1c, 0xfe, 0x4b, 0x8f, 0x47, 0xe2, 0x85, 0x28, 0x69, 0x13, 0x3e, 0xb8, 0x0c, 0x1c, 0x26,
+	0xf8, 0xe2, 0xdf, 0x10, 0x13, 0x12, 0xae, 0x77, 0xe3, 0xe7, 0xd4, 0xbc, 0x52, 0x48, 0x97, 0x8c,
+	0xe9, 0x21, 0x21, 0x1e, 0xbe, 0xa3, 0x5f, 0x81, 0x5e, 0x6f, 0xf7, 0xba, 0x4d, 0x92, 0x83, 0xe5,
+	0x80, 0x0d, 0x3a, 0x3e, 0x73, 0x10, 0x74, 0xc5, 0x1e, 0x5d, 0xc9, 0x06, 0xa4, 0xba, 0x6e, 0x97,
+	0x37, 0x64, 0xe0, 0x88, 0x9b, 0xb2, 0x93, 0xd2, 0x20, 0xe3, 0xa7, 0xdf, 0xc0, 0x87, 0xa7, 0x5c,
+	0x20, 0xc4, 0x1b, 0xa8, 0xcc, 0x82, 0x2e, 0x7c, 0xc1, 0x3a, 0x08, 0xa7, 0xd8, 0xf1, 0x85, 0xfe,
+	0xa3, 0x42, 0xf6, 0x29, 0x58, 0x14, 0xf8, 0x5e, 0xc4, 0x49, 0x01, 0x74, 0x1e, 0x86, 0x7e, 0x88,
+	0x40, 0xe9, 0x12, 0x31, 0xe3, 0xf6, 0x31, 0xc3, 0xe0, 0xda, 0xbc, 0xc0, 0xf6, 0xb1, 0xe3, 0x07,
+	0xcf, 0x78, 0xd5, 0xe7, 0xbc, 0x1f, 0x41, 0x52, 0x48, 0xf4, 0x86, 0xeb, 0xe4, 0xb4, 0xbc, 0x56,
+	0xd0, 0xec, 0x65, 0xbc, 0x57, 0x1d, 0x52, 0x07, 0x88, 0x5d, 0x1e, 0xe7, 0x4e, 0x2e, 0x81, 0x6d,
+	0xf5, 0xd9, 0xf4, 0xf4, 0x4d, 0xd3, 0x68, 0xa2, 0xc5, 0x66, 0x5e, 0x8b, 0xdb, 0x29, 0x04, 0xfa,
+	0x9e, 0x73, 0xc7, 0xa8, 0x01, 0x8c, 0x1d, 0x32, 0xec, 0x26, 0x6f, 0xb9, 0x1e, 0xc6, 0xa1, 0xd8,
+	0xf1, 0x85, 0x64, 0x40, 0xe3, 0x9e, 0x33, 0x4c, 0x85, 0x3c, 0x12, 0x03, 0x92, 0xae, 0x27, 0x78,
+	0xd8, 0x67, 0x9d, 0x9c, 0x86, 0xe6, 0xc7, 0x3b, 0xfd, 0x0d, 0xd6, 0x6a, 0xbd, 0x98, 0x7f, 0xc1,
+	0x64, 0x4f, 0x06, 0x2d, 0x49, 0x26, 0x82, 0x2e, 0x82, 0x8e, 0x47, 0x64, 0x49, 0x97, 0x36, 0x66,
+	0x4c, 0x00, 0x92, 0xc5, 0x2f, 0xe9, 0xb7, 0xb0, 0x36, 0x8a, 0xff, 0xad, 0xf8, 0x27, 0x93, 0x4e,
+	0xff, 0x50, 0x21, 0x33, 0x46, 0x7b, 0xd7, 0xd5, 0xfe, 0x01, 0xe2, 0x4a, 0x34, 0x22, 0x2e, 0xb0,
+	0xdc, 0xe9, 0xd2, 0xa7, 0xf3, 0x2b, 0xfa, 0xb4, 0x9a, 0x17, 0x5c, 0x54, 0x3c, 0x11, 0x0e, 0xec,
+	0x58, 0xff, 0x05, 0x17, 0xc6, 0x15, 0xbc, 0xff, 0xc4, 0x25, 0x8b, 0x77, 0xcb, 0x07, 0x28, 0x55,
+	0xb3, 0xe5, 0x51, 0xe6, 0xb4, 0xcf, 0x3a, 0x3d, 0x3e, 0x1c, 0xc1, 0xf9, 0x39, 0xc5, 0x97, 0x65,
+	0xf5, 0x0b, 0xa5, 0xf4, 0xa7, 0x0e, 0xfa, 0x77, 0xd2, 0x4b, 0x02, 0x58, 0x1e, 0xee, 0x09, 0xb2,
+	0x3b, 0x53, 0xee, 0xc4, 0xb0, 0x19, 0x73, 0xa6, 0x9c, 0xee, 0x3c, 0xfc, 0xfb, 0xdf, 0xdf, 0xea,
+	0x16, 0xd9, 0x78, 0x5c, 0xdb, 0xd6, 0xdd, 0x38, 0x67, 0xf7, 0x96, 0x5c, 0x02, 0x64, 0x00, 0x30,
+	0x5e, 0x34, 0x64, 0x7f, 0x3a, 0xdc, 0x6b, 0xab, 0x68, 0x2e, 0xef, 0x1e, 0xf2, 0xe6, 0xe9, 0x3c,
+	0xde, 0xb2, 0x72, 0x48, 0xfe, 0x52, 0x60, 0x65, 0x72, 0x9e, 0xc8, 0xc1, 0x22, 0x33, 0x17, 0xf3,
+	0x1f, 0x2e, 0x3e, 0x9e, 0xf4, 0x00, 0xf5, 0xec, 0x90, 0xed, 0x19, 0x7a, 0xb0, 0xc2, 0x71, 0x36,
+	0x1e, 0x14, 0x48, 0x8e, 0x30, 0xc8, 0x27, 0x2f, 0x35, 0x4c, 0x2c, 0x65, 0x6f, 0xb1, 0xbe, 0xa2,
+	0xfb, 0x28, 0x63, 0x9b, 0x6e, 0xce, 0x93, 0x21, 0xf3, 0xf2, 0xbb, 0x02, 0xc9, 0xd1, 0x9c, 0xcf,
+	0x12, 0xf1, 0x6c, 0x0f, 0x18, 0x53, 0x26, 0x85, 0x7e, 0x89, 0x84, 0x47, 0xd4, 0x9c, 0x1b, 0xf7,
+	0xdd, 0x68, 0x40, 0xef, 0xad, 0x5e, 0x20, 0x97, 0x7e, 0x59, 0x39, 0x3c, 0x2e, 0xc2, 0x3a, 0x73,
+	0xa7, 0x32, 0x1f, 0x03, 0x76, 0x6a, 0x4d, 0xfe, 0xb2, 0x6b, 0xca, 0x4f, 0x3a, 0xda, 0xff, 0x57,
+	0x94, 0xe6, 0x12, 0xfe, 0xc5, 0x8f, 0x5e, 0x05, 0x00, 0x00, 0xff, 0xff, 0xa1, 0x96, 0x79, 0x05,
+	0x2a, 0x08, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -654,9 +691,9 @@ type MediaClient interface {
 	//
 	UpdateInfo(ctx context.Context, in *UpdateInfoRequest, opts ...grpc.CallOption) (*Info, error)
 	// Query thumb exist by media identity
-	GetThumbInfo(ctx context.Context, in *GetThumbInfoRequest, opts ...grpc.CallOption) (*ThumbInfoResponse, error)
+	GetThumbInfo(ctx context.Context, in *GetThumbInfoRequest, opts ...grpc.CallOption) (*GetThumbInfoResponse, error)
 	// Query thumb list
-	GetThumb(ctx context.Context, in *GetThumbRequest, opts ...grpc.CallOption) (*ThumbListResponse, error)
+	GetThumb(ctx context.Context, in *GetThumbRequest, opts ...grpc.CallOption) (*GetThumbResponse, error)
 	// Upload thumb
 	PutThumb(ctx context.Context, in *PutThumbRequest, opts ...grpc.CallOption) (*status.Status, error)
 }
@@ -687,8 +724,8 @@ func (c *mediaClient) UpdateInfo(ctx context.Context, in *UpdateInfoRequest, opt
 	return out, nil
 }
 
-func (c *mediaClient) GetThumbInfo(ctx context.Context, in *GetThumbInfoRequest, opts ...grpc.CallOption) (*ThumbInfoResponse, error) {
-	out := new(ThumbInfoResponse)
+func (c *mediaClient) GetThumbInfo(ctx context.Context, in *GetThumbInfoRequest, opts ...grpc.CallOption) (*GetThumbInfoResponse, error) {
+	out := new(GetThumbInfoResponse)
 	err := c.cc.Invoke(ctx, "/sagittarius.media.v1.Media/GetThumbInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -696,8 +733,8 @@ func (c *mediaClient) GetThumbInfo(ctx context.Context, in *GetThumbInfoRequest,
 	return out, nil
 }
 
-func (c *mediaClient) GetThumb(ctx context.Context, in *GetThumbRequest, opts ...grpc.CallOption) (*ThumbListResponse, error) {
-	out := new(ThumbListResponse)
+func (c *mediaClient) GetThumb(ctx context.Context, in *GetThumbRequest, opts ...grpc.CallOption) (*GetThumbResponse, error) {
+	out := new(GetThumbResponse)
 	err := c.cc.Invoke(ctx, "/sagittarius.media.v1.Media/GetThumb", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -721,9 +758,9 @@ type MediaServer interface {
 	//
 	UpdateInfo(context.Context, *UpdateInfoRequest) (*Info, error)
 	// Query thumb exist by media identity
-	GetThumbInfo(context.Context, *GetThumbInfoRequest) (*ThumbInfoResponse, error)
+	GetThumbInfo(context.Context, *GetThumbInfoRequest) (*GetThumbInfoResponse, error)
 	// Query thumb list
-	GetThumb(context.Context, *GetThumbRequest) (*ThumbListResponse, error)
+	GetThumb(context.Context, *GetThumbRequest) (*GetThumbResponse, error)
 	// Upload thumb
 	PutThumb(context.Context, *PutThumbRequest) (*status.Status, error)
 }

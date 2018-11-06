@@ -33,23 +33,23 @@ interface IMediaService_IUpdateInfo extends grpc.MethodDefinition<media_v1_media
     responseSerialize: grpc.serialize<media_v1_media_pb.Info>;
     responseDeserialize: grpc.deserialize<media_v1_media_pb.Info>;
 }
-interface IMediaService_IGetThumbInfo extends grpc.MethodDefinition<media_v1_media_pb.GetThumbInfoRequest, media_v1_media_pb.ThumbInfoResponse> {
+interface IMediaService_IGetThumbInfo extends grpc.MethodDefinition<media_v1_media_pb.GetThumbInfoRequest, media_v1_media_pb.GetThumbInfoResponse> {
     path: string; // "/sagittarius.media.v1.Media/GetThumbInfo"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<media_v1_media_pb.GetThumbInfoRequest>;
     requestDeserialize: grpc.deserialize<media_v1_media_pb.GetThumbInfoRequest>;
-    responseSerialize: grpc.serialize<media_v1_media_pb.ThumbInfoResponse>;
-    responseDeserialize: grpc.deserialize<media_v1_media_pb.ThumbInfoResponse>;
+    responseSerialize: grpc.serialize<media_v1_media_pb.GetThumbInfoResponse>;
+    responseDeserialize: grpc.deserialize<media_v1_media_pb.GetThumbInfoResponse>;
 }
-interface IMediaService_IGetThumb extends grpc.MethodDefinition<media_v1_media_pb.GetThumbRequest, media_v1_media_pb.ThumbListResponse> {
+interface IMediaService_IGetThumb extends grpc.MethodDefinition<media_v1_media_pb.GetThumbRequest, media_v1_media_pb.GetThumbResponse> {
     path: string; // "/sagittarius.media.v1.Media/GetThumb"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<media_v1_media_pb.GetThumbRequest>;
     requestDeserialize: grpc.deserialize<media_v1_media_pb.GetThumbRequest>;
-    responseSerialize: grpc.serialize<media_v1_media_pb.ThumbListResponse>;
-    responseDeserialize: grpc.deserialize<media_v1_media_pb.ThumbListResponse>;
+    responseSerialize: grpc.serialize<media_v1_media_pb.GetThumbResponse>;
+    responseDeserialize: grpc.deserialize<media_v1_media_pb.GetThumbResponse>;
 }
 interface IMediaService_IPutThumb extends grpc.MethodDefinition<media_v1_media_pb.PutThumbRequest, google_rpc_status_pb.Status> {
     path: string; // "/sagittarius.media.v1.Media/PutThumb"
@@ -66,8 +66,8 @@ export const MediaService: IMediaService;
 export interface IMediaServer {
     getInfo: grpc.handleUnaryCall<media_v1_media_pb.GetInfoRequest, media_v1_media_pb.Info>;
     updateInfo: grpc.handleUnaryCall<media_v1_media_pb.UpdateInfoRequest, media_v1_media_pb.Info>;
-    getThumbInfo: grpc.handleUnaryCall<media_v1_media_pb.GetThumbInfoRequest, media_v1_media_pb.ThumbInfoResponse>;
-    getThumb: grpc.handleUnaryCall<media_v1_media_pb.GetThumbRequest, media_v1_media_pb.ThumbListResponse>;
+    getThumbInfo: grpc.handleUnaryCall<media_v1_media_pb.GetThumbInfoRequest, media_v1_media_pb.GetThumbInfoResponse>;
+    getThumb: grpc.handleUnaryCall<media_v1_media_pb.GetThumbRequest, media_v1_media_pb.GetThumbResponse>;
     putThumb: grpc.handleUnaryCall<media_v1_media_pb.PutThumbRequest, google_rpc_status_pb.Status>;
 }
 
@@ -78,12 +78,12 @@ export interface IMediaClient {
     updateInfo(request: media_v1_media_pb.UpdateInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
     updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
     updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbInfoResponse) => void): grpc.ClientUnaryCall;
-    getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbInfoResponse) => void): grpc.ClientUnaryCall;
-    getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbInfoResponse) => void): grpc.ClientUnaryCall;
-    getThumb(request: media_v1_media_pb.GetThumbRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbListResponse) => void): grpc.ClientUnaryCall;
-    getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbListResponse) => void): grpc.ClientUnaryCall;
-    getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbListResponse) => void): grpc.ClientUnaryCall;
+    getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.GetThumbInfoResponse) => void): grpc.ClientUnaryCall;
+    getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.GetThumbInfoResponse) => void): grpc.ClientUnaryCall;
+    getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.GetThumbInfoResponse) => void): grpc.ClientUnaryCall;
+    getThumb(request: media_v1_media_pb.GetThumbRequest, callback: (error: Error | null, response: media_v1_media_pb.GetThumbResponse) => void): grpc.ClientUnaryCall;
+    getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.GetThumbResponse) => void): grpc.ClientUnaryCall;
+    getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.GetThumbResponse) => void): grpc.ClientUnaryCall;
     putThumb(request: media_v1_media_pb.PutThumbRequest, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
     putThumb(request: media_v1_media_pb.PutThumbRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
     putThumb(request: media_v1_media_pb.PutThumbRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
@@ -97,12 +97,12 @@ export class MediaClient extends grpc.Client implements IMediaClient {
     public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
     public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
     public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbInfoResponse) => void): grpc.ClientUnaryCall;
-    public getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbInfoResponse) => void): grpc.ClientUnaryCall;
-    public getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbInfoResponse) => void): grpc.ClientUnaryCall;
-    public getThumb(request: media_v1_media_pb.GetThumbRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbListResponse) => void): grpc.ClientUnaryCall;
-    public getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbListResponse) => void): grpc.ClientUnaryCall;
-    public getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbListResponse) => void): grpc.ClientUnaryCall;
+    public getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.GetThumbInfoResponse) => void): grpc.ClientUnaryCall;
+    public getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.GetThumbInfoResponse) => void): grpc.ClientUnaryCall;
+    public getThumbInfo(request: media_v1_media_pb.GetThumbInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.GetThumbInfoResponse) => void): grpc.ClientUnaryCall;
+    public getThumb(request: media_v1_media_pb.GetThumbRequest, callback: (error: Error | null, response: media_v1_media_pb.GetThumbResponse) => void): grpc.ClientUnaryCall;
+    public getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.GetThumbResponse) => void): grpc.ClientUnaryCall;
+    public getThumb(request: media_v1_media_pb.GetThumbRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.GetThumbResponse) => void): grpc.ClientUnaryCall;
     public putThumb(request: media_v1_media_pb.PutThumbRequest, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
     public putThumb(request: media_v1_media_pb.PutThumbRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
     public putThumb(request: media_v1_media_pb.PutThumbRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
