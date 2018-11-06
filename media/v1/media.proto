@@ -102,19 +102,15 @@ message UpdateInfoRequest {
 }
 
 message ThumbRange {
-  int64 begin_time = 1;
-  int64 over_time = 2;
-  int64 interval =3;
+  double begin = 1;
+  double end = 2;
+  double interval = 3;
 }
 
-message Thumb {
-  bytes context =1;
-  string ext = 2;
-}
 
 message GetThumbInfoRequest {
   string media_hash = 1;
-  int64 total_time = 2;
+  double total = 2;
 }
 
 
@@ -139,6 +135,11 @@ message GetThumbRequest {
 }
 
 message GetThumbResponse {
+  message Thumb {
+    bytes content = 1;
+    string ext = 2;
+  }
+
   google.rpc.Status error = 1;
 
   string media_hash = 2;
