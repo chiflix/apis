@@ -129,7 +129,7 @@ message GetThumbInfoResponse {
 message PutThumbRequest {
   string media_hash = 1;
   int64 thumb_id = 2;
-  string ext = 3;
+  string mime_type = 3;
   bytes payload = 4;
 }
 
