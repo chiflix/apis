@@ -101,20 +101,14 @@ message UpdateInfoRequest {
   Info info = 2;
 }
 
-
-message Thumb {
-  bytes payload = 1;
-  string mime_type = 2;
-}
-
 message GetThumbInfoRequest {
   string media_hash = 1;
-  double total = 2;
+  double media_length = 2;
 }
 
 
 message GetThumbInfoResponse {
-  message ThumbRange {
+  message TimeRange {
     double begin = 1;
     double end = 2;
     double interval = 3;
@@ -123,19 +117,24 @@ message GetThumbInfoResponse {
   google.rpc.Status error = 1;
 
   string media_hash = 2;
-  repeated int64 thumb_id = 3;
-  repeated ThumbRange thumb_need = 4;
+  repeated int64 timestamp = 3;
+  repeated TimeRange thumb_need = 4;
+}
+
+message Thumb {
+  bytes payload = 1;
+  string mime_type = 2;
 }
 
 message PutThumbRequest {
   string media_hash = 1;
-  int64 thumb_id = 2;
+  int64 timestamp = 2;
   Thumb thumb = 3;
 }
 
 message GetThumbRequest {
   string media_hash = 1;
-  repeated int64 thumb_id = 2;
+  repeated int64 timestamp = 2;
 }
 
 message GetThumbResponse {
