@@ -44,14 +44,14 @@ service Media {
   };
 
   // Query thumb exist by media identity
-  rpc GetThumbInfo(GetThumbInfoRequest) returns (ThumbInfoResponse) {
+  rpc GetThumbInfo(GetThumbInfoRequest) returns (GetThumbInfoResponse) {
     option (google.api.http) = {
       get: "/v1/media/{media_hash}/thumb/info"
     };
   };
 
   // Query thumb list
-  rpc GetThumb(GetThumbRequest) returns (ThumbListResponse) {
+  rpc GetThumb(GetThumbRequest) returns (GetThumbResponse) {
     option (google.api.http) = {
       post: "/v1/media/{media_hash}/thumb"
       body: "*"
@@ -101,26 +101,35 @@ message UpdateInfoRequest {
   Info info = 2;
 }
 
+message ThumbRange {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  int64 interval =3;
+}
+
+message Thumb {
+  bytes context =1;
+  string ext = 2;
+}
+
 message GetThumbInfoRequest {
   string media_hash = 1;
+  int64 total_time = 2;
 }
 
 
-message ThumbInfoResponse {
-  message Info {
-    string media_hash = 1;
-    repeated int64 have = 2;
-  }
-
+message GetThumbInfoResponse {
   google.rpc.Status error = 1;
 
-  Info info = 2;
+  string media_hash = 2;
+  repeated int64 children = 3;
+  repeated ThumbRange thumb_need = 4;
 }
 
 message PutThumbRequest {
   string media_hash = 1;
   int64 thumb_id = 2;
-  string md5 = 3;
+  string ext = 3;
   bytes payload = 4;
 }
 
@@ -129,13 +138,9 @@ message GetThumbRequest {
   repeated int64 thumb_id = 2;
 }
 
-message ThumbListResponse {
-  message List {
-    string media_hash = 1;
-    map<int64, bytes> thumb = 2;
-  }
-
+message GetThumbResponse {
   google.rpc.Status error = 1;
 
-  List list = 2;
+  string media_hash = 2;
+  map<int64, Thumb> thumb_set = 3;
 }
