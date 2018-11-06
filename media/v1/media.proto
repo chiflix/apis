@@ -102,8 +102,8 @@ message UpdateInfoRequest {
 }
 
 message ThumbRange {
-  int64 start_time = 1;
-  int64 end_time = 2;
+  int64 begin_time = 1;
+  int64 over_time = 2;
   int64 interval =3;
 }
 
