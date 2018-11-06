@@ -102,38 +102,50 @@ message UpdateInfoRequest {
 }
 
 message GetThumbInfoRequest {
+  // use hash to get thumb info
   string media_hash = 1;
+  // submit time length of the  media resource
   double media_length = 2;
 }
 
 
 message GetThumbInfoResponse {
+  // time range is used to tell the client the screenshot range
   message TimeRange {
+    // Range begin time
     double begin = 1;
+    // Range end time
     double end = 2;
+    // screenshot time interval
     double interval = 3;
   }
   
   google.rpc.Status error = 1;
 
   string media_hash = 2;
+  // tell the client what timestamps screenshot we have
   repeated int64 timestamp = 3;
+  // tell the client which thumb range we want
   repeated TimeRange thumb_need = 4;
 }
 
 message Thumb {
+  // Image content
   bytes payload = 1;
+  // Image file ext
   string mime_type = 2;
 }
 
 message PutThumbRequest {
   string media_hash = 1;
+  // thumb timestamp in media
   int64 timestamp = 2;
   Thumb thumb = 3;
 }
 
 message GetThumbRequest {
   string media_hash = 1;
+  // which thumb the client wants
   repeated int64 timestamp = 2;
 }
 
@@ -141,5 +153,6 @@ message GetThumbResponse {
   google.rpc.Status error = 1;
 
   string media_hash = 2;
+  // thumb list (only int64 can be used in map)
   map<int64, Thumb> thumb_set = 3;
 }
