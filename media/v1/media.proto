@@ -81,7 +81,7 @@ message Info {
 
   // Resource id of the media. It must have the format of "media/*/info".
   // For example: "media/1111-2222-3333-4444/info".
-  string media_hash = 1;
+  string   media_hash       = 1;
 
   repeated TrackInfo tracks = 2;
 
@@ -100,7 +100,7 @@ message UpdateInfoRequest {
   // quick hash of the media. For example: "media/1111-2222-3333-4444/info".
   string media_hash = 1;
   // the media info to be updated
-  Info info = 2;
+  Info   info       = 2;
 }
 
 // try to retrieve Thumbnails
@@ -132,13 +132,13 @@ message ThumbnailTimeRangesResponse {
   repeated TimeRange missings    = 4;
   // access token for read and/or write thumbnail by timestamp
   // session_token will not have write premission if there is not missing
-  string token                   = 5;
+  string   token                 = 5;
 }
 
 message ThumbnailRequest {
   string media_hash     = 1;
   // which thumbnail the client wants
-  oneof time {
+  oneof  time {
     TimeRange range     = 2;
     double    timestamp = 3;
   }
@@ -163,7 +163,7 @@ message ThumbnailResponse {
 }
 
 message UpdateThumbnailRequest {
-  string media_hash = 1;
+  string   media_hash = 1;
   // the thumbnails to be updated
   repeated Thumbnail thumbnails = 2;
   // access token for read and write thumbnail by timestamp
