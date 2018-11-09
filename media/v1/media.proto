@@ -127,7 +127,7 @@ message ThumbnailTimeRangesResponse {
   // time range is used to tell the client the screenshot range
   string   media_hash            = 2;
   // thumbnails that the server have, in time ranges
-  repeated TimeRange obtainables = 3;
+  repeated TimeRange 	availables = 3;
   // thumbnails that the server is missing and wanted, in time ranges
   repeated TimeRange missings    = 4;
   // access token for read and/or write thumbnail by timestamp
@@ -136,14 +136,14 @@ message ThumbnailTimeRangesResponse {
 }
 
 message ThumbnailRequest {
-  string media_hash   = 1;
+  string media_hash     = 1;
   // which thumbnail the client wants
   oneof time {
     TimeRange range     = 2;
     double    timestamp = 3;
   }
   // access token for read and write thumbnail by timestamp
-  string session_token = 4;
+  string session_token  = 4;
 }
 
 message Thumbnail {
