@@ -132,7 +132,7 @@ message ThumbnailTimeRangesResponse {
   repeated TimeRange missings    = 4;
   // access token for read and/or write thumbnail by timestamp
   // session_token will not have write premission if there is not missing
-  string session_token           = 5;
+  string token                   = 5;
 }
 
 message ThumbnailRequest {
@@ -143,7 +143,7 @@ message ThumbnailRequest {
     double    timestamp = 3;
   }
   // access token for read and write thumbnail by timestamp
-  string session_token  = 4;
+  string token          = 4;
 }
 
 message Thumbnail {
@@ -167,5 +167,5 @@ message UpdateThumbnailRequest {
   // the thumbnails to be updated
   repeated Thumbnail thumbnails = 2;
   // access token for read and write thumbnail by timestamp
-  string   session_token        = 3;
+  string   token                = 3;
 }
