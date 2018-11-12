@@ -17,6 +17,7 @@ syntax = "proto3";
 package sagittarius.media.v1;
 
 import "google/api/annotations.proto";
+import "google/rpc/status.proto";
 
 option cc_enable_arenas = true;
 option go_package = "media";
@@ -37,16 +38,50 @@ service Media {
   //
   rpc UpdateInfo(UpdateInfoRequest) returns (Info) {
     option (google.api.http) = {
-      post: "/v1/media/{media_hash}/info"
+      post: "/v1/media/{media_hash}/info/update"
+      body: "*"
+    };
+  };
+
+  // Query obtainable thumbnails time range and unavailable ones by media identity
+  rpc GetThumbnailTimeRanges(ThumbnailTimeRangesRequest) returns (ThumbnailTimeRangesResponse) {
+    option (google.api.http) = {
+      get: "/v1/media/{media_hash}/thumbnail/timeranges"
+    };
+  };
+
+  // Get thumbnail by timestamps
+  rpc GetThumbnail(ThumbnailRequest) returns (ThumbnailResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/thumbnail"
+      body: "*"
+    };
+  };
+
+  // Update thumbnail by timestamps
+  rpc UpdateThumbnail(UpdateThumbnailRequest) returns (google.rpc.Status) {
+    option (google.api.http) = {
+      post: "/v1/media/{media_hash}/thumbnail/update"
       body: "*"
     };
   };
 }
 
 message Info {
+
+  message TrackInfo {
+    enum Type {
+      VIDEO = 0;
+      AUDIO = 1;
+      TEXT = 2;
+      OTHER = 3;
+    }
+    Type types = 1;
+  }
+
   // Resource id of the media. It must have the format of "media/*/info".
   // For example: "media/1111-2222-3333-4444/info".
-  string media_hash = 1;
+  string   media_hash       = 1;
 
   repeated TrackInfo tracks = 2;
 
@@ -54,25 +89,83 @@ message Info {
   // previews, posters, thumbnails, trickplay images
 }
 
-message TrackInfo {
-  enum Type {
-    VIDEO = 0;
-    AUDIO = 1;
-    TEXT = 2;
-    OTHER = 3;
-  }
-  Type types = 1;
-}
-
+// retrieve media info like sound track resolutions, length/duringation etc.
 message GetInfoRequest {
-  // quick hash of a media. For example: "media/1111-2222-3333-4444/info".
+  // quick hash of the media. For example: "media/1111-2222-3333-4444/info".
   string media_hash = 1;
 }
 
+// try to update media info
 message UpdateInfoRequest {
-  // Resource name of the parent resource where to create the book.
-  // For example: "shelves/shelf1".
+  // quick hash of the media. For example: "media/1111-2222-3333-4444/info".
   string media_hash = 1;
-  // The Book resource to be created. Client must not set the `Book.name` field.
-  Info info = 2;
+  // the media info to be updated
+  Info   info       = 2;
+}
+
+// try to retrieve Thumbnails
+message ThumbnailTimeRangesRequest {
+  // use quick media hash to get thumbnails
+  string media_hash   = 1;
+  // time length of the  media resource, in seconds
+  double media_length = 2;
+}
+
+// time range is used to tell the client the screenshot range
+message TimeRange {
+  // the beginning of the time range, in seconds
+  double begin = 1;
+  // the end of the time range, in seconds
+  double end   = 2;
+  // time interval between each thumbnails, in seconds
+  double interval = 3;
+}
+
+message ThumbnailTimeRangesResponse {
+  google.rpc.Status error = 1;
+
+  // time range is used to tell the client the screenshot range
+  string   media_hash            = 2;
+  // thumbnails that the server have, in time ranges
+  repeated TimeRange 	availables = 3;
+  // thumbnails that the server is missing and wanted, in time ranges
+  repeated TimeRange missings    = 4;
+  // access token for read and/or write thumbnail by timestamp
+  // session_token will not have write premission if there is not missing
+  string   token                 = 5;
+}
+
+message ThumbnailRequest {
+  string media_hash     = 1;
+  // which thumbnail the client wants
+  oneof  time {
+    TimeRange range     = 2;
+    double    timestamp = 3;
+  }
+  // access token for read and write thumbnail by timestamp
+  string token          = 4;
+}
+
+message Thumbnail {
+  // timestamp of this thumbnail in relative to the begginning of the media_hash
+  double timestamp = 1;
+  // image's file extension
+  string ext       = 2;
+  // image's binary content
+  bytes  payload   = 3;
+}
+
+message ThumbnailResponse {
+  google.rpc.Status error = 1;
+
+  // thumbnails. with timestamp, extension, and payload
+  repeated Thumbnail thumbnails = 2;
+}
+
+message UpdateThumbnailRequest {
+  string   media_hash = 1;
+  // the thumbnails to be updated
+  repeated Thumbnail thumbnails = 2;
+  // access token for read and write thumbnail by timestamp
+  string   token                = 3;
 }

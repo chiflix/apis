@@ -7,6 +7,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 import _ "google.golang.org/genproto/googleapis/api/annotations"
+import status "google.golang.org/genproto/googleapis/rpc/status"
 
 import (
 	context "golang.org/x/net/context"
@@ -24,50 +25,50 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type TrackInfo_Type int32
+type Info_TrackInfo_Type int32
 
 const (
-	TrackInfo_VIDEO TrackInfo_Type = 0
-	TrackInfo_AUDIO TrackInfo_Type = 1
-	TrackInfo_TEXT  TrackInfo_Type = 2
-	TrackInfo_OTHER TrackInfo_Type = 3
+	Info_TrackInfo_VIDEO Info_TrackInfo_Type = 0
+	Info_TrackInfo_AUDIO Info_TrackInfo_Type = 1
+	Info_TrackInfo_TEXT  Info_TrackInfo_Type = 2
+	Info_TrackInfo_OTHER Info_TrackInfo_Type = 3
 )
 
-var TrackInfo_Type_name = map[int32]string{
+var Info_TrackInfo_Type_name = map[int32]string{
 	0: "VIDEO",
 	1: "AUDIO",
 	2: "TEXT",
 	3: "OTHER",
 }
-var TrackInfo_Type_value = map[string]int32{
+var Info_TrackInfo_Type_value = map[string]int32{
 	"VIDEO": 0,
 	"AUDIO": 1,
 	"TEXT":  2,
 	"OTHER": 3,
 }
 
-func (x TrackInfo_Type) String() string {
-	return proto.EnumName(TrackInfo_Type_name, int32(x))
+func (x Info_TrackInfo_Type) String() string {
+	return proto.EnumName(Info_TrackInfo_Type_name, int32(x))
 }
-func (TrackInfo_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{1, 0}
+func (Info_TrackInfo_Type) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{0, 0, 0}
 }
 
 type Info struct {
 	// Resource id of the media. It must have the format of "media/*/info".
 	// For example: "media/1111-2222-3333-4444/info".
-	MediaHash            string       `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
-	Tracks               []*TrackInfo `protobuf:"bytes,2,rep,name=tracks,proto3" json:"tracks,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	MediaHash            string            `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	Tracks               []*Info_TrackInfo `protobuf:"bytes,2,rep,name=tracks,proto3" json:"tracks,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
 func (m *Info) Reset()         { *m = Info{} }
 func (m *Info) String() string { return proto.CompactTextString(m) }
 func (*Info) ProtoMessage()    {}
 func (*Info) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{0}
+	return fileDescriptor_media_64735a4056e193c2, []int{0}
 }
 func (m *Info) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Info.Unmarshal(m, b)
@@ -94,53 +95,54 @@ func (m *Info) GetMediaHash() string {
 	return ""
 }
 
-func (m *Info) GetTracks() []*TrackInfo {
+func (m *Info) GetTracks() []*Info_TrackInfo {
 	if m != nil {
 		return m.Tracks
 	}
 	return nil
 }
 
-type TrackInfo struct {
-	Types                TrackInfo_Type `protobuf:"varint,1,opt,name=types,proto3,enum=sagittarius.media.v1.TrackInfo_Type" json:"types,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+type Info_TrackInfo struct {
+	Types                Info_TrackInfo_Type `protobuf:"varint,1,opt,name=types,proto3,enum=sagittarius.media.v1.Info_TrackInfo_Type" json:"types,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *TrackInfo) Reset()         { *m = TrackInfo{} }
-func (m *TrackInfo) String() string { return proto.CompactTextString(m) }
-func (*TrackInfo) ProtoMessage()    {}
-func (*TrackInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{1}
+func (m *Info_TrackInfo) Reset()         { *m = Info_TrackInfo{} }
+func (m *Info_TrackInfo) String() string { return proto.CompactTextString(m) }
+func (*Info_TrackInfo) ProtoMessage()    {}
+func (*Info_TrackInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{0, 0}
 }
-func (m *TrackInfo) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TrackInfo.Unmarshal(m, b)
+func (m *Info_TrackInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Info_TrackInfo.Unmarshal(m, b)
 }
-func (m *TrackInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TrackInfo.Marshal(b, m, deterministic)
+func (m *Info_TrackInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Info_TrackInfo.Marshal(b, m, deterministic)
 }
-func (dst *TrackInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TrackInfo.Merge(dst, src)
+func (dst *Info_TrackInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Info_TrackInfo.Merge(dst, src)
 }
-func (m *TrackInfo) XXX_Size() int {
-	return xxx_messageInfo_TrackInfo.Size(m)
+func (m *Info_TrackInfo) XXX_Size() int {
+	return xxx_messageInfo_Info_TrackInfo.Size(m)
 }
-func (m *TrackInfo) XXX_DiscardUnknown() {
-	xxx_messageInfo_TrackInfo.DiscardUnknown(m)
+func (m *Info_TrackInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_Info_TrackInfo.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TrackInfo proto.InternalMessageInfo
+var xxx_messageInfo_Info_TrackInfo proto.InternalMessageInfo
 
-func (m *TrackInfo) GetTypes() TrackInfo_Type {
+func (m *Info_TrackInfo) GetTypes() Info_TrackInfo_Type {
 	if m != nil {
 		return m.Types
 	}
-	return TrackInfo_VIDEO
+	return Info_TrackInfo_VIDEO
 }
 
+// retrieve media info like sound track resolutions, length/duringation etc.
 type GetInfoRequest struct {
-	// quick hash of a media. For example: "media/1111-2222-3333-4444/info".
+	// quick hash of the media. For example: "media/1111-2222-3333-4444/info".
 	MediaHash            string   `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -151,7 +153,7 @@ func (m *GetInfoRequest) Reset()         { *m = GetInfoRequest{} }
 func (m *GetInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*GetInfoRequest) ProtoMessage()    {}
 func (*GetInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{2}
+	return fileDescriptor_media_64735a4056e193c2, []int{1}
 }
 func (m *GetInfoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetInfoRequest.Unmarshal(m, b)
@@ -178,11 +180,11 @@ func (m *GetInfoRequest) GetMediaHash() string {
 	return ""
 }
 
+// try to update media info
 type UpdateInfoRequest struct {
-	// Resource name of the parent resource where to create the book.
-	// For example: "shelves/shelf1".
+	// quick hash of the media. For example: "media/1111-2222-3333-4444/info".
 	MediaHash string `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
-	// The Book resource to be created. Client must not set the `Book.name` field.
+	// the media info to be updated
 	Info                 *Info    `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -193,7 +195,7 @@ func (m *UpdateInfoRequest) Reset()         { *m = UpdateInfoRequest{} }
 func (m *UpdateInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateInfoRequest) ProtoMessage()    {}
 func (*UpdateInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_9c6d8d87ceea1210, []int{3}
+	return fileDescriptor_media_64735a4056e193c2, []int{2}
 }
 func (m *UpdateInfoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateInfoRequest.Unmarshal(m, b)
@@ -227,12 +229,518 @@ func (m *UpdateInfoRequest) GetInfo() *Info {
 	return nil
 }
 
+// try to retrieve Thumbnails
+type ThumbnailTimeRangesRequest struct {
+	// use quick media hash to get thumbnails
+	MediaHash string `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	// time length of the  media resource, in seconds
+	MediaLength          float64  `protobuf:"fixed64,2,opt,name=media_length,json=mediaLength,proto3" json:"media_length,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ThumbnailTimeRangesRequest) Reset()         { *m = ThumbnailTimeRangesRequest{} }
+func (m *ThumbnailTimeRangesRequest) String() string { return proto.CompactTextString(m) }
+func (*ThumbnailTimeRangesRequest) ProtoMessage()    {}
+func (*ThumbnailTimeRangesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{3}
+}
+func (m *ThumbnailTimeRangesRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ThumbnailTimeRangesRequest.Unmarshal(m, b)
+}
+func (m *ThumbnailTimeRangesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ThumbnailTimeRangesRequest.Marshal(b, m, deterministic)
+}
+func (dst *ThumbnailTimeRangesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ThumbnailTimeRangesRequest.Merge(dst, src)
+}
+func (m *ThumbnailTimeRangesRequest) XXX_Size() int {
+	return xxx_messageInfo_ThumbnailTimeRangesRequest.Size(m)
+}
+func (m *ThumbnailTimeRangesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ThumbnailTimeRangesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ThumbnailTimeRangesRequest proto.InternalMessageInfo
+
+func (m *ThumbnailTimeRangesRequest) GetMediaHash() string {
+	if m != nil {
+		return m.MediaHash
+	}
+	return ""
+}
+
+func (m *ThumbnailTimeRangesRequest) GetMediaLength() float64 {
+	if m != nil {
+		return m.MediaLength
+	}
+	return 0
+}
+
+// time range is used to tell the client the screenshot range
+type TimeRange struct {
+	// the beginning of the time range, in seconds
+	Begin float64 `protobuf:"fixed64,1,opt,name=begin,proto3" json:"begin,omitempty"`
+	// the end of the time range, in seconds
+	End float64 `protobuf:"fixed64,2,opt,name=end,proto3" json:"end,omitempty"`
+	// time interval between each thumbnails, in seconds
+	Interval             float64  `protobuf:"fixed64,3,opt,name=interval,proto3" json:"interval,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TimeRange) Reset()         { *m = TimeRange{} }
+func (m *TimeRange) String() string { return proto.CompactTextString(m) }
+func (*TimeRange) ProtoMessage()    {}
+func (*TimeRange) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{4}
+}
+func (m *TimeRange) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TimeRange.Unmarshal(m, b)
+}
+func (m *TimeRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TimeRange.Marshal(b, m, deterministic)
+}
+func (dst *TimeRange) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TimeRange.Merge(dst, src)
+}
+func (m *TimeRange) XXX_Size() int {
+	return xxx_messageInfo_TimeRange.Size(m)
+}
+func (m *TimeRange) XXX_DiscardUnknown() {
+	xxx_messageInfo_TimeRange.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TimeRange proto.InternalMessageInfo
+
+func (m *TimeRange) GetBegin() float64 {
+	if m != nil {
+		return m.Begin
+	}
+	return 0
+}
+
+func (m *TimeRange) GetEnd() float64 {
+	if m != nil {
+		return m.End
+	}
+	return 0
+}
+
+func (m *TimeRange) GetInterval() float64 {
+	if m != nil {
+		return m.Interval
+	}
+	return 0
+}
+
+type ThumbnailTimeRangesResponse struct {
+	Error *status.Status `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	// time range is used to tell the client the screenshot range
+	MediaHash string `protobuf:"bytes,2,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	// thumbnails that the server have, in time ranges
+	Availables []*TimeRange `protobuf:"bytes,3,rep,name=availables,proto3" json:"availables,omitempty"`
+	// thumbnails that the server is missing and wanted, in time ranges
+	Missings []*TimeRange `protobuf:"bytes,4,rep,name=missings,proto3" json:"missings,omitempty"`
+	// access token for read and/or write thumbnail by timestamp
+	// session_token will not have write premission if there is not missing
+	Token                string   `protobuf:"bytes,5,opt,name=token,proto3" json:"token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ThumbnailTimeRangesResponse) Reset()         { *m = ThumbnailTimeRangesResponse{} }
+func (m *ThumbnailTimeRangesResponse) String() string { return proto.CompactTextString(m) }
+func (*ThumbnailTimeRangesResponse) ProtoMessage()    {}
+func (*ThumbnailTimeRangesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{5}
+}
+func (m *ThumbnailTimeRangesResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ThumbnailTimeRangesResponse.Unmarshal(m, b)
+}
+func (m *ThumbnailTimeRangesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ThumbnailTimeRangesResponse.Marshal(b, m, deterministic)
+}
+func (dst *ThumbnailTimeRangesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ThumbnailTimeRangesResponse.Merge(dst, src)
+}
+func (m *ThumbnailTimeRangesResponse) XXX_Size() int {
+	return xxx_messageInfo_ThumbnailTimeRangesResponse.Size(m)
+}
+func (m *ThumbnailTimeRangesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ThumbnailTimeRangesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ThumbnailTimeRangesResponse proto.InternalMessageInfo
+
+func (m *ThumbnailTimeRangesResponse) GetError() *status.Status {
+	if m != nil {
+		return m.Error
+	}
+	return nil
+}
+
+func (m *ThumbnailTimeRangesResponse) GetMediaHash() string {
+	if m != nil {
+		return m.MediaHash
+	}
+	return ""
+}
+
+func (m *ThumbnailTimeRangesResponse) GetAvailables() []*TimeRange {
+	if m != nil {
+		return m.Availables
+	}
+	return nil
+}
+
+func (m *ThumbnailTimeRangesResponse) GetMissings() []*TimeRange {
+	if m != nil {
+		return m.Missings
+	}
+	return nil
+}
+
+func (m *ThumbnailTimeRangesResponse) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
+
+type ThumbnailRequest struct {
+	MediaHash string `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	// which thumbnail the client wants
+	//
+	// Types that are valid to be assigned to Time:
+	//	*ThumbnailRequest_Range
+	//	*ThumbnailRequest_Timestamp
+	Time isThumbnailRequest_Time `protobuf_oneof:"time"`
+	// access token for read and write thumbnail by timestamp
+	Token                string   `protobuf:"bytes,4,opt,name=token,proto3" json:"token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ThumbnailRequest) Reset()         { *m = ThumbnailRequest{} }
+func (m *ThumbnailRequest) String() string { return proto.CompactTextString(m) }
+func (*ThumbnailRequest) ProtoMessage()    {}
+func (*ThumbnailRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{6}
+}
+func (m *ThumbnailRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ThumbnailRequest.Unmarshal(m, b)
+}
+func (m *ThumbnailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ThumbnailRequest.Marshal(b, m, deterministic)
+}
+func (dst *ThumbnailRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ThumbnailRequest.Merge(dst, src)
+}
+func (m *ThumbnailRequest) XXX_Size() int {
+	return xxx_messageInfo_ThumbnailRequest.Size(m)
+}
+func (m *ThumbnailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ThumbnailRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ThumbnailRequest proto.InternalMessageInfo
+
+type isThumbnailRequest_Time interface {
+	isThumbnailRequest_Time()
+}
+
+type ThumbnailRequest_Range struct {
+	Range *TimeRange `protobuf:"bytes,2,opt,name=range,proto3,oneof"`
+}
+type ThumbnailRequest_Timestamp struct {
+	Timestamp float64 `protobuf:"fixed64,3,opt,name=timestamp,proto3,oneof"`
+}
+
+func (*ThumbnailRequest_Range) isThumbnailRequest_Time()     {}
+func (*ThumbnailRequest_Timestamp) isThumbnailRequest_Time() {}
+
+func (m *ThumbnailRequest) GetTime() isThumbnailRequest_Time {
+	if m != nil {
+		return m.Time
+	}
+	return nil
+}
+
+func (m *ThumbnailRequest) GetMediaHash() string {
+	if m != nil {
+		return m.MediaHash
+	}
+	return ""
+}
+
+func (m *ThumbnailRequest) GetRange() *TimeRange {
+	if x, ok := m.GetTime().(*ThumbnailRequest_Range); ok {
+		return x.Range
+	}
+	return nil
+}
+
+func (m *ThumbnailRequest) GetTimestamp() float64 {
+	if x, ok := m.GetTime().(*ThumbnailRequest_Timestamp); ok {
+		return x.Timestamp
+	}
+	return 0
+}
+
+func (m *ThumbnailRequest) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
+
+// XXX_OneofFuncs is for the internal use of the proto package.
+func (*ThumbnailRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _ThumbnailRequest_OneofMarshaler, _ThumbnailRequest_OneofUnmarshaler, _ThumbnailRequest_OneofSizer, []interface{}{
+		(*ThumbnailRequest_Range)(nil),
+		(*ThumbnailRequest_Timestamp)(nil),
+	}
+}
+
+func _ThumbnailRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
+	m := msg.(*ThumbnailRequest)
+	// time
+	switch x := m.Time.(type) {
+	case *ThumbnailRequest_Range:
+		b.EncodeVarint(2<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.Range); err != nil {
+			return err
+		}
+	case *ThumbnailRequest_Timestamp:
+		b.EncodeVarint(3<<3 | proto.WireFixed64)
+		b.EncodeFixed64(math.Float64bits(x.Timestamp))
+	case nil:
+	default:
+		return fmt.Errorf("ThumbnailRequest.Time has unexpected type %T", x)
+	}
+	return nil
+}
+
+func _ThumbnailRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
+	m := msg.(*ThumbnailRequest)
+	switch tag {
+	case 2: // time.range
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(TimeRange)
+		err := b.DecodeMessage(msg)
+		m.Time = &ThumbnailRequest_Range{msg}
+		return true, err
+	case 3: // time.timestamp
+		if wire != proto.WireFixed64 {
+			return true, proto.ErrInternalBadWireType
+		}
+		x, err := b.DecodeFixed64()
+		m.Time = &ThumbnailRequest_Timestamp{math.Float64frombits(x)}
+		return true, err
+	default:
+		return false, nil
+	}
+}
+
+func _ThumbnailRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*ThumbnailRequest)
+	// time
+	switch x := m.Time.(type) {
+	case *ThumbnailRequest_Range:
+		s := proto.Size(x.Range)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *ThumbnailRequest_Timestamp:
+		n += 1 // tag and wire
+		n += 8
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
+type Thumbnail struct {
+	// timestamp of this thumbnail in relative to the begginning of the media_hash
+	Timestamp float64 `protobuf:"fixed64,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	// image's file extension
+	Ext string `protobuf:"bytes,2,opt,name=ext,proto3" json:"ext,omitempty"`
+	// image's binary content
+	Payload              []byte   `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Thumbnail) Reset()         { *m = Thumbnail{} }
+func (m *Thumbnail) String() string { return proto.CompactTextString(m) }
+func (*Thumbnail) ProtoMessage()    {}
+func (*Thumbnail) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{7}
+}
+func (m *Thumbnail) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Thumbnail.Unmarshal(m, b)
+}
+func (m *Thumbnail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Thumbnail.Marshal(b, m, deterministic)
+}
+func (dst *Thumbnail) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Thumbnail.Merge(dst, src)
+}
+func (m *Thumbnail) XXX_Size() int {
+	return xxx_messageInfo_Thumbnail.Size(m)
+}
+func (m *Thumbnail) XXX_DiscardUnknown() {
+	xxx_messageInfo_Thumbnail.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Thumbnail proto.InternalMessageInfo
+
+func (m *Thumbnail) GetTimestamp() float64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
+func (m *Thumbnail) GetExt() string {
+	if m != nil {
+		return m.Ext
+	}
+	return ""
+}
+
+func (m *Thumbnail) GetPayload() []byte {
+	if m != nil {
+		return m.Payload
+	}
+	return nil
+}
+
+type ThumbnailResponse struct {
+	Error *status.Status `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	// thumbnails. with timestamp, extension, and payload
+	Thumbnails           []*Thumbnail `protobuf:"bytes,2,rep,name=thumbnails,proto3" json:"thumbnails,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *ThumbnailResponse) Reset()         { *m = ThumbnailResponse{} }
+func (m *ThumbnailResponse) String() string { return proto.CompactTextString(m) }
+func (*ThumbnailResponse) ProtoMessage()    {}
+func (*ThumbnailResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{8}
+}
+func (m *ThumbnailResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ThumbnailResponse.Unmarshal(m, b)
+}
+func (m *ThumbnailResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ThumbnailResponse.Marshal(b, m, deterministic)
+}
+func (dst *ThumbnailResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ThumbnailResponse.Merge(dst, src)
+}
+func (m *ThumbnailResponse) XXX_Size() int {
+	return xxx_messageInfo_ThumbnailResponse.Size(m)
+}
+func (m *ThumbnailResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ThumbnailResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ThumbnailResponse proto.InternalMessageInfo
+
+func (m *ThumbnailResponse) GetError() *status.Status {
+	if m != nil {
+		return m.Error
+	}
+	return nil
+}
+
+func (m *ThumbnailResponse) GetThumbnails() []*Thumbnail {
+	if m != nil {
+		return m.Thumbnails
+	}
+	return nil
+}
+
+type UpdateThumbnailRequest struct {
+	MediaHash string `protobuf:"bytes,1,opt,name=media_hash,json=mediaHash,proto3" json:"media_hash,omitempty"`
+	// the thumbnails to be updated
+	Thumbnails []*Thumbnail `protobuf:"bytes,2,rep,name=thumbnails,proto3" json:"thumbnails,omitempty"`
+	// access token for read and write thumbnail by timestamp
+	Token                string   `protobuf:"bytes,3,opt,name=token,proto3" json:"token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UpdateThumbnailRequest) Reset()         { *m = UpdateThumbnailRequest{} }
+func (m *UpdateThumbnailRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateThumbnailRequest) ProtoMessage()    {}
+func (*UpdateThumbnailRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_media_64735a4056e193c2, []int{9}
+}
+func (m *UpdateThumbnailRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateThumbnailRequest.Unmarshal(m, b)
+}
+func (m *UpdateThumbnailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateThumbnailRequest.Marshal(b, m, deterministic)
+}
+func (dst *UpdateThumbnailRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateThumbnailRequest.Merge(dst, src)
+}
+func (m *UpdateThumbnailRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateThumbnailRequest.Size(m)
+}
+func (m *UpdateThumbnailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateThumbnailRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateThumbnailRequest proto.InternalMessageInfo
+
+func (m *UpdateThumbnailRequest) GetMediaHash() string {
+	if m != nil {
+		return m.MediaHash
+	}
+	return ""
+}
+
+func (m *UpdateThumbnailRequest) GetThumbnails() []*Thumbnail {
+	if m != nil {
+		return m.Thumbnails
+	}
+	return nil
+}
+
+func (m *UpdateThumbnailRequest) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*Info)(nil), "sagittarius.media.v1.Info")
-	proto.RegisterType((*TrackInfo)(nil), "sagittarius.media.v1.TrackInfo")
+	proto.RegisterType((*Info_TrackInfo)(nil), "sagittarius.media.v1.Info.TrackInfo")
 	proto.RegisterType((*GetInfoRequest)(nil), "sagittarius.media.v1.GetInfoRequest")
 	proto.RegisterType((*UpdateInfoRequest)(nil), "sagittarius.media.v1.UpdateInfoRequest")
-	proto.RegisterEnum("sagittarius.media.v1.TrackInfo_Type", TrackInfo_Type_name, TrackInfo_Type_value)
+	proto.RegisterType((*ThumbnailTimeRangesRequest)(nil), "sagittarius.media.v1.ThumbnailTimeRangesRequest")
+	proto.RegisterType((*TimeRange)(nil), "sagittarius.media.v1.TimeRange")
+	proto.RegisterType((*ThumbnailTimeRangesResponse)(nil), "sagittarius.media.v1.ThumbnailTimeRangesResponse")
+	proto.RegisterType((*ThumbnailRequest)(nil), "sagittarius.media.v1.ThumbnailRequest")
+	proto.RegisterType((*Thumbnail)(nil), "sagittarius.media.v1.Thumbnail")
+	proto.RegisterType((*ThumbnailResponse)(nil), "sagittarius.media.v1.ThumbnailResponse")
+	proto.RegisterType((*UpdateThumbnailRequest)(nil), "sagittarius.media.v1.UpdateThumbnailRequest")
+	proto.RegisterEnum("sagittarius.media.v1.Info_TrackInfo_Type", Info_TrackInfo_Type_name, Info_TrackInfo_Type_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -251,6 +759,12 @@ type MediaClient interface {
 	GetInfo(ctx context.Context, in *GetInfoRequest, opts ...grpc.CallOption) (*Info, error)
 	//
 	UpdateInfo(ctx context.Context, in *UpdateInfoRequest, opts ...grpc.CallOption) (*Info, error)
+	// Query obtainable thumbnails time range and unavailable ones by media identity
+	GetThumbnailTimeRanges(ctx context.Context, in *ThumbnailTimeRangesRequest, opts ...grpc.CallOption) (*ThumbnailTimeRangesResponse, error)
+	// Get thumbnail by timestamps
+	GetThumbnail(ctx context.Context, in *ThumbnailRequest, opts ...grpc.CallOption) (*ThumbnailResponse, error)
+	// Update thumbnail by timestamps
+	UpdateThumbnail(ctx context.Context, in *UpdateThumbnailRequest, opts ...grpc.CallOption) (*status.Status, error)
 }
 
 type mediaClient struct {
@@ -279,12 +793,45 @@ func (c *mediaClient) UpdateInfo(ctx context.Context, in *UpdateInfoRequest, opt
 	return out, nil
 }
 
+func (c *mediaClient) GetThumbnailTimeRanges(ctx context.Context, in *ThumbnailTimeRangesRequest, opts ...grpc.CallOption) (*ThumbnailTimeRangesResponse, error) {
+	out := new(ThumbnailTimeRangesResponse)
+	err := c.cc.Invoke(ctx, "/sagittarius.media.v1.Media/GetThumbnailTimeRanges", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mediaClient) GetThumbnail(ctx context.Context, in *ThumbnailRequest, opts ...grpc.CallOption) (*ThumbnailResponse, error) {
+	out := new(ThumbnailResponse)
+	err := c.cc.Invoke(ctx, "/sagittarius.media.v1.Media/GetThumbnail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mediaClient) UpdateThumbnail(ctx context.Context, in *UpdateThumbnailRequest, opts ...grpc.CallOption) (*status.Status, error) {
+	out := new(status.Status)
+	err := c.cc.Invoke(ctx, "/sagittarius.media.v1.Media/UpdateThumbnail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MediaServer is the server API for Media service.
 type MediaServer interface {
 	//
 	GetInfo(context.Context, *GetInfoRequest) (*Info, error)
 	//
 	UpdateInfo(context.Context, *UpdateInfoRequest) (*Info, error)
+	// Query obtainable thumbnails time range and unavailable ones by media identity
+	GetThumbnailTimeRanges(context.Context, *ThumbnailTimeRangesRequest) (*ThumbnailTimeRangesResponse, error)
+	// Get thumbnail by timestamps
+	GetThumbnail(context.Context, *ThumbnailRequest) (*ThumbnailResponse, error)
+	// Update thumbnail by timestamps
+	UpdateThumbnail(context.Context, *UpdateThumbnailRequest) (*status.Status, error)
 }
 
 func RegisterMediaServer(s *grpc.Server, srv MediaServer) {
@@ -327,6 +874,60 @@ func _Media_UpdateInfo_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Media_GetThumbnailTimeRanges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ThumbnailTimeRangesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MediaServer).GetThumbnailTimeRanges(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagittarius.media.v1.Media/GetThumbnailTimeRanges",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MediaServer).GetThumbnailTimeRanges(ctx, req.(*ThumbnailTimeRangesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Media_GetThumbnail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ThumbnailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MediaServer).GetThumbnail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagittarius.media.v1.Media/GetThumbnail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MediaServer).GetThumbnail(ctx, req.(*ThumbnailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Media_UpdateThumbnail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateThumbnailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MediaServer).UpdateThumbnail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sagittarius.media.v1.Media/UpdateThumbnail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MediaServer).UpdateThumbnail(ctx, req.(*UpdateThumbnailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Media_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "sagittarius.media.v1.Media",
 	HandlerType: (*MediaServer)(nil),
@@ -339,37 +940,75 @@ var _Media_serviceDesc = grpc.ServiceDesc{
 			MethodName: "UpdateInfo",
 			Handler:    _Media_UpdateInfo_Handler,
 		},
+		{
+			MethodName: "GetThumbnailTimeRanges",
+			Handler:    _Media_GetThumbnailTimeRanges_Handler,
+		},
+		{
+			MethodName: "GetThumbnail",
+			Handler:    _Media_GetThumbnail_Handler,
+		},
+		{
+			MethodName: "UpdateThumbnail",
+			Handler:    _Media_UpdateThumbnail_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "media/v1/media.proto",
 }
 
-func init() { proto.RegisterFile("media/v1/media.proto", fileDescriptor_media_9c6d8d87ceea1210) }
+func init() { proto.RegisterFile("media/v1/media.proto", fileDescriptor_media_64735a4056e193c2) }
 
-var fileDescriptor_media_9c6d8d87ceea1210 = []byte{
-	// 379 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xc9, 0x4d, 0x4d, 0xc9,
-	0x4c, 0xd4, 0x2f, 0x33, 0xd4, 0x07, 0x33, 0xf4, 0x0a, 0x8a, 0xf2, 0x4b, 0xf2, 0x85, 0x44, 0x8a,
-	0x13, 0xd3, 0x33, 0x4b, 0x4a, 0x12, 0x8b, 0x32, 0x4b, 0x8b, 0xf5, 0x20, 0x12, 0x65, 0x86, 0x52,
-	0x32, 0xe9, 0xf9, 0xf9, 0xe9, 0x39, 0xa9, 0xfa, 0x89, 0x05, 0x99, 0xfa, 0x89, 0x79, 0x79, 0xf9,
-	0x25, 0x89, 0x25, 0x99, 0xf9, 0x79, 0xc5, 0x10, 0x3d, 0x4a, 0x71, 0x5c, 0x2c, 0x9e, 0x79, 0x69,
-	0xf9, 0x42, 0xb2, 0x5c, 0x5c, 0x60, 0x1d, 0xf1, 0x19, 0x89, 0xc5, 0x19, 0x12, 0x8c, 0x0a, 0x8c,
-	0x1a, 0x9c, 0x41, 0x9c, 0x60, 0x11, 0x8f, 0xc4, 0xe2, 0x0c, 0x21, 0x73, 0x2e, 0xb6, 0x92, 0xa2,
-	0xc4, 0xe4, 0xec, 0x62, 0x09, 0x26, 0x05, 0x66, 0x0d, 0x6e, 0x23, 0x79, 0x3d, 0x6c, 0x76, 0xe9,
-	0x85, 0x80, 0xd4, 0x80, 0xcc, 0x0b, 0x82, 0x2a, 0x57, 0xaa, 0xe2, 0xe2, 0x84, 0x0b, 0x0a, 0x59,
-	0x71, 0xb1, 0x96, 0x54, 0x16, 0xa4, 0x16, 0x83, 0xcd, 0xe7, 0x33, 0x52, 0x21, 0x60, 0x88, 0x5e,
-	0x48, 0x65, 0x41, 0x6a, 0x10, 0x44, 0x8b, 0x92, 0x21, 0x17, 0x0b, 0x88, 0x2b, 0xc4, 0xc9, 0xc5,
-	0x1a, 0xe6, 0xe9, 0xe2, 0xea, 0x2f, 0xc0, 0x00, 0x62, 0x3a, 0x86, 0xba, 0x78, 0xfa, 0x0b, 0x30,
-	0x0a, 0x71, 0x70, 0xb1, 0x84, 0xb8, 0x46, 0x84, 0x08, 0x30, 0x81, 0x04, 0xfd, 0x43, 0x3c, 0x5c,
-	0x83, 0x04, 0x98, 0x95, 0xf4, 0xb9, 0xf8, 0xdc, 0x53, 0x4b, 0xc0, 0xce, 0x49, 0x2d, 0x2c, 0x4d,
-	0x2d, 0x2e, 0x21, 0xe0, 0x4b, 0xa5, 0x24, 0x2e, 0xc1, 0xd0, 0x82, 0x94, 0xc4, 0x92, 0x54, 0xe2,
-	0xf5, 0x08, 0xe9, 0x71, 0xb1, 0x64, 0xe6, 0xa5, 0xe5, 0x4b, 0x30, 0x29, 0x30, 0x6a, 0x70, 0x1b,
-	0x49, 0x61, 0xf7, 0x12, 0xd8, 0x3c, 0xb0, 0x3a, 0xa3, 0x2f, 0x8c, 0x5c, 0xac, 0xbe, 0x20, 0x71,
-	0xa1, 0x02, 0x2e, 0x76, 0xa8, 0xf3, 0x84, 0x70, 0x84, 0x04, 0xaa, 0xeb, 0xa5, 0xf0, 0x18, 0xae,
-	0xa4, 0xdc, 0x74, 0xf9, 0xc9, 0x64, 0x26, 0x59, 0x21, 0x69, 0x78, 0xa2, 0xd0, 0xaf, 0x46, 0x38,
-	0xbb, 0x56, 0x1f, 0x64, 0xb7, 0x50, 0x25, 0x17, 0x17, 0xc2, 0x7f, 0x42, 0xea, 0xd8, 0x8d, 0xc3,
-	0x08, 0x01, 0xbc, 0xf6, 0xaa, 0x81, 0xed, 0x55, 0x50, 0xc2, 0x67, 0xaf, 0x15, 0xa3, 0x96, 0x93,
-	0x21, 0x97, 0x78, 0x62, 0x26, 0x56, 0x73, 0x9c, 0xb8, 0xc0, 0xc1, 0x11, 0x00, 0x4a, 0x8e, 0x01,
-	0x8c, 0x51, 0xac, 0x60, 0xf1, 0x1f, 0x8c, 0x8c, 0x49, 0x6c, 0xe0, 0x14, 0x6a, 0x0c, 0x08, 0x00,
-	0x00, 0xff, 0xff, 0x6f, 0x0a, 0xc3, 0x8c, 0xed, 0x02, 0x00, 0x00,
+var fileDescriptor_media_64735a4056e193c2 = []byte{
+	// 799 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0xdd, 0x4e, 0xdb, 0x48,
+	0x14, 0x66, 0x92, 0x18, 0xc8, 0x09, 0x62, 0xc3, 0x08, 0x81, 0x65, 0x60, 0x37, 0x3b, 0xfb, 0x93,
+	0xec, 0x02, 0xf6, 0x26, 0x5c, 0xac, 0xb4, 0xbb, 0x12, 0x5a, 0x04, 0x22, 0x48, 0xbb, 0x0a, 0x72,
+	0x43, 0x55, 0xf5, 0xa2, 0xd5, 0x84, 0x0c, 0x89, 0x45, 0x62, 0xbb, 0x9e, 0x49, 0x54, 0x54, 0xf5,
+	0x47, 0xbd, 0xe9, 0x4d, 0xd5, 0x9b, 0xbe, 0x44, 0xaf, 0xfb, 0x18, 0xbd, 0xed, 0x2b, 0xf0, 0x10,
+	0x55, 0xaf, 0xaa, 0x19, 0x1b, 0xc7, 0x85, 0xfc, 0xa1, 0xde, 0xcd, 0x9c, 0x39, 0xdf, 0x39, 0xdf,
+	0xf9, 0xf1, 0x27, 0xc3, 0x72, 0x97, 0x35, 0x1d, 0x6a, 0xf5, 0xcb, 0x96, 0x3a, 0x98, 0x7e, 0xe0,
+	0x09, 0x0f, 0x2f, 0x73, 0xda, 0x72, 0x84, 0xa0, 0x81, 0xd3, 0xe3, 0x66, 0xf8, 0xd0, 0x2f, 0x1b,
+	0xeb, 0x2d, 0xcf, 0x6b, 0x75, 0x98, 0x45, 0x7d, 0xc7, 0xa2, 0xae, 0xeb, 0x09, 0x2a, 0x1c, 0xcf,
+	0xe5, 0x21, 0xc6, 0x58, 0x8d, 0x5e, 0x03, 0xff, 0xd4, 0xe2, 0x82, 0x8a, 0x5e, 0xf4, 0x40, 0x2e,
+	0x11, 0x64, 0x8e, 0xdc, 0x33, 0x0f, 0x6f, 0x00, 0xa8, 0x58, 0x0f, 0xdb, 0x94, 0xb7, 0x75, 0x54,
+	0x40, 0xa5, 0xac, 0x9d, 0x55, 0x96, 0x2a, 0xe5, 0x6d, 0xfc, 0x0f, 0xcc, 0x8a, 0x80, 0x9e, 0x9e,
+	0x73, 0x3d, 0x55, 0x48, 0x97, 0x72, 0x95, 0x9f, 0xcd, 0x61, 0x2c, 0x4c, 0x19, 0xca, 0xac, 0x4b,
+	0x47, 0x79, 0xb2, 0x23, 0x8c, 0xf1, 0x1c, 0xb2, 0xb1, 0x11, 0xef, 0x82, 0x26, 0x2e, 0x7c, 0xc6,
+	0x55, 0x92, 0xc5, 0xca, 0x6f, 0xd3, 0x44, 0x32, 0xeb, 0x17, 0x3e, 0xb3, 0x43, 0x1c, 0x29, 0x43,
+	0x46, 0x5e, 0x71, 0x16, 0xb4, 0xbb, 0x47, 0xfb, 0x07, 0xb5, 0xfc, 0x8c, 0x3c, 0xfe, 0x7b, 0xb2,
+	0x7f, 0x54, 0xcb, 0x23, 0x3c, 0x0f, 0x99, 0xfa, 0xc1, 0xbd, 0x7a, 0x3e, 0x25, 0x8d, 0xb5, 0x7a,
+	0xf5, 0xc0, 0xce, 0xa7, 0x89, 0x05, 0x8b, 0x87, 0x4c, 0x28, 0x4e, 0xec, 0x51, 0x8f, 0x71, 0x31,
+	0xa1, 0x5e, 0xd2, 0x80, 0xa5, 0x13, 0xbf, 0x49, 0x05, 0x9b, 0x1e, 0x83, 0x4d, 0xc8, 0x38, 0xee,
+	0x99, 0xa7, 0xa7, 0x0a, 0xa8, 0x94, 0xab, 0x18, 0xa3, 0xeb, 0xb2, 0x95, 0x1f, 0x79, 0x00, 0x46,
+	0xbd, 0xdd, 0xeb, 0x36, 0x5c, 0xea, 0x74, 0xea, 0x4e, 0x97, 0xd9, 0xd4, 0x6d, 0x31, 0x3e, 0x65,
+	0xb2, 0x1f, 0x61, 0x21, 0x7c, 0xee, 0x30, 0xb7, 0x25, 0xda, 0x2a, 0x29, 0xb2, 0x73, 0xca, 0xf6,
+	0x9f, 0x32, 0x91, 0x1a, 0x64, 0xe3, 0xb0, 0x78, 0x19, 0xb4, 0x06, 0x6b, 0x39, 0xae, 0x8a, 0x84,
+	0xec, 0xf0, 0x82, 0xf3, 0x90, 0x66, 0x6e, 0x33, 0x02, 0xcb, 0x23, 0x36, 0x60, 0xde, 0x71, 0x05,
+	0x0b, 0xfa, 0xb4, 0xa3, 0xa7, 0x95, 0x39, 0xbe, 0x93, 0xcf, 0x08, 0xd6, 0x86, 0x32, 0xe6, 0xbe,
+	0xe7, 0x72, 0x86, 0x4b, 0xa0, 0xb1, 0x20, 0xf0, 0x02, 0x95, 0x23, 0x57, 0xc1, 0x66, 0xb8, 0x75,
+	0x66, 0xe0, 0x9f, 0x9a, 0x77, 0xd4, 0xd6, 0xd9, 0xa1, 0xc3, 0xb5, 0xe2, 0x52, 0xd7, 0x8b, 0xdb,
+	0x05, 0xa0, 0x7d, 0xea, 0x74, 0x68, 0xa3, 0xc3, 0xb8, 0x9e, 0x56, 0x1b, 0xf7, 0xc3, 0xf0, 0x7e,
+	0xc6, 0x34, 0xec, 0x04, 0x04, 0xff, 0x0d, 0xf3, 0x5d, 0x87, 0x73, 0xc7, 0x6d, 0x71, 0x3d, 0x33,
+	0x1d, 0x3c, 0x06, 0xc8, 0x56, 0x09, 0xef, 0x9c, 0xb9, 0xba, 0xa6, 0x78, 0x85, 0x17, 0xf2, 0x0e,
+	0x41, 0x3e, 0x2e, 0x7e, 0xca, 0x21, 0xfd, 0x09, 0x5a, 0x20, 0x83, 0x47, 0x2b, 0x31, 0x89, 0x43,
+	0x75, 0xc6, 0x0e, 0xfd, 0xf1, 0xf7, 0x90, 0x15, 0x4e, 0x97, 0x71, 0x41, 0xbb, 0x7e, 0x38, 0x86,
+	0xea, 0x8c, 0x3d, 0x30, 0x0d, 0x28, 0x66, 0x12, 0x14, 0xf7, 0x66, 0x21, 0x23, 0x5d, 0xc8, 0x09,
+	0x64, 0x63, 0xa6, 0x78, 0x3d, 0x19, 0x2a, 0x1c, 0x7e, 0x22, 0x90, 0x5c, 0x80, 0xc7, 0x22, 0x9a,
+	0x80, 0x3c, 0x62, 0x1d, 0xe6, 0x7c, 0x7a, 0xd1, 0xf1, 0x68, 0x53, 0x25, 0x5e, 0xb0, 0xaf, 0xae,
+	0xe4, 0x19, 0x2c, 0x25, 0x1a, 0x70, 0xeb, 0x99, 0xef, 0x02, 0x88, 0x2b, 0xf8, 0x95, 0x8c, 0x8c,
+	0xea, 0x48, 0x9c, 0x26, 0x01, 0x21, 0x6f, 0x10, 0xac, 0x84, 0x1f, 0xe5, 0x6d, 0xe7, 0xf0, 0xad,
+	0xa9, 0x07, 0xfd, 0x4e, 0x27, 0xfa, 0x5d, 0xf9, 0xa0, 0x81, 0xf6, 0xbf, 0x04, 0x62, 0x1f, 0xe6,
+	0x22, 0x7d, 0xc1, 0x23, 0x94, 0xf1, 0x6b, 0xf9, 0x31, 0xc6, 0xa8, 0x03, 0xf9, 0xe9, 0xe5, 0xc7,
+	0xcb, 0xb7, 0xa9, 0x0d, 0xbc, 0x16, 0x2b, 0xbf, 0xf5, 0x64, 0x50, 0xdd, 0x53, 0x4b, 0x8a, 0x07,
+	0x7e, 0x81, 0x00, 0x06, 0x0a, 0x85, 0x8b, 0xc3, 0xe3, 0xdd, 0xd0, 0xb0, 0xb1, 0x89, 0xb7, 0x55,
+	0xe2, 0x22, 0x21, 0x63, 0x12, 0x5b, 0x3d, 0x15, 0xf2, 0x2f, 0xf4, 0x3b, 0x7e, 0x8f, 0x60, 0xe5,
+	0x90, 0x89, 0x21, 0x8a, 0x80, 0xff, 0x98, 0xd0, 0xdc, 0x1b, 0x72, 0x67, 0x94, 0x6f, 0x81, 0x08,
+	0x57, 0x8f, 0xec, 0x28, 0xba, 0xdb, 0x78, 0x73, 0x04, 0xdd, 0x78, 0x7e, 0x96, 0xdc, 0xf7, 0x20,
+	0x64, 0xf6, 0x1a, 0xc1, 0x42, 0x92, 0x34, 0xfe, 0x75, 0xd2, 0x1e, 0x44, 0x04, 0x8b, 0x13, 0xfd,
+	0x22, 0x5a, 0x9b, 0x8a, 0xd6, 0x2f, 0xa4, 0x30, 0x89, 0x96, 0xec, 0xe1, 0x2b, 0x04, 0xdf, 0x5d,
+	0xdb, 0x69, 0xbc, 0x35, 0x6e, 0x96, 0x37, 0x78, 0x0d, 0xf9, 0xe2, 0x48, 0x45, 0x51, 0xd8, 0x22,
+	0xc5, 0x89, 0x9d, 0x89, 0xa7, 0xb9, 0x57, 0x86, 0x55, 0xea, 0x0c, 0xcd, 0xbc, 0x07, 0x6a, 0xc9,
+	0x8f, 0xe5, 0x0f, 0xc3, 0x31, 0xba, 0xaf, 0x29, 0xfb, 0x27, 0x84, 0x1a, 0xb3, 0xea, 0x1f, 0x62,
+	0xe7, 0x4b, 0x00, 0x00, 0x00, 0xff, 0xff, 0x76, 0xe5, 0xfb, 0x31, 0xa8, 0x08, 0x00, 0x00,
 }
