@@ -6,10 +6,16 @@
 - [media/v1/media.proto](#media/v1/media.proto)
     - [GetInfoRequest](#sagittarius.media.v1.GetInfoRequest)
     - [Info](#sagittarius.media.v1.Info)
-    - [TrackInfo](#sagittarius.media.v1.TrackInfo)
+    - [Info.TrackInfo](#sagittarius.media.v1.Info.TrackInfo)
+    - [Thumbnail](#sagittarius.media.v1.Thumbnail)
+    - [ThumbnailRequest](#sagittarius.media.v1.ThumbnailRequest)
+    - [ThumbnailResponse](#sagittarius.media.v1.ThumbnailResponse)
+    - [ThumbnailTimeRangesRequest](#sagittarius.media.v1.ThumbnailTimeRangesRequest)
+    - [ThumbnailTimeRangesResponse](#sagittarius.media.v1.ThumbnailTimeRangesResponse)
+    - [TimeRange](#sagittarius.media.v1.TimeRange)
     - [UpdateInfoRequest](#sagittarius.media.v1.UpdateInfoRequest)
+    - [UpdateThumbnailRequest](#sagittarius.media.v1.UpdateThumbnailRequest)
   
-    - [TrackInfo.Type](#sagittarius.media.v1.TrackInfo.Type)
   
   
     - [Media](#sagittarius.media.v1.Media)
@@ -29,12 +35,12 @@
 <a name="sagittarius.media.v1.GetInfoRequest"/>
 
 ### GetInfoRequest
-
+retrieve media info like sound track resolutions, length/duringation etc.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| media_hash | [string](#string) |  | quick hash of a media. For example: &#34;media/1111-2222-3333-4444/info&#34;. |
+| media_hash | [string](#string) |  | quick hash of the media. For example: &#34;media/1111-2222-3333-4444/info&#34;. |
 
 
 
@@ -50,22 +56,125 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | media_hash | [string](#string) |  | Resource id of the media. It must have the format of &#34;media/*/info&#34;. For example: &#34;media/1111-2222-3333-4444/info&#34;. |
-| tracks | [TrackInfo](#sagittarius.media.v1.TrackInfo) | repeated |  |
+| tracks | [Info.TrackInfo](#sagittarius.media.v1.Info.TrackInfo) | repeated |  |
 
 
 
 
 
 
-<a name="sagittarius.media.v1.TrackInfo"/>
+<a name="sagittarius.media.v1.Info.TrackInfo"/>
 
-### TrackInfo
+### Info.TrackInfo
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| types | [TrackInfo.Type](#sagittarius.media.v1.TrackInfo.Type) |  |  |
+| types | [Info.TrackInfo.Type](#sagittarius.media.v1.Info.TrackInfo.Type) |  |  |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.Thumbnail"/>
+
+### Thumbnail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| timestamp | [double](#double) |  | timestamp of this thumbnail in relative to the begginning of the media_hash |
+| ext | [string](#string) |  | image&#39;s file extension |
+| payload | [bytes](#bytes) |  | image&#39;s binary content |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.ThumbnailRequest"/>
+
+### ThumbnailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| media_hash | [string](#string) |  |  |
+| range | [TimeRange](#sagittarius.media.v1.TimeRange) |  |  |
+| timestamp | [double](#double) |  |  |
+| token | [string](#string) |  | access token for read and write thumbnail by timestamp |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.ThumbnailResponse"/>
+
+### ThumbnailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| thumbnails | [Thumbnail](#sagittarius.media.v1.Thumbnail) | repeated | thumbnails. with timestamp, extension, and payload |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.ThumbnailTimeRangesRequest"/>
+
+### ThumbnailTimeRangesRequest
+try to retrieve Thumbnails
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| media_hash | [string](#string) |  | use quick media hash to get thumbnails |
+| media_length | [double](#double) |  | time length of the media resource, in seconds |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.ThumbnailTimeRangesResponse"/>
+
+### ThumbnailTimeRangesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| media_hash | [string](#string) |  | time range is used to tell the client the screenshot range |
+| availables | [TimeRange](#sagittarius.media.v1.TimeRange) | repeated | thumbnails that the server have, in time ranges |
+| missings | [TimeRange](#sagittarius.media.v1.TimeRange) | repeated | thumbnails that the server is missing and wanted, in time ranges |
+| token | [string](#string) |  | access token for read and/or write thumbnail by timestamp session_token will not have write premission if there is not missing |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.TimeRange"/>
+
+### TimeRange
+time range is used to tell the client the screenshot range
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| begin | [double](#double) |  | the beginning of the time range, in seconds |
+| end | [double](#double) |  | the end of the time range, in seconds |
+| interval | [double](#double) |  | time interval between each thumbnails, in seconds |
 
 
 
@@ -75,33 +184,36 @@
 <a name="sagittarius.media.v1.UpdateInfoRequest"/>
 
 ### UpdateInfoRequest
+try to update media info
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| media_hash | [string](#string) |  | quick hash of the media. For example: &#34;media/1111-2222-3333-4444/info&#34;. |
+| info | [Info](#sagittarius.media.v1.Info) |  | the media info to be updated |
+
+
+
+
+
+
+<a name="sagittarius.media.v1.UpdateThumbnailRequest"/>
+
+### UpdateThumbnailRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| media_hash | [string](#string) |  | Resource name of the parent resource where to create the book. For example: &#34;shelves/shelf1&#34;. |
-| info | [Info](#sagittarius.media.v1.Info) |  | The Book resource to be created. Client must not set the `Book.name` field. |
+| media_hash | [string](#string) |  |  |
+| thumbnails | [Thumbnail](#sagittarius.media.v1.Thumbnail) | repeated | the thumbnails to be updated |
+| token | [string](#string) |  | access token for read and write thumbnail by timestamp |
 
 
 
 
 
  
-
-
-<a name="sagittarius.media.v1.TrackInfo.Type"/>
-
-### TrackInfo.Type
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| VIDEO | 0 |  |
-| AUDIO | 1 |  |
-| TEXT | 2 |  |
-| OTHER | 3 |  |
-
 
  
 
@@ -117,6 +229,9 @@ Service that implements Sagittarius Media API
 | ----------- | ------------ | ------------- | ------------|
 | GetInfo | [GetInfoRequest](#sagittarius.media.v1.GetInfoRequest) | [Info](#sagittarius.media.v1.GetInfoRequest) |  |
 | UpdateInfo | [UpdateInfoRequest](#sagittarius.media.v1.UpdateInfoRequest) | [Info](#sagittarius.media.v1.UpdateInfoRequest) |  |
+| GetThumbnailTimeRanges | [ThumbnailTimeRangesRequest](#sagittarius.media.v1.ThumbnailTimeRangesRequest) | [ThumbnailTimeRangesResponse](#sagittarius.media.v1.ThumbnailTimeRangesRequest) | Query obtainable thumbnails time range and unavailable ones by media identity |
+| GetThumbnail | [ThumbnailRequest](#sagittarius.media.v1.ThumbnailRequest) | [ThumbnailResponse](#sagittarius.media.v1.ThumbnailRequest) | Get thumbnail by timestamps |
+| UpdateThumbnail | [UpdateThumbnailRequest](#sagittarius.media.v1.UpdateThumbnailRequest) | [.google.rpc.Status](#sagittarius.media.v1.UpdateThumbnailRequest) | Update thumbnail by timestamps |
 
  
 
