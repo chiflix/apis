@@ -48,6 +48,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | status | [HealthCheckResponse.ServingStatus](#sagittarius.health.v1.HealthCheckResponse.ServingStatus) |  |  |
+| version | [string](#string) |  |  |
 
 
 

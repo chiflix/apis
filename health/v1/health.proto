@@ -37,6 +37,7 @@ message HealthCheckResponse {
     NOT_SERVING = 2;
   }
   ServingStatus status = 1;
+  string version = 2;
 }
 
 service Health {

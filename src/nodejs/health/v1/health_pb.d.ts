@@ -30,6 +30,9 @@ export class HealthCheckResponse extends jspb.Message {
     getStatus(): HealthCheckResponse.ServingStatus;
     setStatus(value: HealthCheckResponse.ServingStatus): void;
 
+    getVersion(): string;
+    setVersion(value: string): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): HealthCheckResponse.AsObject;
@@ -44,6 +47,7 @@ export class HealthCheckResponse extends jspb.Message {
 export namespace HealthCheckResponse {
     export type AsObject = {
         status: HealthCheckResponse.ServingStatus,
+        version: string,
     }
 
     export enum ServingStatus {
