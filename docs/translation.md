@@ -185,8 +185,8 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | text | [string](#string) | repeated | The text to translate |
-| target_language_code | [string](#string) |  | The language to use for translation of the text ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
-| source_language_code | [string](#string) |  | The language of the source text |
+| target_language_code | [string](#string) |  | The language to use for translation of the text ISO-639-1/bcp47 Code with tags https://cloud.google.com/translate/docs/languages |
+| source_language_code | [string](#string) |  | The language of the source text ISO-639-1/bcp47 Code with tags https://cloud.google.com/translate/docs/languages |
 
 
 
@@ -217,7 +217,7 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| source_language | [string](#string) |  | The source language of the text detected |
+| source_language | [string](#string) |  | The source language of the text detected ISO-639-1/bcp47 Code with tags https://cloud.google.com/translate/docs/languages |
 | text | [string](#string) |  | The translated Text |
 
 

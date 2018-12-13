@@ -30,6 +30,8 @@ type TrainingData struct {
 	// the media identity
 	MediaIdentity string `protobuf:"bytes,1,opt,name=media_identity,json=mediaIdentity,proto3" json:"media_identity,omitempty"`
 	// the language code of the payload
+	// ISO-639-1/bcp47 Code with tags
+	// https://cloud.google.com/translate/docs/languages
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// the format of the payload
 	Format string `protobuf:"bytes,4,opt,name=format,proto3" json:"format,omitempty"`
@@ -52,7 +54,7 @@ func (m *TrainingData) Reset()         { *m = TrainingData{} }
 func (m *TrainingData) String() string { return proto.CompactTextString(m) }
 func (*TrainingData) ProtoMessage()    {}
 func (*TrainingData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_training_947ef49745e4c27c, []int{0}
+	return fileDescriptor_training_a32523f7e88489cd, []int{0}
 }
 func (m *TrainingData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrainingData.Unmarshal(m, b)
@@ -235,7 +237,7 @@ func (m *StreamingTrainingRequest) Reset()         { *m = StreamingTrainingReque
 func (m *StreamingTrainingRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingTrainingRequest) ProtoMessage()    {}
 func (*StreamingTrainingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_training_947ef49745e4c27c, []int{1}
+	return fileDescriptor_training_a32523f7e88489cd, []int{1}
 }
 func (m *StreamingTrainingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTrainingRequest.Unmarshal(m, b)
@@ -526,10 +528,10 @@ var _Trainng_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("training/v1/training.proto", fileDescriptor_training_947ef49745e4c27c)
+	proto.RegisterFile("training/v1/training.proto", fileDescriptor_training_a32523f7e88489cd)
 }
 
-var fileDescriptor_training_947ef49745e4c27c = []byte{
+var fileDescriptor_training_a32523f7e88489cd = []byte{
 	// 546 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x53, 0xcd, 0x6a, 0xdb, 0x4c,
 	0x14, 0xcd, 0xe4, 0xc7, 0x71, 0x6e, 0xec, 0xef, 0x6b, 0x26, 0xa5, 0x11, 0xa2, 0x3f, 0xc6, 0x25,

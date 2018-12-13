@@ -47,6 +47,8 @@ message TrainingData {
   string media_identity        = 1;
 
   // the language code of the payload
+  // ISO-639-1/bcp47 Code with tags
+  // https://cloud.google.com/translate/docs/languages
   string language_code         = 2;
 
   // the format of the payload

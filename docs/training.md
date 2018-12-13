@@ -50,7 +50,7 @@ TODO:
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | media_identity | [string](#string) |  | the media identity |
-| language_code | [string](#string) |  | the language code of the payload |
+| language_code | [string](#string) |  | the language code of the payload ISO-639-1/bcp47 Code with tags https://cloud.google.com/translate/docs/languages |
 | format | [string](#string) |  | the format of the payload |
 | played_time | [double](#double) |  | how long does this transcript been played |
 | total_time | [double](#double) |  | how long of the entire video |
