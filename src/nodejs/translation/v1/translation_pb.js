@@ -79,7 +79,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.toObject = function(inc
     languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
     format: jspb.Message.getFieldWithDefault(msg, 3, ""),
     startTime: +jspb.Message.getFieldWithDefault(msg, 6, 0.0),
-    extraNames: jspb.Message.getFieldWithDefault(msg, 7, "")
+    hints: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -134,7 +134,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.deserializeBinaryFromRe
       break;
     case 7:
       var value = /** @type {string} */ (reader.readString());
-      msg.setExtraNames(value);
+      msg.setHints(value);
       break;
     default:
       reader.skipField();
@@ -193,7 +193,7 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.serializeBinaryToWriter
       f
     );
   }
-  f = message.getExtraNames();
+  f = message.getHints();
   if (f.length > 0) {
     writer.writeString(
       7,
@@ -264,16 +264,16 @@ proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setStartTime 
 
 
 /**
- * optional string extra_names = 7;
+ * optional string hints = 7;
  * @return {string}
  */
-proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.getExtraNames = function() {
+proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.getHints = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /** @param {string} value */
-proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setExtraNames = function(value) {
+proto.sagittarius.translation.v1.MediaTranslationRequest.prototype.setHints = function(value) {
   jspb.Message.setField(this, 7, value);
 };
 

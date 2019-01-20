@@ -78,10 +78,10 @@ message MediaTranslationRequest {
   string format         = 3;
 
   // position of the transcript relative to the begginning of the audio or video
-  double start_time  = 6;
+  double start_time     = 6;
 
-  // names for more possible results
-  string extra_names    = 7;
+  // hints or keywords for more possible results
+  string hints          = 7;
 }
 
 message MediaTranslationResponse {

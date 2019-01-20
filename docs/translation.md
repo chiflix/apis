@@ -78,7 +78,7 @@
 | language_code | [string](#string) |  | target language ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | format | [string](#string) |  | the format of the transcripts |
 | start_time | [double](#double) |  | position of the transcript relative to the begginning of the audio or video |
-| extra_names | [string](#string) |  | names for more possible results |
+| hints | [string](#string) |  | hints or keywords for more possible results |
 
 
 

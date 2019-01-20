@@ -20,8 +20,8 @@ export class MediaTranslationRequest extends jspb.Message {
     getStartTime(): number;
     setStartTime(value: number): void;
 
-    getExtraNames(): string;
-    setExtraNames(value: string): void;
+    getHints(): string;
+    setHints(value: string): void;
 
 
     serializeBinary(): Uint8Array;
@@ -40,7 +40,7 @@ export namespace MediaTranslationRequest {
         languageCode: string,
         format: string,
         startTime: number,
-        extraNames: string,
+        hints: string,
     }
 }
 
