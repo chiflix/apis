@@ -4,6 +4,7 @@
 ## Table of Contents
 
 - [translation/v1/translation.proto](#translation/v1/translation.proto)
+    - [DetectionPrediction](#sagittarius.translation.v1.DetectionPrediction)
     - [DetectionRequest](#sagittarius.translation.v1.DetectionRequest)
     - [DetectionResponse](#sagittarius.translation.v1.DetectionResponse)
     - [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest)
@@ -35,6 +36,22 @@
 
 
 
+<a name="sagittarius.translation.v1.DetectionPrediction"/>
+
+### DetectionPrediction
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| language_code | [string](#string) |  | Output-only* the language code of the detection result |
+| confidence | [float](#float) |  | Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the detection result are correct. |
+
+
+
+
+
+
 <a name="sagittarius.translation.v1.DetectionRequest"/>
 
 ### DetectionRequest
@@ -58,8 +75,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| language_code | [string](#string) |  | Output-only* the language code of the detection result |
-| confidence | [float](#float) |  | Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the detection result are correct. |
+| prediction | [DetectionPrediction](#sagittarius.translation.v1.DetectionPrediction) | repeated | there might be more than one prediction |
 
 
 

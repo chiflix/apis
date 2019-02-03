@@ -137,11 +137,10 @@ export namespace DetectionRequest {
 }
 
 export class DetectionResponse extends jspb.Message { 
-    getLanguageCode(): string;
-    setLanguageCode(value: string): void;
-
-    getConfidence(): number;
-    setConfidence(value: number): void;
+    clearPredictionList(): void;
+    getPredictionList(): Array<DetectionPrediction>;
+    setPredictionList(value: Array<DetectionPrediction>): void;
+    addPrediction(value?: DetectionPrediction, index?: number): DetectionPrediction;
 
 
     serializeBinary(): Uint8Array;
@@ -155,6 +154,30 @@ export class DetectionResponse extends jspb.Message {
 }
 
 export namespace DetectionResponse {
+    export type AsObject = {
+        predictionList: Array<DetectionPrediction.AsObject>,
+    }
+}
+
+export class DetectionPrediction extends jspb.Message { 
+    getLanguageCode(): string;
+    setLanguageCode(value: string): void;
+
+    getConfidence(): number;
+    setConfidence(value: number): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DetectionPrediction.AsObject;
+    static toObject(includeInstance: boolean, msg: DetectionPrediction): DetectionPrediction.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DetectionPrediction, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DetectionPrediction;
+    static deserializeBinaryFromReader(message: DetectionPrediction, reader: jspb.BinaryReader): DetectionPrediction;
+}
+
+export namespace DetectionPrediction {
     export type AsObject = {
         languageCode: string,
         confidence: number,

@@ -115,6 +115,11 @@ message DetectionRequest {
 }
 
 message DetectionResponse {
+  // there might be more than one prediction
+  repeated DetectionPrediction prediction = 1;
+}
+
+message DetectionPrediction {
   // *Output-only* the language code of the detection result
   string language_code = 1;
 
