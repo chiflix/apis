@@ -55,6 +55,7 @@ TODO:
 | played_time | [double](#double) |  | how long does this transcript been played |
 | total_time | [double](#double) |  | how long of the entire video |
 | delay | [int64](#int64) |  | in ms, can be &#43;/- |
+| hints | [string](#string) |  | hints or keywords related to this media |
 | transcript_identity | [string](#string) |  | transcript identity if any |
 | payload | [bytes](#bytes) |  | the transcripts payload |
 

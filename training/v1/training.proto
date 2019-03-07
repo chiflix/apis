@@ -63,6 +63,9 @@ message TrainingData {
   // in ms, can be +/-
   int64  delay       = 8;
 
+  // hints or keywords related to this media
+  string hints       = 9;
+
   oneof data {
     // transcript identity if any
     string transcript_identity   = 3;
@@ -70,6 +73,7 @@ message TrainingData {
     // the transcripts payload
     bytes  payload               = 7;
   }
+
 }
 
 // TODO:

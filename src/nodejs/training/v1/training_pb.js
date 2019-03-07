@@ -95,6 +95,7 @@ proto.sagittarius.training.v1.TrainingData.toObject = function(includeInstance, 
     playedTime: +jspb.Message.getFieldWithDefault(msg, 5, 0.0),
     totalTime: +jspb.Message.getFieldWithDefault(msg, 6, 0.0),
     delay: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    hints: jspb.Message.getFieldWithDefault(msg, 9, ""),
     transcriptIdentity: jspb.Message.getFieldWithDefault(msg, 3, ""),
     payload: msg.getPayload_asB64()
   };
@@ -156,6 +157,10 @@ proto.sagittarius.training.v1.TrainingData.deserializeBinaryFromReader = functio
     case 8:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setDelay(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHints(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -233,6 +238,13 @@ proto.sagittarius.training.v1.TrainingData.serializeBinaryToWriter = function(me
   if (f !== 0) {
     writer.writeInt64(
       8,
+      f
+    );
+  }
+  f = message.getHints();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
       f
     );
   }
@@ -340,6 +352,21 @@ proto.sagittarius.training.v1.TrainingData.prototype.getDelay = function() {
 /** @param {number} value */
 proto.sagittarius.training.v1.TrainingData.prototype.setDelay = function(value) {
   jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * optional string hints = 9;
+ * @return {string}
+ */
+proto.sagittarius.training.v1.TrainingData.prototype.getHints = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.training.v1.TrainingData.prototype.setHints = function(value) {
+  jspb.Message.setField(this, 9, value);
 };
 
 
