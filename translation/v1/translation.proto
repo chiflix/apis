@@ -64,6 +64,10 @@ service Translation {
       body: "*"
     };
   }
+
+  // Performs asynchronous audio translation: This method is only available via the gRPC API (not REST).
+  rpc StreamingAsyTranslation(stream StreamingAsyTranslationRequest)
+    returns (google.rpc.Status);
 }
 
 message MediaTranslationRequest {
@@ -179,6 +183,8 @@ message StreamingTranslationRequest {
     // [audio limits](https://cloud.google.com/speech/limits#content).
     bytes audio_content = 2;
   }
+  // the media identity
+  string media_identity = 3;
 }
 
 message StreamingTranslationResponse {
@@ -232,18 +238,18 @@ message StreamingTranslationResult {
 // We use Google Translation Service for text translation.
 // Translation API Reference: https://cloud.google.com/translate/docs/reference/translate
 message TextTranslationRequest {
-    // The text to translate
-    repeated string text = 1;
+  // The text to translate
+  repeated string text = 1;
 
-    // The language to use for translation of the text
-    // ISO-639-1/bcp47 Code with tags
-    // https://cloud.google.com/translate/docs/languages
-    string target_language_code = 2;
+  // The language to use for translation of the text
+  // ISO-639-1/bcp47 Code with tags
+  // https://cloud.google.com/translate/docs/languages
+  string target_language_code = 2;
 
-    // The language of the source text
-    // ISO-639-1/bcp47 Code with tags
-    // https://cloud.google.com/translate/docs/languages
-    string source_language_code = 3;
+  // The language of the source text
+  // ISO-639-1/bcp47 Code with tags
+  // https://cloud.google.com/translate/docs/languages
+  string source_language_code = 3;
 }
 
 message TextTranslationResponse {
@@ -261,4 +267,27 @@ message TextTranslationResponse {
 
   // translation results for the requested text
   repeated Text results = 2;
+}
+
+message StreamingAsyTranslationRequest {
+  // The streaming request, which is either a streaming config or audio content.
+  oneof streaming_request {
+    // Provides information to the recognizer that specifies how to process the
+    // request. The first `StreamingTranslationRequest` message must contain a
+    // `streaming_config`  message.
+    google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+
+    // The audio data to be trained. Sequential chunks of audio data are sent
+    // in sequential `StreamingTranslationRequest` messages. The first
+    // `StreamingTranslationRequest` message must not contain `audio_content` data
+    // and all subsequent `StreamingTranslationRequest` messages must contain
+    // `audio_content` data. The audio bytes must be encoded as specified in
+    // `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+    // pure binary representation (not base64). See
+    // [audio limits](https://cloud.google.com/speech/limits#content).
+    bytes audio_content = 2;
+  }
+
+  // the media identity
+  string media_identity        = 3;
 }
