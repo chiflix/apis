@@ -274,10 +274,10 @@ export namespace TranscriptResponse {
 
 export class StreamingTranslationRequest extends jspb.Message { 
 
-    hasMeta(): boolean;
-    clearMeta(): void;
-    getMeta(): StreamingTranslationRequestHead | undefined;
-    setMeta(value?: StreamingTranslationRequestHead): void;
+    hasStreamingConfig(): boolean;
+    clearStreamingConfig(): void;
+    getStreamingConfig(): StreamingTranslationRequestConfig | undefined;
+    setStreamingConfig(value?: StreamingTranslationRequestConfig): void;
 
 
     hasAudioContent(): boolean;
@@ -302,14 +302,14 @@ export class StreamingTranslationRequest extends jspb.Message {
 
 export namespace StreamingTranslationRequest {
     export type AsObject = {
-        meta?: StreamingTranslationRequestHead.AsObject,
+        streamingConfig?: StreamingTranslationRequestConfig.AsObject,
         audioContent: Uint8Array | string,
     }
 
     export enum StreamingRequestCase {
         STREAMINGREQUEST_NOT_SET = 0,
     
-    META = 1,
+    STREAMING_CONFIG = 1,
 
     AUDIO_CONTENT = 2,
 
@@ -317,7 +317,7 @@ export namespace StreamingTranslationRequest {
 
 }
 
-export class StreamingTranslationRequestHead extends jspb.Message { 
+export class StreamingTranslationRequestConfig extends jspb.Message { 
 
     hasStreamingConfig(): boolean;
     clearStreamingConfig(): void;
@@ -327,24 +327,28 @@ export class StreamingTranslationRequestHead extends jspb.Message {
     getMediaIdentity(): string;
     setMediaIdentity(value: string): void;
 
+    getAudioLanguageCode(): string;
+    setAudioLanguageCode(value: string): void;
+
     getTargetLanguageCode(): string;
     setTargetLanguageCode(value: string): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): StreamingTranslationRequestHead.AsObject;
-    static toObject(includeInstance: boolean, msg: StreamingTranslationRequestHead): StreamingTranslationRequestHead.AsObject;
+    toObject(includeInstance?: boolean): StreamingTranslationRequestConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: StreamingTranslationRequestConfig): StreamingTranslationRequestConfig.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: StreamingTranslationRequestHead, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): StreamingTranslationRequestHead;
-    static deserializeBinaryFromReader(message: StreamingTranslationRequestHead, reader: jspb.BinaryReader): StreamingTranslationRequestHead;
+    static serializeBinaryToWriter(message: StreamingTranslationRequestConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StreamingTranslationRequestConfig;
+    static deserializeBinaryFromReader(message: StreamingTranslationRequestConfig, reader: jspb.BinaryReader): StreamingTranslationRequestConfig;
 }
 
-export namespace StreamingTranslationRequestHead {
+export namespace StreamingTranslationRequestConfig {
     export type AsObject = {
         streamingConfig?: google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.AsObject,
         mediaIdentity: string,
+        audioLanguageCode: string,
         targetLanguageCode: string,
     }
 }
@@ -357,25 +361,25 @@ export class StreamingTranslationResponse extends jspb.Message {
     setError(value?: google_rpc_status_pb.Status): void;
 
 
-    hasResults(): boolean;
-    clearResults(): void;
-    getResults(): StreamingTranslationResult | undefined;
-    setResults(value?: StreamingTranslationResult): void;
+    hasStreamingResult(): boolean;
+    clearStreamingResult(): void;
+    getStreamingResult(): StreamingTranslationResult | undefined;
+    setStreamingResult(value?: StreamingTranslationResult): void;
 
 
     hasTaskinfo(): boolean;
     clearTaskinfo(): void;
-    getTaskinfo(): TaskInfo | undefined;
-    setTaskinfo(value?: TaskInfo): void;
+    getTaskinfo(): StreamingTranslationTaskInfo | undefined;
+    setTaskinfo(value?: StreamingTranslationTaskInfo): void;
 
 
-    hasTranscriptinfo(): boolean;
-    clearTranscriptinfo(): void;
-    getTranscriptinfo(): TranscriptInfo | undefined;
-    setTranscriptinfo(value?: TranscriptInfo): void;
+    hasTranscriptResult(): boolean;
+    clearTranscriptResult(): void;
+    getTranscriptResult(): TranscriptInfo | undefined;
+    setTranscriptResult(value?: TranscriptInfo): void;
 
 
-    getStreamingRequestCase(): StreamingTranslationResponse.StreamingRequestCase;
+    getStreamingResponseCase(): StreamingTranslationResponse.StreamingResponseCase;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): StreamingTranslationResponse.AsObject;
@@ -390,46 +394,46 @@ export class StreamingTranslationResponse extends jspb.Message {
 export namespace StreamingTranslationResponse {
     export type AsObject = {
         error?: google_rpc_status_pb.Status.AsObject,
-        results?: StreamingTranslationResult.AsObject,
-        taskinfo?: TaskInfo.AsObject,
-        transcriptinfo?: TranscriptInfo.AsObject,
+        streamingResult?: StreamingTranslationResult.AsObject,
+        taskinfo?: StreamingTranslationTaskInfo.AsObject,
+        transcriptResult?: TranscriptInfo.AsObject,
     }
 
-    export enum StreamingRequestCase {
-        STREAMINGREQUEST_NOT_SET = 0,
+    export enum StreamingResponseCase {
+        STREAMINGRESPONSE_NOT_SET = 0,
     
-    RESULTS = 2,
+    STREAMING_RESULT = 2,
 
     TASKINFO = 3,
 
-    TRANSCRIPTINFO = 4,
+    TRANSCRIPT_RESULT = 4,
 
     }
 
 }
 
-export class TaskInfoRequest extends jspb.Message { 
+export class StreamingTranslationTaskInfoRequest extends jspb.Message { 
     getTaskId(): string;
     setTaskId(value: string): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): TaskInfoRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: TaskInfoRequest): TaskInfoRequest.AsObject;
+    toObject(includeInstance?: boolean): StreamingTranslationTaskInfoRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: StreamingTranslationTaskInfoRequest): StreamingTranslationTaskInfoRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: TaskInfoRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): TaskInfoRequest;
-    static deserializeBinaryFromReader(message: TaskInfoRequest, reader: jspb.BinaryReader): TaskInfoRequest;
+    static serializeBinaryToWriter(message: StreamingTranslationTaskInfoRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StreamingTranslationTaskInfoRequest;
+    static deserializeBinaryFromReader(message: StreamingTranslationTaskInfoRequest, reader: jspb.BinaryReader): StreamingTranslationTaskInfoRequest;
 }
 
-export namespace TaskInfoRequest {
+export namespace StreamingTranslationTaskInfoRequest {
     export type AsObject = {
         taskId: string,
     }
 }
 
-export class TaskInfoResponse extends jspb.Message { 
+export class StreamingTranslationTaskInfoResponse extends jspb.Message { 
 
     hasError(): boolean;
     clearError(): void;
@@ -439,8 +443,8 @@ export class TaskInfoResponse extends jspb.Message {
 
     hasTaskinfo(): boolean;
     clearTaskinfo(): void;
-    getTaskinfo(): TaskInfo | undefined;
-    setTaskinfo(value?: TaskInfo): void;
+    getTaskinfo(): StreamingTranslationTaskInfo | undefined;
+    setTaskinfo(value?: StreamingTranslationTaskInfo): void;
 
 
     hasTranscriptinfo(): boolean;
@@ -449,22 +453,22 @@ export class TaskInfoResponse extends jspb.Message {
     setTranscriptinfo(value?: TranscriptInfo): void;
 
 
-    getStreamingRequestCase(): TaskInfoResponse.StreamingRequestCase;
+    getStreamingRequestCase(): StreamingTranslationTaskInfoResponse.StreamingRequestCase;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): TaskInfoResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: TaskInfoResponse): TaskInfoResponse.AsObject;
+    toObject(includeInstance?: boolean): StreamingTranslationTaskInfoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: StreamingTranslationTaskInfoResponse): StreamingTranslationTaskInfoResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: TaskInfoResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): TaskInfoResponse;
-    static deserializeBinaryFromReader(message: TaskInfoResponse, reader: jspb.BinaryReader): TaskInfoResponse;
+    static serializeBinaryToWriter(message: StreamingTranslationTaskInfoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StreamingTranslationTaskInfoResponse;
+    static deserializeBinaryFromReader(message: StreamingTranslationTaskInfoResponse, reader: jspb.BinaryReader): StreamingTranslationTaskInfoResponse;
 }
 
-export namespace TaskInfoResponse {
+export namespace StreamingTranslationTaskInfoResponse {
     export type AsObject = {
         error?: google_rpc_status_pb.Status.AsObject,
-        taskinfo?: TaskInfo.AsObject,
+        taskinfo?: StreamingTranslationTaskInfo.AsObject,
         transcriptinfo?: TranscriptInfo.AsObject,
     }
 
@@ -479,7 +483,7 @@ export namespace TaskInfoResponse {
 
 }
 
-export class TaskInfo extends jspb.Message { 
+export class StreamingTranslationTaskInfo extends jspb.Message { 
     getTaskId(): string;
     setTaskId(value: string): void;
 
@@ -488,16 +492,16 @@ export class TaskInfo extends jspb.Message {
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): TaskInfo.AsObject;
-    static toObject(includeInstance: boolean, msg: TaskInfo): TaskInfo.AsObject;
+    toObject(includeInstance?: boolean): StreamingTranslationTaskInfo.AsObject;
+    static toObject(includeInstance: boolean, msg: StreamingTranslationTaskInfo): StreamingTranslationTaskInfo.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: TaskInfo, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): TaskInfo;
-    static deserializeBinaryFromReader(message: TaskInfo, reader: jspb.BinaryReader): TaskInfo;
+    static serializeBinaryToWriter(message: StreamingTranslationTaskInfo, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StreamingTranslationTaskInfo;
+    static deserializeBinaryFromReader(message: StreamingTranslationTaskInfo, reader: jspb.BinaryReader): StreamingTranslationTaskInfo;
 }
 
-export namespace TaskInfo {
+export namespace StreamingTranslationTaskInfo {
     export type AsObject = {
         taskId: string,
         estimateTime: number,

@@ -60,20 +60,19 @@ service Translation {
     };
   }
 
-  // Performs bidirectional streaming audio translation: receive results while
+  // Performs bidirectional streaming audio translation: receive results after or while
   // sending audio. This method is only available via the gRPC API (not REST).
   rpc StreamingTranslation(stream StreamingTranslationRequest)
     returns (stream StreamingTranslationResponse);
-
   
-  // Translate text by Google Translation Service
-  rpc TaskInfo(TaskInfoRequest) returns (TaskInfoResponse) {
+  // Check StreamingTranslationTask results or estimate finish time 
+  // and maybe other informations related to the task
+  rpc StreamingTranslationTaskInfo(StreamingTranslationTaskInfoRequest) returns (StreamingTranslationTaskInfoResponse) {
     option (google.api.http) = {
-      post: "/v1/task/{task_id}/info"
+      post: "/v1/translation/task/{task_id}/info"
       body: "*"
     };
   }
-
 }
 
 message MediaTranslationRequest {
@@ -167,16 +166,16 @@ message TranscriptResponse {
   bool is_end_of_transcript             = 3;
 }
 
-// The top-level message sent by the client for the `StreamingRecognize` method.
+// The top-level message sent by the client for the `StreamingTranslation` method.
 // Multiple `StreamingTranslationRequest` messages are sent. The first message
-// must contain a `streaming_config` `media_identity` `target_language_code` message 
+// must contain a `streaming_config` message 
 // and must not contain `audio` data.
 // All subsequent messages must contain `audio` data and must not contain a
 // `streaming_config` message.
 message StreamingTranslationRequest {
   // The streaming request, which is either a streaming config or audio content.
   oneof streaming_request {
-    StreamingTranslationRequestHead meta = 1;
+    StreamingTranslationRequestConfig streaming_config = 1;
 
     // The audio data to be recognized. Sequential chunks of audio data are sent
     // in sequential `StreamingTranslationRequest` messages. The first
@@ -190,59 +189,70 @@ message StreamingTranslationRequest {
   }
 }
 
-message StreamingTranslationRequestHead {
+message StreamingTranslationRequestConfig {
   // Provides information to the recognizer that specifies how to process the
   // request. The first `StreamingTranslationRequest` message must contain a
   // `streaming_config`  message.
   google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
 
   // the media identity
-  string media_identity = 3;
+  string media_identity = 2;
+
+  // the language code of the audio
+  // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
+  string audio_language_code = 3;
 
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
   string target_language_code = 4;
 }
 
+// The top-level message sent by server for the `StreamingTranslation` method.
+// Multiple `StreamingTranslationResponse` messages may be sent.
 message StreamingTranslationResponse {
   // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
   // specifies the error for the operation.
-  // `OK` means it is the final message
   google.rpc.Status error = 1;
 
-  oneof streaming_request {
-    // *Output-only* This contains results that
+  // streaming_response must be one of following
+  oneof streaming_response {
+    // *Output-only* If the request is suit for streaming result, This contains results that
     // correspond to consecutive portions of the audio currently being processed.
-    // It contains zero or more `is_final=false` results followed by zero or one
-    // `is_final=true` result (the newly settled portion).
-    StreamingTranslationResult results = 2;
+    StreamingTranslationResult streaming_result = 2;
 
-    // *Output-only* This is the task if that has been created for farther inquiry
-    TaskInfo taskinfo = 3;
+    // *Output-only* If StreamingTranslationTask has been created for farther inquiry
+    // this is the task info include id and estimated finish time, etc.
+    StreamingTranslationTaskInfo taskinfo = 3;
 
-    // *Output-only* this is the translated transcript
-    TranscriptInfo transcriptinfo = 4;
+    // *Output-only* If the StreamingTranslationTask has finished and the client still alive
+    // this is the translated transcript in whole
+    TranscriptInfo transcript_result = 4;
   }
 }
 
-message TaskInfoRequest {
+// the StreamingTranslationTask id that created by the `StreamingTranslation` method.
+message StreamingTranslationTaskInfoRequest {
   string task_id = 1;
 }
 
-message TaskInfoResponse {
+// the translated TranscriptInfo or `StreamingTranslationTaskInfo`
+message StreamingTranslationTaskInfoResponse {
   google.rpc.Status error = 1;
 
   oneof streaming_request {
-    TaskInfo taskinfo     = 2;
+    StreamingTranslationTaskInfo taskinfo     = 2;
 
     // can return result
     TranscriptInfo transcriptinfo = 3;
   }
 }
 
-message TaskInfo {
+// the StreamingTranslationTask that created by the `StreamingTranslation` method.
+message StreamingTranslationTaskInfo {
   // this task id can be used for farther inquiry
   string task_id          = 1;
 
+  // this is the estimated finished time, the task is finished if the time is zero
+  // or less
   double estimate_time    = 2;
 }
 

@@ -14,7 +14,7 @@ interface ITranslationService extends grpc.ServiceDefinition<grpc.UntypedService
     transcript: ITranslationService_ITranscript;
     translateText: ITranslationService_ITranslateText;
     streamingTranslation: ITranslationService_IStreamingTranslation;
-    taskInfo: ITranslationService_ITaskInfo;
+    streamingTranslationTaskInfo: ITranslationService_IStreamingTranslationTaskInfo;
 }
 
 interface ITranslationService_ITranslateMedia extends grpc.MethodDefinition<translation_v1_translation_pb.MediaTranslationRequest, translation_v1_translation_pb.MediaTranslationResponse> {
@@ -62,14 +62,14 @@ interface ITranslationService_IStreamingTranslation extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<translation_v1_translation_pb.StreamingTranslationResponse>;
     responseDeserialize: grpc.deserialize<translation_v1_translation_pb.StreamingTranslationResponse>;
 }
-interface ITranslationService_ITaskInfo extends grpc.MethodDefinition<translation_v1_translation_pb.TaskInfoRequest, translation_v1_translation_pb.TaskInfoResponse> {
-    path: string; // "/sagittarius.translation.v1.Translation/TaskInfo"
+interface ITranslationService_IStreamingTranslationTaskInfo extends grpc.MethodDefinition<translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, translation_v1_translation_pb.StreamingTranslationTaskInfoResponse> {
+    path: string; // "/sagittarius.translation.v1.Translation/StreamingTranslationTaskInfo"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<translation_v1_translation_pb.TaskInfoRequest>;
-    requestDeserialize: grpc.deserialize<translation_v1_translation_pb.TaskInfoRequest>;
-    responseSerialize: grpc.serialize<translation_v1_translation_pb.TaskInfoResponse>;
-    responseDeserialize: grpc.deserialize<translation_v1_translation_pb.TaskInfoResponse>;
+    requestSerialize: grpc.serialize<translation_v1_translation_pb.StreamingTranslationTaskInfoRequest>;
+    requestDeserialize: grpc.deserialize<translation_v1_translation_pb.StreamingTranslationTaskInfoRequest>;
+    responseSerialize: grpc.serialize<translation_v1_translation_pb.StreamingTranslationTaskInfoResponse>;
+    responseDeserialize: grpc.deserialize<translation_v1_translation_pb.StreamingTranslationTaskInfoResponse>;
 }
 
 export const TranslationService: ITranslationService;
@@ -80,7 +80,7 @@ export interface ITranslationServer {
     transcript: grpc.handleUnaryCall<translation_v1_translation_pb.TranscriptRequest, translation_v1_translation_pb.TranscriptResponse>;
     translateText: grpc.handleUnaryCall<translation_v1_translation_pb.TextTranslationRequest, translation_v1_translation_pb.TextTranslationResponse>;
     streamingTranslation: grpc.handleBidiStreamingCall<translation_v1_translation_pb.StreamingTranslationRequest, translation_v1_translation_pb.StreamingTranslationResponse>;
-    taskInfo: grpc.handleUnaryCall<translation_v1_translation_pb.TaskInfoRequest, translation_v1_translation_pb.TaskInfoResponse>;
+    streamingTranslationTaskInfo: grpc.handleUnaryCall<translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, translation_v1_translation_pb.StreamingTranslationTaskInfoResponse>;
 }
 
 export interface ITranslationClient {
@@ -99,9 +99,9 @@ export interface ITranslationClient {
     streamingTranslation(): grpc.ClientDuplexStream<translation_v1_translation_pb.StreamingTranslationRequest, translation_v1_translation_pb.StreamingTranslationResponse>;
     streamingTranslation(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<translation_v1_translation_pb.StreamingTranslationRequest, translation_v1_translation_pb.StreamingTranslationResponse>;
     streamingTranslation(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<translation_v1_translation_pb.StreamingTranslationRequest, translation_v1_translation_pb.StreamingTranslationResponse>;
-    taskInfo(request: translation_v1_translation_pb.TaskInfoRequest, callback: (error: Error | null, response: translation_v1_translation_pb.TaskInfoResponse) => void): grpc.ClientUnaryCall;
-    taskInfo(request: translation_v1_translation_pb.TaskInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: translation_v1_translation_pb.TaskInfoResponse) => void): grpc.ClientUnaryCall;
-    taskInfo(request: translation_v1_translation_pb.TaskInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: translation_v1_translation_pb.TaskInfoResponse) => void): grpc.ClientUnaryCall;
+    streamingTranslationTaskInfo(request: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, callback: (error: Error | null, response: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse) => void): grpc.ClientUnaryCall;
+    streamingTranslationTaskInfo(request: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse) => void): grpc.ClientUnaryCall;
+    streamingTranslationTaskInfo(request: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class TranslationClient extends grpc.Client implements ITranslationClient {
@@ -120,7 +120,7 @@ export class TranslationClient extends grpc.Client implements ITranslationClient
     public translateText(request: translation_v1_translation_pb.TextTranslationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: translation_v1_translation_pb.TextTranslationResponse) => void): grpc.ClientUnaryCall;
     public streamingTranslation(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<translation_v1_translation_pb.StreamingTranslationRequest, translation_v1_translation_pb.StreamingTranslationResponse>;
     public streamingTranslation(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<translation_v1_translation_pb.StreamingTranslationRequest, translation_v1_translation_pb.StreamingTranslationResponse>;
-    public taskInfo(request: translation_v1_translation_pb.TaskInfoRequest, callback: (error: Error | null, response: translation_v1_translation_pb.TaskInfoResponse) => void): grpc.ClientUnaryCall;
-    public taskInfo(request: translation_v1_translation_pb.TaskInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: translation_v1_translation_pb.TaskInfoResponse) => void): grpc.ClientUnaryCall;
-    public taskInfo(request: translation_v1_translation_pb.TaskInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: translation_v1_translation_pb.TaskInfoResponse) => void): grpc.ClientUnaryCall;
+    public streamingTranslationTaskInfo(request: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, callback: (error: Error | null, response: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse) => void): grpc.ClientUnaryCall;
+    public streamingTranslationTaskInfo(request: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse) => void): grpc.ClientUnaryCall;
+    public streamingTranslationTaskInfo(request: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse) => void): grpc.ClientUnaryCall;
 }

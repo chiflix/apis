@@ -47,7 +47,7 @@ func (m *MediaTranslationRequest) Reset()         { *m = MediaTranslationRequest
 func (m *MediaTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*MediaTranslationRequest) ProtoMessage()    {}
 func (*MediaTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{0}
+	return fileDescriptor_translation_4d20818642deec07, []int{0}
 }
 func (m *MediaTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaTranslationRequest.Unmarshal(m, b)
@@ -118,7 +118,7 @@ func (m *MediaTranslationResponse) Reset()         { *m = MediaTranslationRespon
 func (m *MediaTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*MediaTranslationResponse) ProtoMessage()    {}
 func (*MediaTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{1}
+	return fileDescriptor_translation_4d20818642deec07, []int{1}
 }
 func (m *MediaTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaTranslationResponse.Unmarshal(m, b)
@@ -170,7 +170,7 @@ func (m *TranscriptInfo) Reset()         { *m = TranscriptInfo{} }
 func (m *TranscriptInfo) String() string { return proto.CompactTextString(m) }
 func (*TranscriptInfo) ProtoMessage()    {}
 func (*TranscriptInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{2}
+	return fileDescriptor_translation_4d20818642deec07, []int{2}
 }
 func (m *TranscriptInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptInfo.Unmarshal(m, b)
@@ -237,7 +237,7 @@ func (m *DetectionRequest) Reset()         { *m = DetectionRequest{} }
 func (m *DetectionRequest) String() string { return proto.CompactTextString(m) }
 func (*DetectionRequest) ProtoMessage()    {}
 func (*DetectionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{3}
+	return fileDescriptor_translation_4d20818642deec07, []int{3}
 }
 func (m *DetectionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionRequest.Unmarshal(m, b)
@@ -276,7 +276,7 @@ func (m *DetectionResponse) Reset()         { *m = DetectionResponse{} }
 func (m *DetectionResponse) String() string { return proto.CompactTextString(m) }
 func (*DetectionResponse) ProtoMessage()    {}
 func (*DetectionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{4}
+	return fileDescriptor_translation_4d20818642deec07, []int{4}
 }
 func (m *DetectionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionResponse.Unmarshal(m, b)
@@ -319,7 +319,7 @@ func (m *DetectionPrediction) Reset()         { *m = DetectionPrediction{} }
 func (m *DetectionPrediction) String() string { return proto.CompactTextString(m) }
 func (*DetectionPrediction) ProtoMessage()    {}
 func (*DetectionPrediction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{5}
+	return fileDescriptor_translation_4d20818642deec07, []int{5}
 }
 func (m *DetectionPrediction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectionPrediction.Unmarshal(m, b)
@@ -368,7 +368,7 @@ func (m *TranscriptRequest) Reset()         { *m = TranscriptRequest{} }
 func (m *TranscriptRequest) String() string { return proto.CompactTextString(m) }
 func (*TranscriptRequest) ProtoMessage()    {}
 func (*TranscriptRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{6}
+	return fileDescriptor_translation_4d20818642deec07, []int{6}
 }
 func (m *TranscriptRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptRequest.Unmarshal(m, b)
@@ -417,7 +417,7 @@ func (m *TranscriptResponse) Reset()         { *m = TranscriptResponse{} }
 func (m *TranscriptResponse) String() string { return proto.CompactTextString(m) }
 func (*TranscriptResponse) ProtoMessage()    {}
 func (*TranscriptResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{7}
+	return fileDescriptor_translation_4d20818642deec07, []int{7}
 }
 func (m *TranscriptResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptResponse.Unmarshal(m, b)
@@ -472,7 +472,7 @@ func (m *TranscriptResponse_Cue) Reset()         { *m = TranscriptResponse_Cue{}
 func (m *TranscriptResponse_Cue) String() string { return proto.CompactTextString(m) }
 func (*TranscriptResponse_Cue) ProtoMessage()    {}
 func (*TranscriptResponse_Cue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{7, 0}
+	return fileDescriptor_translation_4d20818642deec07, []int{7, 0}
 }
 func (m *TranscriptResponse_Cue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranscriptResponse_Cue.Unmarshal(m, b)
@@ -513,9 +513,9 @@ func (m *TranscriptResponse_Cue) GetText() string {
 	return ""
 }
 
-// The top-level message sent by the client for the `StreamingRecognize` method.
+// The top-level message sent by the client for the `StreamingTranslation` method.
 // Multiple `StreamingTranslationRequest` messages are sent. The first message
-// must contain a `streaming_config` `media_identity` `target_language_code` message
+// must contain a `streaming_config` message
 // and must not contain `audio` data.
 // All subsequent messages must contain `audio` data and must not contain a
 // `streaming_config` message.
@@ -523,7 +523,7 @@ type StreamingTranslationRequest struct {
 	// The streaming request, which is either a streaming config or audio content.
 	//
 	// Types that are valid to be assigned to StreamingRequest:
-	//	*StreamingTranslationRequest_Meta
+	//	*StreamingTranslationRequest_StreamingConfig
 	//	*StreamingTranslationRequest_AudioContent
 	StreamingRequest     isStreamingTranslationRequest_StreamingRequest `protobuf_oneof:"streaming_request"`
 	XXX_NoUnkeyedLiteral struct{}                                       `json:"-"`
@@ -535,7 +535,7 @@ func (m *StreamingTranslationRequest) Reset()         { *m = StreamingTranslatio
 func (m *StreamingTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationRequest) ProtoMessage()    {}
 func (*StreamingTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{8}
+	return fileDescriptor_translation_4d20818642deec07, []int{8}
 }
 func (m *StreamingTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationRequest.Unmarshal(m, b)
@@ -559,15 +559,15 @@ type isStreamingTranslationRequest_StreamingRequest interface {
 	isStreamingTranslationRequest_StreamingRequest()
 }
 
-type StreamingTranslationRequest_Meta struct {
-	Meta *StreamingTranslationRequestHead `protobuf:"bytes,1,opt,name=meta,proto3,oneof"`
+type StreamingTranslationRequest_StreamingConfig struct {
+	StreamingConfig *StreamingTranslationRequestConfig `protobuf:"bytes,1,opt,name=streaming_config,json=streamingConfig,proto3,oneof"`
 }
 type StreamingTranslationRequest_AudioContent struct {
 	AudioContent []byte `protobuf:"bytes,2,opt,name=audio_content,json=audioContent,proto3,oneof"`
 }
 
-func (*StreamingTranslationRequest_Meta) isStreamingTranslationRequest_StreamingRequest()         {}
-func (*StreamingTranslationRequest_AudioContent) isStreamingTranslationRequest_StreamingRequest() {}
+func (*StreamingTranslationRequest_StreamingConfig) isStreamingTranslationRequest_StreamingRequest() {}
+func (*StreamingTranslationRequest_AudioContent) isStreamingTranslationRequest_StreamingRequest()    {}
 
 func (m *StreamingTranslationRequest) GetStreamingRequest() isStreamingTranslationRequest_StreamingRequest {
 	if m != nil {
@@ -576,9 +576,9 @@ func (m *StreamingTranslationRequest) GetStreamingRequest() isStreamingTranslati
 	return nil
 }
 
-func (m *StreamingTranslationRequest) GetMeta() *StreamingTranslationRequestHead {
-	if x, ok := m.GetStreamingRequest().(*StreamingTranslationRequest_Meta); ok {
-		return x.Meta
+func (m *StreamingTranslationRequest) GetStreamingConfig() *StreamingTranslationRequestConfig {
+	if x, ok := m.GetStreamingRequest().(*StreamingTranslationRequest_StreamingConfig); ok {
+		return x.StreamingConfig
 	}
 	return nil
 }
@@ -593,7 +593,7 @@ func (m *StreamingTranslationRequest) GetAudioContent() []byte {
 // XXX_OneofFuncs is for the internal use of the proto package.
 func (*StreamingTranslationRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
 	return _StreamingTranslationRequest_OneofMarshaler, _StreamingTranslationRequest_OneofUnmarshaler, _StreamingTranslationRequest_OneofSizer, []interface{}{
-		(*StreamingTranslationRequest_Meta)(nil),
+		(*StreamingTranslationRequest_StreamingConfig)(nil),
 		(*StreamingTranslationRequest_AudioContent)(nil),
 	}
 }
@@ -602,9 +602,9 @@ func _StreamingTranslationRequest_OneofMarshaler(msg proto.Message, b *proto.Buf
 	m := msg.(*StreamingTranslationRequest)
 	// streaming_request
 	switch x := m.StreamingRequest.(type) {
-	case *StreamingTranslationRequest_Meta:
+	case *StreamingTranslationRequest_StreamingConfig:
 		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Meta); err != nil {
+		if err := b.EncodeMessage(x.StreamingConfig); err != nil {
 			return err
 		}
 	case *StreamingTranslationRequest_AudioContent:
@@ -620,13 +620,13 @@ func _StreamingTranslationRequest_OneofMarshaler(msg proto.Message, b *proto.Buf
 func _StreamingTranslationRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
 	m := msg.(*StreamingTranslationRequest)
 	switch tag {
-	case 1: // streaming_request.meta
+	case 1: // streaming_request.streaming_config
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
-		msg := new(StreamingTranslationRequestHead)
+		msg := new(StreamingTranslationRequestConfig)
 		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &StreamingTranslationRequest_Meta{msg}
+		m.StreamingRequest = &StreamingTranslationRequest_StreamingConfig{msg}
 		return true, err
 	case 2: // streaming_request.audio_content
 		if wire != proto.WireBytes {
@@ -644,8 +644,8 @@ func _StreamingTranslationRequest_OneofSizer(msg proto.Message) (n int) {
 	m := msg.(*StreamingTranslationRequest)
 	// streaming_request
 	switch x := m.StreamingRequest.(type) {
-	case *StreamingTranslationRequest_Meta:
-		s := proto.Size(x.Meta)
+	case *StreamingTranslationRequest_StreamingConfig:
+		s := proto.Size(x.StreamingConfig)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
@@ -660,13 +660,16 @@ func _StreamingTranslationRequest_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-type StreamingTranslationRequestHead struct {
+type StreamingTranslationRequestConfig struct {
 	// Provides information to the recognizer that specifies how to process the
 	// request. The first `StreamingTranslationRequest` message must contain a
 	// `streaming_config`  message.
 	StreamingConfig *v1.RecognitionConfig `protobuf:"bytes,1,opt,name=streaming_config,json=streamingConfig,proto3" json:"streaming_config,omitempty"`
 	// the media identity
-	MediaIdentity string `protobuf:"bytes,3,opt,name=media_identity,json=mediaIdentity,proto3" json:"media_identity,omitempty"`
+	MediaIdentity string `protobuf:"bytes,2,opt,name=media_identity,json=mediaIdentity,proto3" json:"media_identity,omitempty"`
+	// the language code of the audio
+	// ISO-639-1 Code https://cloud.google.com/translate/docs/languages
+	AudioLanguageCode string `protobuf:"bytes,3,opt,name=audio_language_code,json=audioLanguageCode,proto3" json:"audio_language_code,omitempty"`
 	// ISO-639-1 Code https://cloud.google.com/translate/docs/languages
 	TargetLanguageCode   string   `protobuf:"bytes,4,opt,name=target_language_code,json=targetLanguageCode,proto3" json:"target_language_code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -674,71 +677,81 @@ type StreamingTranslationRequestHead struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *StreamingTranslationRequestHead) Reset()         { *m = StreamingTranslationRequestHead{} }
-func (m *StreamingTranslationRequestHead) String() string { return proto.CompactTextString(m) }
-func (*StreamingTranslationRequestHead) ProtoMessage()    {}
-func (*StreamingTranslationRequestHead) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{9}
+func (m *StreamingTranslationRequestConfig) Reset()         { *m = StreamingTranslationRequestConfig{} }
+func (m *StreamingTranslationRequestConfig) String() string { return proto.CompactTextString(m) }
+func (*StreamingTranslationRequestConfig) ProtoMessage()    {}
+func (*StreamingTranslationRequestConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_4d20818642deec07, []int{9}
 }
-func (m *StreamingTranslationRequestHead) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_StreamingTranslationRequestHead.Unmarshal(m, b)
+func (m *StreamingTranslationRequestConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamingTranslationRequestConfig.Unmarshal(m, b)
 }
-func (m *StreamingTranslationRequestHead) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_StreamingTranslationRequestHead.Marshal(b, m, deterministic)
+func (m *StreamingTranslationRequestConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamingTranslationRequestConfig.Marshal(b, m, deterministic)
 }
-func (dst *StreamingTranslationRequestHead) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingTranslationRequestHead.Merge(dst, src)
+func (dst *StreamingTranslationRequestConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingTranslationRequestConfig.Merge(dst, src)
 }
-func (m *StreamingTranslationRequestHead) XXX_Size() int {
-	return xxx_messageInfo_StreamingTranslationRequestHead.Size(m)
+func (m *StreamingTranslationRequestConfig) XXX_Size() int {
+	return xxx_messageInfo_StreamingTranslationRequestConfig.Size(m)
 }
-func (m *StreamingTranslationRequestHead) XXX_DiscardUnknown() {
-	xxx_messageInfo_StreamingTranslationRequestHead.DiscardUnknown(m)
+func (m *StreamingTranslationRequestConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamingTranslationRequestConfig.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_StreamingTranslationRequestHead proto.InternalMessageInfo
+var xxx_messageInfo_StreamingTranslationRequestConfig proto.InternalMessageInfo
 
-func (m *StreamingTranslationRequestHead) GetStreamingConfig() *v1.RecognitionConfig {
+func (m *StreamingTranslationRequestConfig) GetStreamingConfig() *v1.RecognitionConfig {
 	if m != nil {
 		return m.StreamingConfig
 	}
 	return nil
 }
 
-func (m *StreamingTranslationRequestHead) GetMediaIdentity() string {
+func (m *StreamingTranslationRequestConfig) GetMediaIdentity() string {
 	if m != nil {
 		return m.MediaIdentity
 	}
 	return ""
 }
 
-func (m *StreamingTranslationRequestHead) GetTargetLanguageCode() string {
+func (m *StreamingTranslationRequestConfig) GetAudioLanguageCode() string {
+	if m != nil {
+		return m.AudioLanguageCode
+	}
+	return ""
+}
+
+func (m *StreamingTranslationRequestConfig) GetTargetLanguageCode() string {
 	if m != nil {
 		return m.TargetLanguageCode
 	}
 	return ""
 }
 
+// The top-level message sent by server for the `StreamingTranslation` method.
+// Multiple `StreamingTranslationResponse` messages may be sent.
 type StreamingTranslationResponse struct {
 	// *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
 	// specifies the error for the operation.
-	// `OK` means it is the final message
 	Error *status.Status `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
-	// Types that are valid to be assigned to StreamingRequest:
-	//	*StreamingTranslationResponse_Results
+	// streaming_response must be one of following
+	//
+	// Types that are valid to be assigned to StreamingResponse:
+	//	*StreamingTranslationResponse_StreamingResult
 	//	*StreamingTranslationResponse_Taskinfo
-	//	*StreamingTranslationResponse_Transcriptinfo
-	StreamingRequest     isStreamingTranslationResponse_StreamingRequest `protobuf_oneof:"streaming_request"`
-	XXX_NoUnkeyedLiteral struct{}                                        `json:"-"`
-	XXX_unrecognized     []byte                                          `json:"-"`
-	XXX_sizecache        int32                                           `json:"-"`
+	//	*StreamingTranslationResponse_TranscriptResult
+	StreamingResponse    isStreamingTranslationResponse_StreamingResponse `protobuf_oneof:"streaming_response"`
+	XXX_NoUnkeyedLiteral struct{}                                         `json:"-"`
+	XXX_unrecognized     []byte                                           `json:"-"`
+	XXX_sizecache        int32                                            `json:"-"`
 }
 
 func (m *StreamingTranslationResponse) Reset()         { *m = StreamingTranslationResponse{} }
 func (m *StreamingTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationResponse) ProtoMessage()    {}
 func (*StreamingTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{10}
+	return fileDescriptor_translation_4d20818642deec07, []int{10}
 }
 func (m *StreamingTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationResponse.Unmarshal(m, b)
@@ -758,28 +771,29 @@ func (m *StreamingTranslationResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StreamingTranslationResponse proto.InternalMessageInfo
 
-type isStreamingTranslationResponse_StreamingRequest interface {
-	isStreamingTranslationResponse_StreamingRequest()
+type isStreamingTranslationResponse_StreamingResponse interface {
+	isStreamingTranslationResponse_StreamingResponse()
 }
 
-type StreamingTranslationResponse_Results struct {
-	Results *StreamingTranslationResult `protobuf:"bytes,2,opt,name=results,proto3,oneof"`
+type StreamingTranslationResponse_StreamingResult struct {
+	StreamingResult *StreamingTranslationResult `protobuf:"bytes,2,opt,name=streaming_result,json=streamingResult,proto3,oneof"`
 }
 type StreamingTranslationResponse_Taskinfo struct {
-	Taskinfo *TaskInfo `protobuf:"bytes,3,opt,name=taskinfo,proto3,oneof"`
+	Taskinfo *StreamingTranslationTaskInfo `protobuf:"bytes,3,opt,name=taskinfo,proto3,oneof"`
 }
-type StreamingTranslationResponse_Transcriptinfo struct {
-	Transcriptinfo *TranscriptInfo `protobuf:"bytes,4,opt,name=transcriptinfo,proto3,oneof"`
-}
-
-func (*StreamingTranslationResponse_Results) isStreamingTranslationResponse_StreamingRequest()  {}
-func (*StreamingTranslationResponse_Taskinfo) isStreamingTranslationResponse_StreamingRequest() {}
-func (*StreamingTranslationResponse_Transcriptinfo) isStreamingTranslationResponse_StreamingRequest() {
+type StreamingTranslationResponse_TranscriptResult struct {
+	TranscriptResult *TranscriptInfo `protobuf:"bytes,4,opt,name=transcript_result,json=transcriptResult,proto3,oneof"`
 }
 
-func (m *StreamingTranslationResponse) GetStreamingRequest() isStreamingTranslationResponse_StreamingRequest {
+func (*StreamingTranslationResponse_StreamingResult) isStreamingTranslationResponse_StreamingResponse() {
+}
+func (*StreamingTranslationResponse_Taskinfo) isStreamingTranslationResponse_StreamingResponse() {}
+func (*StreamingTranslationResponse_TranscriptResult) isStreamingTranslationResponse_StreamingResponse() {
+}
+
+func (m *StreamingTranslationResponse) GetStreamingResponse() isStreamingTranslationResponse_StreamingResponse {
 	if m != nil {
-		return m.StreamingRequest
+		return m.StreamingResponse
 	}
 	return nil
 }
@@ -791,23 +805,23 @@ func (m *StreamingTranslationResponse) GetError() *status.Status {
 	return nil
 }
 
-func (m *StreamingTranslationResponse) GetResults() *StreamingTranslationResult {
-	if x, ok := m.GetStreamingRequest().(*StreamingTranslationResponse_Results); ok {
-		return x.Results
+func (m *StreamingTranslationResponse) GetStreamingResult() *StreamingTranslationResult {
+	if x, ok := m.GetStreamingResponse().(*StreamingTranslationResponse_StreamingResult); ok {
+		return x.StreamingResult
 	}
 	return nil
 }
 
-func (m *StreamingTranslationResponse) GetTaskinfo() *TaskInfo {
-	if x, ok := m.GetStreamingRequest().(*StreamingTranslationResponse_Taskinfo); ok {
+func (m *StreamingTranslationResponse) GetTaskinfo() *StreamingTranslationTaskInfo {
+	if x, ok := m.GetStreamingResponse().(*StreamingTranslationResponse_Taskinfo); ok {
 		return x.Taskinfo
 	}
 	return nil
 }
 
-func (m *StreamingTranslationResponse) GetTranscriptinfo() *TranscriptInfo {
-	if x, ok := m.GetStreamingRequest().(*StreamingTranslationResponse_Transcriptinfo); ok {
-		return x.Transcriptinfo
+func (m *StreamingTranslationResponse) GetTranscriptResult() *TranscriptInfo {
+	if x, ok := m.GetStreamingResponse().(*StreamingTranslationResponse_TranscriptResult); ok {
+		return x.TranscriptResult
 	}
 	return nil
 }
@@ -815,19 +829,19 @@ func (m *StreamingTranslationResponse) GetTranscriptinfo() *TranscriptInfo {
 // XXX_OneofFuncs is for the internal use of the proto package.
 func (*StreamingTranslationResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
 	return _StreamingTranslationResponse_OneofMarshaler, _StreamingTranslationResponse_OneofUnmarshaler, _StreamingTranslationResponse_OneofSizer, []interface{}{
-		(*StreamingTranslationResponse_Results)(nil),
+		(*StreamingTranslationResponse_StreamingResult)(nil),
 		(*StreamingTranslationResponse_Taskinfo)(nil),
-		(*StreamingTranslationResponse_Transcriptinfo)(nil),
+		(*StreamingTranslationResponse_TranscriptResult)(nil),
 	}
 }
 
 func _StreamingTranslationResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
 	m := msg.(*StreamingTranslationResponse)
-	// streaming_request
-	switch x := m.StreamingRequest.(type) {
-	case *StreamingTranslationResponse_Results:
+	// streaming_response
+	switch x := m.StreamingResponse.(type) {
+	case *StreamingTranslationResponse_StreamingResult:
 		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Results); err != nil {
+		if err := b.EncodeMessage(x.StreamingResult); err != nil {
 			return err
 		}
 	case *StreamingTranslationResponse_Taskinfo:
@@ -835,14 +849,14 @@ func _StreamingTranslationResponse_OneofMarshaler(msg proto.Message, b *proto.Bu
 		if err := b.EncodeMessage(x.Taskinfo); err != nil {
 			return err
 		}
-	case *StreamingTranslationResponse_Transcriptinfo:
+	case *StreamingTranslationResponse_TranscriptResult:
 		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Transcriptinfo); err != nil {
+		if err := b.EncodeMessage(x.TranscriptResult); err != nil {
 			return err
 		}
 	case nil:
 	default:
-		return fmt.Errorf("StreamingTranslationResponse.StreamingRequest has unexpected type %T", x)
+		return fmt.Errorf("StreamingTranslationResponse.StreamingResponse has unexpected type %T", x)
 	}
 	return nil
 }
@@ -850,29 +864,29 @@ func _StreamingTranslationResponse_OneofMarshaler(msg proto.Message, b *proto.Bu
 func _StreamingTranslationResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
 	m := msg.(*StreamingTranslationResponse)
 	switch tag {
-	case 2: // streaming_request.results
+	case 2: // streaming_response.streaming_result
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(StreamingTranslationResult)
 		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &StreamingTranslationResponse_Results{msg}
+		m.StreamingResponse = &StreamingTranslationResponse_StreamingResult{msg}
 		return true, err
-	case 3: // streaming_request.taskinfo
+	case 3: // streaming_response.taskinfo
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
-		msg := new(TaskInfo)
+		msg := new(StreamingTranslationTaskInfo)
 		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &StreamingTranslationResponse_Taskinfo{msg}
+		m.StreamingResponse = &StreamingTranslationResponse_Taskinfo{msg}
 		return true, err
-	case 4: // streaming_request.transcriptinfo
+	case 4: // streaming_response.transcript_result
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(TranscriptInfo)
 		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &StreamingTranslationResponse_Transcriptinfo{msg}
+		m.StreamingResponse = &StreamingTranslationResponse_TranscriptResult{msg}
 		return true, err
 	default:
 		return false, nil
@@ -881,10 +895,10 @@ func _StreamingTranslationResponse_OneofUnmarshaler(msg proto.Message, tag, wire
 
 func _StreamingTranslationResponse_OneofSizer(msg proto.Message) (n int) {
 	m := msg.(*StreamingTranslationResponse)
-	// streaming_request
-	switch x := m.StreamingRequest.(type) {
-	case *StreamingTranslationResponse_Results:
-		s := proto.Size(x.Results)
+	// streaming_response
+	switch x := m.StreamingResponse.(type) {
+	case *StreamingTranslationResponse_StreamingResult:
+		s := proto.Size(x.StreamingResult)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
@@ -893,8 +907,8 @@ func _StreamingTranslationResponse_OneofSizer(msg proto.Message) (n int) {
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
-	case *StreamingTranslationResponse_Transcriptinfo:
-		s := proto.Size(x.Transcriptinfo)
+	case *StreamingTranslationResponse_TranscriptResult:
+		s := proto.Size(x.TranscriptResult)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
@@ -905,160 +919,164 @@ func _StreamingTranslationResponse_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-type TaskInfoRequest struct {
+// the StreamingTranslationTask id that created by the `StreamingTranslation` method.
+type StreamingTranslationTaskInfoRequest struct {
 	TaskId               string   `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TaskInfoRequest) Reset()         { *m = TaskInfoRequest{} }
-func (m *TaskInfoRequest) String() string { return proto.CompactTextString(m) }
-func (*TaskInfoRequest) ProtoMessage()    {}
-func (*TaskInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{11}
+func (m *StreamingTranslationTaskInfoRequest) Reset()         { *m = StreamingTranslationTaskInfoRequest{} }
+func (m *StreamingTranslationTaskInfoRequest) String() string { return proto.CompactTextString(m) }
+func (*StreamingTranslationTaskInfoRequest) ProtoMessage()    {}
+func (*StreamingTranslationTaskInfoRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_4d20818642deec07, []int{11}
 }
-func (m *TaskInfoRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TaskInfoRequest.Unmarshal(m, b)
+func (m *StreamingTranslationTaskInfoRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamingTranslationTaskInfoRequest.Unmarshal(m, b)
 }
-func (m *TaskInfoRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TaskInfoRequest.Marshal(b, m, deterministic)
+func (m *StreamingTranslationTaskInfoRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamingTranslationTaskInfoRequest.Marshal(b, m, deterministic)
 }
-func (dst *TaskInfoRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TaskInfoRequest.Merge(dst, src)
+func (dst *StreamingTranslationTaskInfoRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingTranslationTaskInfoRequest.Merge(dst, src)
 }
-func (m *TaskInfoRequest) XXX_Size() int {
-	return xxx_messageInfo_TaskInfoRequest.Size(m)
+func (m *StreamingTranslationTaskInfoRequest) XXX_Size() int {
+	return xxx_messageInfo_StreamingTranslationTaskInfoRequest.Size(m)
 }
-func (m *TaskInfoRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_TaskInfoRequest.DiscardUnknown(m)
+func (m *StreamingTranslationTaskInfoRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamingTranslationTaskInfoRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TaskInfoRequest proto.InternalMessageInfo
+var xxx_messageInfo_StreamingTranslationTaskInfoRequest proto.InternalMessageInfo
 
-func (m *TaskInfoRequest) GetTaskId() string {
+func (m *StreamingTranslationTaskInfoRequest) GetTaskId() string {
 	if m != nil {
 		return m.TaskId
 	}
 	return ""
 }
 
-type TaskInfoResponse struct {
+// the translated TranscriptInfo or `StreamingTranslationTaskInfo`
+type StreamingTranslationTaskInfoResponse struct {
 	Error *status.Status `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	// Types that are valid to be assigned to StreamingRequest:
-	//	*TaskInfoResponse_Taskinfo
-	//	*TaskInfoResponse_Transcriptinfo
-	StreamingRequest     isTaskInfoResponse_StreamingRequest `protobuf_oneof:"streaming_request"`
-	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
-	XXX_unrecognized     []byte                              `json:"-"`
-	XXX_sizecache        int32                               `json:"-"`
+	//	*StreamingTranslationTaskInfoResponse_Taskinfo
+	//	*StreamingTranslationTaskInfoResponse_Transcriptinfo
+	StreamingRequest     isStreamingTranslationTaskInfoResponse_StreamingRequest `protobuf_oneof:"streaming_request"`
+	XXX_NoUnkeyedLiteral struct{}                                                `json:"-"`
+	XXX_unrecognized     []byte                                                  `json:"-"`
+	XXX_sizecache        int32                                                   `json:"-"`
 }
 
-func (m *TaskInfoResponse) Reset()         { *m = TaskInfoResponse{} }
-func (m *TaskInfoResponse) String() string { return proto.CompactTextString(m) }
-func (*TaskInfoResponse) ProtoMessage()    {}
-func (*TaskInfoResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{12}
+func (m *StreamingTranslationTaskInfoResponse) Reset()         { *m = StreamingTranslationTaskInfoResponse{} }
+func (m *StreamingTranslationTaskInfoResponse) String() string { return proto.CompactTextString(m) }
+func (*StreamingTranslationTaskInfoResponse) ProtoMessage()    {}
+func (*StreamingTranslationTaskInfoResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_4d20818642deec07, []int{12}
 }
-func (m *TaskInfoResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TaskInfoResponse.Unmarshal(m, b)
+func (m *StreamingTranslationTaskInfoResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamingTranslationTaskInfoResponse.Unmarshal(m, b)
 }
-func (m *TaskInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TaskInfoResponse.Marshal(b, m, deterministic)
+func (m *StreamingTranslationTaskInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamingTranslationTaskInfoResponse.Marshal(b, m, deterministic)
 }
-func (dst *TaskInfoResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TaskInfoResponse.Merge(dst, src)
+func (dst *StreamingTranslationTaskInfoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingTranslationTaskInfoResponse.Merge(dst, src)
 }
-func (m *TaskInfoResponse) XXX_Size() int {
-	return xxx_messageInfo_TaskInfoResponse.Size(m)
+func (m *StreamingTranslationTaskInfoResponse) XXX_Size() int {
+	return xxx_messageInfo_StreamingTranslationTaskInfoResponse.Size(m)
 }
-func (m *TaskInfoResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_TaskInfoResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TaskInfoResponse proto.InternalMessageInfo
-
-type isTaskInfoResponse_StreamingRequest interface {
-	isTaskInfoResponse_StreamingRequest()
+func (m *StreamingTranslationTaskInfoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamingTranslationTaskInfoResponse.DiscardUnknown(m)
 }
 
-type TaskInfoResponse_Taskinfo struct {
-	Taskinfo *TaskInfo `protobuf:"bytes,2,opt,name=taskinfo,proto3,oneof"`
+var xxx_messageInfo_StreamingTranslationTaskInfoResponse proto.InternalMessageInfo
+
+type isStreamingTranslationTaskInfoResponse_StreamingRequest interface {
+	isStreamingTranslationTaskInfoResponse_StreamingRequest()
 }
-type TaskInfoResponse_Transcriptinfo struct {
+
+type StreamingTranslationTaskInfoResponse_Taskinfo struct {
+	Taskinfo *StreamingTranslationTaskInfo `protobuf:"bytes,2,opt,name=taskinfo,proto3,oneof"`
+}
+type StreamingTranslationTaskInfoResponse_Transcriptinfo struct {
 	Transcriptinfo *TranscriptInfo `protobuf:"bytes,3,opt,name=transcriptinfo,proto3,oneof"`
 }
 
-func (*TaskInfoResponse_Taskinfo) isTaskInfoResponse_StreamingRequest()       {}
-func (*TaskInfoResponse_Transcriptinfo) isTaskInfoResponse_StreamingRequest() {}
+func (*StreamingTranslationTaskInfoResponse_Taskinfo) isStreamingTranslationTaskInfoResponse_StreamingRequest() {
+}
+func (*StreamingTranslationTaskInfoResponse_Transcriptinfo) isStreamingTranslationTaskInfoResponse_StreamingRequest() {
+}
 
-func (m *TaskInfoResponse) GetStreamingRequest() isTaskInfoResponse_StreamingRequest {
+func (m *StreamingTranslationTaskInfoResponse) GetStreamingRequest() isStreamingTranslationTaskInfoResponse_StreamingRequest {
 	if m != nil {
 		return m.StreamingRequest
 	}
 	return nil
 }
 
-func (m *TaskInfoResponse) GetError() *status.Status {
+func (m *StreamingTranslationTaskInfoResponse) GetError() *status.Status {
 	if m != nil {
 		return m.Error
 	}
 	return nil
 }
 
-func (m *TaskInfoResponse) GetTaskinfo() *TaskInfo {
-	if x, ok := m.GetStreamingRequest().(*TaskInfoResponse_Taskinfo); ok {
+func (m *StreamingTranslationTaskInfoResponse) GetTaskinfo() *StreamingTranslationTaskInfo {
+	if x, ok := m.GetStreamingRequest().(*StreamingTranslationTaskInfoResponse_Taskinfo); ok {
 		return x.Taskinfo
 	}
 	return nil
 }
 
-func (m *TaskInfoResponse) GetTranscriptinfo() *TranscriptInfo {
-	if x, ok := m.GetStreamingRequest().(*TaskInfoResponse_Transcriptinfo); ok {
+func (m *StreamingTranslationTaskInfoResponse) GetTranscriptinfo() *TranscriptInfo {
+	if x, ok := m.GetStreamingRequest().(*StreamingTranslationTaskInfoResponse_Transcriptinfo); ok {
 		return x.Transcriptinfo
 	}
 	return nil
 }
 
 // XXX_OneofFuncs is for the internal use of the proto package.
-func (*TaskInfoResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TaskInfoResponse_OneofMarshaler, _TaskInfoResponse_OneofUnmarshaler, _TaskInfoResponse_OneofSizer, []interface{}{
-		(*TaskInfoResponse_Taskinfo)(nil),
-		(*TaskInfoResponse_Transcriptinfo)(nil),
+func (*StreamingTranslationTaskInfoResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _StreamingTranslationTaskInfoResponse_OneofMarshaler, _StreamingTranslationTaskInfoResponse_OneofUnmarshaler, _StreamingTranslationTaskInfoResponse_OneofSizer, []interface{}{
+		(*StreamingTranslationTaskInfoResponse_Taskinfo)(nil),
+		(*StreamingTranslationTaskInfoResponse_Transcriptinfo)(nil),
 	}
 }
 
-func _TaskInfoResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TaskInfoResponse)
+func _StreamingTranslationTaskInfoResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
+	m := msg.(*StreamingTranslationTaskInfoResponse)
 	// streaming_request
 	switch x := m.StreamingRequest.(type) {
-	case *TaskInfoResponse_Taskinfo:
+	case *StreamingTranslationTaskInfoResponse_Taskinfo:
 		b.EncodeVarint(2<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Taskinfo); err != nil {
 			return err
 		}
-	case *TaskInfoResponse_Transcriptinfo:
+	case *StreamingTranslationTaskInfoResponse_Transcriptinfo:
 		b.EncodeVarint(3<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.Transcriptinfo); err != nil {
 			return err
 		}
 	case nil:
 	default:
-		return fmt.Errorf("TaskInfoResponse.StreamingRequest has unexpected type %T", x)
+		return fmt.Errorf("StreamingTranslationTaskInfoResponse.StreamingRequest has unexpected type %T", x)
 	}
 	return nil
 }
 
-func _TaskInfoResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TaskInfoResponse)
+func _StreamingTranslationTaskInfoResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
+	m := msg.(*StreamingTranslationTaskInfoResponse)
 	switch tag {
 	case 2: // streaming_request.taskinfo
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
-		msg := new(TaskInfo)
+		msg := new(StreamingTranslationTaskInfo)
 		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &TaskInfoResponse_Taskinfo{msg}
+		m.StreamingRequest = &StreamingTranslationTaskInfoResponse_Taskinfo{msg}
 		return true, err
 	case 3: // streaming_request.transcriptinfo
 		if wire != proto.WireBytes {
@@ -1066,23 +1084,23 @@ func _TaskInfoResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *pro
 		}
 		msg := new(TranscriptInfo)
 		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &TaskInfoResponse_Transcriptinfo{msg}
+		m.StreamingRequest = &StreamingTranslationTaskInfoResponse_Transcriptinfo{msg}
 		return true, err
 	default:
 		return false, nil
 	}
 }
 
-func _TaskInfoResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TaskInfoResponse)
+func _StreamingTranslationTaskInfoResponse_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*StreamingTranslationTaskInfoResponse)
 	// streaming_request
 	switch x := m.StreamingRequest.(type) {
-	case *TaskInfoResponse_Taskinfo:
+	case *StreamingTranslationTaskInfoResponse_Taskinfo:
 		s := proto.Size(x.Taskinfo)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
-	case *TaskInfoResponse_Transcriptinfo:
+	case *StreamingTranslationTaskInfoResponse_Transcriptinfo:
 		s := proto.Size(x.Transcriptinfo)
 		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
@@ -1094,47 +1112,50 @@ func _TaskInfoResponse_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-type TaskInfo struct {
+// the StreamingTranslationTask that created by the `StreamingTranslation` method.
+type StreamingTranslationTaskInfo struct {
 	// this task id can be used for farther inquiry
-	TaskId               string   `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
+	TaskId string `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
+	// this is the estimated finished time, the task is finished if the time is zero
+	// or less
 	EstimateTime         float64  `protobuf:"fixed64,2,opt,name=estimate_time,json=estimateTime,proto3" json:"estimate_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TaskInfo) Reset()         { *m = TaskInfo{} }
-func (m *TaskInfo) String() string { return proto.CompactTextString(m) }
-func (*TaskInfo) ProtoMessage()    {}
-func (*TaskInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{13}
+func (m *StreamingTranslationTaskInfo) Reset()         { *m = StreamingTranslationTaskInfo{} }
+func (m *StreamingTranslationTaskInfo) String() string { return proto.CompactTextString(m) }
+func (*StreamingTranslationTaskInfo) ProtoMessage()    {}
+func (*StreamingTranslationTaskInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_translation_4d20818642deec07, []int{13}
 }
-func (m *TaskInfo) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TaskInfo.Unmarshal(m, b)
+func (m *StreamingTranslationTaskInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamingTranslationTaskInfo.Unmarshal(m, b)
 }
-func (m *TaskInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TaskInfo.Marshal(b, m, deterministic)
+func (m *StreamingTranslationTaskInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamingTranslationTaskInfo.Marshal(b, m, deterministic)
 }
-func (dst *TaskInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TaskInfo.Merge(dst, src)
+func (dst *StreamingTranslationTaskInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingTranslationTaskInfo.Merge(dst, src)
 }
-func (m *TaskInfo) XXX_Size() int {
-	return xxx_messageInfo_TaskInfo.Size(m)
+func (m *StreamingTranslationTaskInfo) XXX_Size() int {
+	return xxx_messageInfo_StreamingTranslationTaskInfo.Size(m)
 }
-func (m *TaskInfo) XXX_DiscardUnknown() {
-	xxx_messageInfo_TaskInfo.DiscardUnknown(m)
+func (m *StreamingTranslationTaskInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamingTranslationTaskInfo.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TaskInfo proto.InternalMessageInfo
+var xxx_messageInfo_StreamingTranslationTaskInfo proto.InternalMessageInfo
 
-func (m *TaskInfo) GetTaskId() string {
+func (m *StreamingTranslationTaskInfo) GetTaskId() string {
 	if m != nil {
 		return m.TaskId
 	}
 	return ""
 }
 
-func (m *TaskInfo) GetEstimateTime() float64 {
+func (m *StreamingTranslationTaskInfo) GetEstimateTime() float64 {
 	if m != nil {
 		return m.EstimateTime
 	}
@@ -1180,7 +1201,7 @@ func (m *StreamingTranslationResult) Reset()         { *m = StreamingTranslation
 func (m *StreamingTranslationResult) String() string { return proto.CompactTextString(m) }
 func (*StreamingTranslationResult) ProtoMessage()    {}
 func (*StreamingTranslationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{14}
+	return fileDescriptor_translation_4d20818642deec07, []int{14}
 }
 func (m *StreamingTranslationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingTranslationResult.Unmarshal(m, b)
@@ -1257,7 +1278,7 @@ func (m *TextTranslationRequest) Reset()         { *m = TextTranslationRequest{}
 func (m *TextTranslationRequest) String() string { return proto.CompactTextString(m) }
 func (*TextTranslationRequest) ProtoMessage()    {}
 func (*TextTranslationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{15}
+	return fileDescriptor_translation_4d20818642deec07, []int{15}
 }
 func (m *TextTranslationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextTranslationRequest.Unmarshal(m, b)
@@ -1311,7 +1332,7 @@ func (m *TextTranslationResponse) Reset()         { *m = TextTranslationResponse
 func (m *TextTranslationResponse) String() string { return proto.CompactTextString(m) }
 func (*TextTranslationResponse) ProtoMessage()    {}
 func (*TextTranslationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{16}
+	return fileDescriptor_translation_4d20818642deec07, []int{16}
 }
 func (m *TextTranslationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextTranslationResponse.Unmarshal(m, b)
@@ -1361,7 +1382,7 @@ func (m *TextTranslationResponse_Text) Reset()         { *m = TextTranslationRes
 func (m *TextTranslationResponse_Text) String() string { return proto.CompactTextString(m) }
 func (*TextTranslationResponse_Text) ProtoMessage()    {}
 func (*TextTranslationResponse_Text) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_a432c20291246cf8, []int{16, 0}
+	return fileDescriptor_translation_4d20818642deec07, []int{16, 0}
 }
 func (m *TextTranslationResponse_Text) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextTranslationResponse_Text.Unmarshal(m, b)
@@ -1406,11 +1427,11 @@ func init() {
 	proto.RegisterType((*TranscriptResponse)(nil), "sagittarius.translation.v1.TranscriptResponse")
 	proto.RegisterType((*TranscriptResponse_Cue)(nil), "sagittarius.translation.v1.TranscriptResponse.Cue")
 	proto.RegisterType((*StreamingTranslationRequest)(nil), "sagittarius.translation.v1.StreamingTranslationRequest")
-	proto.RegisterType((*StreamingTranslationRequestHead)(nil), "sagittarius.translation.v1.StreamingTranslationRequestHead")
+	proto.RegisterType((*StreamingTranslationRequestConfig)(nil), "sagittarius.translation.v1.StreamingTranslationRequestConfig")
 	proto.RegisterType((*StreamingTranslationResponse)(nil), "sagittarius.translation.v1.StreamingTranslationResponse")
-	proto.RegisterType((*TaskInfoRequest)(nil), "sagittarius.translation.v1.TaskInfoRequest")
-	proto.RegisterType((*TaskInfoResponse)(nil), "sagittarius.translation.v1.TaskInfoResponse")
-	proto.RegisterType((*TaskInfo)(nil), "sagittarius.translation.v1.TaskInfo")
+	proto.RegisterType((*StreamingTranslationTaskInfoRequest)(nil), "sagittarius.translation.v1.StreamingTranslationTaskInfoRequest")
+	proto.RegisterType((*StreamingTranslationTaskInfoResponse)(nil), "sagittarius.translation.v1.StreamingTranslationTaskInfoResponse")
+	proto.RegisterType((*StreamingTranslationTaskInfo)(nil), "sagittarius.translation.v1.StreamingTranslationTaskInfo")
 	proto.RegisterType((*StreamingTranslationResult)(nil), "sagittarius.translation.v1.StreamingTranslationResult")
 	proto.RegisterType((*TextTranslationRequest)(nil), "sagittarius.translation.v1.TextTranslationRequest")
 	proto.RegisterType((*TextTranslationResponse)(nil), "sagittarius.translation.v1.TextTranslationResponse")
@@ -1436,11 +1457,12 @@ type TranslationClient interface {
 	Transcript(ctx context.Context, in *TranscriptRequest, opts ...grpc.CallOption) (*TranscriptResponse, error)
 	// Translate text by Google Translation Service
 	TranslateText(ctx context.Context, in *TextTranslationRequest, opts ...grpc.CallOption) (*TextTranslationResponse, error)
-	// Performs bidirectional streaming audio translation: receive results while
+	// Performs bidirectional streaming audio translation: receive results after or while
 	// sending audio. This method is only available via the gRPC API (not REST).
 	StreamingTranslation(ctx context.Context, opts ...grpc.CallOption) (Translation_StreamingTranslationClient, error)
-	// Translate text by Google Translation Service
-	TaskInfo(ctx context.Context, in *TaskInfoRequest, opts ...grpc.CallOption) (*TaskInfoResponse, error)
+	// Check StreamingTranslationTask results or estimate finish time
+	// and maybe other informations related to the task
+	StreamingTranslationTaskInfo(ctx context.Context, in *StreamingTranslationTaskInfoRequest, opts ...grpc.CallOption) (*StreamingTranslationTaskInfoResponse, error)
 }
 
 type translationClient struct {
@@ -1518,9 +1540,9 @@ func (x *translationStreamingTranslationClient) Recv() (*StreamingTranslationRes
 	return m, nil
 }
 
-func (c *translationClient) TaskInfo(ctx context.Context, in *TaskInfoRequest, opts ...grpc.CallOption) (*TaskInfoResponse, error) {
-	out := new(TaskInfoResponse)
-	err := c.cc.Invoke(ctx, "/sagittarius.translation.v1.Translation/TaskInfo", in, out, opts...)
+func (c *translationClient) StreamingTranslationTaskInfo(ctx context.Context, in *StreamingTranslationTaskInfoRequest, opts ...grpc.CallOption) (*StreamingTranslationTaskInfoResponse, error) {
+	out := new(StreamingTranslationTaskInfoResponse)
+	err := c.cc.Invoke(ctx, "/sagittarius.translation.v1.Translation/StreamingTranslationTaskInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1536,11 +1558,12 @@ type TranslationServer interface {
 	Transcript(context.Context, *TranscriptRequest) (*TranscriptResponse, error)
 	// Translate text by Google Translation Service
 	TranslateText(context.Context, *TextTranslationRequest) (*TextTranslationResponse, error)
-	// Performs bidirectional streaming audio translation: receive results while
+	// Performs bidirectional streaming audio translation: receive results after or while
 	// sending audio. This method is only available via the gRPC API (not REST).
 	StreamingTranslation(Translation_StreamingTranslationServer) error
-	// Translate text by Google Translation Service
-	TaskInfo(context.Context, *TaskInfoRequest) (*TaskInfoResponse, error)
+	// Check StreamingTranslationTask results or estimate finish time
+	// and maybe other informations related to the task
+	StreamingTranslationTaskInfo(context.Context, *StreamingTranslationTaskInfoRequest) (*StreamingTranslationTaskInfoResponse, error)
 }
 
 func RegisterTranslationServer(s *grpc.Server, srv TranslationServer) {
@@ -1645,20 +1668,20 @@ func (x *translationStreamingTranslationServer) Recv() (*StreamingTranslationReq
 	return m, nil
 }
 
-func _Translation_TaskInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TaskInfoRequest)
+func _Translation_StreamingTranslationTaskInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StreamingTranslationTaskInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TranslationServer).TaskInfo(ctx, in)
+		return srv.(TranslationServer).StreamingTranslationTaskInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/sagittarius.translation.v1.Translation/TaskInfo",
+		FullMethod: "/sagittarius.translation.v1.Translation/StreamingTranslationTaskInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TranslationServer).TaskInfo(ctx, req.(*TaskInfoRequest))
+		return srv.(TranslationServer).StreamingTranslationTaskInfo(ctx, req.(*StreamingTranslationTaskInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1684,8 +1707,8 @@ var _Translation_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Translation_TranslateText_Handler,
 		},
 		{
-			MethodName: "TaskInfo",
-			Handler:    _Translation_TaskInfo_Handler,
+			MethodName: "StreamingTranslationTaskInfo",
+			Handler:    _Translation_StreamingTranslationTaskInfo_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
@@ -1700,87 +1723,89 @@ var _Translation_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("translation/v1/translation.proto", fileDescriptor_translation_a432c20291246cf8)
+	proto.RegisterFile("translation/v1/translation.proto", fileDescriptor_translation_4d20818642deec07)
 }
 
-var fileDescriptor_translation_a432c20291246cf8 = []byte{
-	// 1236 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x57, 0xcf, 0x6f, 0x1b, 0xc5,
-	0x17, 0xcf, 0xac, 0x9d, 0x38, 0x7d, 0x4e, 0xd2, 0x64, 0x12, 0x35, 0xfe, 0xba, 0xe9, 0x17, 0xb3,
-	0x50, 0xea, 0x86, 0xd6, 0xdb, 0xba, 0x15, 0x94, 0x70, 0x40, 0x8a, 0x8b, 0x70, 0xa5, 0xa2, 0x86,
-	0x8d, 0x4f, 0xbd, 0x58, 0xd3, 0xdd, 0xb1, 0x3b, 0x8a, 0xbd, 0x6b, 0x76, 0xc7, 0x51, 0xaa, 0x28,
-	0x17, 0x6e, 0x20, 0x21, 0x55, 0xe2, 0xd6, 0x3f, 0x01, 0x71, 0x42, 0x5c, 0xf8, 0x1b, 0x38, 0x80,
-	0xc4, 0x95, 0x23, 0x12, 0x07, 0xfe, 0x01, 0x8e, 0x68, 0xde, 0xfe, 0xb4, 0xb3, 0x76, 0xed, 0x00,
-	0xb7, 0x9d, 0xf7, 0xe6, 0xbd, 0x79, 0xef, 0x33, 0x9f, 0xf9, 0xcc, 0x2c, 0x54, 0xa4, 0xc7, 0x1c,
-	0xbf, 0xc7, 0xa4, 0x70, 0x1d, 0xe3, 0xf8, 0xae, 0x91, 0x1a, 0xd6, 0x06, 0x9e, 0x2b, 0x5d, 0x5a,
-	0xf6, 0x59, 0x57, 0x48, 0xc9, 0x3c, 0x31, 0xf4, 0x6b, 0x69, 0xf7, 0xf1, 0xdd, 0xf2, 0x4e, 0xd7,
-	0x75, 0xbb, 0x3d, 0x6e, 0xb0, 0x81, 0x30, 0x98, 0xe3, 0xb8, 0x12, 0x3d, 0x7e, 0x10, 0x59, 0xde,
-	0x0e, 0xbd, 0xde, 0xc0, 0x32, 0x7c, 0xc9, 0xe4, 0x30, 0x72, 0xdc, 0x0c, 0x1d, 0x56, 0xcf, 0x1d,
-	0xda, 0x86, 0x3f, 0xe0, 0xdc, 0x7a, 0xae, 0x16, 0xc7, 0x71, 0x3b, 0x18, 0x07, 0x53, 0xf5, 0xef,
-	0x09, 0x6c, 0x7f, 0xca, 0x6d, 0xc1, 0x5a, 0xc9, 0xca, 0x26, 0xff, 0x7c, 0xc8, 0x7d, 0x49, 0xaf,
-	0xc3, 0x5a, 0x5f, 0xb9, 0xda, 0xc2, 0xe6, 0x8e, 0x14, 0xf2, 0x45, 0x89, 0x54, 0x48, 0xf5, 0x92,
-	0xb9, 0x8a, 0xd6, 0x47, 0xa1, 0x91, 0xbe, 0x05, 0xab, 0x3d, 0xe6, 0x74, 0x87, 0xac, 0xcb, 0xdb,
-	0x96, 0x6b, 0xf3, 0x92, 0x86, 0xb3, 0x56, 0x22, 0x63, 0xc3, 0xb5, 0x39, 0xbd, 0x02, 0x4b, 0x1d,
-	0xd7, 0xeb, 0x33, 0x59, 0xca, 0xa1, 0x37, 0x1c, 0xd1, 0x6b, 0x00, 0xbe, 0x64, 0x9e, 0x6c, 0x4b,
-	0xd1, 0xe7, 0xa5, 0xa5, 0x0a, 0xa9, 0x12, 0xf3, 0x12, 0x5a, 0x5a, 0xa2, 0xcf, 0xe9, 0x16, 0x2c,
-	0x3e, 0x17, 0x8e, 0xf4, 0x4b, 0x05, 0x8c, 0x0a, 0x06, 0xfa, 0x57, 0x04, 0x4a, 0xe7, 0x8b, 0xf6,
-	0x07, 0xae, 0xe3, 0x73, 0x5a, 0x85, 0x45, 0xee, 0x79, 0xae, 0x87, 0xc5, 0x16, 0xeb, 0xb4, 0x16,
-	0x80, 0x51, 0xf3, 0x06, 0x56, 0xed, 0x10, 0x51, 0x32, 0x83, 0x09, 0xf4, 0x21, 0x14, 0x3c, 0xee,
-	0x0f, 0x7b, 0xd2, 0x2f, 0x69, 0x95, 0x5c, 0xb5, 0x58, 0xdf, 0xad, 0x4d, 0xde, 0x8b, 0x1a, 0xae,
-	0x65, 0x79, 0x62, 0x20, 0x1f, 0x39, 0x1d, 0xd7, 0x8c, 0x42, 0xf5, 0x6f, 0x09, 0xac, 0x8d, 0xfa,
-	0xa8, 0x01, 0x9b, 0x32, 0xb6, 0x8c, 0xa3, 0x47, 0x13, 0xd7, 0x7c, 0x10, 0x96, 0xa0, 0xe0, 0x31,
-	0xe7, 0x48, 0x38, 0x5d, 0xc4, 0x50, 0x33, 0xa3, 0x21, 0xa5, 0x90, 0x97, 0xac, 0xeb, 0x97, 0xf2,
-	0x95, 0x5c, 0xf5, 0x92, 0x89, 0xdf, 0x0a, 0x39, 0x9b, 0xf7, 0xd8, 0x8b, 0xd2, 0x62, 0x85, 0x54,
-	0x73, 0x66, 0x30, 0xd0, 0xdf, 0x81, 0xf5, 0x87, 0x5c, 0x72, 0x2b, 0xbd, 0xcd, 0x2a, 0x9a, 0x9f,
-	0xc8, 0xb0, 0x3c, 0xfc, 0xd6, 0x6d, 0xd8, 0x48, 0xcd, 0x0b, 0x91, 0x7d, 0x02, 0x30, 0xf0, 0xb8,
-	0x2d, 0xd0, 0x5a, 0x22, 0x08, 0x99, 0x31, 0x0d, 0xb2, 0x38, 0xc5, 0x41, 0x1c, 0x66, 0xa6, 0x52,
-	0xe8, 0x4f, 0x61, 0x33, 0x63, 0xca, 0x79, 0x34, 0x48, 0x06, 0x1a, 0xff, 0x07, 0xb0, 0x5c, 0xa7,
-	0xa3, 0xc0, 0xb5, 0x02, 0xbc, 0x34, 0x33, 0x65, 0xd1, 0x2d, 0xd8, 0x48, 0x76, 0x25, 0x6a, 0x75,
-	0xc2, 0xc6, 0xe4, 0x27, 0x6e, 0xcc, 0x74, 0x7a, 0xea, 0xaf, 0x34, 0xa0, 0xe9, 0x55, 0xe6, 0xa6,
-	0x60, 0x0b, 0x8a, 0xc9, 0xaa, 0x11, 0x0d, 0xeb, 0xb3, 0xd1, 0x30, 0x5a, 0xae, 0xd6, 0x18, 0x72,
-	0x33, 0x9d, 0x86, 0x1a, 0xb0, 0x25, 0xfc, 0x36, 0x77, 0xec, 0xb6, 0xdb, 0x69, 0x27, 0x0e, 0xa4,
-	0xcd, 0xb2, 0xb9, 0x21, 0xfc, 0x8f, 0x1d, 0xfb, 0x49, 0x27, 0xc9, 0x54, 0x3e, 0x84, 0x5c, 0x63,
-	0xc8, 0xc7, 0xba, 0x25, 0xe3, 0x87, 0xf1, 0x7f, 0xb0, 0xac, 0x72, 0xa2, 0x53, 0x43, 0x67, 0x81,
-	0x3b, 0x36, 0xba, 0x22, 0x0e, 0xe5, 0x52, 0x1c, 0xfa, 0x8e, 0xc0, 0xd5, 0x43, 0xe9, 0x71, 0xd6,
-	0x17, 0x4e, 0x37, 0x43, 0x5e, 0x3e, 0x83, 0x7c, 0x9f, 0x4b, 0x16, 0x82, 0xf4, 0xe1, 0xb4, 0xa6,
-	0xa7, 0xa4, 0x69, 0x72, 0x66, 0x37, 0x17, 0x4c, 0x4c, 0x45, 0xaf, 0xc3, 0x2a, 0x1b, 0xda, 0xc2,
-	0x6d, 0x5b, 0xae, 0x23, 0xb9, 0x23, 0xb1, 0xcc, 0x95, 0xe6, 0x82, 0xb9, 0x82, 0xe6, 0x46, 0x60,
-	0xdd, 0xdf, 0x84, 0x0d, 0x3f, 0xca, 0xd8, 0xf6, 0x82, 0x3c, 0xfa, 0x2f, 0x04, 0xde, 0x78, 0xcd,
-	0x3a, 0xb4, 0x05, 0xeb, 0x49, 0x20, 0x92, 0xad, 0x1b, 0x96, 0x7f, 0x33, 0xda, 0x63, 0xd4, 0xd8,
-	0x5a, 0xa8, 0xb1, 0xc7, 0x77, 0x6b, 0x26, 0xb7, 0xdc, 0xae, 0x23, 0x54, 0xa6, 0x06, 0x06, 0x98,
-	0x97, 0xe3, 0x14, 0x81, 0x21, 0x43, 0x67, 0x73, 0x59, 0x3a, 0x7b, 0x07, 0xb6, 0x24, 0xf3, 0xba,
-	0x5c, 0xb6, 0x47, 0x4f, 0x47, 0xc4, 0x5e, 0xf4, 0x3d, 0x4e, 0x9d, 0x11, 0xfd, 0x27, 0x0d, 0x76,
-	0xb2, 0x5b, 0x9a, 0x9b, 0xa8, 0x66, 0x5a, 0x2b, 0xd5, 0xdc, 0xf7, 0xe6, 0xdf, 0x2f, 0x15, 0xde,
-	0x5c, 0x88, 0x95, 0x93, 0xee, 0xc3, 0xb2, 0x64, 0xfe, 0x91, 0x70, 0x3a, 0x2e, 0x76, 0x5c, 0xac,
-	0xbf, 0x3d, 0x95, 0xf9, 0xcc, 0x3f, 0x52, 0xf2, 0xda, 0x5c, 0x30, 0xe3, 0x38, 0xda, 0x82, 0xb5,
-	0x84, 0xe0, 0x98, 0x29, 0x8f, 0x99, 0xe6, 0x90, 0xf2, 0xe6, 0x82, 0x39, 0x96, 0x23, 0x9b, 0x20,
-	0xbb, 0x70, 0x39, 0x2a, 0x21, 0xa2, 0xf0, 0x36, 0x14, 0x54, 0x25, 0x6d, 0x61, 0x87, 0x1a, 0xb5,
-	0xa4, 0x86, 0x8f, 0x6c, 0xfd, 0x4f, 0x02, 0xeb, 0xc9, 0xe4, 0xb9, 0xd1, 0x4e, 0x23, 0xa3, 0xfd,
-	0x6b, 0xc8, 0xe4, 0xfe, 0x2b, 0x64, 0x9a, 0xb0, 0x1c, 0x95, 0x30, 0x11, 0x12, 0xa5, 0xea, 0xdc,
-	0x97, 0xa2, 0xcf, 0x24, 0x4f, 0x4b, 0xc8, 0x4a, 0x64, 0x44, 0x41, 0xfd, 0x81, 0x40, 0x79, 0x32,
-	0x79, 0x94, 0xe8, 0xa7, 0xe4, 0x2c, 0xc8, 0x9f, 0xb2, 0xbc, 0xee, 0x52, 0xa0, 0x3b, 0xa0, 0xe4,
-	0xec, 0x99, 0xe8, 0x45, 0x87, 0x4c, 0x33, 0x13, 0xc3, 0x98, 0xfc, 0xe5, 0xa7, 0xc9, 0xdf, 0xe2,
-	0x88, 0xfc, 0xe9, 0x2f, 0x09, 0x5c, 0x69, 0xf1, 0x13, 0x99, 0xa1, 0x72, 0xc9, 0xed, 0x9a, 0x8b,
-	0x94, 0x71, 0xe2, 0x49, 0xd6, 0x26, 0x9d, 0x64, 0x15, 0xe1, 0xbb, 0x43, 0xcf, 0xe2, 0x63, 0x11,
-	0x81, 0x50, 0xd0, 0xc0, 0x37, 0x72, 0xf6, 0x7f, 0x23, 0xb0, 0x7d, 0xae, 0xa4, 0x7f, 0x76, 0xec,
-	0xd5, 0xdd, 0xf4, 0x60, 0x2a, 0x7b, 0xb2, 0xd7, 0x43, 0x7b, 0x7c, 0xec, 0xcb, 0x0d, 0xc8, 0x2b,
-	0x03, 0xbd, 0x01, 0x97, 0xc7, 0x7a, 0x0a, 0x77, 0x74, 0x6d, 0xb4, 0x9d, 0x18, 0x42, 0x2d, 0xb9,
-	0x5c, 0xea, 0x7f, 0x14, 0xa0, 0x98, 0x5a, 0x8a, 0xfe, 0x1c, 0xbd, 0xc2, 0x7a, 0x4c, 0x72, 0x7c,
-	0x1b, 0xd2, 0x7b, 0xd3, 0x4a, 0x9d, 0xf0, 0xe6, 0x2d, 0xdf, 0x9f, 0x2f, 0x28, 0x68, 0x50, 0x37,
-	0xbf, 0xf8, 0xf5, 0xf7, 0x6f, 0xb4, 0xc7, 0xfa, 0x27, 0xea, 0x95, 0x8d, 0xaa, 0x6d, 0x9c, 0x8e,
-	0x4a, 0xfa, 0x99, 0x11, 0x35, 0x69, 0x9c, 0x8e, 0x6c, 0xe1, 0x99, 0x91, 0xf0, 0x77, 0xef, 0x34,
-	0x78, 0x15, 0x9f, 0xed, 0x91, 0x5d, 0xfa, 0x92, 0xc0, 0x5a, 0xf0, 0x3a, 0x8a, 0x81, 0xb8, 0x35,
-	0xd3, 0x63, 0x2b, 0x6a, 0xe5, 0xf6, 0x8c, 0xb3, 0xc3, 0x1e, 0xde, 0xc4, 0x1e, 0xae, 0xea, 0x9b,
-	0xaa, 0x87, 0xb8, 0x58, 0x1b, 0xe7, 0xed, 0x05, 0xbc, 0x7d, 0x45, 0x00, 0x12, 0x85, 0xa0, 0xb7,
-	0x67, 0x7d, 0xa7, 0x04, 0xf5, 0xd4, 0xe6, 0x7b, 0xd6, 0xe8, 0xb7, 0xb1, 0xa0, 0x1b, 0xba, 0x1e,
-	0xff, 0x37, 0xa1, 0xdf, 0xc8, 0x78, 0xc1, 0x29, 0xbc, 0x7e, 0x24, 0xb0, 0x1a, 0x33, 0x00, 0x09,
-	0x56, 0x9f, 0x8b, 0xab, 0x41, 0x91, 0xf7, 0x2e, 0xc0, 0x6f, 0xfd, 0x23, 0xac, 0xf4, 0x03, 0xfd,
-	0x3e, 0x56, 0xca, 0x4f, 0x64, 0x6a, 0xb3, 0xb3, 0x0e, 0xfa, 0x59, 0xfa, 0x37, 0x50, 0xd5, 0xfe,
-	0x35, 0x81, 0xad, 0x2c, 0xd9, 0xa3, 0xef, 0x5f, 0xf0, 0x55, 0x54, 0x7e, 0x70, 0x81, 0xeb, 0x19,
-	0x9b, 0xa9, 0x92, 0x3b, 0x84, 0x7e, 0x49, 0x52, 0x8a, 0xfe, 0xee, 0x2c, 0x57, 0x4f, 0xb4, 0xee,
-	0xad, 0xd9, 0x26, 0x87, 0xc0, 0xe9, 0x08, 0xdc, 0x8e, 0xbe, 0x8d, 0xc0, 0x31, 0xff, 0x48, 0xe1,
-	0x85, 0x97, 0xc7, 0x99, 0xa1, 0xae, 0x9b, 0x3d, 0xb2, 0xbb, 0xdf, 0x80, 0x6b, 0x4c, 0x4c, 0xc9,
-	0xba, 0xbf, 0x9e, 0xea, 0xe2, 0x40, 0xfd, 0xd4, 0x1e, 0x90, 0xa7, 0xc5, 0xd4, 0x9c, 0xbf, 0x08,
-	0x79, 0xb6, 0x84, 0x7f, 0xbb, 0xf7, 0xfe, 0x0e, 0x00, 0x00, 0xff, 0xff, 0xa5, 0xb0, 0xaf, 0x74,
-	0x8f, 0x0f, 0x00, 0x00,
+var fileDescriptor_translation_4d20818642deec07 = []byte{
+	// 1271 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x58, 0x4f, 0x6f, 0x1b, 0x45,
+	0x14, 0xcf, 0xac, 0x9d, 0x3f, 0x7d, 0x4e, 0xd2, 0x78, 0x12, 0x35, 0xc6, 0x4d, 0x91, 0xbb, 0xa1,
+	0xd4, 0x8d, 0xc8, 0x6e, 0xe3, 0x54, 0x50, 0x22, 0x41, 0x51, 0x5c, 0x44, 0x22, 0x15, 0x35, 0xda,
+	0x58, 0x48, 0x54, 0x48, 0xd6, 0x76, 0x77, 0xec, 0x0e, 0xb1, 0x77, 0xcd, 0xee, 0x38, 0x4a, 0x15,
+	0xe5, 0xd2, 0x23, 0x12, 0x52, 0xa5, 0xde, 0xfa, 0x11, 0xb8, 0x20, 0x21, 0x2e, 0x7c, 0x00, 0xce,
+	0x08, 0x71, 0xe5, 0xc8, 0x67, 0x40, 0x1c, 0xd1, 0xcc, 0xec, 0x7a, 0xc7, 0xce, 0xda, 0xc9, 0x46,
+	0xdc, 0x3c, 0xef, 0xcd, 0xbc, 0x3f, 0xbf, 0xf7, 0xe6, 0x37, 0x6f, 0x0d, 0x15, 0x16, 0xd8, 0x5e,
+	0xd8, 0xb1, 0x19, 0xf5, 0x3d, 0xf3, 0x78, 0xcb, 0x54, 0x96, 0x46, 0x2f, 0xf0, 0x99, 0x8f, 0xcb,
+	0xa1, 0xdd, 0xa6, 0x8c, 0xd9, 0x01, 0xed, 0x87, 0x86, 0xaa, 0x3e, 0xde, 0x2a, 0xaf, 0xb5, 0x7d,
+	0xbf, 0xdd, 0x21, 0xa6, 0xdd, 0xa3, 0xa6, 0xed, 0x79, 0x3e, 0x13, 0x9a, 0x50, 0x9e, 0x2c, 0xaf,
+	0x46, 0xda, 0xa0, 0xe7, 0x98, 0x21, 0xb3, 0x59, 0x3f, 0x56, 0xdc, 0x8b, 0x14, 0x4e, 0xc7, 0xef,
+	0xbb, 0x66, 0xd8, 0x23, 0xc4, 0x79, 0xc1, 0x9d, 0x8b, 0x75, 0x53, 0xae, 0xe5, 0x56, 0xfd, 0x67,
+	0x04, 0xab, 0x5f, 0x12, 0x97, 0xda, 0x8d, 0xc4, 0xb3, 0x45, 0xbe, 0xeb, 0x93, 0x90, 0xe1, 0x3b,
+	0xb0, 0xd8, 0xe5, 0xaa, 0x26, 0x75, 0x89, 0xc7, 0x28, 0x7b, 0x59, 0x42, 0x15, 0x54, 0xbd, 0x66,
+	0x2d, 0x08, 0xe9, 0x7e, 0x24, 0xc4, 0xeb, 0xb0, 0xd0, 0xb1, 0xbd, 0x76, 0xdf, 0x6e, 0x93, 0xa6,
+	0xe3, 0xbb, 0xa4, 0xa4, 0x89, 0x5d, 0xf3, 0xb1, 0xb0, 0xee, 0xbb, 0x04, 0xdf, 0x80, 0x99, 0x96,
+	0x1f, 0x74, 0x6d, 0x56, 0xca, 0x09, 0x6d, 0xb4, 0xc2, 0xb7, 0x00, 0x42, 0x66, 0x07, 0xac, 0xc9,
+	0x68, 0x97, 0x94, 0x66, 0x2a, 0xa8, 0x8a, 0xac, 0x6b, 0x42, 0xd2, 0xa0, 0x5d, 0x82, 0x57, 0x60,
+	0xfa, 0x05, 0xf5, 0x58, 0x58, 0x9a, 0x15, 0xa7, 0xe4, 0x42, 0xff, 0x1e, 0x41, 0xe9, 0x7c, 0xd0,
+	0x61, 0xcf, 0xf7, 0x42, 0x82, 0xab, 0x30, 0x4d, 0x82, 0xc0, 0x0f, 0x44, 0xb0, 0x85, 0x1a, 0x36,
+	0x24, 0x18, 0x46, 0xd0, 0x73, 0x8c, 0x43, 0x81, 0x92, 0x25, 0x37, 0xe0, 0xc7, 0x30, 0x1b, 0x90,
+	0xb0, 0xdf, 0x61, 0x61, 0x49, 0xab, 0xe4, 0xaa, 0x85, 0xda, 0x86, 0x31, 0xbe, 0x16, 0x86, 0xf0,
+	0xe5, 0x04, 0xb4, 0xc7, 0xf6, 0xbd, 0x96, 0x6f, 0xc5, 0x47, 0xf5, 0x1f, 0x11, 0x2c, 0x0e, 0xeb,
+	0xb0, 0x09, 0xcb, 0x6c, 0x20, 0x19, 0x45, 0x0f, 0x27, 0xaa, 0x6c, 0x10, 0x96, 0x60, 0x36, 0xb0,
+	0xbd, 0x23, 0xea, 0xb5, 0x05, 0x86, 0x9a, 0x15, 0x2f, 0x31, 0x86, 0x3c, 0xb3, 0xdb, 0x61, 0x29,
+	0x5f, 0xc9, 0x55, 0xaf, 0x59, 0xe2, 0x37, 0x47, 0xce, 0x25, 0x1d, 0xfb, 0x65, 0x69, 0xba, 0x82,
+	0xaa, 0x39, 0x4b, 0x2e, 0xf4, 0xf7, 0x61, 0xe9, 0x31, 0x61, 0xc4, 0x51, 0xcb, 0xcc, 0x4f, 0x93,
+	0x13, 0x16, 0x85, 0x27, 0x7e, 0xeb, 0x2e, 0x14, 0x95, 0x7d, 0x11, 0xb2, 0x4f, 0x01, 0x7a, 0x01,
+	0x71, 0xa9, 0x90, 0x96, 0x90, 0x80, 0xcc, 0x9c, 0x04, 0xd9, 0xc0, 0xc4, 0xc1, 0xe0, 0x98, 0xa5,
+	0x98, 0xd0, 0x9f, 0xc1, 0x72, 0xca, 0x96, 0xf3, 0x68, 0xa0, 0x14, 0x34, 0xde, 0x05, 0x70, 0x7c,
+	0xaf, 0xc5, 0xc1, 0x75, 0x24, 0x5e, 0x9a, 0xa5, 0x48, 0x74, 0x07, 0x8a, 0x49, 0x55, 0xe2, 0x54,
+	0xc7, 0x14, 0x26, 0x3f, 0xb6, 0x30, 0x93, 0xdb, 0x53, 0x7f, 0xab, 0x01, 0x56, 0xbd, 0x64, 0x6e,
+	0xc1, 0x06, 0x14, 0x12, 0xaf, 0x71, 0x1b, 0xd6, 0x2e, 0xd7, 0x86, 0xb1, 0x3b, 0xa3, 0xde, 0x27,
+	0x96, 0x6a, 0x06, 0x9b, 0xb0, 0x42, 0xc3, 0x26, 0xf1, 0xdc, 0xa6, 0xdf, 0x6a, 0x26, 0x0a, 0xd1,
+	0x36, 0x73, 0x56, 0x91, 0x86, 0x9f, 0x7b, 0xee, 0xd3, 0x56, 0x62, 0xa9, 0x7c, 0x08, 0xb9, 0x7a,
+	0x9f, 0x8c, 0x64, 0x8b, 0x46, 0x2f, 0xe3, 0x3b, 0x30, 0xc7, 0x6d, 0x0a, 0xa5, 0x26, 0x94, 0xb3,
+	0xc4, 0x73, 0x85, 0x2a, 0xee, 0xa1, 0x9c, 0xd2, 0x43, 0xbf, 0x21, 0xb8, 0x79, 0xc8, 0x02, 0x62,
+	0x77, 0xa9, 0xd7, 0x4e, 0xa1, 0x97, 0x6f, 0x61, 0x29, 0x8c, 0xd5, 0x4d, 0x51, 0xb9, 0x76, 0x04,
+	0xd8, 0x27, 0x93, 0x00, 0x98, 0x60, 0xb2, 0x2e, 0x8c, 0xec, 0x4d, 0x59, 0xd7, 0x07, 0x86, 0xa5,
+	0x08, 0xdf, 0x81, 0x05, 0xbb, 0xef, 0x52, 0x9f, 0xfb, 0x61, 0xc4, 0x63, 0x22, 0xfe, 0xf9, 0xbd,
+	0x29, 0x6b, 0x5e, 0x88, 0xeb, 0x52, 0xba, 0xbb, 0x0c, 0xc5, 0x24, 0xa4, 0x40, 0x1a, 0xd5, 0x5f,
+	0x69, 0x70, 0xfb, 0x42, 0xa7, 0xb8, 0x31, 0x36, 0x9b, 0x7b, 0x71, 0xf9, 0x05, 0xfd, 0x1a, 0x11,
+	0xfd, 0x1e, 0x6f, 0x19, 0x16, 0x71, 0xfc, 0xb6, 0x47, 0xb9, 0x2d, 0x69, 0x24, 0x2d, 0xee, 0x51,
+	0x0a, 0xd6, 0xd2, 0x28, 0xd8, 0x80, 0x65, 0x99, 0xde, 0xf0, 0xbd, 0x91, 0xd5, 0x28, 0x0a, 0xd5,
+	0x13, 0xf5, 0xf2, 0xdc, 0x87, 0x15, 0x66, 0x07, 0x6d, 0xc2, 0x46, 0x0e, 0xc4, 0x17, 0x41, 0xe8,
+	0xd4, 0x13, 0xfa, 0x3f, 0x1a, 0xac, 0xa5, 0x83, 0x90, 0xb9, 0xe7, 0x1d, 0x15, 0x29, 0xc9, 0xa2,
+	0x22, 0xab, 0x42, 0xed, 0xc3, 0xec, 0x75, 0xe7, 0xa7, 0x87, 0x0a, 0x2e, 0x45, 0xf8, 0x2b, 0x98,
+	0x63, 0x76, 0x78, 0x44, 0xbd, 0x96, 0x2f, 0x60, 0x28, 0xd4, 0x1e, 0x66, 0x35, 0xde, 0xb0, 0xc3,
+	0x23, 0x4e, 0xe7, 0x7b, 0x53, 0xd6, 0xc0, 0x16, 0xfe, 0x1a, 0x8a, 0x0a, 0x83, 0x44, 0xd1, 0xe7,
+	0x85, 0x83, 0x0c, 0xaf, 0xc7, 0xde, 0x94, 0xb5, 0xc4, 0xd4, 0x8b, 0xdc, 0xef, 0xb0, 0xdd, 0x15,
+	0xc0, 0x43, 0xb8, 0x08, 0x5c, 0xf5, 0x4f, 0x61, 0x7d, 0x52, 0x70, 0xf1, 0x65, 0x5a, 0x85, 0x59,
+	0x1e, 0x63, 0x93, 0xba, 0x11, 0x5b, 0xce, 0xf0, 0xe5, 0xbe, 0xab, 0xbf, 0xd1, 0xe0, 0xbd, 0xc9,
+	0x06, 0x32, 0x17, 0x50, 0xc5, 0x56, 0xfb, 0x1f, 0xb1, 0x6d, 0xc0, 0x62, 0x02, 0x8a, 0x52, 0xb9,
+	0x6c, 0xc0, 0x8e, 0xd8, 0x48, 0xbf, 0xd3, 0xdf, 0xa4, 0x77, 0x73, 0x1c, 0xd6, 0x58, 0x38, 0xf9,
+	0xdb, 0x44, 0x42, 0x46, 0xbb, 0x36, 0x23, 0x2a, 0x11, 0xce, 0xc7, 0x42, 0xf1, 0x2c, 0xfc, 0x82,
+	0xa0, 0x3c, 0xbe, 0x5d, 0xf9, 0xd3, 0xa5, 0x90, 0xb2, 0xb4, 0xaf, 0x48, 0x2e, 0x7a, 0xda, 0xf0,
+	0x1a, 0x70, 0x52, 0x7e, 0x4e, 0x3b, 0x9c, 0x0f, 0xe4, 0x28, 0x90, 0x08, 0x46, 0x48, 0x3c, 0x3f,
+	0x89, 0xc4, 0xa7, 0x87, 0x48, 0x5c, 0x7f, 0x8d, 0xe0, 0x46, 0x83, 0x9c, 0xb0, 0x14, 0xae, 0x4e,
+	0x66, 0x84, 0x5c, 0xcc, 0xef, 0x63, 0x49, 0x44, 0x1b, 0x47, 0x22, 0xfc, 0x44, 0xe8, 0xf7, 0x03,
+	0x87, 0xa4, 0xf2, 0x14, 0x96, 0xba, 0x21, 0xda, 0xf9, 0x0b, 0xc1, 0xea, 0xb9, 0x90, 0x32, 0x37,
+	0xac, 0x35, 0x3a, 0xe8, 0x4d, 0xec, 0xd7, 0x31, 0xfe, 0x84, 0x7c, 0x30, 0xf6, 0x95, 0xeb, 0x90,
+	0xe7, 0x02, 0x7c, 0x17, 0xae, 0x8f, 0xe4, 0x14, 0x55, 0x74, 0x71, 0x38, 0x9d, 0x01, 0x84, 0x5a,
+	0xf2, 0x44, 0xd6, 0x7e, 0x9a, 0x83, 0x82, 0xe2, 0x0a, 0xff, 0x1e, 0xcf, 0x92, 0x1d, 0x9b, 0x11,
+	0x31, 0xe1, 0xe2, 0xed, 0x49, 0xa1, 0x8e, 0x99, 0xdc, 0xcb, 0x0f, 0xb2, 0x1d, 0x8a, 0xa8, 0xc6,
+	0x7a, 0xf5, 0xe7, 0xdf, 0x6f, 0xb4, 0x27, 0xfa, 0x17, 0xfc, 0x5b, 0x41, 0x3c, 0x30, 0xe6, 0xe9,
+	0xf0, 0xeb, 0x73, 0x66, 0xc6, 0x49, 0x9a, 0xa7, 0x43, 0x25, 0x3c, 0x33, 0x93, 0xfe, 0xdd, 0x39,
+	0x95, 0xb3, 0xfd, 0xd9, 0x0e, 0xda, 0xc0, 0xaf, 0x11, 0x2c, 0xca, 0x19, 0x6f, 0x00, 0xc4, 0x07,
+	0x97, 0x1a, 0x19, 0xe3, 0x54, 0x36, 0x2f, 0xb9, 0x3b, 0xca, 0xe1, 0xb6, 0xc8, 0xe1, 0xa6, 0xbe,
+	0xcc, 0x73, 0x18, 0x04, 0xeb, 0x8a, 0x7d, 0x3b, 0xb2, 0x6f, 0xdf, 0x22, 0x80, 0x84, 0x35, 0xf0,
+	0xe6, 0x65, 0xa7, 0x2d, 0x19, 0x8f, 0x91, 0x6d, 0x38, 0xd3, 0x37, 0x45, 0x40, 0x77, 0x75, 0x7d,
+	0xf0, 0xf5, 0x27, 0xf4, 0x66, 0xca, 0x1c, 0xca, 0xf1, 0xfa, 0x15, 0xc1, 0xc2, 0xa0, 0x03, 0x44,
+	0x83, 0xd5, 0x32, 0xf5, 0xaa, 0x0c, 0x72, 0xfb, 0x0a, 0xfd, 0xad, 0x3f, 0x12, 0x91, 0x7e, 0xac,
+	0x3f, 0x10, 0x91, 0x92, 0x13, 0xa6, 0x14, 0x3b, 0xed, 0xa2, 0x9f, 0xa9, 0x1f, 0xb3, 0x3c, 0xf6,
+	0x1f, 0x10, 0xac, 0xa4, 0xd1, 0x1e, 0xfe, 0xe8, 0x8a, 0xf3, 0x5c, 0xf9, 0xe1, 0x15, 0x06, 0x02,
+	0x91, 0x4c, 0x15, 0xdd, 0x47, 0xf8, 0x0f, 0x74, 0x01, 0xcb, 0x3f, 0xba, 0xea, 0xb3, 0x15, 0xc7,
+	0xf7, 0xd9, 0xd5, 0x0d, 0x44, 0xa0, 0x1b, 0x02, 0xf4, 0xaa, 0xbe, 0x3e, 0xf2, 0xe7, 0x80, 0xc9,
+	0xdf, 0x1b, 0x8e, 0xbb, 0x78, 0x84, 0xce, 0x4c, 0xfe, 0x94, 0xed, 0xa0, 0x8d, 0xdd, 0x3a, 0xdc,
+	0xb2, 0xe9, 0x04, 0xaf, 0xbb, 0x4b, 0x8a, 0xb7, 0x03, 0xfe, 0x89, 0x7f, 0x80, 0x9e, 0x15, 0x94,
+	0x3d, 0xff, 0x22, 0xf4, 0x7c, 0x46, 0x7c, 0xfb, 0x6f, 0xff, 0x17, 0x00, 0x00, 0xff, 0xff, 0x08,
+	0x08, 0xfa, 0xed, 0x9d, 0x10, 0x00, 0x00,
 }
