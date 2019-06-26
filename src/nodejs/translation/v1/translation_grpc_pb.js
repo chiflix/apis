@@ -219,8 +219,8 @@ var TranslationService = exports.TranslationService = {
   },
   // Check StreamingTranslationTask results or estimate finish time 
   // and maybe other informations related to the task
-  streamingTranslationTaskInfo: {
-    path: '/sagittarius.translation.v1.Translation/StreamingTranslationTaskInfo',
+  streamingTranslationTask: {
+    path: '/sagittarius.translation.v1.Translation/StreamingTranslationTask',
     requestStream: false,
     responseStream: false,
     requestType: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest,

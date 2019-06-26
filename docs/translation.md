@@ -383,7 +383,7 @@ Service that implements Sagittarius Translation API
 | Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
 | TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
 | StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results after or while sending audio. This method is only available via the gRPC API (not REST). |
-| StreamingTranslationTaskInfo | [StreamingTranslationTaskInfoRequest](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest) | [StreamingTranslationTaskInfoResponse](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest) | Check StreamingTranslationTask results or estimate finish time and maybe other informations related to the task |
+| StreamingTranslationTask | [StreamingTranslationTaskInfoRequest](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest) | [StreamingTranslationTaskInfoResponse](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest) | Check StreamingTranslationTask results or estimate finish time and maybe other informations related to the task |
 
  
 

@@ -67,7 +67,7 @@ service Translation {
   
   // Check StreamingTranslationTask results or estimate finish time 
   // and maybe other informations related to the task
-  rpc StreamingTranslationTaskInfo(StreamingTranslationTaskInfoRequest) returns (StreamingTranslationTaskInfoResponse) {
+  rpc StreamingTranslationTask(StreamingTranslationTaskInfoRequest) returns (StreamingTranslationTaskInfoResponse) {
     option (google.api.http) = {
       post: "/v1/translation/task/{task_id}/info"
       body: "*"
