@@ -9,13 +9,18 @@
     - [DetectionResponse](#sagittarius.translation.v1.DetectionResponse)
     - [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest)
     - [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationResponse)
-    - [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo)
+    - [StreamingAsyTranslationRequest](#sagittarius.translation.v1.StreamingAsyTranslationRequest)
     - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
+    - [StreamingTranslationRequestHead](#sagittarius.translation.v1.StreamingTranslationRequestHead)
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
+    - [TaskInfo](#sagittarius.translation.v1.TaskInfo)
+    - [TaskInfoRequest](#sagittarius.translation.v1.TaskInfoRequest)
+    - [TaskInfoResponse](#sagittarius.translation.v1.TaskInfoResponse)
     - [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest)
     - [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationResponse)
     - [TextTranslationResponse.Text](#sagittarius.translation.v1.TextTranslationResponse.Text)
+    - [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo)
     - [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest)
     - [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse)
     - [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue)
@@ -110,26 +115,24 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
-| results | [MediaTranslationResponse.TranscriptInfo](#sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo) | repeated | best translation results |
+| results | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) | repeated | best translation results |
 
 
 
 
 
 
-<a name="sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo"/>
+<a name="sagittarius.translation.v1.StreamingAsyTranslationRequest"/>
 
-### MediaTranslationResponse.TranscriptInfo
+### StreamingAsyTranslationRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
-| language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
-| ranking | [float](#float) |  |  |
-| tags | [string](#string) | repeated |  |
-| delay | [int64](#int64) |  | in ms, can be &#43;/- |
+| streaming_config | [google.cloud.speech.v1.RecognitionConfig](#google.cloud.speech.v1.RecognitionConfig) |  | Provides information to the recognizer that specifies how to process the request. The first `StreamingTranslationRequest` message must contain a `streaming_config` message. |
+| audio_content | [bytes](#bytes) |  | The audio data to be trained. Sequential chunks of audio data are sent in sequential `StreamingTranslationRequest` messages. The first `StreamingTranslationRequest` message must not contain `audio_content` data and all subsequent `StreamingTranslationRequest` messages must contain `audio_content` data. The audio bytes must be encoded as specified in `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a pure binary representation (not base64). See [audio limits](https://cloud.google.com/speech/limits#content). |
+| media_identity | [string](#string) |  | the media identity |
 
 
 
@@ -141,15 +144,33 @@
 ### StreamingTranslationRequest
 The top-level message sent by the client for the `StreamingRecognize` method.
 Multiple `StreamingTranslationRequest` messages are sent. The first message
-must contain a `streaming_config` message and must not contain `audio` data.
+must contain a `streaming_config` `media_identity` `target_language_code` message 
+and must not contain `audio` data.
 All subsequent messages must contain `audio` data and must not contain a
 `streaming_config` message.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| streaming_config | [google.cloud.speech.v1.RecognitionConfig](#google.cloud.speech.v1.RecognitionConfig) |  | Provides information to the recognizer that specifies how to process the request. The first `StreamingTranslationRequest` message must contain a `streaming_config` message. |
+| meta | [StreamingTranslationRequestHead](#sagittarius.translation.v1.StreamingTranslationRequestHead) |  |  |
 | audio_content | [bytes](#bytes) |  | The audio data to be recognized. Sequential chunks of audio data are sent in sequential `StreamingTranslationRequest` messages. The first `StreamingTranslationRequest` message must not contain `audio_content` data and all subsequent `StreamingTranslationRequest` messages must contain `audio_content` data. The audio bytes must be encoded as specified in `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a pure binary representation (not base64). See [audio limits](https://cloud.google.com/speech/limits#content). |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.StreamingTranslationRequestHead"/>
+
+### StreamingTranslationRequestHead
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| streaming_config | [google.cloud.speech.v1.RecognitionConfig](#google.cloud.speech.v1.RecognitionConfig) |  | Provides information to the recognizer that specifies how to process the request. The first `StreamingTranslationRequest` message must contain a `streaming_config` message. |
+| media_identity | [string](#string) |  | the media identity |
+| target_language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 
 
 
@@ -164,8 +185,10 @@ All subsequent messages must contain `audio` data and must not contain a
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. |
-| results | [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult) | repeated | Output-only* This repeated list contains zero or more results that correspond to consecutive portions of the audio currently being processed. It contains zero or more `is_final=false` results followed by zero or one `is_final=true` result (the newly settled portion). |
+| error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. `OK` means it is the final message |
+| results | [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult) |  | Output-only* This contains results that correspond to consecutive portions of the audio currently being processed. It contains zero or more `is_final=false` results followed by zero or one `is_final=true` result (the newly settled portion). |
+| taskinfo | [TaskInfo](#sagittarius.translation.v1.TaskInfo) |  | Output-only* This is the task if that has been created for farther inquiry |
+| transcriptinfo | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) |  | Output-only* this is the translated transcript |
 
 
 
@@ -185,6 +208,54 @@ All subsequent messages must contain `audio` data and must not contain a
 | stability | [float](#float) |  | Output-only* An estimate of the likelihood that the recognizer will not change its guess about this interim result. Values range from 0.0 (completely unstable) to 1.0 (completely stable). This field is only provided for interim results (`is_final=false`). The default of 0.0 is a sentinel value indicating `stability` was not set. |
 | start_time | [double](#double) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
 | end_time | [double](#double) |  | Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TaskInfo"/>
+
+### TaskInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| task_id | [string](#string) |  | this task id can be used for farther inquiry |
+| estimate_time | [double](#double) |  |  |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TaskInfoRequest"/>
+
+### TaskInfoRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| task_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TaskInfoResponse"/>
+
+### TaskInfoResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| taskinfo | [TaskInfo](#sagittarius.translation.v1.TaskInfo) |  |  |
+| transcriptinfo | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) |  | can return result |
 
 
 
@@ -235,6 +306,25 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 | ----- | ---- | ----- | ----------- |
 | source_language | [string](#string) |  | The source language of the text detected ISO-639-1/bcp47 Code with tags https://cloud.google.com/translate/docs/languages |
 | text | [string](#string) |  | The translated Text |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.TranscriptInfo"/>
+
+### TranscriptInfo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
+| language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| ranking | [float](#float) |  |  |
+| tags | [string](#string) | repeated |  |
+| delay | [int64](#int64) |  | in ms, can be &#43;/- |
 
 
 
@@ -307,8 +397,9 @@ Service that implements Sagittarius Translation API
 | TranslateMedia | [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest) | [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationRequest) | Translate media(audio or video) by media identity |
 | DetectLanguage | [DetectionRequest](#sagittarius.translation.v1.DetectionRequest) | [DetectionResponse](#sagittarius.translation.v1.DetectionRequest) | detect the language of text |
 | Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
-| StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
 | TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
+| StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results while sending audio. This method is only available via the gRPC API (not REST). |
+| TaskInfo | [TaskInfoRequest](#sagittarius.translation.v1.TaskInfoRequest) | [TaskInfoResponse](#sagittarius.translation.v1.TaskInfoRequest) | Translate text by Google Translation Service |
 
  
 

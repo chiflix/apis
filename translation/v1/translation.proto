@@ -52,11 +52,6 @@ service Translation {
     };
   }
 
-  // Performs bidirectional streaming audio translation: receive results while
-  // sending audio. This method is only available via the gRPC API (not REST).
-  rpc StreamingTranslation(stream StreamingTranslationRequest)
-    returns (stream StreamingTranslationResponse);
-
   // Translate text by Google Translation Service
   rpc TranslateText(TextTranslationRequest) returns (TextTranslationResponse) {
     option (google.api.http) = {
@@ -64,6 +59,21 @@ service Translation {
       body: "*"
     };
   }
+
+  // Performs bidirectional streaming audio translation: receive results while
+  // sending audio. This method is only available via the gRPC API (not REST).
+  rpc StreamingTranslation(stream StreamingTranslationRequest)
+    returns (stream StreamingTranslationResponse);
+
+  
+  // Translate text by Google Translation Service
+  rpc TaskInfo(TaskInfoRequest) returns (TaskInfoResponse) {
+    option (google.api.http) = {
+      post: "/v1/task/{task_id}/info"
+      body: "*"
+    };
+  }
+
 }
 
 message MediaTranslationRequest {
@@ -85,20 +95,6 @@ message MediaTranslationRequest {
 }
 
 message MediaTranslationResponse {
-  message TranscriptInfo {
-    // the identity, can be used in TranslationRequest
-    string transcript_identity = 1;
-
-    // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
-    string language_code       = 2;
-
-    float  ranking             = 3;
-
-    repeated string tags       = 4;
-
-    // in ms, can be +/-
-    int64 delay                = 5;
-  }
 
   // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
   // specifies the error for the operation.
@@ -107,6 +103,21 @@ message MediaTranslationResponse {
 
   // best translation results
   repeated TranscriptInfo results     = 2;
+}
+
+message TranscriptInfo {
+  // the identity, can be used in TranslationRequest
+  string transcript_identity = 1;
+
+  // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
+  string language_code       = 2;
+
+  float  ranking             = 3;
+
+  repeated string tags       = 4;
+
+  // in ms, can be +/-
+  int64 delay                = 5;
 }
 
 message DetectionRequest {
@@ -158,16 +169,14 @@ message TranscriptResponse {
 
 // The top-level message sent by the client for the `StreamingRecognize` method.
 // Multiple `StreamingTranslationRequest` messages are sent. The first message
-// must contain a `streaming_config` message and must not contain `audio` data.
+// must contain a `streaming_config` `media_identity` `target_language_code` message 
+// and must not contain `audio` data.
 // All subsequent messages must contain `audio` data and must not contain a
 // `streaming_config` message.
 message StreamingTranslationRequest {
   // The streaming request, which is either a streaming config or audio content.
   oneof streaming_request {
-    // Provides information to the recognizer that specifies how to process the
-    // request. The first `StreamingTranslationRequest` message must contain a
-    // `streaming_config`  message.
-    google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+    StreamingTranslationRequestHead meta = 1;
 
     // The audio data to be recognized. Sequential chunks of audio data are sent
     // in sequential `StreamingTranslationRequest` messages. The first
@@ -181,16 +190,60 @@ message StreamingTranslationRequest {
   }
 }
 
+message StreamingTranslationRequestHead {
+  // Provides information to the recognizer that specifies how to process the
+  // request. The first `StreamingTranslationRequest` message must contain a
+  // `streaming_config`  message.
+  google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+
+  // the media identity
+  string media_identity = 3;
+
+  // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
+  string target_language_code = 4;
+}
+
 message StreamingTranslationResponse {
   // *Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that
   // specifies the error for the operation.
+  // `OK` means it is the final message
   google.rpc.Status error = 1;
 
-  // *Output-only* This repeated list contains zero or more results that
-  // correspond to consecutive portions of the audio currently being processed.
-  // It contains zero or more `is_final=false` results followed by zero or one
-  // `is_final=true` result (the newly settled portion).
-  repeated StreamingTranslationResult results = 2;
+  oneof streaming_request {
+    // *Output-only* This contains results that
+    // correspond to consecutive portions of the audio currently being processed.
+    // It contains zero or more `is_final=false` results followed by zero or one
+    // `is_final=true` result (the newly settled portion).
+    StreamingTranslationResult results = 2;
+
+    // *Output-only* This is the task if that has been created for farther inquiry
+    TaskInfo taskinfo = 3;
+
+    // *Output-only* this is the translated transcript
+    TranscriptInfo transcriptinfo = 4;
+  }
+}
+
+message TaskInfoRequest {
+  string task_id = 1;
+}
+
+message TaskInfoResponse {
+  google.rpc.Status error = 1;
+
+  oneof streaming_request {
+    TaskInfo taskinfo     = 2;
+
+    // can return result
+    TranscriptInfo transcriptinfo = 3;
+  }
+}
+
+message TaskInfo {
+  // this task id can be used for farther inquiry
+  string task_id          = 1;
+
+  double estimate_time    = 2;
 }
 
 message StreamingTranslationResult {
@@ -232,18 +285,18 @@ message StreamingTranslationResult {
 // We use Google Translation Service for text translation.
 // Translation API Reference: https://cloud.google.com/translate/docs/reference/translate
 message TextTranslationRequest {
-    // The text to translate
-    repeated string text = 1;
+  // The text to translate
+  repeated string text = 1;
 
-    // The language to use for translation of the text
-    // ISO-639-1/bcp47 Code with tags
-    // https://cloud.google.com/translate/docs/languages
-    string target_language_code = 2;
+  // The language to use for translation of the text
+  // ISO-639-1/bcp47 Code with tags
+  // https://cloud.google.com/translate/docs/languages
+  string target_language_code = 2;
 
-    // The language of the source text
-    // ISO-639-1/bcp47 Code with tags
-    // https://cloud.google.com/translate/docs/languages
-    string source_language_code = 3;
+  // The language of the source text
+  // ISO-639-1/bcp47 Code with tags
+  // https://cloud.google.com/translate/docs/languages
+  string source_language_code = 3;
 }
 
 message TextTranslationResponse {
@@ -261,4 +314,27 @@ message TextTranslationResponse {
 
   // translation results for the requested text
   repeated Text results = 2;
+}
+
+message StreamingAsyTranslationRequest {
+  // The streaming request, which is either a streaming config or audio content.
+  oneof streaming_request {
+    // Provides information to the recognizer that specifies how to process the
+    // request. The first `StreamingTranslationRequest` message must contain a
+    // `streaming_config`  message.
+    google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+
+    // The audio data to be trained. Sequential chunks of audio data are sent
+    // in sequential `StreamingTranslationRequest` messages. The first
+    // `StreamingTranslationRequest` message must not contain `audio_content` data
+    // and all subsequent `StreamingTranslationRequest` messages must contain
+    // `audio_content` data. The audio bytes must be encoded as specified in
+    // `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+    // pure binary representation (not base64). See
+    // [audio limits](https://cloud.google.com/speech/limits#content).
+    bytes audio_content = 2;
+  }
+
+  // the media identity
+  string media_identity        = 3;
 }

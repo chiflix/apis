@@ -19,13 +19,18 @@ goog.exportSymbol('proto.sagittarius.translation.v1.DetectionRequest', null, glo
 goog.exportSymbol('proto.sagittarius.translation.v1.DetectionResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationResponse', null, global);
-goog.exportSymbol('proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.StreamingAsyTranslationRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationRequest', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationRequestHead', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationResult', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.TaskInfo', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.TaskInfoRequest', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.TaskInfoResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.TextTranslationRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.TextTranslationResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.TextTranslationResponse.Text', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.TranscriptInfo', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.TranscriptRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.TranscriptResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.TranscriptResponse.Cue', null, global);
@@ -335,7 +340,7 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.toObject = function(in
   var f, obj = {
     error: (f = msg.getError()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
     resultsList: jspb.Message.toObjectList(msg.getResultsList(),
-    proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject, includeInstance)
+    proto.sagittarius.translation.v1.TranscriptInfo.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -378,8 +383,8 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.deserializeBinaryFromR
       msg.setError(value);
       break;
     case 2:
-      var value = new proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo;
-      reader.readMessage(value,proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader);
+      var value = new proto.sagittarius.translation.v1.TranscriptInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.TranscriptInfo.deserializeBinaryFromReader);
       msg.addResults(value);
       break;
     default:
@@ -424,9 +429,70 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.serializeBinaryToWrite
     writer.writeRepeatedMessage(
       2,
       f,
-      proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter
+      proto.sagittarius.translation.v1.TranscriptInfo.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional google.rpc.Status error = 1;
+ * @return {?proto.google.rpc.Status}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getError = function() {
+  return /** @type{?proto.google.rpc.Status} */ (
+    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
+};
+
+
+/** @param {?proto.google.rpc.Status|undefined} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setError = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearError = function() {
+  this.setError(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.hasError = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * repeated TranscriptInfo results = 2;
+ * @return {!Array.<!proto.sagittarius.translation.v1.TranscriptInfo>}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getResultsList = function() {
+  return /** @type{!Array.<!proto.sagittarius.translation.v1.TranscriptInfo>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sagittarius.translation.v1.TranscriptInfo, 2));
+};
+
+
+/** @param {!Array.<!proto.sagittarius.translation.v1.TranscriptInfo>} value */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setResultsList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.sagittarius.translation.v1.TranscriptInfo=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sagittarius.translation.v1.TranscriptInfo}
+ */
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.addResults = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sagittarius.translation.v1.TranscriptInfo, opt_index);
+};
+
+
+proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearResultsList = function() {
+  this.setResultsList([]);
 };
 
 
@@ -441,19 +507,19 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.serializeBinaryToWrite
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.repeatedFields_, null);
+proto.sagittarius.translation.v1.TranscriptInfo = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.translation.v1.TranscriptInfo.repeatedFields_, null);
 };
-goog.inherits(proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, jspb.Message);
+goog.inherits(proto.sagittarius.translation.v1.TranscriptInfo, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.displayName = 'proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo';
+  proto.sagittarius.translation.v1.TranscriptInfo.displayName = 'proto.sagittarius.translation.v1.TranscriptInfo';
 }
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.repeatedFields_ = [4];
+proto.sagittarius.translation.v1.TranscriptInfo.repeatedFields_ = [4];
 
 
 
@@ -468,8 +534,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.toObject = function(opt_includeInstance) {
-  return proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject(opt_includeInstance, this);
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.TranscriptInfo.toObject(opt_includeInstance, this);
 };
 
 
@@ -478,11 +544,11 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} msg The msg instance to transform.
+ * @param {!proto.sagittarius.translation.v1.TranscriptInfo} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObject = function(includeInstance, msg) {
+proto.sagittarius.translation.v1.TranscriptInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     transcriptIdentity: jspb.Message.getFieldWithDefault(msg, 1, ""),
     languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
@@ -502,23 +568,23 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.toObjec
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
+ * @return {!proto.sagittarius.translation.v1.TranscriptInfo}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinary = function(bytes) {
+proto.sagittarius.translation.v1.TranscriptInfo.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo;
-  return proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sagittarius.translation.v1.TranscriptInfo;
+  return proto.sagittarius.translation.v1.TranscriptInfo.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} msg The message object to deserialize into.
+ * @param {!proto.sagittarius.translation.v1.TranscriptInfo} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
+ * @return {!proto.sagittarius.translation.v1.TranscriptInfo}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deserializeBinaryFromReader = function(msg, reader) {
+proto.sagittarius.translation.v1.TranscriptInfo.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -558,9 +624,9 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.deseria
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.serializeBinary = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter(this, writer);
+  proto.sagittarius.translation.v1.TranscriptInfo.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -568,11 +634,11 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo} message
+ * @param {!proto.sagittarius.translation.v1.TranscriptInfo} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.serializeBinaryToWriter = function(message, writer) {
+proto.sagittarius.translation.v1.TranscriptInfo.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTranscriptIdentity();
   if (f.length > 0) {
@@ -616,13 +682,13 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.seriali
  * optional string transcript_identity = 1;
  * @return {string}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getTranscriptIdentity = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.getTranscriptIdentity = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setTranscriptIdentity = function(value) {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.setTranscriptIdentity = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -631,13 +697,13 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
  * optional string language_code = 2;
  * @return {string}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getLanguageCode = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.getLanguageCode = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setLanguageCode = function(value) {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.setLanguageCode = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
@@ -646,13 +712,13 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
  * optional float ranking = 3;
  * @return {number}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getRanking = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.getRanking = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 3, 0.0));
 };
 
 
 /** @param {number} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setRanking = function(value) {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.setRanking = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -661,13 +727,13 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
  * repeated string tags = 4;
  * @return {!Array.<string>}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getTagsList = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.getTagsList = function() {
   return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 4));
 };
 
 
 /** @param {!Array.<string>} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setTagsList = function(value) {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.setTagsList = function(value) {
   jspb.Message.setField(this, 4, value || []);
 };
 
@@ -676,12 +742,12 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.addTags = function(value, opt_index) {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.addTags = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
 
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.clearTagsList = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.clearTagsList = function() {
   this.setTagsList([]);
 };
 
@@ -690,75 +756,14 @@ proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototy
  * optional int64 delay = 5;
  * @return {number}
  */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.getDelay = function() {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.getDelay = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo.prototype.setDelay = function(value) {
+proto.sagittarius.translation.v1.TranscriptInfo.prototype.setDelay = function(value) {
   jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional google.rpc.Status error = 1;
- * @return {?proto.google.rpc.Status}
- */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getError = function() {
-  return /** @type{?proto.google.rpc.Status} */ (
-    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
-};
-
-
-/** @param {?proto.google.rpc.Status|undefined} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setError = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearError = function() {
-  this.setError(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.hasError = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * repeated TranscriptInfo results = 2;
- * @return {!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo>}
- */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.getResultsList = function() {
-  return /** @type{!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, 2));
-};
-
-
-/** @param {!Array.<!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo>} value */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.setResultsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
-
-/**
- * @param {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo=} opt_value
- * @param {number=} opt_index
- * @return {!proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo}
- */
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.addResults = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sagittarius.translation.v1.MediaTranslationResponse.TranscriptInfo, opt_index);
-};
-
-
-proto.sagittarius.translation.v1.MediaTranslationResponse.prototype.clearResultsList = function() {
-  this.setResultsList([]);
 };
 
 
@@ -1880,7 +1885,7 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.oneofGroups_ = [[1,
  */
 proto.sagittarius.translation.v1.StreamingTranslationRequest.StreamingRequestCase = {
   STREAMING_REQUEST_NOT_SET: 0,
-  STREAMING_CONFIG: 1,
+  META: 1,
   AUDIO_CONTENT: 2
 };
 
@@ -1920,7 +1925,7 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.toObject 
  */
 proto.sagittarius.translation.v1.StreamingTranslationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    streamingConfig: (f = msg.getStreamingConfig()) && google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.toObject(includeInstance, f),
+    meta: (f = msg.getMeta()) && proto.sagittarius.translation.v1.StreamingTranslationRequestHead.toObject(includeInstance, f),
     audioContent: msg.getAudioContent_asB64()
   };
 
@@ -1959,9 +1964,9 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.deserializeBinaryFr
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig;
-      reader.readMessage(value,google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.deserializeBinaryFromReader);
-      msg.setStreamingConfig(value);
+      var value = new proto.sagittarius.translation.v1.StreamingTranslationRequestHead;
+      reader.readMessage(value,proto.sagittarius.translation.v1.StreamingTranslationRequestHead.deserializeBinaryFromReader);
+      msg.setMeta(value);
       break;
     case 2:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
@@ -1996,12 +2001,12 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.serialize
  */
 proto.sagittarius.translation.v1.StreamingTranslationRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getStreamingConfig();
+  f = message.getMeta();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.serializeBinaryToWriter
+      proto.sagittarius.translation.v1.StreamingTranslationRequestHead.serializeBinaryToWriter
     );
   }
   f = /** @type {!(string|Uint8Array)} */ (jspb.Message.getField(message, 2));
@@ -2015,23 +2020,23 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.serializeBinaryToWr
 
 
 /**
- * optional google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
- * @return {?proto.google.cloud.speech.v1.RecognitionConfig}
+ * optional StreamingTranslationRequestHead meta = 1;
+ * @return {?proto.sagittarius.translation.v1.StreamingTranslationRequestHead}
  */
-proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.getStreamingConfig = function() {
-  return /** @type{?proto.google.cloud.speech.v1.RecognitionConfig} */ (
-    jspb.Message.getWrapperField(this, google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig, 1));
+proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.getMeta = function() {
+  return /** @type{?proto.sagittarius.translation.v1.StreamingTranslationRequestHead} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.StreamingTranslationRequestHead, 1));
 };
 
 
-/** @param {?proto.google.cloud.speech.v1.RecognitionConfig|undefined} value */
-proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.setStreamingConfig = function(value) {
+/** @param {?proto.sagittarius.translation.v1.StreamingTranslationRequestHead|undefined} value */
+proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.setMeta = function(value) {
   jspb.Message.setOneofWrapperField(this, 1, proto.sagittarius.translation.v1.StreamingTranslationRequest.oneofGroups_[0], value);
 };
 
 
-proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.clearStreamingConfig = function() {
-  this.setStreamingConfig(undefined);
+proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.clearMeta = function() {
+  this.setMeta(undefined);
 };
 
 
@@ -2039,7 +2044,7 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.clearStre
  * Returns whether this field is set.
  * @return {!boolean}
  */
-proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.hasStreamingConfig = function() {
+proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.hasMeta = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -2108,19 +2113,252 @@ proto.sagittarius.translation.v1.StreamingTranslationRequest.prototype.hasAudioC
  * @extends {jspb.Message}
  * @constructor
  */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sagittarius.translation.v1.StreamingTranslationRequestHead, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.translation.v1.StreamingTranslationRequestHead.displayName = 'proto.sagittarius.translation.v1.StreamingTranslationRequestHead';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.StreamingTranslationRequestHead.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.translation.v1.StreamingTranslationRequestHead} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    streamingConfig: (f = msg.getStreamingConfig()) && google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.toObject(includeInstance, f),
+    mediaIdentity: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    targetLanguageCode: jspb.Message.getFieldWithDefault(msg, 4, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.translation.v1.StreamingTranslationRequestHead}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.translation.v1.StreamingTranslationRequestHead;
+  return proto.sagittarius.translation.v1.StreamingTranslationRequestHead.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.translation.v1.StreamingTranslationRequestHead} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.translation.v1.StreamingTranslationRequestHead}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig;
+      reader.readMessage(value,google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.deserializeBinaryFromReader);
+      msg.setStreamingConfig(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMediaIdentity(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTargetLanguageCode(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.translation.v1.StreamingTranslationRequestHead.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.translation.v1.StreamingTranslationRequestHead} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getStreamingConfig();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.serializeBinaryToWriter
+    );
+  }
+  f = message.getMediaIdentity();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getTargetLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+ * @return {?proto.google.cloud.speech.v1.RecognitionConfig}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.getStreamingConfig = function() {
+  return /** @type{?proto.google.cloud.speech.v1.RecognitionConfig} */ (
+    jspb.Message.getWrapperField(this, google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig, 1));
+};
+
+
+/** @param {?proto.google.cloud.speech.v1.RecognitionConfig|undefined} value */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.setStreamingConfig = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.clearStreamingConfig = function() {
+  this.setStreamingConfig(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.hasStreamingConfig = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string media_identity = 3;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.getMediaIdentity = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.setMediaIdentity = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional string target_language_code = 4;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.getTargetLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.StreamingTranslationRequestHead.prototype.setTargetLanguageCode = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.sagittarius.translation.v1.StreamingTranslationResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.sagittarius.translation.v1.StreamingTranslationResponse.repeatedFields_, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.sagittarius.translation.v1.StreamingTranslationResponse.oneofGroups_);
 };
 goog.inherits(proto.sagittarius.translation.v1.StreamingTranslationResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.sagittarius.translation.v1.StreamingTranslationResponse.displayName = 'proto.sagittarius.translation.v1.StreamingTranslationResponse';
 }
 /**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
  * @const
  */
-proto.sagittarius.translation.v1.StreamingTranslationResponse.repeatedFields_ = [2];
+proto.sagittarius.translation.v1.StreamingTranslationResponse.oneofGroups_ = [[2,3,4]];
+
+/**
+ * @enum {number}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.StreamingRequestCase = {
+  STREAMING_REQUEST_NOT_SET: 0,
+  RESULTS: 2,
+  TASKINFO: 3,
+  TRANSCRIPTINFO: 4
+};
+
+/**
+ * @return {proto.sagittarius.translation.v1.StreamingTranslationResponse.StreamingRequestCase}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.getStreamingRequestCase = function() {
+  return /** @type {proto.sagittarius.translation.v1.StreamingTranslationResponse.StreamingRequestCase} */(jspb.Message.computeOneofCase(this, proto.sagittarius.translation.v1.StreamingTranslationResponse.oneofGroups_[0]));
+};
 
 
 
@@ -2152,8 +2390,9 @@ proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.toObject
 proto.sagittarius.translation.v1.StreamingTranslationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     error: (f = msg.getError()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
-    resultsList: jspb.Message.toObjectList(msg.getResultsList(),
-    proto.sagittarius.translation.v1.StreamingTranslationResult.toObject, includeInstance)
+    results: (f = msg.getResults()) && proto.sagittarius.translation.v1.StreamingTranslationResult.toObject(includeInstance, f),
+    taskinfo: (f = msg.getTaskinfo()) && proto.sagittarius.translation.v1.TaskInfo.toObject(includeInstance, f),
+    transcriptinfo: (f = msg.getTranscriptinfo()) && proto.sagittarius.translation.v1.TranscriptInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2198,7 +2437,17 @@ proto.sagittarius.translation.v1.StreamingTranslationResponse.deserializeBinaryF
     case 2:
       var value = new proto.sagittarius.translation.v1.StreamingTranslationResult;
       reader.readMessage(value,proto.sagittarius.translation.v1.StreamingTranslationResult.deserializeBinaryFromReader);
-      msg.addResults(value);
+      msg.setResults(value);
+      break;
+    case 3:
+      var value = new proto.sagittarius.translation.v1.TaskInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.TaskInfo.deserializeBinaryFromReader);
+      msg.setTaskinfo(value);
+      break;
+    case 4:
+      var value = new proto.sagittarius.translation.v1.TranscriptInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.TranscriptInfo.deserializeBinaryFromReader);
+      msg.setTranscriptinfo(value);
       break;
     default:
       reader.skipField();
@@ -2237,12 +2486,28 @@ proto.sagittarius.translation.v1.StreamingTranslationResponse.serializeBinaryToW
       google_rpc_status_pb.Status.serializeBinaryToWriter
     );
   }
-  f = message.getResultsList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
+  f = message.getResults();
+  if (f != null) {
+    writer.writeMessage(
       2,
       f,
       proto.sagittarius.translation.v1.StreamingTranslationResult.serializeBinaryToWriter
+    );
+  }
+  f = message.getTaskinfo();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.sagittarius.translation.v1.TaskInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getTranscriptinfo();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      proto.sagittarius.translation.v1.TranscriptInfo.serializeBinaryToWriter
     );
   }
 };
@@ -2279,33 +2544,676 @@ proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.hasError
 
 
 /**
- * repeated StreamingTranslationResult results = 2;
- * @return {!Array.<!proto.sagittarius.translation.v1.StreamingTranslationResult>}
+ * optional StreamingTranslationResult results = 2;
+ * @return {?proto.sagittarius.translation.v1.StreamingTranslationResult}
  */
-proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.getResultsList = function() {
-  return /** @type{!Array.<!proto.sagittarius.translation.v1.StreamingTranslationResult>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sagittarius.translation.v1.StreamingTranslationResult, 2));
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.getResults = function() {
+  return /** @type{?proto.sagittarius.translation.v1.StreamingTranslationResult} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.StreamingTranslationResult, 2));
 };
 
 
-/** @param {!Array.<!proto.sagittarius.translation.v1.StreamingTranslationResult>} value */
-proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.setResultsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+/** @param {?proto.sagittarius.translation.v1.StreamingTranslationResult|undefined} value */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.setResults = function(value) {
+  jspb.Message.setOneofWrapperField(this, 2, proto.sagittarius.translation.v1.StreamingTranslationResponse.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.clearResults = function() {
+  this.setResults(undefined);
 };
 
 
 /**
- * @param {!proto.sagittarius.translation.v1.StreamingTranslationResult=} opt_value
- * @param {number=} opt_index
- * @return {!proto.sagittarius.translation.v1.StreamingTranslationResult}
+ * Returns whether this field is set.
+ * @return {!boolean}
  */
-proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.addResults = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.sagittarius.translation.v1.StreamingTranslationResult, opt_index);
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.hasResults = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
-proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.clearResultsList = function() {
-  this.setResultsList([]);
+/**
+ * optional TaskInfo taskinfo = 3;
+ * @return {?proto.sagittarius.translation.v1.TaskInfo}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.getTaskinfo = function() {
+  return /** @type{?proto.sagittarius.translation.v1.TaskInfo} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.TaskInfo, 3));
+};
+
+
+/** @param {?proto.sagittarius.translation.v1.TaskInfo|undefined} value */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.setTaskinfo = function(value) {
+  jspb.Message.setOneofWrapperField(this, 3, proto.sagittarius.translation.v1.StreamingTranslationResponse.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.clearTaskinfo = function() {
+  this.setTaskinfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.hasTaskinfo = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional TranscriptInfo transcriptinfo = 4;
+ * @return {?proto.sagittarius.translation.v1.TranscriptInfo}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.getTranscriptinfo = function() {
+  return /** @type{?proto.sagittarius.translation.v1.TranscriptInfo} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.TranscriptInfo, 4));
+};
+
+
+/** @param {?proto.sagittarius.translation.v1.TranscriptInfo|undefined} value */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.setTranscriptinfo = function(value) {
+  jspb.Message.setOneofWrapperField(this, 4, proto.sagittarius.translation.v1.StreamingTranslationResponse.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.clearTranscriptinfo = function() {
+  this.setTranscriptinfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationResponse.prototype.hasTranscriptinfo = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sagittarius.translation.v1.TaskInfoRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.translation.v1.TaskInfoRequest.displayName = 'proto.sagittarius.translation.v1.TaskInfoRequest';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.TaskInfoRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.translation.v1.TaskInfoRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    taskId: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.translation.v1.TaskInfoRequest}
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.translation.v1.TaskInfoRequest;
+  return proto.sagittarius.translation.v1.TaskInfoRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.translation.v1.TaskInfoRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.translation.v1.TaskInfoRequest}
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTaskId(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.translation.v1.TaskInfoRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.translation.v1.TaskInfoRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTaskId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string task_id = 1;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.TaskInfoRequest.prototype.getTaskId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.TaskInfoRequest.prototype.setTaskId = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.sagittarius.translation.v1.TaskInfoResponse.oneofGroups_);
+};
+goog.inherits(proto.sagittarius.translation.v1.TaskInfoResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.translation.v1.TaskInfoResponse.displayName = 'proto.sagittarius.translation.v1.TaskInfoResponse';
+}
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.oneofGroups_ = [[2,3]];
+
+/**
+ * @enum {number}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.StreamingRequestCase = {
+  STREAMING_REQUEST_NOT_SET: 0,
+  TASKINFO: 2,
+  TRANSCRIPTINFO: 3
+};
+
+/**
+ * @return {proto.sagittarius.translation.v1.TaskInfoResponse.StreamingRequestCase}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.getStreamingRequestCase = function() {
+  return /** @type {proto.sagittarius.translation.v1.TaskInfoResponse.StreamingRequestCase} */(jspb.Message.computeOneofCase(this, proto.sagittarius.translation.v1.TaskInfoResponse.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.TaskInfoResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.translation.v1.TaskInfoResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    error: (f = msg.getError()) && google_rpc_status_pb.Status.toObject(includeInstance, f),
+    taskinfo: (f = msg.getTaskinfo()) && proto.sagittarius.translation.v1.TaskInfo.toObject(includeInstance, f),
+    transcriptinfo: (f = msg.getTranscriptinfo()) && proto.sagittarius.translation.v1.TranscriptInfo.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.translation.v1.TaskInfoResponse}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.translation.v1.TaskInfoResponse;
+  return proto.sagittarius.translation.v1.TaskInfoResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.translation.v1.TaskInfoResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.translation.v1.TaskInfoResponse}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_rpc_status_pb.Status;
+      reader.readMessage(value,google_rpc_status_pb.Status.deserializeBinaryFromReader);
+      msg.setError(value);
+      break;
+    case 2:
+      var value = new proto.sagittarius.translation.v1.TaskInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.TaskInfo.deserializeBinaryFromReader);
+      msg.setTaskinfo(value);
+      break;
+    case 3:
+      var value = new proto.sagittarius.translation.v1.TranscriptInfo;
+      reader.readMessage(value,proto.sagittarius.translation.v1.TranscriptInfo.deserializeBinaryFromReader);
+      msg.setTranscriptinfo(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.translation.v1.TaskInfoResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.translation.v1.TaskInfoResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getError();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_rpc_status_pb.Status.serializeBinaryToWriter
+    );
+  }
+  f = message.getTaskinfo();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.sagittarius.translation.v1.TaskInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getTranscriptinfo();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.sagittarius.translation.v1.TranscriptInfo.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional google.rpc.Status error = 1;
+ * @return {?proto.google.rpc.Status}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.getError = function() {
+  return /** @type{?proto.google.rpc.Status} */ (
+    jspb.Message.getWrapperField(this, google_rpc_status_pb.Status, 1));
+};
+
+
+/** @param {?proto.google.rpc.Status|undefined} value */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.setError = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.clearError = function() {
+  this.setError(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.hasError = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional TaskInfo taskinfo = 2;
+ * @return {?proto.sagittarius.translation.v1.TaskInfo}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.getTaskinfo = function() {
+  return /** @type{?proto.sagittarius.translation.v1.TaskInfo} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.TaskInfo, 2));
+};
+
+
+/** @param {?proto.sagittarius.translation.v1.TaskInfo|undefined} value */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.setTaskinfo = function(value) {
+  jspb.Message.setOneofWrapperField(this, 2, proto.sagittarius.translation.v1.TaskInfoResponse.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.clearTaskinfo = function() {
+  this.setTaskinfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.hasTaskinfo = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional TranscriptInfo transcriptinfo = 3;
+ * @return {?proto.sagittarius.translation.v1.TranscriptInfo}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.getTranscriptinfo = function() {
+  return /** @type{?proto.sagittarius.translation.v1.TranscriptInfo} */ (
+    jspb.Message.getWrapperField(this, proto.sagittarius.translation.v1.TranscriptInfo, 3));
+};
+
+
+/** @param {?proto.sagittarius.translation.v1.TranscriptInfo|undefined} value */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.setTranscriptinfo = function(value) {
+  jspb.Message.setOneofWrapperField(this, 3, proto.sagittarius.translation.v1.TaskInfoResponse.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.clearTranscriptinfo = function() {
+  this.setTranscriptinfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.TaskInfoResponse.prototype.hasTranscriptinfo = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.translation.v1.TaskInfo = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.sagittarius.translation.v1.TaskInfo, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.translation.v1.TaskInfo.displayName = 'proto.sagittarius.translation.v1.TaskInfo';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.translation.v1.TaskInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.TaskInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.translation.v1.TaskInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.TaskInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    taskId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    estimateTime: +jspb.Message.getFieldWithDefault(msg, 2, 0.0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.translation.v1.TaskInfo}
+ */
+proto.sagittarius.translation.v1.TaskInfo.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.translation.v1.TaskInfo;
+  return proto.sagittarius.translation.v1.TaskInfo.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.translation.v1.TaskInfo} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.translation.v1.TaskInfo}
+ */
+proto.sagittarius.translation.v1.TaskInfo.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTaskId(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setEstimateTime(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.TaskInfo.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.translation.v1.TaskInfo.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.translation.v1.TaskInfo} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.TaskInfo.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTaskId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getEstimateTime();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string task_id = 1;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.TaskInfo.prototype.getTaskId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.TaskInfo.prototype.setTaskId = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional double estimate_time = 2;
+ * @return {number}
+ */
+proto.sagittarius.translation.v1.TaskInfo.prototype.getEstimateTime = function() {
+  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 2, 0.0));
+};
+
+
+/** @param {number} value */
+proto.sagittarius.translation.v1.TaskInfo.prototype.setEstimateTime = function(value) {
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -3154,6 +4062,283 @@ proto.sagittarius.translation.v1.TextTranslationResponse.prototype.addResults = 
 
 proto.sagittarius.translation.v1.TextTranslationResponse.prototype.clearResultsList = function() {
   this.setResultsList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.oneofGroups_);
+};
+goog.inherits(proto.sagittarius.translation.v1.StreamingAsyTranslationRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.displayName = 'proto.sagittarius.translation.v1.StreamingAsyTranslationRequest';
+}
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.StreamingRequestCase = {
+  STREAMING_REQUEST_NOT_SET: 0,
+  STREAMING_CONFIG: 1,
+  AUDIO_CONTENT: 2
+};
+
+/**
+ * @return {proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.StreamingRequestCase}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.getStreamingRequestCase = function() {
+  return /** @type {proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.StreamingRequestCase} */(jspb.Message.computeOneofCase(this, proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.sagittarius.translation.v1.StreamingAsyTranslationRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    streamingConfig: (f = msg.getStreamingConfig()) && google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.toObject(includeInstance, f),
+    audioContent: msg.getAudioContent_asB64(),
+    mediaIdentity: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.sagittarius.translation.v1.StreamingAsyTranslationRequest}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.sagittarius.translation.v1.StreamingAsyTranslationRequest;
+  return proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.sagittarius.translation.v1.StreamingAsyTranslationRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.sagittarius.translation.v1.StreamingAsyTranslationRequest}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig;
+      reader.readMessage(value,google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.deserializeBinaryFromReader);
+      msg.setStreamingConfig(value);
+      break;
+    case 2:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setAudioContent(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMediaIdentity(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.sagittarius.translation.v1.StreamingAsyTranslationRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getStreamingConfig();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {!(string|Uint8Array)} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeBytes(
+      2,
+      f
+    );
+  }
+  f = message.getMediaIdentity();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional google.cloud.speech.v1.RecognitionConfig streaming_config = 1;
+ * @return {?proto.google.cloud.speech.v1.RecognitionConfig}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.getStreamingConfig = function() {
+  return /** @type{?proto.google.cloud.speech.v1.RecognitionConfig} */ (
+    jspb.Message.getWrapperField(this, google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig, 1));
+};
+
+
+/** @param {?proto.google.cloud.speech.v1.RecognitionConfig|undefined} value */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.setStreamingConfig = function(value) {
+  jspb.Message.setOneofWrapperField(this, 1, proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.clearStreamingConfig = function() {
+  this.setStreamingConfig(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.hasStreamingConfig = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bytes audio_content = 2;
+ * @return {!(string|Uint8Array)}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.getAudioContent = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * optional bytes audio_content = 2;
+ * This is a type-conversion wrapper around `getAudioContent()`
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.getAudioContent_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getAudioContent()));
+};
+
+
+/**
+ * optional bytes audio_content = 2;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getAudioContent()`
+ * @return {!Uint8Array}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.getAudioContent_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getAudioContent()));
+};
+
+
+/** @param {!(string|Uint8Array)} value */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.setAudioContent = function(value) {
+  jspb.Message.setOneofField(this, 2, proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.oneofGroups_[0], value);
+};
+
+
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.clearAudioContent = function() {
+  jspb.Message.setOneofField(this, 2, proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.hasAudioContent = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string media_identity = 3;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.getMediaIdentity = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.StreamingAsyTranslationRequest.prototype.setMediaIdentity = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
