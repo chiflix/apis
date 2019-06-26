@@ -14,8 +14,8 @@
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
     - [StreamingTranslationResult](#sagittarius.translation.v1.StreamingTranslationResult)
     - [StreamingTranslationTaskInfo](#sagittarius.translation.v1.StreamingTranslationTaskInfo)
-    - [StreamingTranslationTaskInfoRequest](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest)
-    - [StreamingTranslationTaskInfoResponse](#sagittarius.translation.v1.StreamingTranslationTaskInfoResponse)
+    - [StreamingTranslationTaskRequest](#sagittarius.translation.v1.StreamingTranslationTaskRequest)
+    - [StreamingTranslationTaskResponse](#sagittarius.translation.v1.StreamingTranslationTaskResponse)
     - [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest)
     - [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationResponse)
     - [TextTranslationResponse.Text](#sagittarius.translation.v1.TextTranslationResponse.Text)
@@ -214,9 +214,9 @@ the StreamingTranslationTask that created by the `StreamingTranslation` method.
 
 
 
-<a name="sagittarius.translation.v1.StreamingTranslationTaskInfoRequest"/>
+<a name="sagittarius.translation.v1.StreamingTranslationTaskRequest"/>
 
-### StreamingTranslationTaskInfoRequest
+### StreamingTranslationTaskRequest
 the StreamingTranslationTask id that created by the `StreamingTranslation` method.
 
 
@@ -229,9 +229,9 @@ the StreamingTranslationTask id that created by the `StreamingTranslation` metho
 
 
 
-<a name="sagittarius.translation.v1.StreamingTranslationTaskInfoResponse"/>
+<a name="sagittarius.translation.v1.StreamingTranslationTaskResponse"/>
 
-### StreamingTranslationTaskInfoResponse
+### StreamingTranslationTaskResponse
 the translated TranscriptInfo or `StreamingTranslationTaskInfo`
 
 
@@ -383,7 +383,7 @@ Service that implements Sagittarius Translation API
 | Transcript | [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest) | [TranscriptResponse](#sagittarius.translation.v1.TranscriptRequest) |  |
 | TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
 | StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results after or while sending audio. This method is only available via the gRPC API (not REST). |
-| StreamingTranslationTask | [StreamingTranslationTaskInfoRequest](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest) | [StreamingTranslationTaskInfoResponse](#sagittarius.translation.v1.StreamingTranslationTaskInfoRequest) | Check StreamingTranslationTask results or estimate finish time and maybe other informations related to the task |
+| StreamingTranslationTask | [StreamingTranslationTaskRequest](#sagittarius.translation.v1.StreamingTranslationTaskRequest) | [StreamingTranslationTaskResponse](#sagittarius.translation.v1.StreamingTranslationTaskRequest) | Check StreamingTranslationTask results or estimate finish time and maybe other informations related to the task |
 
  
 

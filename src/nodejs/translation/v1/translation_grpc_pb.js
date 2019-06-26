@@ -88,26 +88,26 @@ function deserialize_sagittarius_translation_v1_StreamingTranslationResponse(buf
   return translation_v1_translation_pb.StreamingTranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sagittarius_translation_v1_StreamingTranslationTaskInfoRequest(arg) {
-  if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationTaskInfoRequest)) {
-    throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationTaskInfoRequest');
+function serialize_sagittarius_translation_v1_StreamingTranslationTaskRequest(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationTaskRequest)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationTaskRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_sagittarius_translation_v1_StreamingTranslationTaskInfoRequest(buffer_arg) {
-  return translation_v1_translation_pb.StreamingTranslationTaskInfoRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sagittarius_translation_v1_StreamingTranslationTaskRequest(buffer_arg) {
+  return translation_v1_translation_pb.StreamingTranslationTaskRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sagittarius_translation_v1_StreamingTranslationTaskInfoResponse(arg) {
-  if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationTaskInfoResponse)) {
-    throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationTaskInfoResponse');
+function serialize_sagittarius_translation_v1_StreamingTranslationTaskResponse(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationTaskResponse)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationTaskResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_sagittarius_translation_v1_StreamingTranslationTaskInfoResponse(buffer_arg) {
-  return translation_v1_translation_pb.StreamingTranslationTaskInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sagittarius_translation_v1_StreamingTranslationTaskResponse(buffer_arg) {
+  return translation_v1_translation_pb.StreamingTranslationTaskResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sagittarius_translation_v1_TextTranslationRequest(arg) {
@@ -223,12 +223,12 @@ var TranslationService = exports.TranslationService = {
     path: '/sagittarius.translation.v1.Translation/StreamingTranslationTask',
     requestStream: false,
     responseStream: false,
-    requestType: translation_v1_translation_pb.StreamingTranslationTaskInfoRequest,
-    responseType: translation_v1_translation_pb.StreamingTranslationTaskInfoResponse,
-    requestSerialize: serialize_sagittarius_translation_v1_StreamingTranslationTaskInfoRequest,
-    requestDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskInfoRequest,
-    responseSerialize: serialize_sagittarius_translation_v1_StreamingTranslationTaskInfoResponse,
-    responseDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskInfoResponse,
+    requestType: translation_v1_translation_pb.StreamingTranslationTaskRequest,
+    responseType: translation_v1_translation_pb.StreamingTranslationTaskResponse,
+    requestSerialize: serialize_sagittarius_translation_v1_StreamingTranslationTaskRequest,
+    requestDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskRequest,
+    responseSerialize: serialize_sagittarius_translation_v1_StreamingTranslationTaskResponse,
+    responseDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskResponse,
   },
 };
 

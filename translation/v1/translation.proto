@@ -67,7 +67,7 @@ service Translation {
   
   // Check StreamingTranslationTask results or estimate finish time 
   // and maybe other informations related to the task
-  rpc StreamingTranslationTask(StreamingTranslationTaskInfoRequest) returns (StreamingTranslationTaskInfoResponse) {
+  rpc StreamingTranslationTask(StreamingTranslationTaskRequest) returns (StreamingTranslationTaskResponse) {
     option (google.api.http) = {
       post: "/v1/translation/task/{task_id}/info"
       body: "*"
@@ -230,12 +230,12 @@ message StreamingTranslationResponse {
 }
 
 // the StreamingTranslationTask id that created by the `StreamingTranslation` method.
-message StreamingTranslationTaskInfoRequest {
+message StreamingTranslationTaskRequest {
   string task_id = 1;
 }
 
 // the translated TranscriptInfo or `StreamingTranslationTaskInfo`
-message StreamingTranslationTaskInfoResponse {
+message StreamingTranslationTaskResponse {
   google.rpc.Status error = 1;
 
   oneof streaming_request {
