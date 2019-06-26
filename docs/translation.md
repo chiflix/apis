@@ -9,7 +9,6 @@
     - [DetectionResponse](#sagittarius.translation.v1.DetectionResponse)
     - [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest)
     - [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationResponse)
-    - [StreamingAsyTranslationRequest](#sagittarius.translation.v1.StreamingAsyTranslationRequest)
     - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
     - [StreamingTranslationRequestHead](#sagittarius.translation.v1.StreamingTranslationRequestHead)
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
@@ -116,23 +115,6 @@
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
 | results | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) | repeated | best translation results |
-
-
-
-
-
-
-<a name="sagittarius.translation.v1.StreamingAsyTranslationRequest"/>
-
-### StreamingAsyTranslationRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| streaming_config | [google.cloud.speech.v1.RecognitionConfig](#google.cloud.speech.v1.RecognitionConfig) |  | Provides information to the recognizer that specifies how to process the request. The first `StreamingTranslationRequest` message must contain a `streaming_config` message. |
-| audio_content | [bytes](#bytes) |  | The audio data to be trained. Sequential chunks of audio data are sent in sequential `StreamingTranslationRequest` messages. The first `StreamingTranslationRequest` message must not contain `audio_content` data and all subsequent `StreamingTranslationRequest` messages must contain `audio_content` data. The audio bytes must be encoded as specified in `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a pure binary representation (not base64). See [audio limits](https://cloud.google.com/speech/limits#content). |
-| media_identity | [string](#string) |  | the media identity |
 
 
 
