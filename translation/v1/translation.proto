@@ -66,8 +66,12 @@ service Translation {
   }
 
   // Performs asynchronous audio translation: This method is only available via the gRPC API (not REST).
-  rpc StreamingAsyTranslation(stream StreamingAsyTranslationRequest)
-    returns (google.rpc.Status);
+  rpc StreamingPushTranslationTask(stream StreamingPushTranslationTaskRequest)
+  returns (PushTranslationResponse);
+
+  rpc TimedPollingTranslationResult(TimedPollingRequest)
+  returns (TranslationTranscriptResponse)
+
 }
 
 message MediaTranslationRequest {
@@ -269,7 +273,7 @@ message TextTranslationResponse {
   repeated Text results = 2;
 }
 
-message StreamingAsyTranslationRequest {
+message StreamingPushTranslationTaskRequest {
   // The streaming request, which is either a streaming config or audio content.
   oneof streaming_request {
     // Provides information to the recognizer that specifies how to process the
@@ -288,6 +292,45 @@ message StreamingAsyTranslationRequest {
     bytes audio_content = 2;
   }
 
-  // the media identity
+  // the media identity(media hash in first version)
   string media_identity        = 3;
+
+  string target_language = 4;
+}
+
+message PushTranslationResponse {
+
+  // The identity of the translation task is being processing, client firstly dial the AsyncTranslation function get a task_id
+  // client send timed polling request for progress should with this
+  string task_id = 1;
+
+  // Status code presents the status of google speech to text service result
+  google.rpc.Status status_code = 2;
+}
+
+
+message TimedPollingRequest {
+  string task_id = 1;
+}
+
+message TranslationTranscriptResponse {
+  message Cue {
+    // the start and end of the transcripts
+    double start_time = 1;
+    double end_time   = 2;
+
+    string text = 3;
+  }
+
+  // Flag whether task finished
+  bool done = 1;
+
+  string progress_rate = 2;
+
+  // return progress rate ,if task finished, return progress rate and transcript
+  repeated Cue transcript = 3;
+
+  // Status code presents the status of google speech to text service result
+  // some undefined code means google speech to txt service failed, server would restart the task
+  google.rpc.Status status_code = 4;
 }
