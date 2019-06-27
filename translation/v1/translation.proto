@@ -236,6 +236,9 @@ message StreamingTranslationTaskRequest {
 
 // the translated TranscriptInfo or `StreamingTranslationTaskInfo`
 message StreamingTranslationTaskResponse {
+  // maybe be:
+  // StreamingTranslationTaskCode.CONTINUE
+  // StreamingTranslationTaskCode.SKIP_AUDIO
   google.rpc.Status error = 1;
 
   oneof streaming_request {
@@ -244,6 +247,18 @@ message StreamingTranslationTaskResponse {
     // can return result
     TranscriptInfo transcriptinfo = 3;
   }
+}
+
+// The canonical error codes for StreamingTranslationTaskResponse
+enum StreamingTranslationTaskCode {
+  // The first enum value must be zero in proto3.
+  OK = 0;
+
+  // instruct client to continue sending audio data
+  CONTINUE   = 9100;
+
+  // instruct client to skip sending audio data
+  SKIP_AUDIO = 9101;
 }
 
 // the StreamingTranslationTask that created by the `StreamingTranslation` method.

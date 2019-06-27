@@ -632,3 +632,9 @@ export namespace TextTranslationResponse {
     }
 
 }
+
+export enum StreamingTranslationTaskCode {
+    OK = 0,
+    CONTINUE = 9100,
+    SKIP_AUDIO = 9101,
+}

@@ -23,6 +23,7 @@ goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationRequest'
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationRequestConfig', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationResponse', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationResult', null, global);
+goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationTaskCode', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationTaskInfo', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationTaskRequest', null, global);
 goog.exportSymbol('proto.sagittarius.translation.v1.StreamingTranslationTaskResponse', null, global);
@@ -4090,5 +4091,14 @@ proto.sagittarius.translation.v1.TextTranslationResponse.prototype.clearResultsL
   this.setResultsList([]);
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationTaskCode = {
+  OK: 0,
+  CONTINUE: 9100,
+  SKIP_AUDIO: 9101
+};
 
 goog.object.extend(exports, proto.sagittarius.translation.v1);

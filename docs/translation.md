@@ -24,6 +24,7 @@
     - [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse)
     - [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue)
   
+    - [StreamingTranslationTaskCode](#sagittarius.translation.v1.StreamingTranslationTaskCode)
   
   
     - [Translation](#sagittarius.translation.v1.Translation)
@@ -237,7 +238,7 @@ the translated TranscriptInfo or `StreamingTranslationTaskInfo`
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| error | [google.rpc.Status](#google.rpc.Status) |  | maybe be: StreamingTranslationTaskCode.CONTINUE StreamingTranslationTaskCode.SKIP_AUDIO |
 | taskinfo | [StreamingTranslationTaskInfo](#sagittarius.translation.v1.StreamingTranslationTaskInfo) |  |  |
 | transcriptinfo | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) |  | can return result |
 
@@ -365,6 +366,19 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
  
+
+
+<a name="sagittarius.translation.v1.StreamingTranslationTaskCode"/>
+
+### StreamingTranslationTaskCode
+The canonical error codes for StreamingTranslationTaskResponse
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| OK | 0 | The first enum value must be zero in proto3. |
+| CONTINUE | 9100 | instruct client to continue sending audio data |
+| SKIP_AUDIO | 9101 | instruct client to skip sending audio data |
+
 
  
 
