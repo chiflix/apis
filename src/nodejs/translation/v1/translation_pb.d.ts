@@ -56,6 +56,9 @@ export class MediaTranslationResponse extends jspb.Message {
     setResultsList(value: Array<TranscriptInfo>): void;
     addResults(value?: TranscriptInfo, index?: number): TranscriptInfo;
 
+    getStreamTranslationTaskId(): string;
+    setStreamTranslationTaskId(value: string): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): MediaTranslationResponse.AsObject;
@@ -71,6 +74,7 @@ export namespace MediaTranslationResponse {
     export type AsObject = {
         error?: google_rpc_status_pb.Status.AsObject,
         resultsList: Array<TranscriptInfo.AsObject>,
+        streamTranslationTaskId: string,
     }
 }
 
@@ -92,6 +96,9 @@ export class TranscriptInfo extends jspb.Message {
     getDelay(): number;
     setDelay(value: number): void;
 
+    getConfidence(): number;
+    setConfidence(value: number): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): TranscriptInfo.AsObject;
@@ -110,6 +117,7 @@ export namespace TranscriptInfo {
         ranking: number,
         tagsList: Array<string>,
         delay: number,
+        confidence: number,
     }
 }
 

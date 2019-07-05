@@ -102,6 +102,9 @@ message MediaTranslationResponse {
 
   // best translation results
   repeated TranscriptInfo results     = 2;
+
+  // if there is a stream translation task running, return task id
+  string stream_translation_task_id   = 3;
 }
 
 message TranscriptInfo {
@@ -111,12 +114,19 @@ message TranscriptInfo {
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
   string language_code       = 2;
 
+  // actually we should use as "confidence"
+  // use "ranking" for back ward competibility
   float  ranking             = 3;
 
+  // maybe: "ai" - result from ai tranlation
+  // "edited" - result from user contribution
   repeated string tags       = 4;
 
   // in ms, can be +/-
   int64 delay                = 5;
+
+  // the confidence of the quality of the translation
+  float confidence           = 6;
 }
 
 message DetectionRequest {

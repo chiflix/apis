@@ -116,6 +116,7 @@
 | ----- | ---- | ----- | ----------- |
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
 | results | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) | repeated | best translation results |
+| stream_translation_task_id | [string](#string) |  | if there is a stream translation task running, return task id |
 
 
 
@@ -307,9 +308,10 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 | ----- | ---- | ----- | ----------- |
 | transcript_identity | [string](#string) |  | the identity, can be used in TranslationRequest |
 | language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
-| ranking | [float](#float) |  |  |
-| tags | [string](#string) | repeated |  |
+| ranking | [float](#float) |  | actually we should use as &#34;confidence&#34; use &#34;ranking&#34; for back ward competibility |
+| tags | [string](#string) | repeated | maybe: &#34;ai&#34; - result from ai tranlation &#34;edited&#34; - result from user contribution |
 | delay | [int64](#int64) |  | in ms, can be &#43;/- |
+| confidence | [float](#float) |  | the confidence of the quality of the translation |
 
 
 
