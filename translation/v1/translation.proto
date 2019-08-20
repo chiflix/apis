@@ -214,6 +214,9 @@ message StreamingTranslationRequestConfig {
 
   // ISO-639-1 Code https://cloud.google.com/translate/docs/languages
   string target_language_code = 4;
+
+  // the track of audio
+  string audio_track = 5;
 }
 
 // The top-level message sent by server for the `StreamingTranslation` method.
