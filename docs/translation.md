@@ -156,6 +156,7 @@ All subsequent messages must contain `audio` data and must not contain a
 | media_identity | [string](#string) |  | the media identity |
 | audio_language_code | [string](#string) |  | the language code of the audio ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | target_language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
+| audio_track | [string](#string) |  | the track of audio |
 
 
 

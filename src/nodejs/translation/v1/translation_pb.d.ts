@@ -341,6 +341,9 @@ export class StreamingTranslationRequestConfig extends jspb.Message {
     getTargetLanguageCode(): string;
     setTargetLanguageCode(value: string): void;
 
+    getAudioTrack(): string;
+    setAudioTrack(value: string): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): StreamingTranslationRequestConfig.AsObject;
@@ -358,6 +361,7 @@ export namespace StreamingTranslationRequestConfig {
         mediaIdentity: string,
         audioLanguageCode: string,
         targetLanguageCode: string,
+        audioTrack: string,
     }
 }
 

@@ -2206,7 +2206,8 @@ proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.toObject = fu
     streamingConfig: (f = msg.getStreamingConfig()) && google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.toObject(includeInstance, f),
     mediaIdentity: jspb.Message.getFieldWithDefault(msg, 2, ""),
     audioLanguageCode: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    targetLanguageCode: jspb.Message.getFieldWithDefault(msg, 4, "")
+    targetLanguageCode: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    audioTrack: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -2259,6 +2260,10 @@ proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.deserializeBi
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setTargetLanguageCode(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAudioTrack(value);
       break;
     default:
       reader.skipField();
@@ -2315,6 +2320,13 @@ proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.serializeBina
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getAudioTrack();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -2393,6 +2405,21 @@ proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.prototype.get
 /** @param {string} value */
 proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.prototype.setTargetLanguageCode = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string audio_track = 5;
+ * @return {string}
+ */
+proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.prototype.getAudioTrack = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.sagittarius.translation.v1.StreamingTranslationRequestConfig.prototype.setAudioTrack = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
