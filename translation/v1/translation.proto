@@ -64,12 +64,25 @@ service Translation {
   // sending audio. This method is only available via the gRPC API (not REST).
   rpc StreamingTranslation(stream StreamingTranslationRequest)
     returns (stream StreamingTranslationResponse);
-  
-  // Check StreamingTranslationTask results or estimate finish time 
+
+  // Check StreamingTranslationTask results or estimate finish time
   // and maybe other informations related to the task
   rpc StreamingTranslationTask(StreamingTranslationTaskRequest) returns (StreamingTranslationTaskResponse) {
     option (google.api.http) = {
       post: "/v1/translation/task/{task_id}/info"
+      body: "*"
+    };
+  }
+
+  // Get User Quota
+  rpc GetUserQuota(UserQuotaRequest) returns (UserQuotaResponse) {
+    option (google.api.http).get = "/v1/translation/userquota";
+  }
+
+  // Confirm order finished
+  rpc ConfirmTranslation(ConfirmTranslationRequest) returns (ConfirmTranslationResponse) {
+    option (google.api.http) = {
+      post: "/v1/translation/task/{task_id}/confirmation/"
       body: "*"
     };
   }
@@ -178,7 +191,7 @@ message TranscriptResponse {
 
 // The top-level message sent by the client for the `StreamingTranslation` method.
 // Multiple `StreamingTranslationRequest` messages are sent. The first message
-// must contain a `streaming_config` message 
+// must contain a `streaming_config` message
 // and must not contain `audio` data.
 // All subsequent messages must contain `audio` data and must not contain a
 // `streaming_config` message.
@@ -352,4 +365,23 @@ message TextTranslationResponse {
 
   // translation results for the requested text
   repeated Text results = 2;
+}
+
+message UserQuotaRequest {
+
+}
+
+message UserQuotaResponse {
+  // Remaining user quota for translation api
+  int64 quota = 1;
+
+  google.rpc.Status error = 2;
+}
+
+message ConfirmTranslationRequest {
+  string task_id = 1;
+}
+
+message ConfirmTranslationResponse {
+  google.rpc.Status error = 1;
 }
