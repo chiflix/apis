@@ -23,6 +23,8 @@
     - [TranscriptRequest](#sagittarius.translation.v1.TranscriptRequest)
     - [TranscriptResponse](#sagittarius.translation.v1.TranscriptResponse)
     - [TranscriptResponse.Cue](#sagittarius.translation.v1.TranscriptResponse.Cue)
+    - [UserQuotaRequest](#sagittarius.translation.v1.UserQuotaRequest)
+    - [UserQuotaResponse](#sagittarius.translation.v1.UserQuotaResponse)
   
     - [StreamingTranslationTaskCode](#sagittarius.translation.v1.StreamingTranslationTaskCode)
   
@@ -128,7 +130,7 @@
 ### StreamingTranslationRequest
 The top-level message sent by the client for the `StreamingTranslation` method.
 Multiple `StreamingTranslationRequest` messages are sent. The first message
-must contain a `streaming_config` message 
+must contain a `streaming_config` message
 and must not contain `audio` data.
 All subsequent messages must contain `audio` data and must not contain a
 `streaming_config` message.
@@ -157,6 +159,7 @@ All subsequent messages must contain `audio` data and must not contain a
 | audio_language_code | [string](#string) |  | the language code of the audio ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | target_language_code | [string](#string) |  | ISO-639-1 Code https://cloud.google.com/translate/docs/languages |
 | audio_track | [string](#string) |  | the track of audio |
+| hints | [string](#string) |  | maybe video or file name |
 
 
 
@@ -368,6 +371,33 @@ Translation API Reference: https://cloud.google.com/translate/docs/reference/tra
 
 
 
+
+<a name="sagittarius.translation.v1.UserQuotaRequest"/>
+
+### UserQuotaRequest
+
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.UserQuotaResponse"/>
+
+### UserQuotaResponse
+Remaining user quota
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quota | [int64](#int64) |  | remaining user quota in number |
+| time_left | [int64](#int64) |  | remaining quota in time(second) |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+
+
+
+
+
  
 
 
@@ -401,6 +431,7 @@ Service that implements Sagittarius Translation API
 | TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
 | StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results after or while sending audio. This method is only available via the gRPC API (not REST). |
 | StreamingTranslationTask | [StreamingTranslationTaskRequest](#sagittarius.translation.v1.StreamingTranslationTaskRequest) | [StreamingTranslationTaskResponse](#sagittarius.translation.v1.StreamingTranslationTaskRequest) | Check StreamingTranslationTask results or estimate finish time and maybe other informations related to the task |
+| GetUserQuota | [UserQuotaRequest](#sagittarius.translation.v1.UserQuotaRequest) | [UserQuotaResponse](#sagittarius.translation.v1.UserQuotaRequest) | Get User Quota |
 
  
 

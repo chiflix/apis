@@ -223,7 +223,7 @@ message StreamingTranslationRequestConfig {
   // the track of audio
   string audio_track = 5;
 
-  // filename
+  // maybe video or file name
   string hints = 6;
 }
 

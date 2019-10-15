@@ -344,6 +344,9 @@ export class StreamingTranslationRequestConfig extends jspb.Message {
     getAudioTrack(): string;
     setAudioTrack(value: string): void;
 
+    getHints(): string;
+    setHints(value: string): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): StreamingTranslationRequestConfig.AsObject;
@@ -362,6 +365,7 @@ export namespace StreamingTranslationRequestConfig {
         audioLanguageCode: string,
         targetLanguageCode: string,
         audioTrack: string,
+        hints: string,
     }
 }
 
@@ -643,6 +647,55 @@ export namespace TextTranslationResponse {
         }
     }
 
+}
+
+export class UserQuotaRequest extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UserQuotaRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UserQuotaRequest): UserQuotaRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UserQuotaRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UserQuotaRequest;
+    static deserializeBinaryFromReader(message: UserQuotaRequest, reader: jspb.BinaryReader): UserQuotaRequest;
+}
+
+export namespace UserQuotaRequest {
+    export type AsObject = {
+    }
+}
+
+export class UserQuotaResponse extends jspb.Message { 
+    getQuota(): number;
+    setQuota(value: number): void;
+
+    getTimeLeft(): number;
+    setTimeLeft(value: number): void;
+
+
+    hasError(): boolean;
+    clearError(): void;
+    getError(): google_rpc_status_pb.Status | undefined;
+    setError(value?: google_rpc_status_pb.Status): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UserQuotaResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: UserQuotaResponse): UserQuotaResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UserQuotaResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UserQuotaResponse;
+    static deserializeBinaryFromReader(message: UserQuotaResponse, reader: jspb.BinaryReader): UserQuotaResponse;
+}
+
+export namespace UserQuotaResponse {
+    export type AsObject = {
+        quota: number,
+        timeLeft: number,
+        error?: google_rpc_status_pb.Status.AsObject,
+    }
 }
 
 export enum StreamingTranslationTaskCode {
