@@ -78,14 +78,6 @@ service Translation {
   rpc GetUserQuota(UserQuotaRequest) returns (UserQuotaResponse) {
     option (google.api.http).get = "/v1/translation/userquota";
   }
-
-  // Confirm order finished
-  rpc ConfirmTranslation(ConfirmTranslationRequest) returns (ConfirmTranslationResponse) {
-    option (google.api.http) = {
-      post: "/v1/translation/task/{task_id}/confirmation/"
-      body: "*"
-    };
-  }
 }
 
 message MediaTranslationRequest {
@@ -230,6 +222,9 @@ message StreamingTranslationRequestConfig {
 
   // the track of audio
   string audio_track = 5;
+
+  // filename
+  string hints = 6;
 }
 
 // The top-level message sent by server for the `StreamingTranslation` method.
@@ -371,17 +366,11 @@ message UserQuotaRequest {
 
 }
 
+// Remaining user quota
 message UserQuotaResponse {
-  // Remaining user quota for translation api
+  // remaining user quota in number
   int64 quota = 1;
-
-  google.rpc.Status error = 2;
-}
-
-message ConfirmTranslationRequest {
-  string task_id = 1;
-}
-
-message ConfirmTranslationResponse {
-  google.rpc.Status error = 1;
+  // remaining quota in time(second)
+  int64 time_left = 2;
+  google.rpc.Status error = 3;
 }
