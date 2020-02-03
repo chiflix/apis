@@ -14,7 +14,8 @@ let package = Package(
         .library(name: "SagiHealthModel", targets: ["SagiHealthModel"]),
         .library(name: "SagiMediaModel", targets: ["SagiMediaModel"]),
         .library(name: "SagiTrainingModel", targets: ["SagiTrainingModel"]),
-        .library(name: "SagiTranslationModel", targets: ["SagiTranslationModel"])
+        .library(name: "SagiTranslationModel", targets: ["SagiTranslationModel"]),
+        .library(name: "GoogleAPIModel", targets: ["GoogleAPIModel"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -28,6 +29,7 @@ let package = Package(
             name: "SagiHealthModel",
             dependencies: [
                 "GRPC",
+                "SwiftProtobuf",
             ],
             path: "Sources/health/v1"
         ),
@@ -35,6 +37,7 @@ let package = Package(
             name: "SagiMediaModel",
             dependencies: [
                 "GRPC",
+                "SwiftProtobuf",
             ],
             path: "Sources/media/v1"
         ),
@@ -42,6 +45,7 @@ let package = Package(
             name: "SagiTrainingModel",
             dependencies: [
                 "GRPC",
+                "SwiftProtobuf",
             ],
             path: "Sources/training/v1"
         ),
@@ -49,7 +53,7 @@ let package = Package(
             name: "SagiTranslationModel",
             dependencies: [
                 "GRPC",
-//                "GoogleCloudSpeechV1Model",
+                "SwiftProtobuf",
             ],
             path: "Sources/translation/v1"
         ),
@@ -58,7 +62,6 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
-//                "GoogleRPCModel"
             ],
             path: "Sources/google/longrunning"
         ),
@@ -67,7 +70,6 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
-//                "GoogleLongrunningModel",
             ],
             path: "Sources/google/cloud/speech/v1"
         ),
