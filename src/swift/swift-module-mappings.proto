@@ -1,0 +1,18 @@
+mapping {
+  module_name: "GoogleAPIModel"
+  proto_file_path: "google/api/annotations.proto"
+}
+mapping {
+  module_name: "GoogleCloudSpeechV1Model"
+  proto_file_path: "google/cloud/speech/v1/cloud_speech.proto"
+}
+mapping {
+  module_name: "GoogleRPCModel"
+  proto_file_path: "google/rpc/status.proto"
+  proto_file_path: "google/rpc/error_details.proto"
+  proto_file_path: "google/rpc/code.proto"
+}
+mapping {
+  module_name: "GoogleLongrunningModel"
+  proto_file_path: "google/longrunning/operations.proto"
+}
