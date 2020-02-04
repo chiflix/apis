@@ -29,5 +29,12 @@ let package = Package(
             ],
             path: "Sources/apis"
         ),
+        .testTarget(
+            name: "apisTests",
+            dependencies: [
+                "GRPC",
+                "SagiAPI"
+            ]
+        )
     ]
 )
