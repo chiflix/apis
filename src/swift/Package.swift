@@ -11,11 +11,7 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(name: "SagiHealthModel", targets: ["SagiHealthModel"]),
-        .library(name: "SagiMediaModel", targets: ["SagiMediaModel"]),
-        .library(name: "SagiTrainingModel", targets: ["SagiTrainingModel"]),
-        .library(name: "SagiTranslationModel", targets: ["SagiTranslationModel"]),
-        .library(name: "GoogleAPIModel", targets: ["GoogleAPIModel"])
+        .library(name: "SagiAPI", targets: ["SagiAPI"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -26,85 +22,12 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "SagiHealthModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-            ],
-            path: "Sources/health/v1"
-        ),
-        .target(
-            name: "SagiMediaModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-                "GoogleAPIModel"
-            ],
-            path: "Sources/media/v1"
-        ),
-        .target(
-            name: "SagiTrainingModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-                "GoogleAPIModel",
-                "GoogleCloudSpeechV1Model"
-            ],
-            path: "Sources/training/v1"
-        ),
-        .target(
-            name: "SagiTranslationModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-                "GoogleAPIModel",
-                "GoogleCloudSpeechV1Model",
-                "GoogleLongrunningModel"
-            ],
-            path: "Sources/translation/v1"
-        ),
-        .target(
-            name: "GoogleLongrunningModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-                "GoogleAPIModel"
-            ],
-            path: "Sources/google/longrunning"
-        ),
-        .target(
-            name: "GoogleCloudSpeechV1Model",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-                "GoogleAPIModel",
-                "GoogleLongrunningModel"
-            ],
-            path: "Sources/google/cloud/speech/v1"
-        ),
-        .target(
-            name: "GoogleRPCModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf",
-            ],
-            path: "Sources/google/rpc"
-        ),
-        .target(
-            name: "GoogleAPIModel",
+            name: "SagiAPI",
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf"
             ],
-            path: "Sources/google/api"
-        ),
-        .target(
-            name: "GoogleTypeModel",
-            dependencies: [
-                "GRPC",
-                "SwiftProtobuf"
-            ],
-            path: "Sources/google/type"
+            path: "Sources/apis"
         ),
     ]
 )

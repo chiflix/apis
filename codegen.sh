@@ -17,14 +17,14 @@
 # swift
 
 SwiftDir=./src/swift
-SwiftProtocOut=$SwiftDir/Sources
+SwiftProtocOut=$SwiftDir/Sources/apis
 
 ProtoDirList="translation training media health"
 for protoDir in $ProtoDirList
 do
     protoc -I. --swift_out=$SwiftProtocOut \
      --plugin=`which protoc-gen-swift` \
-     --swift_opt=Visibility=Public,ProtoPathModuleMappings=$SwiftDir/swift-module-mappings.proto \
+     --swift_opt=Visibility=Public \
       $protoDir/*/*.proto
 done
 
@@ -32,15 +32,15 @@ for protoDir in $ProtoDirList
 do
     protoc -I. --grpc-swift_out=$SwiftProtocOut \
      --plugin=`which protoc-gen-grpc-swift` \
-     --grpc-swift_opt=Visibility=Public,ProtoPathModuleMappings=$SwiftDir/swift-module-mappings.proto \
+     --grpc-swift_opt=Visibility=Public \
      $protoDir/*/*.proto
 done
 
-GoogleProtoList="type/*.proto cloud/speech/*/*.proto api/*/*.proto api/*.proto longrunning/*.proto rpc/*.proto"
+GoogleProtoList="type/*.proto cloud/speech/v1/*.proto api/*/*.proto api/*.proto longrunning/*.proto rpc/*.proto"
 for protofile in $GoogleProtoList
 do
     protoc -I. --swift_out=$SwiftProtocOut \
-     --swift_opt=Visibility=Public,ProtoPathModuleMappings=$SwiftDir/swift-module-mappings.proto \
+     --swift_opt=Visibility=Public \
      --plugin=`which protoc-gen-swift` \
       google/$protofile
 done
@@ -48,7 +48,7 @@ done
 for protofile in $GoogleProtoList
 do
     protoc -I. --grpc-swift_out=$SwiftProtocOut \
-     --grpc-swift_opt=Visibility=Public,ProtoPathModuleMappings=$SwiftDir/swift-module-mappings.proto \
+     --grpc-swift_opt=Visibility=Public \
      --plugin=`which protoc-gen-grpc-swift` \
      google/$protofile
 done
