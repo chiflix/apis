@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "GRPC",
+        "repositoryURL": "https://github.com/grpc/grpc-swift.git",
+        "state": {
+          "branch": "nio",
+          "revision": "5f40a43567495b534dd445e6dd60181dff5a28d6",
+          "version": null
+        }
+      },
+      {
         "package": "swift-log",
         "repositoryURL": "https://github.com/apple/swift-log",
         "state": {
