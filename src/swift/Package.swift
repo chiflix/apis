@@ -38,6 +38,7 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
+                "GoogleAPIModel"
             ],
             path: "Sources/media/v1"
         ),
@@ -46,6 +47,8 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
+                "GoogleAPIModel",
+                "GoogleCloudSpeechV1Model"
             ],
             path: "Sources/training/v1"
         ),
@@ -54,6 +57,9 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
+                "GoogleAPIModel",
+                "GoogleCloudSpeechV1Model",
+                "GoogleLongrunningModel"
             ],
             path: "Sources/translation/v1"
         ),
@@ -62,6 +68,7 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
+                "GoogleAPIModel"
             ],
             path: "Sources/google/longrunning"
         ),
@@ -70,6 +77,8 @@ let package = Package(
             dependencies: [
                 "GRPC",
                 "SwiftProtobuf",
+                "GoogleAPIModel",
+                "GoogleLongrunningModel"
             ],
             path: "Sources/google/cloud/speech/v1"
         ),
