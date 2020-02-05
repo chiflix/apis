@@ -34,6 +34,8 @@ npm install -g grpc_tools_node_protoc_ts
 npm install -g typedoc
 ```
 
+Also look at [to build api with swift](./src/swift/README.md)
+
 ### Generators and Scripts
 
 - `lint.sh` to check .proto file syntax, etc.

@@ -3,7 +3,7 @@ os:
 # - linux
 - osx
 dist: trusty
-osx_image: xcode9.4
+osx_image: xcode11
 language: go
 node_js:
 - 'node'
@@ -20,6 +20,9 @@ before_install:
 - go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 - npm install -g grpc-tools
 - npm install -g grpc_tools_node_protoc_ts
+- cd ~ && git clone https://github.com/grpc/grpc-swift.git -b nio && cd -
+- cd ~/grpc-swift && make plugins && cd -
+- export PATH=~/grpc-swift:$PATH
 install:
 - bash lint.sh
 - bash docgen.sh
