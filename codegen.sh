@@ -52,3 +52,27 @@ do
      --plugin=`which protoc-gen-grpc-swift` \
      google/$protofile
 done
+
+# C++
+CPlusPlusDir=./src/c++
+CPlusPlusProtocOut=$CPlusPlusDir/src
+
+ProtoDirList="translation training media health"
+for protoDir in $ProtoDirList
+do
+    protoc -I. --grpc_out=$CPlusPlusProtocOut \
+     --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
+      $protoDir/*/*.proto
+
+    protoc -I. --cpp_out=$CPlusPlusProtocOut $protoDir/*/*.proto
+done
+
+GoogleProtoList="type/*.proto cloud/speech/v1/*.proto api/*/*.proto api/*.proto longrunning/*.proto rpc/*.proto"
+for protofile in $GoogleProtoList
+do
+    protoc -I. --grpc_out=$CPlusPlusProtocOut \
+     --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
+      google/$protofile
+
+    protoc -I. --cpp_out=$CPlusPlusProtocOut google/$protofile
+done
