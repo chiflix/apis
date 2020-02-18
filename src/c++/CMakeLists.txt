@@ -23,15 +23,14 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 add_library(SagiAPI STATIC ${sources})
 target_link_libraries(SagiAPI grpc++)
 
-file(GLOB pubFiles 
-                  ${PROJECT_SOURCE_DIR}/health/v1/*.h)
-                  # ${PROJECT_SOURCE_DIR}/media/**/*.h
-                  # ${PROJECT_SOURCE_DIR}/training/**/*.h
-                  # ${PROJECT_SOURCE_DIR}/translation/**/*.h)
+file(GLOB_RECURSE pubFiles 
+                  ${PROJECT_SOURCE_DIR}/src/health/*.h
+                  ${PROJECT_SOURCE_DIR}/src/media/*.h
+                  ${PROJECT_SOURCE_DIR}/src/training/*.h
+                  ${PROJECT_SOURCE_DIR}/src/translation/*.h)
 
-
-INSTALL(TARGETS SagiAPI LIBRARY DESTINATION ${PROJECT_SOURCE_DIR}/bin/libs)
-INSTALL(FILES ${pubFiles} DESTINATION ${PROJECT_SOURCE_DIR}/bin/includes)
+INSTALL(TARGETS SagiAPI DESTINATION ${PROJECT_SOURCE_DIR}/bin/lib)
+INSTALL(FILES ${pubFiles} DESTINATION ${PROJECT_SOURCE_DIR}/bin/include/sagi)
 
 # Build test
 include_directories(${PROJECT_SOURCE_DIR}/bin/include)
