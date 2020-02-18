@@ -95,5 +95,7 @@
         "**/node_modules/**": true,
         "**/c++/build/**": true,
         "**/.build/**": true,
+        "**/c++/buildios/**": true,
+        "**/c++/ios/**": true,
     }
 }

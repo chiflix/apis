@@ -3,3 +3,5 @@ package-lock.json
 yarn.lock
 src/c++/build
 src/c++/bin
+src/c++/buildios
+src/c++/ios
