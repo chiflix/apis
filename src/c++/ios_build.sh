@@ -66,5 +66,5 @@ xcrun lipo -info "$BUILD_ROOT/ios/bin/lib/combined/libSagiAPI.a"
 
 DirList="translation training media health"
 for dir in $DirList ; do
-    cp -f "$BUILD_ROOT"/src/$dir/v1/*.h "$BUILD_ROOT"/ios/bin/include
+    cp -rf "$BUILD_ROOT"/src/* "$BUILD_ROOT"/ios/bin/include
 done

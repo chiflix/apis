@@ -54,14 +54,17 @@ do
 done
 
 # C++
-CPlusPlusDir=./src/c++
-CPlusPlusProtocOut=$CPlusPlusDir/src
+CPlusPlusProtocOut=./src/c++/src/
+
+if [ ! -d $CPlusPlusProtocOut ]; then 
+    mkdir -p $CPlusPlusProtocOut
+fi
 
 ProtoDirList="translation training media health"
 for protoDir in $ProtoDirList
 do
     protoc -I. --grpc_out=$CPlusPlusProtocOut \
-     --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
+     --plugin=protoc-gen-grpc=`which ./src/c++/tools/osx_grpc_cpp_plugin_1_25` \
       $protoDir/*/*.proto
 
     protoc -I. --cpp_out=$CPlusPlusProtocOut $protoDir/*/*.proto
@@ -71,7 +74,7 @@ GoogleProtoList="type/*.proto cloud/speech/v1/*.proto api/*/*.proto api/*.proto 
 for protofile in $GoogleProtoList
 do
     protoc -I. --grpc_out=$CPlusPlusProtocOut \
-     --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
+     --plugin=protoc-gen-grpc=`which ./src/c++/tools/osx_grpc_cpp_plugin_1_25` \
       google/$protofile
 
     protoc -I. --cpp_out=$CPlusPlusProtocOut google/$protofile

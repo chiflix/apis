@@ -20,7 +20,7 @@ include(FetchContent)
 FetchContent_Declare(
   gRPC
   GIT_REPOSITORY https://github.com/grpc/grpc
-  GIT_TAG        v1.27.2
+  GIT_TAG        v1.25.0
 )
 FetchContent_MakeAvailable(gRPC)
 
@@ -33,6 +33,7 @@ file(GLOB_RECURSE pubFiles
                   ${PROJECT_SOURCE_DIR}/src/translation/*.h)
 
 include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${Protobuf_INCLUDE_DIRS})
 
 add_library(SagiAPI STATIC ${sources})
 target_link_libraries(SagiAPI grpc++)
