@@ -3,7 +3,7 @@ set -e
 
 #  ./ios_build.sh Release (or Debug)
 
-BUILD_ROOT=="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BUILD_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 BUILD=$1
 
@@ -51,7 +51,7 @@ LIPOFiles=""
 for target in "${Targets[@]}" ; do
     SDK="${target%%:*}"
     afile="$BUILD_ROOT/ios/$SDK/${BUILD}-${SDK}/libSagiAPI.a"
-    
+
     if [ ! -f $afile ]; then
         echo "$afile not exist" && exit -1
     fi
@@ -66,5 +66,5 @@ xcrun lipo -info "$BUILD_ROOT/ios/bin/lib/combined/libSagiAPI.a"
 
 DirList="translation training media health"
 for dir in $DirList ; do
-    cp -rf "$BUILD_ROOT/src/$dir/v1/*.h" "$BUILD_ROOT/ios/bin/include"
+    cp -f "$BUILD_ROOT"/src/$dir/v1/*.h "$BUILD_ROOT"/ios/bin/include
 done
