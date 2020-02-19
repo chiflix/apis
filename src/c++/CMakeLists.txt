@@ -6,7 +6,7 @@ set(CMAKE_MACOSX_RPATH 0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/build/bin)
 
 set(protobuf_BUILD_TESTS OFF)
 set(protobuf_BUILD_PROTOC_BINARIES OFF)
@@ -37,11 +37,11 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 add_library(SagiAPI STATIC ${sources})
 target_link_libraries(SagiAPI grpc++)
 
-INSTALL(TARGETS SagiAPI DESTINATION ${PROJECT_SOURCE_DIR}/bin/lib)
-INSTALL(FILES ${pubFiles} DESTINATION ${PROJECT_SOURCE_DIR}/bin/include/sagi)
+INSTALL(TARGETS SagiAPI DESTINATION ${PROJECT_SOURCE_DIR}/build/bin/lib)
+INSTALL(FILES ${pubFiles} DESTINATION ${PROJECT_SOURCE_DIR}/build/bin/include/sagi)
 
 # Build test
-include_directories(${PROJECT_SOURCE_DIR}/bin/include)
-link_directories(${PROJECT_SOURCE_DIR}/bin/lib)
+include_directories(${PROJECT_SOURCE_DIR}/build/bin/include)
+link_directories(${PROJECT_SOURCE_DIR}/build/bin/lib)
 add_executable(test test.cpp)
 target_link_libraries(test SagiAPI)
