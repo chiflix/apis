@@ -5,6 +5,7 @@
 
 #include <algorithm>
 
+#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -34,7 +35,7 @@ static void InitDefaultsscc_info_PostalAddress_google_2ftype_2fpostal_5faddress_
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PostalAddress_google_2ftype_2fpostal_5faddress_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PostalAddress_google_2ftype_2fpostal_5faddress_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_PostalAddress_google_2ftype_2fpostal_5faddress_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2ftype_2fpostal_5faddress_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_google_2ftype_2fpostal_5faddress_2eproto = nullptr;
@@ -66,7 +67,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::type::_PostalAddress_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2ftype_2fpostal_5faddress_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+const char descriptor_table_protodef_google_2ftype_2fpostal_5faddress_2eproto[] =
   "\n google/type/postal_address.proto\022\013goog"
   "le.type\"\375\001\n\rPostalAddress\022\020\n\010revision\030\001 "
   "\001(\005\022\023\n\013region_code\030\002 \001(\t\022\025\n\rlanguage_cod"
@@ -102,9 +103,23 @@ namespace type {
 
 void PostalAddress::InitAsDefaultInstance() {
 }
-class PostalAddress::_Internal {
+class PostalAddress::HasBitSetters {
  public:
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int PostalAddress::kRevisionFieldNumber;
+const int PostalAddress::kRegionCodeFieldNumber;
+const int PostalAddress::kLanguageCodeFieldNumber;
+const int PostalAddress::kPostalCodeFieldNumber;
+const int PostalAddress::kSortingCodeFieldNumber;
+const int PostalAddress::kAdministrativeAreaFieldNumber;
+const int PostalAddress::kLocalityFieldNumber;
+const int PostalAddress::kSublocalityFieldNumber;
+const int PostalAddress::kAddressLinesFieldNumber;
+const int PostalAddress::kRecipientsFieldNumber;
+const int PostalAddress::kOrganizationFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PostalAddress::PostalAddress()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -118,35 +133,35 @@ PostalAddress::PostalAddress(const PostalAddress& from)
       recipients_(from.recipients_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   region_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_region_code().empty()) {
+  if (from.region_code().size() > 0) {
     region_code_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.region_code_);
   }
   language_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_language_code().empty()) {
+  if (from.language_code().size() > 0) {
     language_code_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.language_code_);
   }
   postal_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_postal_code().empty()) {
+  if (from.postal_code().size() > 0) {
     postal_code_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.postal_code_);
   }
   sorting_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_sorting_code().empty()) {
+  if (from.sorting_code().size() > 0) {
     sorting_code_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.sorting_code_);
   }
   administrative_area_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_administrative_area().empty()) {
+  if (from.administrative_area().size() > 0) {
     administrative_area_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.administrative_area_);
   }
   locality_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_locality().empty()) {
+  if (from.locality().size() > 0) {
     locality_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.locality_);
   }
   sublocality_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_sublocality().empty()) {
+  if (from.sublocality().size() > 0) {
     sublocality_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.sublocality_);
   }
   organization_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_organization().empty()) {
+  if (from.organization().size() > 0) {
     organization_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.organization_);
   }
   revision_ = from.revision_;
@@ -211,6 +226,7 @@ void PostalAddress::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* PostalAddress::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -228,63 +244,49 @@ const char* PostalAddress::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
       // string region_code = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_region_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.region_code"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_region_code(), ptr, ctx, "google.type.PostalAddress.region_code");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string language_code = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_language_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.language_code"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_language_code(), ptr, ctx, "google.type.PostalAddress.language_code");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string postal_code = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          auto str = _internal_mutable_postal_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.postal_code"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_postal_code(), ptr, ctx, "google.type.PostalAddress.postal_code");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string sorting_code = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          auto str = _internal_mutable_sorting_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.sorting_code"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_sorting_code(), ptr, ctx, "google.type.PostalAddress.sorting_code");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string administrative_area = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
-          auto str = _internal_mutable_administrative_area();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.administrative_area"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_administrative_area(), ptr, ctx, "google.type.PostalAddress.administrative_area");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string locality = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
-          auto str = _internal_mutable_locality();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.locality"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_locality(), ptr, ctx, "google.type.PostalAddress.locality");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string sublocality = 8;
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
-          auto str = _internal_mutable_sublocality();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.sublocality"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_sublocality(), ptr, ctx, "google.type.PostalAddress.sublocality");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -294,12 +296,10 @@ const char* PostalAddress::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           ptr -= 1;
           do {
             ptr += 1;
-            auto str = _internal_add_address_lines();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.address_lines"));
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(add_address_lines(), ptr, ctx, "google.type.PostalAddress.address_lines");
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 74);
         } else goto handle_unusual;
         continue;
       // repeated string recipients = 10;
@@ -308,20 +308,16 @@ const char* PostalAddress::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           ptr -= 1;
           do {
             ptr += 1;
-            auto str = _internal_add_recipients();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.recipients"));
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(add_recipients(), ptr, ctx, "google.type.PostalAddress.recipients");
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 82);
         } else goto handle_unusual;
         continue;
       // string organization = 11;
       case 11:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
-          auto str = _internal_mutable_organization();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.type.PostalAddress.organization"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_organization(), ptr, ctx, "google.type.PostalAddress.organization");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -344,122 +340,443 @@ failure:
   goto success;
 #undef CHK_
 }
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool PostalAddress::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:google.type.PostalAddress)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 revision = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
 
-::PROTOBUF_NAMESPACE_ID::uint8* PostalAddress::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &revision_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string region_code = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_region_code()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->region_code().data(), static_cast<int>(this->region_code().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.region_code"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string language_code = 3;
+      case 3: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_language_code()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->language_code().data(), static_cast<int>(this->language_code().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.language_code"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string postal_code = 4;
+      case 4: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_postal_code()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->postal_code().data(), static_cast<int>(this->postal_code().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.postal_code"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string sorting_code = 5;
+      case 5: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_sorting_code()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->sorting_code().data(), static_cast<int>(this->sorting_code().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.sorting_code"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string administrative_area = 6;
+      case 6: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (50 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_administrative_area()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->administrative_area().data(), static_cast<int>(this->administrative_area().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.administrative_area"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string locality = 7;
+      case 7: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (58 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_locality()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->locality().data(), static_cast<int>(this->locality().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.locality"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string sublocality = 8;
+      case 8: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (66 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_sublocality()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->sublocality().data(), static_cast<int>(this->sublocality().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.sublocality"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string address_lines = 9;
+      case 9: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (74 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->add_address_lines()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->address_lines(this->address_lines_size() - 1).data(),
+            static_cast<int>(this->address_lines(this->address_lines_size() - 1).length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.address_lines"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string recipients = 10;
+      case 10: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (82 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->add_recipients()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->recipients(this->recipients_size() - 1).data(),
+            static_cast<int>(this->recipients(this->recipients_size() - 1).length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.recipients"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string organization = 11;
+      case 11: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (90 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_organization()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->organization().data(), static_cast<int>(this->organization().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.type.PostalAddress.organization"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:google.type.PostalAddress)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:google.type.PostalAddress)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void PostalAddress::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:google.type.PostalAddress)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 revision = 1;
+  if (this->revision() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->revision(), output);
+  }
+
+  // string region_code = 2;
+  if (this->region_code().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->region_code().data(), static_cast<int>(this->region_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.region_code");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->region_code(), output);
+  }
+
+  // string language_code = 3;
+  if (this->language_code().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->language_code().data(), static_cast<int>(this->language_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.language_code");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->language_code(), output);
+  }
+
+  // string postal_code = 4;
+  if (this->postal_code().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->postal_code().data(), static_cast<int>(this->postal_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.postal_code");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->postal_code(), output);
+  }
+
+  // string sorting_code = 5;
+  if (this->sorting_code().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->sorting_code().data(), static_cast<int>(this->sorting_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.sorting_code");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->sorting_code(), output);
+  }
+
+  // string administrative_area = 6;
+  if (this->administrative_area().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->administrative_area().data(), static_cast<int>(this->administrative_area().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.administrative_area");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->administrative_area(), output);
+  }
+
+  // string locality = 7;
+  if (this->locality().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->locality().data(), static_cast<int>(this->locality().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.locality");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      7, this->locality(), output);
+  }
+
+  // string sublocality = 8;
+  if (this->sublocality().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->sublocality().data(), static_cast<int>(this->sublocality().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.sublocality");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      8, this->sublocality(), output);
+  }
+
+  // repeated string address_lines = 9;
+  for (int i = 0, n = this->address_lines_size(); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->address_lines(i).data(), static_cast<int>(this->address_lines(i).length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.address_lines");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteString(
+      9, this->address_lines(i), output);
+  }
+
+  // repeated string recipients = 10;
+  for (int i = 0, n = this->recipients_size(); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->recipients(i).data(), static_cast<int>(this->recipients(i).length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.recipients");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteString(
+      10, this->recipients(i), output);
+  }
+
+  // string organization = 11;
+  if (this->organization().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->organization().data(), static_cast<int>(this->organization().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.type.PostalAddress.organization");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      11, this->organization(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:google.type.PostalAddress)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PostalAddress::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.type.PostalAddress)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 revision = 1;
   if (this->revision() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_revision(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->revision(), target);
   }
 
   // string region_code = 2;
   if (this->region_code().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_region_code().data(), static_cast<int>(this->_internal_region_code().length()),
+      this->region_code().data(), static_cast<int>(this->region_code().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.region_code");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_region_code(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        2, this->region_code(), target);
   }
 
   // string language_code = 3;
   if (this->language_code().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_language_code().data(), static_cast<int>(this->_internal_language_code().length()),
+      this->language_code().data(), static_cast<int>(this->language_code().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.language_code");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_language_code(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        3, this->language_code(), target);
   }
 
   // string postal_code = 4;
   if (this->postal_code().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_postal_code().data(), static_cast<int>(this->_internal_postal_code().length()),
+      this->postal_code().data(), static_cast<int>(this->postal_code().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.postal_code");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_postal_code(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        4, this->postal_code(), target);
   }
 
   // string sorting_code = 5;
   if (this->sorting_code().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_sorting_code().data(), static_cast<int>(this->_internal_sorting_code().length()),
+      this->sorting_code().data(), static_cast<int>(this->sorting_code().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.sorting_code");
-    target = stream->WriteStringMaybeAliased(
-        5, this->_internal_sorting_code(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        5, this->sorting_code(), target);
   }
 
   // string administrative_area = 6;
   if (this->administrative_area().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_administrative_area().data(), static_cast<int>(this->_internal_administrative_area().length()),
+      this->administrative_area().data(), static_cast<int>(this->administrative_area().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.administrative_area");
-    target = stream->WriteStringMaybeAliased(
-        6, this->_internal_administrative_area(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        6, this->administrative_area(), target);
   }
 
   // string locality = 7;
   if (this->locality().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_locality().data(), static_cast<int>(this->_internal_locality().length()),
+      this->locality().data(), static_cast<int>(this->locality().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.locality");
-    target = stream->WriteStringMaybeAliased(
-        7, this->_internal_locality(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        7, this->locality(), target);
   }
 
   // string sublocality = 8;
   if (this->sublocality().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_sublocality().data(), static_cast<int>(this->_internal_sublocality().length()),
+      this->sublocality().data(), static_cast<int>(this->sublocality().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.sublocality");
-    target = stream->WriteStringMaybeAliased(
-        8, this->_internal_sublocality(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        8, this->sublocality(), target);
   }
 
   // repeated string address_lines = 9;
-  for (int i = 0, n = this->_internal_address_lines_size(); i < n; i++) {
-    const auto& s = this->_internal_address_lines(i);
+  for (int i = 0, n = this->address_lines_size(); i < n; i++) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
+      this->address_lines(i).data(), static_cast<int>(this->address_lines(i).length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.address_lines");
-    target = stream->WriteString(9, s, target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      WriteStringToArray(9, this->address_lines(i), target);
   }
 
   // repeated string recipients = 10;
-  for (int i = 0, n = this->_internal_recipients_size(); i < n; i++) {
-    const auto& s = this->_internal_recipients(i);
+  for (int i = 0, n = this->recipients_size(); i < n; i++) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
+      this->recipients(i).data(), static_cast<int>(this->recipients(i).length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.recipients");
-    target = stream->WriteString(10, s, target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      WriteStringToArray(10, this->recipients(i), target);
   }
 
   // string organization = 11;
   if (this->organization().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_organization().data(), static_cast<int>(this->_internal_organization().length()),
+      this->organization().data(), static_cast<int>(this->organization().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.type.PostalAddress.organization");
-    target = stream->WriteStringMaybeAliased(
-        11, this->_internal_organization(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        11, this->organization(), target);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.type.PostalAddress)
   return target;
@@ -469,93 +786,94 @@ size_t PostalAddress::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.type.PostalAddress)
   size_t total_size = 0;
 
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string address_lines = 9;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(address_lines_.size());
-  for (int i = 0, n = address_lines_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->address_lines_size());
+  for (int i = 0, n = this->address_lines_size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      address_lines_.Get(i));
+      this->address_lines(i));
   }
 
   // repeated string recipients = 10;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(recipients_.size());
-  for (int i = 0, n = recipients_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->recipients_size());
+  for (int i = 0, n = this->recipients_size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      recipients_.Get(i));
+      this->recipients(i));
   }
 
   // string region_code = 2;
   if (this->region_code().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_region_code());
+        this->region_code());
   }
 
   // string language_code = 3;
   if (this->language_code().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_language_code());
+        this->language_code());
   }
 
   // string postal_code = 4;
   if (this->postal_code().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_postal_code());
+        this->postal_code());
   }
 
   // string sorting_code = 5;
   if (this->sorting_code().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sorting_code());
+        this->sorting_code());
   }
 
   // string administrative_area = 6;
   if (this->administrative_area().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_administrative_area());
+        this->administrative_area());
   }
 
   // string locality = 7;
   if (this->locality().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_locality());
+        this->locality());
   }
 
   // string sublocality = 8;
   if (this->sublocality().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sublocality());
+        this->sublocality());
   }
 
   // string organization = 11;
   if (this->organization().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_organization());
+        this->organization());
   }
 
   // int32 revision = 1;
   if (this->revision() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_revision());
+        this->revision());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -618,7 +936,7 @@ void PostalAddress::MergeFrom(const PostalAddress& from) {
     organization_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.organization_);
   }
   if (from.revision() != 0) {
-    _internal_set_revision(from._internal_revision());
+    set_revision(from.revision());
   }
 }
 
@@ -640,11 +958,15 @@ bool PostalAddress::IsInitialized() const {
   return true;
 }
 
+void PostalAddress::Swap(PostalAddress* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void PostalAddress::InternalSwap(PostalAddress* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  address_lines_.InternalSwap(&other->address_lines_);
-  recipients_.InternalSwap(&other->recipients_);
+  address_lines_.InternalSwap(CastToBase(&other->address_lines_));
+  recipients_.InternalSwap(CastToBase(&other->recipients_));
   region_code_.Swap(&other->region_code_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   language_code_.Swap(&other->language_code_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),

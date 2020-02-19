@@ -32,7 +32,6 @@
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
-#include <grpcpp/impl/codegen/server_callback_handlers.h>
 #include <grpcpp/impl/codegen/server_context.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/status.h>
@@ -371,7 +370,13 @@ class Operations final {
     ExperimentalWithCallbackMethod_ListOperations() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response) { return this->ListOperations(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::google::longrunning::ListOperationsRequest* request,
+                 ::google::longrunning::ListOperationsResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->ListOperations(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_ListOperations(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>*>(
@@ -386,7 +391,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* ListOperations(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::ListOperationsRequest* /*request*/, ::google::longrunning::ListOperationsResponse* /*response*/) { return nullptr; }
+    virtual void ListOperations(::grpc::ServerContext* /*context*/, const ::google::longrunning::ListOperationsRequest* /*request*/, ::google::longrunning::ListOperationsResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetOperation : public BaseClass {
@@ -396,7 +401,13 @@ class Operations final {
     ExperimentalWithCallbackMethod_GetOperation() {
       ::grpc::Service::experimental().MarkMethodCallback(1,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response) { return this->GetOperation(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::google::longrunning::GetOperationRequest* request,
+                 ::google::longrunning::Operation* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->GetOperation(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_GetOperation(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>*>(
@@ -411,7 +422,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::GetOperationRequest* /*request*/, ::google::longrunning::Operation* /*response*/) { return nullptr; }
+    virtual void GetOperation(::grpc::ServerContext* /*context*/, const ::google::longrunning::GetOperationRequest* /*request*/, ::google::longrunning::Operation* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_DeleteOperation : public BaseClass {
@@ -421,7 +432,13 @@ class Operations final {
     ExperimentalWithCallbackMethod_DeleteOperation() {
       ::grpc::Service::experimental().MarkMethodCallback(2,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response) { return this->DeleteOperation(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::google::longrunning::DeleteOperationRequest* request,
+                 ::google::protobuf::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->DeleteOperation(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_DeleteOperation(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>*>(
@@ -436,7 +453,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DeleteOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::DeleteOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/) { return nullptr; }
+    virtual void DeleteOperation(::grpc::ServerContext* /*context*/, const ::google::longrunning::DeleteOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_CancelOperation : public BaseClass {
@@ -446,7 +463,13 @@ class Operations final {
     ExperimentalWithCallbackMethod_CancelOperation() {
       ::grpc::Service::experimental().MarkMethodCallback(3,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response) { return this->CancelOperation(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::google::longrunning::CancelOperationRequest* request,
+                 ::google::protobuf::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->CancelOperation(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_CancelOperation(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>*>(
@@ -461,7 +484,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* CancelOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::CancelOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/) { return nullptr; }
+    virtual void CancelOperation(::grpc::ServerContext* /*context*/, const ::google::longrunning::CancelOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   typedef ExperimentalWithCallbackMethod_ListOperations<ExperimentalWithCallbackMethod_GetOperation<ExperimentalWithCallbackMethod_DeleteOperation<ExperimentalWithCallbackMethod_CancelOperation<Service > > > > ExperimentalCallbackService;
   template <class BaseClass>
@@ -620,7 +643,12 @@ class Operations final {
     ExperimentalWithRawCallbackMethod_ListOperations() {
       ::grpc::Service::experimental().MarkMethodRawCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ListOperations(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->ListOperations(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_ListOperations() override {
       BaseClassMustBeDerivedFromService(this);
@@ -630,7 +658,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* ListOperations(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void ListOperations(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetOperation : public BaseClass {
@@ -640,7 +668,12 @@ class Operations final {
     ExperimentalWithRawCallbackMethod_GetOperation() {
       ::grpc::Service::experimental().MarkMethodRawCallback(1,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetOperation(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->GetOperation(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_GetOperation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -650,7 +683,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void GetOperation(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_DeleteOperation : public BaseClass {
@@ -660,7 +693,12 @@ class Operations final {
     ExperimentalWithRawCallbackMethod_DeleteOperation() {
       ::grpc::Service::experimental().MarkMethodRawCallback(2,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteOperation(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->DeleteOperation(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_DeleteOperation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -670,7 +708,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DeleteOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void DeleteOperation(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_CancelOperation : public BaseClass {
@@ -680,7 +718,12 @@ class Operations final {
     ExperimentalWithRawCallbackMethod_CancelOperation() {
       ::grpc::Service::experimental().MarkMethodRawCallback(3,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CancelOperation(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->CancelOperation(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_CancelOperation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -690,7 +733,7 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* CancelOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void CancelOperation(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ListOperations : public BaseClass {

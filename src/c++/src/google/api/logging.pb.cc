@@ -5,6 +5,7 @@
 
 #include <algorithm>
 
+#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -39,7 +40,7 @@ static void InitDefaultsscc_info_Logging_google_2fapi_2flogging_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Logging_google_2fapi_2flogging_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Logging_google_2fapi_2flogging_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_Logging_google_2fapi_2flogging_2eproto}, {
       &scc_info_Logging_LoggingDestination_google_2fapi_2flogging_2eproto.base,}};
 
 static void InitDefaultsscc_info_Logging_LoggingDestination_google_2fapi_2flogging_2eproto() {
@@ -54,7 +55,7 @@ static void InitDefaultsscc_info_Logging_LoggingDestination_google_2fapi_2floggi
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Logging_LoggingDestination_google_2fapi_2flogging_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Logging_LoggingDestination_google_2fapi_2flogging_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_Logging_LoggingDestination_google_2fapi_2flogging_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2flogging_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_google_2fapi_2flogging_2eproto = nullptr;
@@ -86,7 +87,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_Logging_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2flogging_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+const char descriptor_table_protodef_google_2fapi_2flogging_2eproto[] =
   "\n\030google/api/logging.proto\022\ngoogle.api\032\034"
   "google/api/annotations.proto\"\327\001\n\007Logging"
   "\022E\n\025producer_destinations\030\001 \003(\0132&.google"
@@ -124,9 +125,14 @@ namespace api {
 
 void Logging_LoggingDestination::InitAsDefaultInstance() {
 }
-class Logging_LoggingDestination::_Internal {
+class Logging_LoggingDestination::HasBitSetters {
  public:
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Logging_LoggingDestination::kMonitoredResourceFieldNumber;
+const int Logging_LoggingDestination::kLogsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Logging_LoggingDestination::Logging_LoggingDestination()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -139,7 +145,7 @@ Logging_LoggingDestination::Logging_LoggingDestination(const Logging_LoggingDest
       logs_(from.logs_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   monitored_resource_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_monitored_resource().empty()) {
+  if (from.monitored_resource().size() > 0) {
     monitored_resource_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.monitored_resource_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.Logging.LoggingDestination)
@@ -179,6 +185,7 @@ void Logging_LoggingDestination::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Logging_LoggingDestination::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -192,20 +199,16 @@ const char* Logging_LoggingDestination::_InternalParse(const char* ptr, ::PROTOB
           ptr -= 1;
           do {
             ptr += 1;
-            auto str = _internal_add_logs();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Logging.LoggingDestination.logs"));
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(add_logs(), ptr, ctx, "google.api.Logging.LoggingDestination.logs");
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 10);
         } else goto handle_unusual;
         continue;
       // string monitored_resource = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_monitored_resource();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Logging.LoggingDestination.monitored_resource"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_monitored_resource(), ptr, ctx, "google.api.Logging.LoggingDestination.monitored_resource");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -228,36 +231,132 @@ failure:
   goto success;
 #undef CHK_
 }
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Logging_LoggingDestination::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:google.api.Logging.LoggingDestination)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated string logs = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->add_logs()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->logs(this->logs_size() - 1).data(),
+            static_cast<int>(this->logs(this->logs_size() - 1).length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.api.Logging.LoggingDestination.logs"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Logging_LoggingDestination::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:google.api.Logging.LoggingDestination)
+      // string monitored_resource = 3;
+      case 3: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_monitored_resource()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->monitored_resource().data(), static_cast<int>(this->monitored_resource().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "google.api.Logging.LoggingDestination.monitored_resource"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:google.api.Logging.LoggingDestination)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:google.api.Logging.LoggingDestination)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Logging_LoggingDestination::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:google.api.Logging.LoggingDestination)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated string logs = 1;
-  for (int i = 0, n = this->_internal_logs_size(); i < n; i++) {
-    const auto& s = this->_internal_logs(i);
+  for (int i = 0, n = this->logs_size(); i < n; i++) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
+      this->logs(i).data(), static_cast<int>(this->logs(i).length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Logging.LoggingDestination.logs");
-    target = stream->WriteString(1, s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteString(
+      1, this->logs(i), output);
   }
 
   // string monitored_resource = 3;
   if (this->monitored_resource().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_monitored_resource().data(), static_cast<int>(this->_internal_monitored_resource().length()),
+      this->monitored_resource().data(), static_cast<int>(this->monitored_resource().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Logging.LoggingDestination.monitored_resource");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_monitored_resource(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->monitored_resource(), output);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:google.api.Logging.LoggingDestination)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Logging_LoggingDestination::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:google.api.Logging.LoggingDestination)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string logs = 1;
+  for (int i = 0, n = this->logs_size(); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->logs(i).data(), static_cast<int>(this->logs(i).length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.api.Logging.LoggingDestination.logs");
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      WriteStringToArray(1, this->logs(i), target);
+  }
+
+  // string monitored_resource = 3;
+  if (this->monitored_resource().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->monitored_resource().data(), static_cast<int>(this->monitored_resource().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "google.api.Logging.LoggingDestination.monitored_resource");
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        3, this->monitored_resource(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Logging.LoggingDestination)
   return target;
@@ -267,29 +366,30 @@ size_t Logging_LoggingDestination::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Logging.LoggingDestination)
   size_t total_size = 0;
 
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string logs = 1;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(logs_.size());
-  for (int i = 0, n = logs_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->logs_size());
+  for (int i = 0, n = this->logs_size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      logs_.Get(i));
+      this->logs(i));
   }
 
   // string monitored_resource = 3;
   if (this->monitored_resource().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_monitored_resource());
+        this->monitored_resource());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -342,10 +442,14 @@ bool Logging_LoggingDestination::IsInitialized() const {
   return true;
 }
 
+void Logging_LoggingDestination::Swap(Logging_LoggingDestination* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void Logging_LoggingDestination::InternalSwap(Logging_LoggingDestination* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  logs_.InternalSwap(&other->logs_);
+  logs_.InternalSwap(CastToBase(&other->logs_));
   monitored_resource_.Swap(&other->monitored_resource_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
 }
@@ -359,9 +463,14 @@ void Logging_LoggingDestination::InternalSwap(Logging_LoggingDestination* other)
 
 void Logging::InitAsDefaultInstance() {
 }
-class Logging::_Internal {
+class Logging::HasBitSetters {
  public:
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Logging::kProducerDestinationsFieldNumber;
+const int Logging::kConsumerDestinationsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Logging::Logging()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -409,6 +518,7 @@ void Logging::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Logging::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -422,10 +532,10 @@ const char* Logging::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_producer_destinations(), ptr);
+            ptr = ctx->ParseMessage(add_producer_destinations(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 10);
         } else goto handle_unusual;
         continue;
       // repeated .google.api.Logging.LoggingDestination consumer_destinations = 2;
@@ -434,10 +544,10 @@ const char* Logging::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_consumer_destinations(), ptr);
+            ptr = ctx->ParseMessage(add_consumer_destinations(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
         } else goto handle_unusual;
         continue;
       default: {
@@ -459,32 +569,116 @@ failure:
   goto success;
 #undef CHK_
 }
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Logging::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:google.api.Logging)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .google.api.Logging.LoggingDestination producer_destinations = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
+                input, add_producer_destinations()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Logging::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+      // repeated .google.api.Logging.LoggingDestination consumer_destinations = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
+                input, add_consumer_destinations()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:google.api.Logging)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:google.api.Logging)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Logging::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:google.api.Logging)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .google.api.Logging.LoggingDestination producer_destinations = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->producer_destinations_size()); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1,
+      this->producer_destinations(static_cast<int>(i)),
+      output);
+  }
+
+  // repeated .google.api.Logging.LoggingDestination consumer_destinations = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->consumer_destinations_size()); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2,
+      this->consumer_destinations(static_cast<int>(i)),
+      output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:google.api.Logging)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Logging::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Logging)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.api.Logging.LoggingDestination producer_destinations = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_producer_destinations_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+      n = static_cast<unsigned int>(this->producer_destinations_size()); i < n; i++) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_producer_destinations(i), target, stream);
+      InternalWriteMessageToArray(
+        1, this->producer_destinations(static_cast<int>(i)), target);
   }
 
   // repeated .google.api.Logging.LoggingDestination consumer_destinations = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_consumer_destinations_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+      n = static_cast<unsigned int>(this->consumer_destinations_size()); i < n; i++) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_consumer_destinations(i), target, stream);
+      InternalWriteMessageToArray(
+        2, this->consumer_destinations(static_cast<int>(i)), target);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Logging)
   return target;
@@ -494,28 +688,37 @@ size_t Logging::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Logging)
   size_t total_size = 0;
 
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.Logging.LoggingDestination producer_destinations = 1;
-  total_size += 1UL * this->_internal_producer_destinations_size();
-  for (const auto& msg : this->producer_destinations_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  {
+    unsigned int count = static_cast<unsigned int>(this->producer_destinations_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          this->producer_destinations(static_cast<int>(i)));
+    }
   }
 
   // repeated .google.api.Logging.LoggingDestination consumer_destinations = 2;
-  total_size += 1UL * this->_internal_consumer_destinations_size();
-  for (const auto& msg : this->consumer_destinations_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  {
+    unsigned int count = static_cast<unsigned int>(this->consumer_destinations_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          this->consumer_destinations(static_cast<int>(i)));
+    }
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -565,11 +768,15 @@ bool Logging::IsInitialized() const {
   return true;
 }
 
+void Logging::Swap(Logging* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void Logging::InternalSwap(Logging* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  producer_destinations_.InternalSwap(&other->producer_destinations_);
-  consumer_destinations_.InternalSwap(&other->consumer_destinations_);
+  CastToBase(&producer_destinations_)->InternalSwap(CastToBase(&other->producer_destinations_));
+  CastToBase(&consumer_destinations_)->InternalSwap(CastToBase(&other->consumer_destinations_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Logging::GetMetadata() const {

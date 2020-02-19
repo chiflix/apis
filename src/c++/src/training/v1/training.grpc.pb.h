@@ -32,7 +32,6 @@
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
-#include <grpcpp/impl/codegen/server_callback_handlers.h>
 #include <grpcpp/impl/codegen/server_context.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/status.h>
@@ -211,7 +210,13 @@ class Trainng final {
     ExperimentalWithCallbackMethod_PushData() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response) { return this->PushData(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::training::v1::TrainingData* request,
+                 ::google::rpc::Status* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->PushData(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_PushData(
         ::grpc::experimental::MessageAllocator< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>*>(
@@ -226,7 +231,7 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* PushData(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::training::v1::TrainingData* /*request*/, ::google::rpc::Status* /*response*/) { return nullptr; }
+    virtual void PushData(::grpc::ServerContext* /*context*/, const ::sagittarius::training::v1::TrainingData* /*request*/, ::google::rpc::Status* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingTraining : public BaseClass {
@@ -236,7 +241,7 @@ class Trainng final {
     ExperimentalWithCallbackMethod_StreamingTraining() {
       ::grpc::Service::experimental().MarkMethodCallback(1,
         new ::grpc_impl::internal::CallbackClientStreamingHandler< ::sagittarius::training::v1::StreamingTrainingRequest, ::google::rpc::Status>(
-          [this](::grpc::experimental::CallbackServerContext* context, ::google::rpc::Status* response) { return this->StreamingTraining(context, response); }));
+          [this] { return this->StreamingTraining(); }));
     }
     ~ExperimentalWithCallbackMethod_StreamingTraining() override {
       BaseClassMustBeDerivedFromService(this);
@@ -246,7 +251,9 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* StreamingTraining(::grpc::experimental::CallbackServerContext* /*context*/, ::google::rpc::Status* /*response*/) { return nullptr; }
+    virtual ::grpc::experimental::ServerReadReactor< ::sagittarius::training::v1::StreamingTrainingRequest, ::google::rpc::Status>* StreamingTraining() {
+      return new ::grpc_impl::internal::UnimplementedReadReactor<
+        ::sagittarius::training::v1::StreamingTrainingRequest, ::google::rpc::Status>;}
   };
   typedef ExperimentalWithCallbackMethod_PushData<ExperimentalWithCallbackMethod_StreamingTraining<Service > > ExperimentalCallbackService;
   template <class BaseClass>
@@ -331,7 +338,12 @@ class Trainng final {
     ExperimentalWithRawCallbackMethod_PushData() {
       ::grpc::Service::experimental().MarkMethodRawCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PushData(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->PushData(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_PushData() override {
       BaseClassMustBeDerivedFromService(this);
@@ -341,7 +353,7 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* PushData(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void PushData(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingTraining : public BaseClass {
@@ -351,7 +363,7 @@ class Trainng final {
     ExperimentalWithRawCallbackMethod_StreamingTraining() {
       ::grpc::Service::experimental().MarkMethodRawCallback(1,
         new ::grpc_impl::internal::CallbackClientStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, ::grpc::ByteBuffer* response) { return this->StreamingTraining(context, response); }));
+          [this] { return this->StreamingTraining(); }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingTraining() override {
       BaseClassMustBeDerivedFromService(this);
@@ -361,7 +373,9 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::grpc::ByteBuffer>* StreamingTraining(::grpc::experimental::CallbackServerContext* /*context*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual ::grpc::experimental::ServerReadReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingTraining() {
+      return new ::grpc_impl::internal::UnimplementedReadReactor<
+        ::grpc::ByteBuffer, ::grpc::ByteBuffer>;}
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_PushData : public BaseClass {

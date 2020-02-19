@@ -32,7 +32,6 @@
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
-#include <grpcpp/impl/codegen/server_callback_handlers.h>
 #include <grpcpp/impl/codegen/server_context.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/status.h>
@@ -466,7 +465,13 @@ class Translation final {
     ExperimentalWithCallbackMethod_TranslateMedia() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response) { return this->TranslateMedia(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::translation::v1::MediaTranslationRequest* request,
+                 ::sagittarius::translation::v1::MediaTranslationResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->TranslateMedia(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_TranslateMedia(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>*>(
@@ -481,7 +486,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateMedia(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::MediaTranslationRequest* /*request*/, ::sagittarius::translation::v1::MediaTranslationResponse* /*response*/) { return nullptr; }
+    virtual void TranslateMedia(::grpc::ServerContext* /*context*/, const ::sagittarius::translation::v1::MediaTranslationRequest* /*request*/, ::sagittarius::translation::v1::MediaTranslationResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_DetectLanguage : public BaseClass {
@@ -491,7 +496,13 @@ class Translation final {
     ExperimentalWithCallbackMethod_DetectLanguage() {
       ::grpc::Service::experimental().MarkMethodCallback(1,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response) { return this->DetectLanguage(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::translation::v1::DetectionRequest* request,
+                 ::sagittarius::translation::v1::DetectionResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->DetectLanguage(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_DetectLanguage(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>*>(
@@ -506,7 +517,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DetectLanguage(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::DetectionRequest* /*request*/, ::sagittarius::translation::v1::DetectionResponse* /*response*/) { return nullptr; }
+    virtual void DetectLanguage(::grpc::ServerContext* /*context*/, const ::sagittarius::translation::v1::DetectionRequest* /*request*/, ::sagittarius::translation::v1::DetectionResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_Transcript : public BaseClass {
@@ -516,7 +527,13 @@ class Translation final {
     ExperimentalWithCallbackMethod_Transcript() {
       ::grpc::Service::experimental().MarkMethodCallback(2,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response) { return this->Transcript(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::translation::v1::TranscriptRequest* request,
+                 ::sagittarius::translation::v1::TranscriptResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->Transcript(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_Transcript(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>*>(
@@ -531,7 +548,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* Transcript(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TranscriptRequest* /*request*/, ::sagittarius::translation::v1::TranscriptResponse* /*response*/) { return nullptr; }
+    virtual void Transcript(::grpc::ServerContext* /*context*/, const ::sagittarius::translation::v1::TranscriptRequest* /*request*/, ::sagittarius::translation::v1::TranscriptResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_TranslateText : public BaseClass {
@@ -541,7 +558,13 @@ class Translation final {
     ExperimentalWithCallbackMethod_TranslateText() {
       ::grpc::Service::experimental().MarkMethodCallback(3,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response) { return this->TranslateText(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::translation::v1::TextTranslationRequest* request,
+                 ::sagittarius::translation::v1::TextTranslationResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->TranslateText(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_TranslateText(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>*>(
@@ -556,7 +579,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateText(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TextTranslationRequest* /*request*/, ::sagittarius::translation::v1::TextTranslationResponse* /*response*/) { return nullptr; }
+    virtual void TranslateText(::grpc::ServerContext* /*context*/, const ::sagittarius::translation::v1::TextTranslationRequest* /*request*/, ::sagittarius::translation::v1::TextTranslationResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingTranslation : public BaseClass {
@@ -566,7 +589,7 @@ class Translation final {
     ExperimentalWithCallbackMethod_StreamingTranslation() {
       ::grpc::Service::experimental().MarkMethodCallback(4,
         new ::grpc_impl::internal::CallbackBidiHandler< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context) { return this->StreamingTranslation(context); }));
+          [this] { return this->StreamingTranslation(); }));
     }
     ~ExperimentalWithCallbackMethod_StreamingTranslation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -576,7 +599,9 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>* StreamingTranslation(::grpc::experimental::CallbackServerContext* /*context*/) { return nullptr; }
+    virtual ::grpc::experimental::ServerBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>* StreamingTranslation() {
+      return new ::grpc_impl::internal::UnimplementedBidiReactor<
+        ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>;}
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingTranslationTask : public BaseClass {
@@ -586,7 +611,13 @@ class Translation final {
     ExperimentalWithCallbackMethod_StreamingTranslationTask() {
       ::grpc::Service::experimental().MarkMethodCallback(5,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response) { return this->StreamingTranslationTask(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request,
+                 ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->StreamingTranslationTask(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_StreamingTranslationTask(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>*>(
@@ -601,7 +632,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* StreamingTranslationTask(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* /*request*/, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* /*response*/) { return nullptr; }
+    virtual void StreamingTranslationTask(::grpc::ServerContext* /*context*/, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* /*request*/, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetUserQuota : public BaseClass {
@@ -611,7 +642,13 @@ class Translation final {
     ExperimentalWithCallbackMethod_GetUserQuota() {
       ::grpc::Service::experimental().MarkMethodCallback(6,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response) { return this->GetUserQuota(context, request, response); }));}
+          [this](::grpc::ServerContext* context,
+                 const ::sagittarius::translation::v1::UserQuotaRequest* request,
+                 ::sagittarius::translation::v1::UserQuotaResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->GetUserQuota(context, request, response, controller);
+                 }));
+    }
     void SetMessageAllocatorFor_GetUserQuota(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>*>(
@@ -626,7 +663,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetUserQuota(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::UserQuotaRequest* /*request*/, ::sagittarius::translation::v1::UserQuotaResponse* /*response*/) { return nullptr; }
+    virtual void GetUserQuota(::grpc::ServerContext* /*context*/, const ::sagittarius::translation::v1::UserQuotaRequest* /*request*/, ::sagittarius::translation::v1::UserQuotaResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   typedef ExperimentalWithCallbackMethod_TranslateMedia<ExperimentalWithCallbackMethod_DetectLanguage<ExperimentalWithCallbackMethod_Transcript<ExperimentalWithCallbackMethod_TranslateText<ExperimentalWithCallbackMethod_StreamingTranslation<ExperimentalWithCallbackMethod_StreamingTranslationTask<ExperimentalWithCallbackMethod_GetUserQuota<Service > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
@@ -896,7 +933,12 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_TranslateMedia() {
       ::grpc::Service::experimental().MarkMethodRawCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TranslateMedia(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->TranslateMedia(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_TranslateMedia() override {
       BaseClassMustBeDerivedFromService(this);
@@ -906,7 +948,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateMedia(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void TranslateMedia(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_DetectLanguage : public BaseClass {
@@ -916,7 +958,12 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_DetectLanguage() {
       ::grpc::Service::experimental().MarkMethodRawCallback(1,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DetectLanguage(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->DetectLanguage(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_DetectLanguage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -926,7 +973,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DetectLanguage(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void DetectLanguage(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_Transcript : public BaseClass {
@@ -936,7 +983,12 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_Transcript() {
       ::grpc::Service::experimental().MarkMethodRawCallback(2,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Transcript(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->Transcript(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_Transcript() override {
       BaseClassMustBeDerivedFromService(this);
@@ -946,7 +998,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* Transcript(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void Transcript(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_TranslateText : public BaseClass {
@@ -956,7 +1008,12 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_TranslateText() {
       ::grpc::Service::experimental().MarkMethodRawCallback(3,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TranslateText(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->TranslateText(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_TranslateText() override {
       BaseClassMustBeDerivedFromService(this);
@@ -966,7 +1023,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateText(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void TranslateText(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingTranslation : public BaseClass {
@@ -976,7 +1033,7 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_StreamingTranslation() {
       ::grpc::Service::experimental().MarkMethodRawCallback(4,
         new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context) { return this->StreamingTranslation(context); }));
+          [this] { return this->StreamingTranslation(); }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingTranslation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -986,7 +1043,9 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingTranslation(::grpc::experimental::CallbackServerContext* /*context*/) { return nullptr; }
+    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingTranslation() {
+      return new ::grpc_impl::internal::UnimplementedBidiReactor<
+        ::grpc::ByteBuffer, ::grpc::ByteBuffer>;}
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingTranslationTask : public BaseClass {
@@ -996,7 +1055,12 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_StreamingTranslationTask() {
       ::grpc::Service::experimental().MarkMethodRawCallback(5,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StreamingTranslationTask(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->StreamingTranslationTask(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingTranslationTask() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1006,7 +1070,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* StreamingTranslationTask(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void StreamingTranslationTask(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetUserQuota : public BaseClass {
@@ -1016,7 +1080,12 @@ class Translation final {
     ExperimentalWithRawCallbackMethod_GetUserQuota() {
       ::grpc::Service::experimental().MarkMethodRawCallback(6,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetUserQuota(context, request, response); }));
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->GetUserQuota(context, request, response, controller);
+                 }));
     }
     ~ExperimentalWithRawCallbackMethod_GetUserQuota() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1026,7 +1095,7 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetUserQuota(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    virtual void GetUserQuota(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_TranslateMedia : public BaseClass {
