@@ -11,48 +11,68 @@ if [ -z "$BUILD" ]; then
     echo "Use: ./ios_build.sh Release (or Debug)" && exit
 fi
 
+
+copy_static_grpcfiles() {
+    D=$BUILDDIR
+    SRCDIR=$BUILD_ROOT/ios/$BUILDDIR
+    DSTDIR=$BUILD_ROOT/ios/bin/lib/$SDK
+    cp -f $SRCDIR/_deps/grpc-build/$D/* $DSTDIR
+    cp -f $SRCDIR/_deps/grpc-build/third_party/abseil-cpp/absl/strings/$D/libabsl_strings.a $DSTDIR
+    cp -f $SRCDIR/_deps/grpc-build/third_party/abseil-cpp/absl/base/$D/libabsl_throw_delegate.a $DSTDIR
+    cp -f $SRCDIR/_deps/grpc-build/third_party/boringssl/ssl/$D/libssl.a $DSTDIR
+    cp -f $SRCDIR/_deps/grpc-build/third_party/boringssl/crypto/$D/libcrypto.a $DSTDIR
+    cp -f $SRCDIR/_deps/grpc-build/third_party/protobuf/$D/*.a $DSTDIR
+
+    if [ "$SDK" == "iphoneos" ]; then 
+        cp -rf $SRCDIR/_deps/grpc-src/include/* $BUILD_ROOT/ios/bin/include/gRPC
+    fi
+}
+
 if [ ! -d ./ios ]; then
     mkdir -p ios
 fi
 
 cd ios
 
-Targets=("iphonesimulator:SIMULATOR64")
-        #"iphoneos:OS64" )
+if [ ! -d ./bin ]; then
+    mkdir -p bin/include
+    mkdir -p bin/include/gRPC
+    mkdir -p bin/lib/iphoneos
+    mkdir -p bin/lib/iphonesimulator
+    mkdir -p bin/lib/combined
+fi
 
-
+Targets=("iphonesimulator:SIMULATOR64"  "iphoneos:OS64" )
 for target in "${Targets[@]}" ; do
     SDK="${target%%:*}"
     ARCH="${target##*:}"
 
-    if [ ! -d $SDK ]; then
-        mkdir $SDK
+    BUILDDIR="$BUILD-$SDK"
+
+    if [ ! -d $BUILDDIR ]; then
+        mkdir $BUILDDIR
     fi
 
-    cd $SDK
+    cd $BUILDDIR
     
     if [ ! -f CMakeCache.txt ]; then 
-        cmake ../../ -GXcode -DCMAKE_TOOLCHAIN_FILE=../../ios.toolchain.cmake -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=$SDK -DPLATFORM=$ARCH -DENABLE_BITCODE=1 -Dprotobuf_BUILD_PROTOC_BINARIES=OFF -DgRPC_BUILD_CODEGEN=OFF -DCARES_INSTALL=OFF -DCARES_BUILD_TOOLS=OFF  -DENABLE_ARC=TRUE -Dprotobuf_BUILD_TESTS=OFF -DRPC_BUILD_CSHARP_EXT=OFF
+        cmake ../../ -GXcode -DCMAKE_TOOLCHAIN_FILE=../../ios.toolchain.cmake -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=$SDK -DPLATFORM=$ARCH -DENABLE_BITCODE=1 -Dprotobuf_BUILD_PROTOC_BINARIES=OFF -DgRPC_BUILD_CODEGEN=OFF -DCARES_INSTALL=OFF -DCARES_BUILD_TOOLS=OFF  -DENABLE_ARC=TRUE -Dprotobuf_BUILD_TESTS=OFF -DRPC_BUILD_CSHARP_EXT=OFF -DGRPC_SHADOW_BORINGSSL_SYMBOLS=1 -DENABLE_VISIBILITY=ON
     fi
     
     for buildtarget in "SagiAPI" ; do
         xcodebuild -project SagiAPI.xcodeproj -configuration $BUILD -target $buildtarget GCC_WARN_64_TO_32_BIT_CONVERSION=no
     done
 
+    copy_static_grpcfiles
+
     cd -
 done
-
-if [ ! -d ./bin ]; then
-    mkdir -p bin/include
-    mkdir -p bin/lib/iphoneos
-    mkdir -p bin/lib/iphonesimulator
-    mkdir -p bin/lib/combined
-fi
 
 LIPOFiles=""
 for target in "${Targets[@]}" ; do
     SDK="${target%%:*}"
-    afile="$BUILD_ROOT/ios/$SDK/${BUILD}-${SDK}/libSagiAPI.a"
+    BUILDDIR="$BUILD-$SDK"
+    afile="$BUILD_ROOT/ios/$BUILDDIR/$BUILDDIR/libSagiAPI.a"
 
     if [ ! -f $afile ]; then
         echo "$afile not exist" && exit -1
@@ -70,3 +90,8 @@ DirList="translation training media health"
 for dir in $DirList ; do
     cp -rf "$BUILD_ROOT"/src/* "$BUILD_ROOT"/ios/bin/include
 done
+
+if [ -d "$BUILD_ROOT"/ios/$BUILD-bin ]; then
+    rm -rf "$BUILD_ROOT"/ios/$BUILD-bin
+fi
+mv "$BUILD_ROOT"/ios/bin "$BUILD_ROOT"/ios/$BUILD-bin
