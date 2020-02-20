@@ -34,7 +34,11 @@ npm install -g grpc_tools_node_protoc_ts
 npm install -g typedoc
 ```
 
-Also look at [to build api with swift](./src/swift/README.md)
+### Swift
+Also look at [How to Build](./src/swift/README.md) 
+
+### C++
+Look at [How to Build](./src/c++/README.md)
 
 ### Generators and Scripts
 
