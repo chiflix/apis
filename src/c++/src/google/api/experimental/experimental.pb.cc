@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -36,7 +35,7 @@ static void InitDefaultsscc_info_Experimental_google_2fapi_2fexperimental_2fexpe
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Experimental_google_2fapi_2fexperimental_2fexperimental_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_Experimental_google_2fapi_2fexperimental_2fexperimental_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Experimental_google_2fapi_2fexperimental_2fexperimental_2eproto}, {
       &scc_info_AuthorizationConfig_google_2fapi_2fexperimental_2fauthorization_5fconfig_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fexperimental_2fexperimental_2eproto[1];
@@ -59,7 +58,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_Experimental_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fexperimental_2fexperimental_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fexperimental_2fexperimental_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n*google/api/experimental/experimental.p"
   "roto\022\ngoogle.api\032\034google/api/annotations"
   ".proto\0322google/api/experimental/authoriz"
@@ -96,13 +95,13 @@ void Experimental::InitAsDefaultInstance() {
   ::google::api::_Experimental_default_instance_._instance.get_mutable()->authorization_ = const_cast< ::google::api::AuthorizationConfig*>(
       ::google::api::AuthorizationConfig::internal_default_instance());
 }
-class Experimental::HasBitSetters {
+class Experimental::_Internal {
  public:
   static const ::google::api::AuthorizationConfig& authorization(const Experimental* msg);
 };
 
 const ::google::api::AuthorizationConfig&
-Experimental::HasBitSetters::authorization(const Experimental* msg) {
+Experimental::_Internal::authorization(const Experimental* msg) {
   return *msg->authorization_;
 }
 void Experimental::clear_authorization() {
@@ -111,10 +110,6 @@ void Experimental::clear_authorization() {
   }
   authorization_ = nullptr;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Experimental::kAuthorizationFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 Experimental::Experimental()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -124,7 +119,7 @@ Experimental::Experimental(const Experimental& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_authorization()) {
+  if (from._internal_has_authorization()) {
     authorization_ = new ::google::api::AuthorizationConfig(*from.authorization_);
   } else {
     authorization_ = nullptr;
@@ -168,7 +163,6 @@ void Experimental::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Experimental::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -179,7 +173,7 @@ const char* Experimental::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // .google.api.AuthorizationConfig authorization = 8;
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
-          ptr = ctx->ParseMessage(mutable_authorization(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_authorization(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -202,84 +196,24 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Experimental::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Experimental)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .google.api.AuthorizationConfig authorization = 8;
-      case 8: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (66 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-               input, mutable_authorization()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Experimental)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Experimental)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Experimental::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Experimental)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .google.api.AuthorizationConfig authorization = 8;
-  if (this->has_authorization()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, HasBitSetters::authorization(this), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Experimental)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Experimental::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Experimental::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Experimental)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .google.api.AuthorizationConfig authorization = 8;
   if (this->has_authorization()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        8, HasBitSetters::authorization(this), target);
+      InternalWriteMessage(
+        8, _Internal::authorization(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Experimental)
   return target;
@@ -289,11 +223,6 @@ size_t Experimental::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Experimental)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -305,6 +234,10 @@ size_t Experimental::ByteSizeLong() const {
         *authorization_);
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -333,7 +266,7 @@ void Experimental::MergeFrom(const Experimental& from) {
   (void) cached_has_bits;
 
   if (from.has_authorization()) {
-    mutable_authorization()->::google::api::AuthorizationConfig::MergeFrom(from.authorization());
+    _internal_mutable_authorization()->::google::api::AuthorizationConfig::MergeFrom(from._internal_authorization());
   }
 }
 
@@ -355,10 +288,6 @@ bool Experimental::IsInitialized() const {
   return true;
 }
 
-void Experimental::Swap(Experimental* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Experimental::InternalSwap(Experimental* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

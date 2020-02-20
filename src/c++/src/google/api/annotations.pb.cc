@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -27,7 +26,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_google_2fapi_2fannotations_2ep
 static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
-const char descriptor_table_protodef_google_2fapi_2fannotations_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fannotations_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\034google/api/annotations.proto\022\ngoogle.a"
   "pi\032\025google/api/http.proto\032 google/protob"
   "uf/descriptor.proto:E\n\004http\022\036.google.pro"

@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -45,7 +44,7 @@ static void InitDefaultsscc_info_Metric_google_2fapi_2fmetric_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Metric_google_2fapi_2fmetric_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_Metric_google_2fapi_2fmetric_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Metric_google_2fapi_2fmetric_2eproto}, {
       &scc_info_Metric_LabelsEntry_DoNotUse_google_2fapi_2fmetric_2eproto.base,}};
 
 static void InitDefaultsscc_info_Metric_LabelsEntry_DoNotUse_google_2fapi_2fmetric_2eproto() {
@@ -59,7 +58,7 @@ static void InitDefaultsscc_info_Metric_LabelsEntry_DoNotUse_google_2fapi_2fmetr
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Metric_LabelsEntry_DoNotUse_google_2fapi_2fmetric_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_Metric_LabelsEntry_DoNotUse_google_2fapi_2fmetric_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Metric_LabelsEntry_DoNotUse_google_2fapi_2fmetric_2eproto}, {}};
 
 static void InitDefaultsscc_info_MetricDescriptor_google_2fapi_2fmetric_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -73,7 +72,7 @@ static void InitDefaultsscc_info_MetricDescriptor_google_2fapi_2fmetric_2eproto(
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_MetricDescriptor_google_2fapi_2fmetric_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_MetricDescriptor_google_2fapi_2fmetric_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_MetricDescriptor_google_2fapi_2fmetric_2eproto}, {
       &scc_info_LabelDescriptor_google_2fapi_2flabel_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fmetric_2eproto[3];
@@ -123,7 +122,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_Metric_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fmetric_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fmetric_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\027google/api/metric.proto\022\ngoogle.api\032\026g"
   "oogle/api/label.proto\"\322\003\n\020MetricDescript"
   "or\022\014\n\004name\030\001 \001(\t\022\014\n\004type\030\010 \001(\t\022+\n\006labels"
@@ -226,24 +225,13 @@ constexpr int MetricDescriptor::ValueType_ARRAYSIZE;
 
 void MetricDescriptor::InitAsDefaultInstance() {
 }
-class MetricDescriptor::HasBitSetters {
+class MetricDescriptor::_Internal {
  public:
 };
 
 void MetricDescriptor::clear_labels() {
   labels_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MetricDescriptor::kNameFieldNumber;
-const int MetricDescriptor::kTypeFieldNumber;
-const int MetricDescriptor::kLabelsFieldNumber;
-const int MetricDescriptor::kMetricKindFieldNumber;
-const int MetricDescriptor::kValueTypeFieldNumber;
-const int MetricDescriptor::kUnitFieldNumber;
-const int MetricDescriptor::kDescriptionFieldNumber;
-const int MetricDescriptor::kDisplayNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 MetricDescriptor::MetricDescriptor()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -255,23 +243,23 @@ MetricDescriptor::MetricDescriptor(const MetricDescriptor& from)
       labels_(from.labels_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   unit_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.unit().size() > 0) {
+  if (!from._internal_unit().empty()) {
     unit_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.unit_);
   }
   description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.description().size() > 0) {
+  if (!from._internal_description().empty()) {
     description_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.description_);
   }
   display_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.display_name().size() > 0) {
+  if (!from._internal_display_name().empty()) {
     display_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.display_name_);
   }
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.type().size() > 0) {
+  if (!from._internal_type().empty()) {
     type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
   }
   ::memcpy(&metric_kind_, &from.metric_kind_,
@@ -332,7 +320,6 @@ void MetricDescriptor::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* MetricDescriptor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -343,7 +330,9 @@ const char* MetricDescriptor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
       // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.api.MetricDescriptor.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.MetricDescriptor.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -353,10 +342,10 @@ const char* MetricDescriptor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_labels(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_labels(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else goto handle_unusual;
         continue;
       // .google.api.MetricDescriptor.MetricKind metric_kind = 3;
@@ -364,7 +353,7 @@ const char* MetricDescriptor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          set_metric_kind(static_cast<::google::api::MetricDescriptor_MetricKind>(val));
+          _internal_set_metric_kind(static_cast<::google::api::MetricDescriptor_MetricKind>(val));
         } else goto handle_unusual;
         continue;
       // .google.api.MetricDescriptor.ValueType value_type = 4;
@@ -372,34 +361,42 @@ const char* MetricDescriptor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          set_value_type(static_cast<::google::api::MetricDescriptor_ValueType>(val));
+          _internal_set_value_type(static_cast<::google::api::MetricDescriptor_ValueType>(val));
         } else goto handle_unusual;
         continue;
       // string unit = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_unit(), ptr, ctx, "google.api.MetricDescriptor.unit");
+          auto str = _internal_mutable_unit();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.MetricDescriptor.unit"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string description = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_description(), ptr, ctx, "google.api.MetricDescriptor.description");
+          auto str = _internal_mutable_description();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.MetricDescriptor.description"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string display_name = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_display_name(), ptr, ctx, "google.api.MetricDescriptor.display_name");
+          auto str = _internal_mutable_display_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.MetricDescriptor.display_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string type = 8;
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_type(), ptr, ctx, "google.api.MetricDescriptor.type");
+          auto str = _internal_mutable_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.MetricDescriptor.type"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -422,238 +419,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MetricDescriptor::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.MetricDescriptor)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricDescriptor.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // repeated .google.api.LabelDescriptor labels = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_labels()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.api.MetricDescriptor.MetricKind metric_kind = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
-          int value = 0;
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_metric_kind(static_cast< ::google::api::MetricDescriptor_MetricKind >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.api.MetricDescriptor.ValueType value_type = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
-          int value = 0;
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_value_type(static_cast< ::google::api::MetricDescriptor_ValueType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string unit = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_unit()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->unit().data(), static_cast<int>(this->unit().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricDescriptor.unit"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string description = 6;
-      case 6: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (50 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_description()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->description().data(), static_cast<int>(this->description().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricDescriptor.description"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string display_name = 7;
-      case 7: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (58 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_display_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->display_name().data(), static_cast<int>(this->display_name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricDescriptor.display_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string type = 8;
-      case 8: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (66 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_type()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->type().data(), static_cast<int>(this->type().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricDescriptor.type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.MetricDescriptor)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.MetricDescriptor)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void MetricDescriptor::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.MetricDescriptor)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.MetricDescriptor.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // repeated .google.api.LabelDescriptor labels = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->labels_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->labels(static_cast<int>(i)),
-      output);
-  }
-
-  // .google.api.MetricDescriptor.MetricKind metric_kind = 3;
-  if (this->metric_kind() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
-      3, this->metric_kind(), output);
-  }
-
-  // .google.api.MetricDescriptor.ValueType value_type = 4;
-  if (this->value_type() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
-      4, this->value_type(), output);
-  }
-
-  // string unit = 5;
-  if (this->unit().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->unit().data(), static_cast<int>(this->unit().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.MetricDescriptor.unit");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->unit(), output);
-  }
-
-  // string description = 6;
-  if (this->description().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->description().data(), static_cast<int>(this->description().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.MetricDescriptor.description");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->description(), output);
-  }
-
-  // string display_name = 7;
-  if (this->display_name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->display_name().data(), static_cast<int>(this->display_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.MetricDescriptor.display_name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->display_name(), output);
-  }
-
-  // string type = 8;
-  if (this->type().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.MetricDescriptor.type");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->type(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.MetricDescriptor)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* MetricDescriptor::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* MetricDescriptor::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.MetricDescriptor)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -661,81 +429,78 @@ void MetricDescriptor::SerializeWithCachedSizes(
   // string name = 1;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.MetricDescriptor.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // repeated .google.api.LabelDescriptor labels = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->labels_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_labels_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->labels(static_cast<int>(i)), target);
+      InternalWriteMessage(2, this->_internal_labels(i), target, stream);
   }
 
   // .google.api.MetricDescriptor.MetricKind metric_kind = 3;
   if (this->metric_kind() != 0) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      3, this->metric_kind(), target);
+      3, this->_internal_metric_kind(), target);
   }
 
   // .google.api.MetricDescriptor.ValueType value_type = 4;
   if (this->value_type() != 0) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      4, this->value_type(), target);
+      4, this->_internal_value_type(), target);
   }
 
   // string unit = 5;
   if (this->unit().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->unit().data(), static_cast<int>(this->unit().length()),
+      this->_internal_unit().data(), static_cast<int>(this->_internal_unit().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.MetricDescriptor.unit");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        5, this->unit(), target);
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_unit(), target);
   }
 
   // string description = 6;
   if (this->description().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->description().data(), static_cast<int>(this->description().length()),
+      this->_internal_description().data(), static_cast<int>(this->_internal_description().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.MetricDescriptor.description");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        6, this->description(), target);
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_description(), target);
   }
 
   // string display_name = 7;
   if (this->display_name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->display_name().data(), static_cast<int>(this->display_name().length()),
+      this->_internal_display_name().data(), static_cast<int>(this->_internal_display_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.MetricDescriptor.display_name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        7, this->display_name(), target);
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_display_name(), target);
   }
 
   // string type = 8;
   if (this->type().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
+      this->_internal_type().data(), static_cast<int>(this->_internal_type().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.MetricDescriptor.type");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        8, this->type(), target);
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_type(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.MetricDescriptor)
   return target;
@@ -745,73 +510,68 @@ size_t MetricDescriptor::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.MetricDescriptor)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.LabelDescriptor labels = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->labels_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->labels(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_labels_size();
+  for (const auto& msg : this->labels_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
   // string unit = 5;
   if (this->unit().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->unit());
+        this->_internal_unit());
   }
 
   // string description = 6;
   if (this->description().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->description());
+        this->_internal_description());
   }
 
   // string display_name = 7;
   if (this->display_name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->display_name());
+        this->_internal_display_name());
   }
 
   // string type = 8;
   if (this->type().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->type());
+        this->_internal_type());
   }
 
   // .google.api.MetricDescriptor.MetricKind metric_kind = 3;
   if (this->metric_kind() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->metric_kind());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_metric_kind());
   }
 
   // .google.api.MetricDescriptor.ValueType value_type = 4;
   if (this->value_type() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->value_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_value_type());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -861,10 +621,10 @@ void MetricDescriptor::MergeFrom(const MetricDescriptor& from) {
     type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
   }
   if (from.metric_kind() != 0) {
-    set_metric_kind(from.metric_kind());
+    _internal_set_metric_kind(from._internal_metric_kind());
   }
   if (from.value_type() != 0) {
-    set_value_type(from.value_type());
+    _internal_set_value_type(from._internal_value_type());
   }
 }
 
@@ -886,14 +646,10 @@ bool MetricDescriptor::IsInitialized() const {
   return true;
 }
 
-void MetricDescriptor::Swap(MetricDescriptor* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void MetricDescriptor::InternalSwap(MetricDescriptor* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&labels_)->InternalSwap(CastToBase(&other->labels_));
+  labels_.InternalSwap(&other->labels_);
   name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   unit_.Swap(&other->unit_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -934,14 +690,9 @@ void Metric_LabelsEntry_DoNotUse::MergeFrom(
 
 void Metric::InitAsDefaultInstance() {
 }
-class Metric::HasBitSetters {
+class Metric::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Metric::kTypeFieldNumber;
-const int Metric::kLabelsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Metric::Metric()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -954,7 +705,7 @@ Metric::Metric(const Metric& from)
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   labels_.MergeFrom(from.labels_);
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.type().size() > 0) {
+  if (!from._internal_type().empty()) {
     type_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.type_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.Metric)
@@ -994,7 +745,6 @@ void Metric::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Metric::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1011,13 +761,15 @@ const char* Metric::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
             ptr = ctx->ParseMessage(&labels_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else goto handle_unusual;
         continue;
       // string type = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_type(), ptr, ctx, "google.api.Metric.type");
+          auto str = _internal_mutable_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Metric.type"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1040,157 +792,15 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Metric::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Metric)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // map<string, string> labels = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          Metric_LabelsEntry_DoNotUse::Parser< ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-              Metric_LabelsEntry_DoNotUse,
-              std::string, std::string,
-              ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-              ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string > > parser(&labels_);
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Metric.LabelsEntry.key"));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Metric.LabelsEntry.value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // string type = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_type()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->type().data(), static_cast<int>(this->type().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Metric.type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Metric)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Metric)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Metric::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Metric)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // map<string, string> labels = 2;
-  if (!this->labels().empty()) {
-    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-          "google.api.Metric.LabelsEntry.key");
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-          "google.api.Metric.LabelsEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->labels().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->labels().size()]);
-      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
-      size_type n = 0;
-      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
-          it = this->labels().begin();
-          it != this->labels().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      for (size_type i = 0; i < n; i++) {
-        Metric_LabelsEntry_DoNotUse::MapEntryWrapper entry(nullptr, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second);
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(2, entry, output);
-        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
-      }
-    } else {
-      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
-          it = this->labels().begin();
-          it != this->labels().end(); ++it) {
-        Metric_LabelsEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(2, entry, output);
-        Utf8Check::Check(&(*it));
-      }
-    }
-  }
-
-  // string type = 3;
-  if (this->type().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Metric.type");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->type(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Metric)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Metric::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Metric::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Metric)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // map<string, string> labels = 2;
-  if (!this->labels().empty()) {
+  if (!this->_internal_labels().empty()) {
     typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
@@ -1208,29 +818,27 @@ void Metric::SerializeWithCachedSizes(
       }
     };
 
-    if (false &&
-        this->labels().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_labels().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->labels().size()]);
+          new SortItem[this->_internal_labels().size()]);
       typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
       size_type n = 0;
       for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
-          it = this->labels().begin();
-          it != this->labels().end(); ++it, ++n) {
+          it = this->_internal_labels().begin();
+          it != this->_internal_labels().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
       for (size_type i = 0; i < n; i++) {
-        Metric_LabelsEntry_DoNotUse::MapEntryWrapper entry(nullptr, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second);
-        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(2, entry, target);
+        target = Metric_LabelsEntry_DoNotUse::Funcs::InternalSerialize(2, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
         Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
       for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
-          it = this->labels().begin();
-          it != this->labels().end(); ++it) {
-        Metric_LabelsEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(2, entry, target);
+          it = this->_internal_labels().begin();
+          it != this->_internal_labels().end(); ++it) {
+        target = Metric_LabelsEntry_DoNotUse::Funcs::InternalSerialize(2, it->first, it->second, target, stream);
         Utf8Check::Check(&(*it));
       }
     }
@@ -1239,17 +847,16 @@ void Metric::SerializeWithCachedSizes(
   // string type = 3;
   if (this->type().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
+      this->_internal_type().data(), static_cast<int>(this->_internal_type().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Metric.type");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        3, this->type(), target);
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_type(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Metric)
   return target;
@@ -1259,33 +866,30 @@ size_t Metric::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Metric)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // map<string, string> labels = 2;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->labels_size());
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_labels_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
-      it = this->labels().begin();
-      it != this->labels().end(); ++it) {
-    Metric_LabelsEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        MessageSizeNoVirtual(entry);
+      it = this->_internal_labels().begin();
+      it != this->_internal_labels().end(); ++it) {
+    total_size += Metric_LabelsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // string type = 3;
   if (this->type().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->type());
+        this->_internal_type());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1338,10 +942,6 @@ bool Metric::IsInitialized() const {
   return true;
 }
 
-void Metric::Swap(Metric* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Metric::InternalSwap(Metric* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

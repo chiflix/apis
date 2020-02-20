@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -55,7 +54,7 @@ static void InitDefaultsscc_info_AuthProvider_google_2fapi_2fauth_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AuthProvider_google_2fapi_2fauth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_AuthProvider_google_2fapi_2fauth_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AuthProvider_google_2fapi_2fauth_2eproto}, {}};
 
 static void InitDefaultsscc_info_AuthRequirement_google_2fapi_2fauth_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -69,7 +68,7 @@ static void InitDefaultsscc_info_AuthRequirement_google_2fapi_2fauth_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AuthRequirement_google_2fapi_2fauth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_AuthRequirement_google_2fapi_2fauth_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AuthRequirement_google_2fapi_2fauth_2eproto}, {}};
 
 static void InitDefaultsscc_info_Authentication_google_2fapi_2fauth_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -83,7 +82,7 @@ static void InitDefaultsscc_info_Authentication_google_2fapi_2fauth_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Authentication_google_2fapi_2fauth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsscc_info_Authentication_google_2fapi_2fauth_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Authentication_google_2fapi_2fauth_2eproto}, {
       &scc_info_AuthenticationRule_google_2fapi_2fauth_2eproto.base,
       &scc_info_AuthProvider_google_2fapi_2fauth_2eproto.base,}};
 
@@ -99,7 +98,7 @@ static void InitDefaultsscc_info_AuthenticationRule_google_2fapi_2fauth_2eproto(
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_AuthenticationRule_google_2fapi_2fauth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsscc_info_AuthenticationRule_google_2fapi_2fauth_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_AuthenticationRule_google_2fapi_2fauth_2eproto}, {
       &scc_info_OAuthRequirements_google_2fapi_2fauth_2eproto.base,
       &scc_info_AuthRequirement_google_2fapi_2fauth_2eproto.base,}};
 
@@ -115,7 +114,7 @@ static void InitDefaultsscc_info_OAuthRequirements_google_2fapi_2fauth_2eproto()
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_OAuthRequirements_google_2fapi_2fauth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_OAuthRequirements_google_2fapi_2fauth_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_OAuthRequirements_google_2fapi_2fauth_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fauth_2eproto[5];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_google_2fapi_2fauth_2eproto = nullptr;
@@ -178,7 +177,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_AuthRequirement_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fauth_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fauth_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\025google/api/auth.proto\022\ngoogle.api\032\034goo"
   "gle/api/annotations.proto\"l\n\016Authenticat"
   "ion\022-\n\005rules\030\003 \003(\0132\036.google.api.Authenti"
@@ -225,14 +224,9 @@ namespace api {
 
 void Authentication::InitAsDefaultInstance() {
 }
-class Authentication::HasBitSetters {
+class Authentication::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Authentication::kRulesFieldNumber;
-const int Authentication::kProvidersFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Authentication::Authentication()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -280,7 +274,6 @@ void Authentication::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Authentication::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -294,10 +287,10 @@ const char* Authentication::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_rules(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_rules(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 26);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else goto handle_unusual;
         continue;
       // repeated .google.api.AuthProvider providers = 4;
@@ -306,10 +299,10 @@ const char* Authentication::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_providers(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_providers(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 34);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -331,116 +324,32 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Authentication::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Authentication)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.api.AuthenticationRule rules = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_rules()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // repeated .google.api.AuthProvider providers = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_providers()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Authentication)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Authentication)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Authentication::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Authentication)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.api.AuthenticationRule rules = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->rules_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3,
-      this->rules(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .google.api.AuthProvider providers = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->providers_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4,
-      this->providers(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Authentication)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Authentication::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Authentication::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Authentication)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.api.AuthenticationRule rules = 3;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->rules_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_rules_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->rules(static_cast<int>(i)), target);
+      InternalWriteMessage(3, this->_internal_rules(i), target, stream);
   }
 
   // repeated .google.api.AuthProvider providers = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->providers_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_providers_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->providers(static_cast<int>(i)), target);
+      InternalWriteMessage(4, this->_internal_providers(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Authentication)
   return target;
@@ -450,37 +359,28 @@ size_t Authentication::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Authentication)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.AuthenticationRule rules = 3;
-  {
-    unsigned int count = static_cast<unsigned int>(this->rules_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->rules(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_rules_size();
+  for (const auto& msg : this->rules_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .google.api.AuthProvider providers = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->providers_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->providers(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_providers_size();
+  for (const auto& msg : this->providers_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -530,15 +430,11 @@ bool Authentication::IsInitialized() const {
   return true;
 }
 
-void Authentication::Swap(Authentication* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Authentication::InternalSwap(Authentication* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&rules_)->InternalSwap(CastToBase(&other->rules_));
-  CastToBase(&providers_)->InternalSwap(CastToBase(&other->providers_));
+  rules_.InternalSwap(&other->rules_);
+  providers_.InternalSwap(&other->providers_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Authentication::GetMetadata() const {
@@ -552,22 +448,15 @@ void AuthenticationRule::InitAsDefaultInstance() {
   ::google::api::_AuthenticationRule_default_instance_._instance.get_mutable()->oauth_ = const_cast< ::google::api::OAuthRequirements*>(
       ::google::api::OAuthRequirements::internal_default_instance());
 }
-class AuthenticationRule::HasBitSetters {
+class AuthenticationRule::_Internal {
  public:
   static const ::google::api::OAuthRequirements& oauth(const AuthenticationRule* msg);
 };
 
 const ::google::api::OAuthRequirements&
-AuthenticationRule::HasBitSetters::oauth(const AuthenticationRule* msg) {
+AuthenticationRule::_Internal::oauth(const AuthenticationRule* msg) {
   return *msg->oauth_;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int AuthenticationRule::kSelectorFieldNumber;
-const int AuthenticationRule::kOauthFieldNumber;
-const int AuthenticationRule::kAllowWithoutCredentialFieldNumber;
-const int AuthenticationRule::kRequirementsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 AuthenticationRule::AuthenticationRule()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -579,10 +468,10 @@ AuthenticationRule::AuthenticationRule(const AuthenticationRule& from)
       requirements_(from.requirements_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   selector_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.selector().size() > 0) {
+  if (!from._internal_selector().empty()) {
     selector_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.selector_);
   }
-  if (from.has_oauth()) {
+  if (from._internal_has_oauth()) {
     oauth_ = new ::google::api::OAuthRequirements(*from.oauth_);
   } else {
     oauth_ = nullptr;
@@ -634,7 +523,6 @@ void AuthenticationRule::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* AuthenticationRule::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -645,14 +533,16 @@ const char* AuthenticationRule::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
       // string selector = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_selector(), ptr, ctx, "google.api.AuthenticationRule.selector");
+          auto str = _internal_mutable_selector();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthenticationRule.selector"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // .google.api.OAuthRequirements oauth = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ctx->ParseMessage(mutable_oauth(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_oauth(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -669,10 +559,10 @@ const char* AuthenticationRule::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_requirements(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_requirements(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 58);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -694,133 +584,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool AuthenticationRule::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.AuthenticationRule)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string selector = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_selector()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->selector().data(), static_cast<int>(this->selector().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthenticationRule.selector"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // .google.api.OAuthRequirements oauth = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-               input, mutable_oauth()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bool allow_without_credential = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (40 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &allow_without_credential_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .google.api.AuthRequirement requirements = 7;
-      case 7: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (58 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_requirements()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.AuthenticationRule)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.AuthenticationRule)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void AuthenticationRule::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.AuthenticationRule)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string selector = 1;
-  if (this->selector().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->selector().data(), static_cast<int>(this->selector().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthenticationRule.selector");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->selector(), output);
-  }
-
-  // .google.api.OAuthRequirements oauth = 2;
-  if (this->has_oauth()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, HasBitSetters::oauth(this), output);
-  }
-
-  // bool allow_without_credential = 5;
-  if (this->allow_without_credential() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBool(5, this->allow_without_credential(), output);
-  }
-
-  // repeated .google.api.AuthRequirement requirements = 7;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requirements_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7,
-      this->requirements(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.AuthenticationRule)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* AuthenticationRule::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* AuthenticationRule::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.AuthenticationRule)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -828,37 +594,38 @@ void AuthenticationRule::SerializeWithCachedSizes(
   // string selector = 1;
   if (this->selector().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->selector().data(), static_cast<int>(this->selector().length()),
+      this->_internal_selector().data(), static_cast<int>(this->_internal_selector().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthenticationRule.selector");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->selector(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_selector(), target);
   }
 
   // .google.api.OAuthRequirements oauth = 2;
   if (this->has_oauth()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, HasBitSetters::oauth(this), target);
+      InternalWriteMessage(
+        2, _Internal::oauth(this), target, stream);
   }
 
   // bool allow_without_credential = 5;
   if (this->allow_without_credential() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->allow_without_credential(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_allow_without_credential(), target);
   }
 
   // repeated .google.api.AuthRequirement requirements = 7;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requirements_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_requirements_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        7, this->requirements(static_cast<int>(i)), target);
+      InternalWriteMessage(7, this->_internal_requirements(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.AuthenticationRule)
   return target;
@@ -868,31 +635,22 @@ size_t AuthenticationRule::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.AuthenticationRule)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.AuthRequirement requirements = 7;
-  {
-    unsigned int count = static_cast<unsigned int>(this->requirements_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->requirements(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_requirements_size();
+  for (const auto& msg : this->requirements_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string selector = 1;
   if (this->selector().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->selector());
+        this->_internal_selector());
   }
 
   // .google.api.OAuthRequirements oauth = 2;
@@ -907,6 +665,10 @@ size_t AuthenticationRule::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -940,10 +702,10 @@ void AuthenticationRule::MergeFrom(const AuthenticationRule& from) {
     selector_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.selector_);
   }
   if (from.has_oauth()) {
-    mutable_oauth()->::google::api::OAuthRequirements::MergeFrom(from.oauth());
+    _internal_mutable_oauth()->::google::api::OAuthRequirements::MergeFrom(from._internal_oauth());
   }
   if (from.allow_without_credential() != 0) {
-    set_allow_without_credential(from.allow_without_credential());
+    _internal_set_allow_without_credential(from._internal_allow_without_credential());
   }
 }
 
@@ -965,14 +727,10 @@ bool AuthenticationRule::IsInitialized() const {
   return true;
 }
 
-void AuthenticationRule::Swap(AuthenticationRule* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void AuthenticationRule::InternalSwap(AuthenticationRule* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&requirements_)->InternalSwap(CastToBase(&other->requirements_));
+  requirements_.InternalSwap(&other->requirements_);
   selector_.Swap(&other->selector_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(oauth_, other->oauth_);
@@ -988,17 +746,9 @@ void AuthenticationRule::InternalSwap(AuthenticationRule* other) {
 
 void AuthProvider::InitAsDefaultInstance() {
 }
-class AuthProvider::HasBitSetters {
+class AuthProvider::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int AuthProvider::kIdFieldNumber;
-const int AuthProvider::kIssuerFieldNumber;
-const int AuthProvider::kJwksUriFieldNumber;
-const int AuthProvider::kAudiencesFieldNumber;
-const int AuthProvider::kAuthorizationUrlFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 AuthProvider::AuthProvider()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1010,23 +760,23 @@ AuthProvider::AuthProvider(const AuthProvider& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
+  if (!from._internal_id().empty()) {
     id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.id_);
   }
   issuer_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.issuer().size() > 0) {
+  if (!from._internal_issuer().empty()) {
     issuer_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.issuer_);
   }
   jwks_uri_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.jwks_uri().size() > 0) {
+  if (!from._internal_jwks_uri().empty()) {
     jwks_uri_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.jwks_uri_);
   }
   audiences_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.audiences().size() > 0) {
+  if (!from._internal_audiences().empty()) {
     audiences_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.audiences_);
   }
   authorization_url_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.authorization_url().size() > 0) {
+  if (!from._internal_authorization_url().empty()) {
     authorization_url_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.authorization_url_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.AuthProvider)
@@ -1077,7 +827,6 @@ void AuthProvider::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* AuthProvider::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1088,35 +837,45 @@ const char* AuthProvider::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // string id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_id(), ptr, ctx, "google.api.AuthProvider.id");
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthProvider.id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string issuer = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_issuer(), ptr, ctx, "google.api.AuthProvider.issuer");
+          auto str = _internal_mutable_issuer();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthProvider.issuer"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string jwks_uri = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_jwks_uri(), ptr, ctx, "google.api.AuthProvider.jwks_uri");
+          auto str = _internal_mutable_jwks_uri();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthProvider.jwks_uri"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string audiences = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_audiences(), ptr, ctx, "google.api.AuthProvider.audiences");
+          auto str = _internal_mutable_audiences();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthProvider.audiences"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string authorization_url = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_authorization_url(), ptr, ctx, "google.api.AuthProvider.authorization_url");
+          auto str = _internal_mutable_authorization_url();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthProvider.authorization_url"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1139,178 +898,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool AuthProvider::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.AuthProvider)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string id = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthProvider.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // string issuer = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_issuer()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->issuer().data(), static_cast<int>(this->issuer().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthProvider.issuer"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string jwks_uri = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_jwks_uri()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->jwks_uri().data(), static_cast<int>(this->jwks_uri().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthProvider.jwks_uri"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string audiences = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_audiences()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->audiences().data(), static_cast<int>(this->audiences().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthProvider.audiences"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string authorization_url = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_authorization_url()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->authorization_url().data(), static_cast<int>(this->authorization_url().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthProvider.authorization_url"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.AuthProvider)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.AuthProvider)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void AuthProvider::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.AuthProvider)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthProvider.id");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
-
-  // string issuer = 2;
-  if (this->issuer().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->issuer().data(), static_cast<int>(this->issuer().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthProvider.issuer");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->issuer(), output);
-  }
-
-  // string jwks_uri = 3;
-  if (this->jwks_uri().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->jwks_uri().data(), static_cast<int>(this->jwks_uri().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthProvider.jwks_uri");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->jwks_uri(), output);
-  }
-
-  // string audiences = 4;
-  if (this->audiences().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->audiences().data(), static_cast<int>(this->audiences().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthProvider.audiences");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->audiences(), output);
-  }
-
-  // string authorization_url = 5;
-  if (this->authorization_url().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->authorization_url().data(), static_cast<int>(this->authorization_url().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthProvider.authorization_url");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->authorization_url(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.AuthProvider)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* AuthProvider::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* AuthProvider::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.AuthProvider)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1318,61 +908,56 @@ void AuthProvider::SerializeWithCachedSizes(
   // string id = 1;
   if (this->id().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthProvider.id");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
   // string issuer = 2;
   if (this->issuer().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->issuer().data(), static_cast<int>(this->issuer().length()),
+      this->_internal_issuer().data(), static_cast<int>(this->_internal_issuer().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthProvider.issuer");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->issuer(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_issuer(), target);
   }
 
   // string jwks_uri = 3;
   if (this->jwks_uri().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->jwks_uri().data(), static_cast<int>(this->jwks_uri().length()),
+      this->_internal_jwks_uri().data(), static_cast<int>(this->_internal_jwks_uri().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthProvider.jwks_uri");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        3, this->jwks_uri(), target);
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_jwks_uri(), target);
   }
 
   // string audiences = 4;
   if (this->audiences().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->audiences().data(), static_cast<int>(this->audiences().length()),
+      this->_internal_audiences().data(), static_cast<int>(this->_internal_audiences().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthProvider.audiences");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        4, this->audiences(), target);
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_audiences(), target);
   }
 
   // string authorization_url = 5;
   if (this->authorization_url().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->authorization_url().data(), static_cast<int>(this->authorization_url().length()),
+      this->_internal_authorization_url().data(), static_cast<int>(this->_internal_authorization_url().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthProvider.authorization_url");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        5, this->authorization_url(), target);
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_authorization_url(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.AuthProvider)
   return target;
@@ -1382,11 +967,6 @@ size_t AuthProvider::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.AuthProvider)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1395,37 +975,41 @@ size_t AuthProvider::ByteSizeLong() const {
   if (this->id().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->id());
+        this->_internal_id());
   }
 
   // string issuer = 2;
   if (this->issuer().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->issuer());
+        this->_internal_issuer());
   }
 
   // string jwks_uri = 3;
   if (this->jwks_uri().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->jwks_uri());
+        this->_internal_jwks_uri());
   }
 
   // string audiences = 4;
   if (this->audiences().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->audiences());
+        this->_internal_audiences());
   }
 
   // string authorization_url = 5;
   if (this->authorization_url().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->authorization_url());
+        this->_internal_authorization_url());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1493,10 +1077,6 @@ bool AuthProvider::IsInitialized() const {
   return true;
 }
 
-void AuthProvider::Swap(AuthProvider* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void AuthProvider::InternalSwap(AuthProvider* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1521,13 +1101,9 @@ void AuthProvider::InternalSwap(AuthProvider* other) {
 
 void OAuthRequirements::InitAsDefaultInstance() {
 }
-class OAuthRequirements::HasBitSetters {
+class OAuthRequirements::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int OAuthRequirements::kCanonicalScopesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 OAuthRequirements::OAuthRequirements()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1539,7 +1115,7 @@ OAuthRequirements::OAuthRequirements(const OAuthRequirements& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   canonical_scopes_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.canonical_scopes().size() > 0) {
+  if (!from._internal_canonical_scopes().empty()) {
     canonical_scopes_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.canonical_scopes_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.OAuthRequirements)
@@ -1578,7 +1154,6 @@ void OAuthRequirements::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* OAuthRequirements::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1589,7 +1164,9 @@ const char* OAuthRequirements::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
       // string canonical_scopes = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_canonical_scopes(), ptr, ctx, "google.api.OAuthRequirements.canonical_scopes");
+          auto str = _internal_mutable_canonical_scopes();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.OAuthRequirements.canonical_scopes"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1612,78 +1189,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool OAuthRequirements::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.OAuthRequirements)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string canonical_scopes = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_canonical_scopes()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->canonical_scopes().data(), static_cast<int>(this->canonical_scopes().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.OAuthRequirements.canonical_scopes"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.OAuthRequirements)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.OAuthRequirements)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void OAuthRequirements::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.OAuthRequirements)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string canonical_scopes = 1;
-  if (this->canonical_scopes().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->canonical_scopes().data(), static_cast<int>(this->canonical_scopes().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.OAuthRequirements.canonical_scopes");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->canonical_scopes(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.OAuthRequirements)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* OAuthRequirements::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* OAuthRequirements::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.OAuthRequirements)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1691,17 +1199,16 @@ void OAuthRequirements::SerializeWithCachedSizes(
   // string canonical_scopes = 1;
   if (this->canonical_scopes().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->canonical_scopes().data(), static_cast<int>(this->canonical_scopes().length()),
+      this->_internal_canonical_scopes().data(), static_cast<int>(this->_internal_canonical_scopes().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.OAuthRequirements.canonical_scopes");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->canonical_scopes(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_canonical_scopes(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.OAuthRequirements)
   return target;
@@ -1711,11 +1218,6 @@ size_t OAuthRequirements::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.OAuthRequirements)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1724,9 +1226,13 @@ size_t OAuthRequirements::ByteSizeLong() const {
   if (this->canonical_scopes().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->canonical_scopes());
+        this->_internal_canonical_scopes());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1778,10 +1284,6 @@ bool OAuthRequirements::IsInitialized() const {
   return true;
 }
 
-void OAuthRequirements::Swap(OAuthRequirements* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void OAuthRequirements::InternalSwap(OAuthRequirements* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1798,14 +1300,9 @@ void OAuthRequirements::InternalSwap(OAuthRequirements* other) {
 
 void AuthRequirement::InitAsDefaultInstance() {
 }
-class AuthRequirement::HasBitSetters {
+class AuthRequirement::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int AuthRequirement::kProviderIdFieldNumber;
-const int AuthRequirement::kAudiencesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 AuthRequirement::AuthRequirement()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1817,11 +1314,11 @@ AuthRequirement::AuthRequirement(const AuthRequirement& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   provider_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.provider_id().size() > 0) {
+  if (!from._internal_provider_id().empty()) {
     provider_id_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.provider_id_);
   }
   audiences_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.audiences().size() > 0) {
+  if (!from._internal_audiences().empty()) {
     audiences_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.audiences_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.AuthRequirement)
@@ -1863,7 +1360,6 @@ void AuthRequirement::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* AuthRequirement::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1874,14 +1370,18 @@ const char* AuthRequirement::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       // string provider_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_provider_id(), ptr, ctx, "google.api.AuthRequirement.provider_id");
+          auto str = _internal_mutable_provider_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthRequirement.provider_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string audiences = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_audiences(), ptr, ctx, "google.api.AuthRequirement.audiences");
+          auto str = _internal_mutable_audiences();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.AuthRequirement.audiences"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1904,103 +1404,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool AuthRequirement::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.AuthRequirement)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string provider_id = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_provider_id()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->provider_id().data(), static_cast<int>(this->provider_id().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthRequirement.provider_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // string audiences = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_audiences()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->audiences().data(), static_cast<int>(this->audiences().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.AuthRequirement.audiences"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.AuthRequirement)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.AuthRequirement)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void AuthRequirement::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.AuthRequirement)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string provider_id = 1;
-  if (this->provider_id().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->provider_id().data(), static_cast<int>(this->provider_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthRequirement.provider_id");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->provider_id(), output);
-  }
-
-  // string audiences = 2;
-  if (this->audiences().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->audiences().data(), static_cast<int>(this->audiences().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.AuthRequirement.audiences");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->audiences(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.AuthRequirement)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* AuthRequirement::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* AuthRequirement::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.AuthRequirement)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2008,28 +1414,26 @@ void AuthRequirement::SerializeWithCachedSizes(
   // string provider_id = 1;
   if (this->provider_id().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->provider_id().data(), static_cast<int>(this->provider_id().length()),
+      this->_internal_provider_id().data(), static_cast<int>(this->_internal_provider_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthRequirement.provider_id");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->provider_id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_provider_id(), target);
   }
 
   // string audiences = 2;
   if (this->audiences().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->audiences().data(), static_cast<int>(this->audiences().length()),
+      this->_internal_audiences().data(), static_cast<int>(this->_internal_audiences().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.AuthRequirement.audiences");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->audiences(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_audiences(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.AuthRequirement)
   return target;
@@ -2039,11 +1443,6 @@ size_t AuthRequirement::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.AuthRequirement)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2052,16 +1451,20 @@ size_t AuthRequirement::ByteSizeLong() const {
   if (this->provider_id().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->provider_id());
+        this->_internal_provider_id());
   }
 
   // string audiences = 2;
   if (this->audiences().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->audiences());
+        this->_internal_audiences());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -2117,10 +1520,6 @@ bool AuthRequirement::IsInitialized() const {
   return true;
 }
 
-void AuthRequirement::Swap(AuthRequirement* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void AuthRequirement::InternalSwap(AuthRequirement* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

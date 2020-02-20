@@ -14,6 +14,8 @@
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/rpc_service_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/server_callback_handlers.h>
+#include <grpcpp/impl/codegen/server_context.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
 namespace sagittarius {

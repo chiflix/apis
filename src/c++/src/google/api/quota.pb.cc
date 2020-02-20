@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -55,7 +54,7 @@ static void InitDefaultsscc_info_MetricRule_google_2fapi_2fquota_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_MetricRule_google_2fapi_2fquota_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_MetricRule_google_2fapi_2fquota_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_MetricRule_google_2fapi_2fquota_2eproto}, {
       &scc_info_MetricRule_MetricCostsEntry_DoNotUse_google_2fapi_2fquota_2eproto.base,}};
 
 static void InitDefaultsscc_info_MetricRule_MetricCostsEntry_DoNotUse_google_2fapi_2fquota_2eproto() {
@@ -69,7 +68,7 @@ static void InitDefaultsscc_info_MetricRule_MetricCostsEntry_DoNotUse_google_2fa
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MetricRule_MetricCostsEntry_DoNotUse_google_2fapi_2fquota_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_MetricRule_MetricCostsEntry_DoNotUse_google_2fapi_2fquota_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_MetricRule_MetricCostsEntry_DoNotUse_google_2fapi_2fquota_2eproto}, {}};
 
 static void InitDefaultsscc_info_Quota_google_2fapi_2fquota_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -83,7 +82,7 @@ static void InitDefaultsscc_info_Quota_google_2fapi_2fquota_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Quota_google_2fapi_2fquota_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsscc_info_Quota_google_2fapi_2fquota_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Quota_google_2fapi_2fquota_2eproto}, {
       &scc_info_QuotaLimit_google_2fapi_2fquota_2eproto.base,
       &scc_info_MetricRule_google_2fapi_2fquota_2eproto.base,}};
 
@@ -99,7 +98,7 @@ static void InitDefaultsscc_info_QuotaLimit_google_2fapi_2fquota_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_QuotaLimit_google_2fapi_2fquota_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_QuotaLimit_google_2fapi_2fquota_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_QuotaLimit_google_2fapi_2fquota_2eproto}, {
       &scc_info_QuotaLimit_ValuesEntry_DoNotUse_google_2fapi_2fquota_2eproto.base,}};
 
 static void InitDefaultsscc_info_QuotaLimit_ValuesEntry_DoNotUse_google_2fapi_2fquota_2eproto() {
@@ -113,7 +112,7 @@ static void InitDefaultsscc_info_QuotaLimit_ValuesEntry_DoNotUse_google_2fapi_2f
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_QuotaLimit_ValuesEntry_DoNotUse_google_2fapi_2fquota_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_QuotaLimit_ValuesEntry_DoNotUse_google_2fapi_2fquota_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_QuotaLimit_ValuesEntry_DoNotUse_google_2fapi_2fquota_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fquota_2eproto[5];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_google_2fapi_2fquota_2eproto = nullptr;
@@ -184,7 +183,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_QuotaLimit_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fquota_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fquota_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\026google/api/quota.proto\022\ngoogle.api\032\034go"
   "ogle/api/annotations.proto\"]\n\005Quota\022&\n\006l"
   "imits\030\003 \003(\0132\026.google.api.QuotaLimit\022,\n\014m"
@@ -232,14 +231,9 @@ namespace api {
 
 void Quota::InitAsDefaultInstance() {
 }
-class Quota::HasBitSetters {
+class Quota::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Quota::kLimitsFieldNumber;
-const int Quota::kMetricRulesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Quota::Quota()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -287,7 +281,6 @@ void Quota::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Quota::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -301,10 +294,10 @@ const char* Quota::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_limits(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_limits(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 26);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else goto handle_unusual;
         continue;
       // repeated .google.api.MetricRule metric_rules = 4;
@@ -313,10 +306,10 @@ const char* Quota::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_metric_rules(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_metric_rules(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 34);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -338,116 +331,32 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Quota::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Quota)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.api.QuotaLimit limits = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_limits()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // repeated .google.api.MetricRule metric_rules = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_metric_rules()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Quota)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Quota)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Quota::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Quota)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.api.QuotaLimit limits = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->limits_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3,
-      this->limits(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .google.api.MetricRule metric_rules = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->metric_rules_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4,
-      this->metric_rules(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Quota)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Quota::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Quota::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Quota)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.api.QuotaLimit limits = 3;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->limits_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_limits_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->limits(static_cast<int>(i)), target);
+      InternalWriteMessage(3, this->_internal_limits(i), target, stream);
   }
 
   // repeated .google.api.MetricRule metric_rules = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->metric_rules_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_metric_rules_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->metric_rules(static_cast<int>(i)), target);
+      InternalWriteMessage(4, this->_internal_metric_rules(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Quota)
   return target;
@@ -457,37 +366,28 @@ size_t Quota::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Quota)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.QuotaLimit limits = 3;
-  {
-    unsigned int count = static_cast<unsigned int>(this->limits_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->limits(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_limits_size();
+  for (const auto& msg : this->limits_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .google.api.MetricRule metric_rules = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->metric_rules_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->metric_rules(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_metric_rules_size();
+  for (const auto& msg : this->metric_rules_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -537,15 +437,11 @@ bool Quota::IsInitialized() const {
   return true;
 }
 
-void Quota::Swap(Quota* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Quota::InternalSwap(Quota* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&limits_)->InternalSwap(CastToBase(&other->limits_));
-  CastToBase(&metric_rules_)->InternalSwap(CastToBase(&other->metric_rules_));
+  limits_.InternalSwap(&other->limits_);
+  metric_rules_.InternalSwap(&other->metric_rules_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Quota::GetMetadata() const {
@@ -574,14 +470,9 @@ void MetricRule_MetricCostsEntry_DoNotUse::MergeFrom(
 
 void MetricRule::InitAsDefaultInstance() {
 }
-class MetricRule::HasBitSetters {
+class MetricRule::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MetricRule::kSelectorFieldNumber;
-const int MetricRule::kMetricCostsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MetricRule::MetricRule()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -594,7 +485,7 @@ MetricRule::MetricRule(const MetricRule& from)
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   metric_costs_.MergeFrom(from.metric_costs_);
   selector_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.selector().size() > 0) {
+  if (!from._internal_selector().empty()) {
     selector_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.selector_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.MetricRule)
@@ -634,7 +525,6 @@ void MetricRule::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* MetricRule::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -645,7 +535,9 @@ const char* MetricRule::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
       // string selector = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_selector(), ptr, ctx, "google.api.MetricRule.selector");
+          auto str = _internal_mutable_selector();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.MetricRule.selector"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -658,7 +550,7 @@ const char* MetricRule::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
             ptr = ctx->ParseMessage(&metric_costs_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -680,143 +572,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MetricRule::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.MetricRule)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string selector = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_selector()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->selector().data(), static_cast<int>(this->selector().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricRule.selector"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // map<string, int64> metric_costs = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          MetricRule_MetricCostsEntry_DoNotUse::Parser< ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-              MetricRule_MetricCostsEntry_DoNotUse,
-              std::string, ::PROTOBUF_NAMESPACE_ID::int64,
-              ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-              ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64,
-              0 >,
-            ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 > > parser(&metric_costs_);
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.MetricRule.MetricCostsEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.MetricRule)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.MetricRule)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void MetricRule::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.MetricRule)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string selector = 1;
-  if (this->selector().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->selector().data(), static_cast<int>(this->selector().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.MetricRule.selector");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->selector(), output);
-  }
-
-  // map<string, int64> metric_costs = 2;
-  if (!this->metric_costs().empty()) {
-    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-          "google.api.MetricRule.MetricCostsEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->metric_costs().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metric_costs().size()]);
-      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::size_type size_type;
-      size_type n = 0;
-      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->metric_costs().begin();
-          it != this->metric_costs().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      for (size_type i = 0; i < n; i++) {
-        MetricRule_MetricCostsEntry_DoNotUse::MapEntryWrapper entry(nullptr, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second);
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(2, entry, output);
-        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
-      }
-    } else {
-      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->metric_costs().begin();
-          it != this->metric_costs().end(); ++it) {
-        MetricRule_MetricCostsEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(2, entry, output);
-        Utf8Check::Check(&(*it));
-      }
-    }
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.MetricRule)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* MetricRule::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* MetricRule::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.MetricRule)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -824,16 +582,15 @@ void MetricRule::SerializeWithCachedSizes(
   // string selector = 1;
   if (this->selector().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->selector().data(), static_cast<int>(this->selector().length()),
+      this->_internal_selector().data(), static_cast<int>(this->_internal_selector().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.MetricRule.selector");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->selector(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_selector(), target);
   }
 
   // map<string, int64> metric_costs = 2;
-  if (!this->metric_costs().empty()) {
+  if (!this->_internal_metric_costs().empty()) {
     typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
@@ -847,37 +604,35 @@ void MetricRule::SerializeWithCachedSizes(
       }
     };
 
-    if (false &&
-        this->metric_costs().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_metric_costs().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metric_costs().size()]);
+          new SortItem[this->_internal_metric_costs().size()]);
       typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::size_type size_type;
       size_type n = 0;
       for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->metric_costs().begin();
-          it != this->metric_costs().end(); ++it, ++n) {
+          it = this->_internal_metric_costs().begin();
+          it != this->_internal_metric_costs().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
       for (size_type i = 0; i < n; i++) {
-        MetricRule_MetricCostsEntry_DoNotUse::MapEntryWrapper entry(nullptr, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second);
-        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(2, entry, target);
+        target = MetricRule_MetricCostsEntry_DoNotUse::Funcs::InternalSerialize(2, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
         Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
       for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->metric_costs().begin();
-          it != this->metric_costs().end(); ++it) {
-        MetricRule_MetricCostsEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(2, entry, target);
+          it = this->_internal_metric_costs().begin();
+          it != this->_internal_metric_costs().end(); ++it) {
+        target = MetricRule_MetricCostsEntry_DoNotUse::Funcs::InternalSerialize(2, it->first, it->second, target, stream);
         Utf8Check::Check(&(*it));
       }
     }
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.MetricRule)
   return target;
@@ -887,33 +642,30 @@ size_t MetricRule::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.MetricRule)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // map<string, int64> metric_costs = 2;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->metric_costs_size());
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_metric_costs_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-      it = this->metric_costs().begin();
-      it != this->metric_costs().end(); ++it) {
-    MetricRule_MetricCostsEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        MessageSizeNoVirtual(entry);
+      it = this->_internal_metric_costs().begin();
+      it != this->_internal_metric_costs().end(); ++it) {
+    total_size += MetricRule_MetricCostsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // string selector = 1;
   if (this->selector().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->selector());
+        this->_internal_selector());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -966,10 +718,6 @@ bool MetricRule::IsInitialized() const {
   return true;
 }
 
-void MetricRule::Swap(MetricRule* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void MetricRule::InternalSwap(MetricRule* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1004,22 +752,9 @@ void QuotaLimit_ValuesEntry_DoNotUse::MergeFrom(
 
 void QuotaLimit::InitAsDefaultInstance() {
 }
-class QuotaLimit::HasBitSetters {
+class QuotaLimit::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int QuotaLimit::kNameFieldNumber;
-const int QuotaLimit::kDescriptionFieldNumber;
-const int QuotaLimit::kDefaultLimitFieldNumber;
-const int QuotaLimit::kMaxLimitFieldNumber;
-const int QuotaLimit::kFreeTierFieldNumber;
-const int QuotaLimit::kDurationFieldNumber;
-const int QuotaLimit::kMetricFieldNumber;
-const int QuotaLimit::kUnitFieldNumber;
-const int QuotaLimit::kValuesFieldNumber;
-const int QuotaLimit::kDisplayNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 QuotaLimit::QuotaLimit()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1032,27 +767,27 @@ QuotaLimit::QuotaLimit(const QuotaLimit& from)
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   values_.MergeFrom(from.values_);
   description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.description().size() > 0) {
+  if (!from._internal_description().empty()) {
     description_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.description_);
   }
   duration_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.duration().size() > 0) {
+  if (!from._internal_duration().empty()) {
     duration_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.duration_);
   }
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   metric_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.metric().size() > 0) {
+  if (!from._internal_metric().empty()) {
     metric_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.metric_);
   }
   unit_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.unit().size() > 0) {
+  if (!from._internal_unit().empty()) {
     unit_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.unit_);
   }
   display_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.display_name().size() > 0) {
+  if (!from._internal_display_name().empty()) {
     display_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.display_name_);
   }
   ::memcpy(&default_limit_, &from.default_limit_,
@@ -1116,7 +851,6 @@ void QuotaLimit::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* QuotaLimit::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1127,7 +861,9 @@ const char* QuotaLimit::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
       // string description = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_description(), ptr, ctx, "google.api.QuotaLimit.description");
+          auto str = _internal_mutable_description();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.QuotaLimit.description"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1148,14 +884,18 @@ const char* QuotaLimit::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
       // string duration = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_duration(), ptr, ctx, "google.api.QuotaLimit.duration");
+          auto str = _internal_mutable_duration();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.QuotaLimit.duration"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string name = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.api.QuotaLimit.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.QuotaLimit.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1169,14 +909,18 @@ const char* QuotaLimit::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
       // string metric = 8;
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_metric(), ptr, ctx, "google.api.QuotaLimit.metric");
+          auto str = _internal_mutable_metric();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.QuotaLimit.metric"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string unit = 9;
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_unit(), ptr, ctx, "google.api.QuotaLimit.unit");
+          auto str = _internal_mutable_unit();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.QuotaLimit.unit"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1189,13 +933,15 @@ const char* QuotaLimit::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
             ptr = ctx->ParseMessage(&values_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 82);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
         } else goto handle_unusual;
         continue;
       // string display_name = 12;
       case 12:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 98)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_display_name(), ptr, ctx, "google.api.QuotaLimit.display_name");
+          auto str = _internal_mutable_display_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.QuotaLimit.display_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1218,322 +964,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool QuotaLimit::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.QuotaLimit)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string description = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_description()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->description().data(), static_cast<int>(this->description().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.description"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // int64 default_limit = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int64, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64>(
-                 input, &default_limit_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int64 max_limit = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int64, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64>(
-                 input, &max_limit_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string duration = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_duration()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->duration().data(), static_cast<int>(this->duration().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.duration"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string name = 6;
-      case 6: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (50 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int64 free_tier = 7;
-      case 7: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (56 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int64, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64>(
-                 input, &free_tier_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string metric = 8;
-      case 8: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (66 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_metric()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->metric().data(), static_cast<int>(this->metric().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.metric"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string unit = 9;
-      case 9: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (74 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_unit()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->unit().data(), static_cast<int>(this->unit().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.unit"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // map<string, int64> values = 10;
-      case 10: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (82 & 0xFF)) {
-          QuotaLimit_ValuesEntry_DoNotUse::Parser< ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-              QuotaLimit_ValuesEntry_DoNotUse,
-              std::string, ::PROTOBUF_NAMESPACE_ID::int64,
-              ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-              ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64,
-              0 >,
-            ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 > > parser(&values_);
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.ValuesEntry.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string display_name = 12;
-      case 12: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (98 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_display_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->display_name().data(), static_cast<int>(this->display_name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.QuotaLimit.display_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.QuotaLimit)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.QuotaLimit)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void QuotaLimit::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.QuotaLimit)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string description = 2;
-  if (this->description().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->description().data(), static_cast<int>(this->description().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.QuotaLimit.description");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->description(), output);
-  }
-
-  // int64 default_limit = 3;
-  if (this->default_limit() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64(3, this->default_limit(), output);
-  }
-
-  // int64 max_limit = 4;
-  if (this->max_limit() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64(4, this->max_limit(), output);
-  }
-
-  // string duration = 5;
-  if (this->duration().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->duration().data(), static_cast<int>(this->duration().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.QuotaLimit.duration");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->duration(), output);
-  }
-
-  // string name = 6;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.QuotaLimit.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->name(), output);
-  }
-
-  // int64 free_tier = 7;
-  if (this->free_tier() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64(7, this->free_tier(), output);
-  }
-
-  // string metric = 8;
-  if (this->metric().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->metric().data(), static_cast<int>(this->metric().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.QuotaLimit.metric");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->metric(), output);
-  }
-
-  // string unit = 9;
-  if (this->unit().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->unit().data(), static_cast<int>(this->unit().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.QuotaLimit.unit");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->unit(), output);
-  }
-
-  // map<string, int64> values = 10;
-  if (!this->values().empty()) {
-    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-          "google.api.QuotaLimit.ValuesEntry.key");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->values().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->values().size()]);
-      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::size_type size_type;
-      size_type n = 0;
-      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->values().begin();
-          it != this->values().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      for (size_type i = 0; i < n; i++) {
-        QuotaLimit_ValuesEntry_DoNotUse::MapEntryWrapper entry(nullptr, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second);
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(10, entry, output);
-        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
-      }
-    } else {
-      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->values().begin();
-          it != this->values().end(); ++it) {
-        QuotaLimit_ValuesEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(10, entry, output);
-        Utf8Check::Check(&(*it));
-      }
-    }
-  }
-
-  // string display_name = 12;
-  if (this->display_name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->display_name().data(), static_cast<int>(this->display_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.QuotaLimit.display_name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      12, this->display_name(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.QuotaLimit)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* QuotaLimit::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* QuotaLimit::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.QuotaLimit)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1541,75 +974,73 @@ void QuotaLimit::SerializeWithCachedSizes(
   // string description = 2;
   if (this->description().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->description().data(), static_cast<int>(this->description().length()),
+      this->_internal_description().data(), static_cast<int>(this->_internal_description().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.QuotaLimit.description");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->description(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_description(), target);
   }
 
   // int64 default_limit = 3;
   if (this->default_limit() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->default_limit(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_default_limit(), target);
   }
 
   // int64 max_limit = 4;
   if (this->max_limit() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->max_limit(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_max_limit(), target);
   }
 
   // string duration = 5;
   if (this->duration().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->duration().data(), static_cast<int>(this->duration().length()),
+      this->_internal_duration().data(), static_cast<int>(this->_internal_duration().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.QuotaLimit.duration");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        5, this->duration(), target);
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_duration(), target);
   }
 
   // string name = 6;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.QuotaLimit.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        6, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_name(), target);
   }
 
   // int64 free_tier = 7;
   if (this->free_tier() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(7, this->free_tier(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(7, this->_internal_free_tier(), target);
   }
 
   // string metric = 8;
   if (this->metric().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->metric().data(), static_cast<int>(this->metric().length()),
+      this->_internal_metric().data(), static_cast<int>(this->_internal_metric().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.QuotaLimit.metric");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        8, this->metric(), target);
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_metric(), target);
   }
 
   // string unit = 9;
   if (this->unit().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->unit().data(), static_cast<int>(this->unit().length()),
+      this->_internal_unit().data(), static_cast<int>(this->_internal_unit().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.QuotaLimit.unit");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        9, this->unit(), target);
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_unit(), target);
   }
 
   // map<string, int64> values = 10;
-  if (!this->values().empty()) {
+  if (!this->_internal_values().empty()) {
     typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_pointer
         ConstPtr;
     typedef ConstPtr SortItem;
@@ -1623,29 +1054,27 @@ void QuotaLimit::SerializeWithCachedSizes(
       }
     };
 
-    if (false &&
-        this->values().size() > 1) {
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_values().size() > 1) {
       ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->values().size()]);
+          new SortItem[this->_internal_values().size()]);
       typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::size_type size_type;
       size_type n = 0;
       for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->values().begin();
-          it != this->values().end(); ++it, ++n) {
+          it = this->_internal_values().begin();
+          it != this->_internal_values().end(); ++it, ++n) {
         items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
       for (size_type i = 0; i < n; i++) {
-        QuotaLimit_ValuesEntry_DoNotUse::MapEntryWrapper entry(nullptr, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second);
-        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(10, entry, target);
+        target = QuotaLimit_ValuesEntry_DoNotUse::Funcs::InternalSerialize(10, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
         Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
       }
     } else {
       for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-          it = this->values().begin();
-          it != this->values().end(); ++it) {
-        QuotaLimit_ValuesEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(10, entry, target);
+          it = this->_internal_values().begin();
+          it != this->_internal_values().end(); ++it) {
+        target = QuotaLimit_ValuesEntry_DoNotUse::Funcs::InternalSerialize(10, it->first, it->second, target, stream);
         Utf8Check::Check(&(*it));
       }
     }
@@ -1654,17 +1083,16 @@ void QuotaLimit::SerializeWithCachedSizes(
   // string display_name = 12;
   if (this->display_name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->display_name().data(), static_cast<int>(this->display_name().length()),
+      this->_internal_display_name().data(), static_cast<int>(this->_internal_display_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.QuotaLimit.display_name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        12, this->display_name(), target);
+    target = stream->WriteStringMaybeAliased(
+        12, this->_internal_display_name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.QuotaLimit)
   return target;
@@ -1674,89 +1102,86 @@ size_t QuotaLimit::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.QuotaLimit)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // map<string, int64> values = 10;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->values_size());
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_values_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::PROTOBUF_NAMESPACE_ID::int64 >::const_iterator
-      it = this->values().begin();
-      it != this->values().end(); ++it) {
-    QuotaLimit_ValuesEntry_DoNotUse::MapEntryWrapper entry(nullptr, it->first, it->second);
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        MessageSizeNoVirtual(entry);
+      it = this->_internal_values().begin();
+      it != this->_internal_values().end(); ++it) {
+    total_size += QuotaLimit_ValuesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
   // string description = 2;
   if (this->description().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->description());
+        this->_internal_description());
   }
 
   // string duration = 5;
   if (this->duration().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->duration());
+        this->_internal_duration());
   }
 
   // string name = 6;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
   // string metric = 8;
   if (this->metric().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->metric());
+        this->_internal_metric());
   }
 
   // string unit = 9;
   if (this->unit().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->unit());
+        this->_internal_unit());
   }
 
   // string display_name = 12;
   if (this->display_name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->display_name());
+        this->_internal_display_name());
   }
 
   // int64 default_limit = 3;
   if (this->default_limit() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
-        this->default_limit());
+        this->_internal_default_limit());
   }
 
   // int64 max_limit = 4;
   if (this->max_limit() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
-        this->max_limit());
+        this->_internal_max_limit());
   }
 
   // int64 free_tier = 7;
   if (this->free_tier() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
-        this->free_tier());
+        this->_internal_free_tier());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1810,13 +1235,13 @@ void QuotaLimit::MergeFrom(const QuotaLimit& from) {
     display_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.display_name_);
   }
   if (from.default_limit() != 0) {
-    set_default_limit(from.default_limit());
+    _internal_set_default_limit(from._internal_default_limit());
   }
   if (from.max_limit() != 0) {
-    set_max_limit(from.max_limit());
+    _internal_set_max_limit(from._internal_max_limit());
   }
   if (from.free_tier() != 0) {
-    set_free_tier(from.free_tier());
+    _internal_set_free_tier(from._internal_free_tier());
   }
 }
 
@@ -1838,10 +1263,6 @@ bool QuotaLimit::IsInitialized() const {
   return true;
 }
 
-void QuotaLimit::Swap(QuotaLimit* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void QuotaLimit::InternalSwap(QuotaLimit* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

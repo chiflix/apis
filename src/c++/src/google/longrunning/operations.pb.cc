@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -60,7 +59,7 @@ static void InitDefaultsscc_info_CancelOperationRequest_google_2flongrunning_2fo
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CancelOperationRequest_google_2flongrunning_2foperations_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_CancelOperationRequest_google_2flongrunning_2foperations_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CancelOperationRequest_google_2flongrunning_2foperations_2eproto}, {}};
 
 static void InitDefaultsscc_info_DeleteOperationRequest_google_2flongrunning_2foperations_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -74,7 +73,7 @@ static void InitDefaultsscc_info_DeleteOperationRequest_google_2flongrunning_2fo
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteOperationRequest_google_2flongrunning_2foperations_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_DeleteOperationRequest_google_2flongrunning_2foperations_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteOperationRequest_google_2flongrunning_2foperations_2eproto}, {}};
 
 static void InitDefaultsscc_info_GetOperationRequest_google_2flongrunning_2foperations_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -88,7 +87,7 @@ static void InitDefaultsscc_info_GetOperationRequest_google_2flongrunning_2foper
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetOperationRequest_google_2flongrunning_2foperations_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_GetOperationRequest_google_2flongrunning_2foperations_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_GetOperationRequest_google_2flongrunning_2foperations_2eproto}, {}};
 
 static void InitDefaultsscc_info_ListOperationsRequest_google_2flongrunning_2foperations_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -102,7 +101,7 @@ static void InitDefaultsscc_info_ListOperationsRequest_google_2flongrunning_2fop
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ListOperationsRequest_google_2flongrunning_2foperations_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_ListOperationsRequest_google_2flongrunning_2foperations_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ListOperationsRequest_google_2flongrunning_2foperations_2eproto}, {}};
 
 static void InitDefaultsscc_info_ListOperationsResponse_google_2flongrunning_2foperations_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -116,7 +115,7 @@ static void InitDefaultsscc_info_ListOperationsResponse_google_2flongrunning_2fo
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ListOperationsResponse_google_2flongrunning_2foperations_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_ListOperationsResponse_google_2flongrunning_2foperations_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ListOperationsResponse_google_2flongrunning_2foperations_2eproto}, {
       &scc_info_Operation_google_2flongrunning_2foperations_2eproto.base,}};
 
 static void InitDefaultsscc_info_Operation_google_2flongrunning_2foperations_2eproto() {
@@ -131,7 +130,7 @@ static void InitDefaultsscc_info_Operation_google_2flongrunning_2foperations_2ep
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Operation_google_2flongrunning_2foperations_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsscc_info_Operation_google_2flongrunning_2foperations_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Operation_google_2flongrunning_2foperations_2eproto}, {
       &scc_info_Any_google_2fprotobuf_2fany_2eproto.base,
       &scc_info_Status_google_2frpc_2fstatus_2eproto.base,}};
 
@@ -204,7 +203,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::longrunning::_DeleteOperationRequest_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2flongrunning_2foperations_2eproto[] =
+const char descriptor_table_protodef_google_2flongrunning_2foperations_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n#google/longrunning/operations.proto\022\022g"
   "oogle.longrunning\032\034google/api/annotation"
   "s.proto\032\031google/protobuf/any.proto\032\033goog"
@@ -278,7 +277,7 @@ void Operation::InitAsDefaultInstance() {
   ::google::longrunning::_Operation_default_instance_.response_ = const_cast< PROTOBUF_NAMESPACE_ID::Any*>(
       PROTOBUF_NAMESPACE_ID::Any::internal_default_instance());
 }
-class Operation::HasBitSetters {
+class Operation::_Internal {
  public:
   static const PROTOBUF_NAMESPACE_ID::Any& metadata(const Operation* msg);
   static const ::google::rpc::Status& error(const Operation* msg);
@@ -286,15 +285,15 @@ class Operation::HasBitSetters {
 };
 
 const PROTOBUF_NAMESPACE_ID::Any&
-Operation::HasBitSetters::metadata(const Operation* msg) {
+Operation::_Internal::metadata(const Operation* msg) {
   return *msg->metadata_;
 }
 const ::google::rpc::Status&
-Operation::HasBitSetters::error(const Operation* msg) {
+Operation::_Internal::error(const Operation* msg) {
   return *msg->result_.error_;
 }
 const PROTOBUF_NAMESPACE_ID::Any&
-Operation::HasBitSetters::response(const Operation* msg) {
+Operation::_Internal::response(const Operation* msg) {
   return *msg->result_.response_;
 }
 void Operation::clear_metadata() {
@@ -318,7 +317,7 @@ void Operation::set_allocated_error(::google::rpc::Status* error) {
   // @@protoc_insertion_point(field_set_allocated:google.longrunning.Operation.error)
 }
 void Operation::clear_error() {
-  if (has_error()) {
+  if (_internal_has_error()) {
     delete result_.error_;
     clear_has_result();
   }
@@ -338,19 +337,11 @@ void Operation::set_allocated_response(PROTOBUF_NAMESPACE_ID::Any* response) {
   // @@protoc_insertion_point(field_set_allocated:google.longrunning.Operation.response)
 }
 void Operation::clear_response() {
-  if (has_response()) {
+  if (_internal_has_response()) {
     delete result_.response_;
     clear_has_result();
   }
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Operation::kNameFieldNumber;
-const int Operation::kMetadataFieldNumber;
-const int Operation::kDoneFieldNumber;
-const int Operation::kErrorFieldNumber;
-const int Operation::kResponseFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 Operation::Operation()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -361,10 +352,10 @@ Operation::Operation(const Operation& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  if (from.has_metadata()) {
+  if (from._internal_has_metadata()) {
     metadata_ = new PROTOBUF_NAMESPACE_ID::Any(*from.metadata_);
   } else {
     metadata_ = nullptr;
@@ -373,11 +364,11 @@ Operation::Operation(const Operation& from)
   clear_has_result();
   switch (from.result_case()) {
     case kError: {
-      mutable_error()->::google::rpc::Status::MergeFrom(from.error());
+      _internal_mutable_error()->::google::rpc::Status::MergeFrom(from._internal_error());
       break;
     }
     case kResponse: {
-      mutable_response()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from.response());
+      _internal_mutable_response()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from._internal_response());
       break;
     }
     case RESULT_NOT_SET: {
@@ -453,7 +444,6 @@ void Operation::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Operation::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -464,14 +454,16 @@ const char* Operation::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.longrunning.Operation.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.Operation.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // .google.protobuf.Any metadata = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ctx->ParseMessage(mutable_metadata(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_metadata(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -485,14 +477,14 @@ const char* Operation::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       // .google.rpc.Status error = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          ptr = ctx->ParseMessage(mutable_error(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_error(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // .google.protobuf.Any response = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          ptr = ctx->ParseMessage(mutable_response(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_response(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -515,147 +507,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Operation::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.longrunning.Operation)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.Operation.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // .google.protobuf.Any metadata = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-               input, mutable_metadata()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bool done = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &done_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.rpc.Status error = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-               input, mutable_error()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.protobuf.Any response = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-               input, mutable_response()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.longrunning.Operation)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.longrunning.Operation)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Operation::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.longrunning.Operation)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.Operation.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // .google.protobuf.Any metadata = 2;
-  if (this->has_metadata()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, HasBitSetters::metadata(this), output);
-  }
-
-  // bool done = 3;
-  if (this->done() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBool(3, this->done(), output);
-  }
-
-  // .google.rpc.Status error = 4;
-  if (has_error()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, HasBitSetters::error(this), output);
-  }
-
-  // .google.protobuf.Any response = 5;
-  if (has_response()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, HasBitSetters::response(this), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.longrunning.Operation)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Operation::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Operation::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.longrunning.Operation)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -663,43 +517,46 @@ void Operation::SerializeWithCachedSizes(
   // string name = 1;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.Operation.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // .google.protobuf.Any metadata = 2;
   if (this->has_metadata()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, HasBitSetters::metadata(this), target);
+      InternalWriteMessage(
+        2, _Internal::metadata(this), target, stream);
   }
 
   // bool done = 3;
   if (this->done() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->done(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_done(), target);
   }
 
   // .google.rpc.Status error = 4;
-  if (has_error()) {
+  if (_internal_has_error()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, HasBitSetters::error(this), target);
+      InternalWriteMessage(
+        4, _Internal::error(this), target, stream);
   }
 
   // .google.protobuf.Any response = 5;
-  if (has_response()) {
+  if (_internal_has_response()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        5, HasBitSetters::response(this), target);
+      InternalWriteMessage(
+        5, _Internal::response(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.longrunning.Operation)
   return target;
@@ -709,11 +566,6 @@ size_t Operation::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.longrunning.Operation)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -722,7 +574,7 @@ size_t Operation::ByteSizeLong() const {
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
   // .google.protobuf.Any metadata = 2;
@@ -756,6 +608,10 @@ size_t Operation::ByteSizeLong() const {
       break;
     }
   }
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -788,18 +644,18 @@ void Operation::MergeFrom(const Operation& from) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   if (from.has_metadata()) {
-    mutable_metadata()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from.metadata());
+    _internal_mutable_metadata()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from._internal_metadata());
   }
   if (from.done() != 0) {
-    set_done(from.done());
+    _internal_set_done(from._internal_done());
   }
   switch (from.result_case()) {
     case kError: {
-      mutable_error()->::google::rpc::Status::MergeFrom(from.error());
+      _internal_mutable_error()->::google::rpc::Status::MergeFrom(from._internal_error());
       break;
     }
     case kResponse: {
-      mutable_response()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from.response());
+      _internal_mutable_response()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from._internal_response());
       break;
     }
     case RESULT_NOT_SET: {
@@ -826,10 +682,6 @@ bool Operation::IsInitialized() const {
   return true;
 }
 
-void Operation::Swap(Operation* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Operation::InternalSwap(Operation* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -850,13 +702,9 @@ void Operation::InternalSwap(Operation* other) {
 
 void GetOperationRequest::InitAsDefaultInstance() {
 }
-class GetOperationRequest::HasBitSetters {
+class GetOperationRequest::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetOperationRequest::kNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 GetOperationRequest::GetOperationRequest()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -868,7 +716,7 @@ GetOperationRequest::GetOperationRequest(const GetOperationRequest& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   // @@protoc_insertion_point(copy_constructor:google.longrunning.GetOperationRequest)
@@ -907,7 +755,6 @@ void GetOperationRequest::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* GetOperationRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -918,7 +765,9 @@ const char* GetOperationRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAME
       // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.longrunning.GetOperationRequest.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.GetOperationRequest.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -941,78 +790,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool GetOperationRequest::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.longrunning.GetOperationRequest)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.GetOperationRequest.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.longrunning.GetOperationRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.longrunning.GetOperationRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void GetOperationRequest::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.longrunning.GetOperationRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.GetOperationRequest.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.longrunning.GetOperationRequest)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* GetOperationRequest::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* GetOperationRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.longrunning.GetOperationRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1020,17 +800,16 @@ void GetOperationRequest::SerializeWithCachedSizes(
   // string name = 1;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.GetOperationRequest.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.longrunning.GetOperationRequest)
   return target;
@@ -1040,11 +819,6 @@ size_t GetOperationRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.longrunning.GetOperationRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1053,9 +827,13 @@ size_t GetOperationRequest::ByteSizeLong() const {
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1107,10 +885,6 @@ bool GetOperationRequest::IsInitialized() const {
   return true;
 }
 
-void GetOperationRequest::Swap(GetOperationRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void GetOperationRequest::InternalSwap(GetOperationRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1127,16 +901,9 @@ void GetOperationRequest::InternalSwap(GetOperationRequest* other) {
 
 void ListOperationsRequest::InitAsDefaultInstance() {
 }
-class ListOperationsRequest::HasBitSetters {
+class ListOperationsRequest::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ListOperationsRequest::kNameFieldNumber;
-const int ListOperationsRequest::kFilterFieldNumber;
-const int ListOperationsRequest::kPageSizeFieldNumber;
-const int ListOperationsRequest::kPageTokenFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ListOperationsRequest::ListOperationsRequest()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1148,15 +915,15 @@ ListOperationsRequest::ListOperationsRequest(const ListOperationsRequest& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   filter_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.filter().size() > 0) {
+  if (!from._internal_filter().empty()) {
     filter_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.filter_);
   }
   page_token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.page_token().size() > 0) {
+  if (!from._internal_page_token().empty()) {
     page_token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.page_token_);
   }
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   page_size_ = from.page_size_;
@@ -1204,7 +971,6 @@ void ListOperationsRequest::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* ListOperationsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1215,7 +981,9 @@ const char* ListOperationsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NA
       // string filter = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_filter(), ptr, ctx, "google.longrunning.ListOperationsRequest.filter");
+          auto str = _internal_mutable_filter();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.ListOperationsRequest.filter"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1229,14 +997,18 @@ const char* ListOperationsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NA
       // string page_token = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_page_token(), ptr, ctx, "google.longrunning.ListOperationsRequest.page_token");
+          auto str = _internal_mutable_page_token();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.ListOperationsRequest.page_token"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string name = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.longrunning.ListOperationsRequest.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.ListOperationsRequest.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1259,146 +1031,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool ListOperationsRequest::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.longrunning.ListOperationsRequest)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string filter = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_filter()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->filter().data(), static_cast<int>(this->filter().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.ListOperationsRequest.filter"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // int32 page_size = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &page_size_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string page_token = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_page_token()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->page_token().data(), static_cast<int>(this->page_token().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.ListOperationsRequest.page_token"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string name = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.ListOperationsRequest.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.longrunning.ListOperationsRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.longrunning.ListOperationsRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void ListOperationsRequest::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.longrunning.ListOperationsRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string filter = 1;
-  if (this->filter().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->filter().data(), static_cast<int>(this->filter().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.ListOperationsRequest.filter");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->filter(), output);
-  }
-
-  // int32 page_size = 2;
-  if (this->page_size() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->page_size(), output);
-  }
-
-  // string page_token = 3;
-  if (this->page_token().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->page_token().data(), static_cast<int>(this->page_token().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.ListOperationsRequest.page_token");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->page_token(), output);
-  }
-
-  // string name = 4;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.ListOperationsRequest.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->name(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.longrunning.ListOperationsRequest)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* ListOperationsRequest::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* ListOperationsRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.longrunning.ListOperationsRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1406,44 +1041,42 @@ void ListOperationsRequest::SerializeWithCachedSizes(
   // string filter = 1;
   if (this->filter().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->filter().data(), static_cast<int>(this->filter().length()),
+      this->_internal_filter().data(), static_cast<int>(this->_internal_filter().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.ListOperationsRequest.filter");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->filter(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_filter(), target);
   }
 
   // int32 page_size = 2;
   if (this->page_size() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->page_size(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_page_size(), target);
   }
 
   // string page_token = 3;
   if (this->page_token().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->page_token().data(), static_cast<int>(this->page_token().length()),
+      this->_internal_page_token().data(), static_cast<int>(this->_internal_page_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.ListOperationsRequest.page_token");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        3, this->page_token(), target);
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_page_token(), target);
   }
 
   // string name = 4;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.ListOperationsRequest.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        4, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.longrunning.ListOperationsRequest)
   return target;
@@ -1453,11 +1086,6 @@ size_t ListOperationsRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.longrunning.ListOperationsRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1466,30 +1094,34 @@ size_t ListOperationsRequest::ByteSizeLong() const {
   if (this->filter().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->filter());
+        this->_internal_filter());
   }
 
   // string page_token = 3;
   if (this->page_token().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->page_token());
+        this->_internal_page_token());
   }
 
   // string name = 4;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
   // int32 page_size = 2;
   if (this->page_size() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->page_size());
+        this->_internal_page_size());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1530,7 +1162,7 @@ void ListOperationsRequest::MergeFrom(const ListOperationsRequest& from) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   if (from.page_size() != 0) {
-    set_page_size(from.page_size());
+    _internal_set_page_size(from._internal_page_size());
   }
 }
 
@@ -1552,10 +1184,6 @@ bool ListOperationsRequest::IsInitialized() const {
   return true;
 }
 
-void ListOperationsRequest::Swap(ListOperationsRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void ListOperationsRequest::InternalSwap(ListOperationsRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1577,14 +1205,9 @@ void ListOperationsRequest::InternalSwap(ListOperationsRequest* other) {
 
 void ListOperationsResponse::InitAsDefaultInstance() {
 }
-class ListOperationsResponse::HasBitSetters {
+class ListOperationsResponse::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ListOperationsResponse::kOperationsFieldNumber;
-const int ListOperationsResponse::kNextPageTokenFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ListOperationsResponse::ListOperationsResponse()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1597,7 +1220,7 @@ ListOperationsResponse::ListOperationsResponse(const ListOperationsResponse& fro
       operations_(from.operations_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   next_page_token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.next_page_token().size() > 0) {
+  if (!from._internal_next_page_token().empty()) {
     next_page_token_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.next_page_token_);
   }
   // @@protoc_insertion_point(copy_constructor:google.longrunning.ListOperationsResponse)
@@ -1637,7 +1260,6 @@ void ListOperationsResponse::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* ListOperationsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1651,16 +1273,18 @@ const char* ListOperationsResponse::_InternalParse(const char* ptr, ::PROTOBUF_N
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_operations(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_operations(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 10);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
       // string next_page_token = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_next_page_token(), ptr, ctx, "google.longrunning.ListOperationsResponse.next_page_token");
+          auto str = _internal_mutable_next_page_token();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.ListOperationsResponse.next_page_token"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1683,124 +1307,34 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool ListOperationsResponse::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.longrunning.ListOperationsResponse)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.longrunning.Operation operations = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_operations()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // string next_page_token = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_next_page_token()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->next_page_token().data(), static_cast<int>(this->next_page_token().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.ListOperationsResponse.next_page_token"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.longrunning.ListOperationsResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.longrunning.ListOperationsResponse)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void ListOperationsResponse::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.longrunning.ListOperationsResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.longrunning.Operation operations = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->operations_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->operations(static_cast<int>(i)),
-      output);
-  }
-
-  // string next_page_token = 2;
-  if (this->next_page_token().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->next_page_token().data(), static_cast<int>(this->next_page_token().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.ListOperationsResponse.next_page_token");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->next_page_token(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.longrunning.ListOperationsResponse)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* ListOperationsResponse::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* ListOperationsResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.longrunning.ListOperationsResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.longrunning.Operation operations = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->operations_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_operations_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->operations(static_cast<int>(i)), target);
+      InternalWriteMessage(1, this->_internal_operations(i), target, stream);
   }
 
   // string next_page_token = 2;
   if (this->next_page_token().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->next_page_token().data(), static_cast<int>(this->next_page_token().length()),
+      this->_internal_next_page_token().data(), static_cast<int>(this->_internal_next_page_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.ListOperationsResponse.next_page_token");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->next_page_token(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_next_page_token(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.longrunning.ListOperationsResponse)
   return target;
@@ -1810,33 +1344,28 @@ size_t ListOperationsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.longrunning.ListOperationsResponse)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.longrunning.Operation operations = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->operations_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->operations(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_operations_size();
+  for (const auto& msg : this->operations_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string next_page_token = 2;
   if (this->next_page_token().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->next_page_token());
+        this->_internal_next_page_token());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1889,14 +1418,10 @@ bool ListOperationsResponse::IsInitialized() const {
   return true;
 }
 
-void ListOperationsResponse::Swap(ListOperationsResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void ListOperationsResponse::InternalSwap(ListOperationsResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&operations_)->InternalSwap(CastToBase(&other->operations_));
+  operations_.InternalSwap(&other->operations_);
   next_page_token_.Swap(&other->next_page_token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
 }
@@ -1910,13 +1435,9 @@ void ListOperationsResponse::InternalSwap(ListOperationsResponse* other) {
 
 void CancelOperationRequest::InitAsDefaultInstance() {
 }
-class CancelOperationRequest::HasBitSetters {
+class CancelOperationRequest::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CancelOperationRequest::kNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CancelOperationRequest::CancelOperationRequest()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1928,7 +1449,7 @@ CancelOperationRequest::CancelOperationRequest(const CancelOperationRequest& fro
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   // @@protoc_insertion_point(copy_constructor:google.longrunning.CancelOperationRequest)
@@ -1967,7 +1488,6 @@ void CancelOperationRequest::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* CancelOperationRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -1978,7 +1498,9 @@ const char* CancelOperationRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
       // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.longrunning.CancelOperationRequest.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.CancelOperationRequest.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2001,78 +1523,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool CancelOperationRequest::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.longrunning.CancelOperationRequest)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.CancelOperationRequest.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.longrunning.CancelOperationRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.longrunning.CancelOperationRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void CancelOperationRequest::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.longrunning.CancelOperationRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.CancelOperationRequest.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.longrunning.CancelOperationRequest)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* CancelOperationRequest::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* CancelOperationRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.longrunning.CancelOperationRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2080,17 +1533,16 @@ void CancelOperationRequest::SerializeWithCachedSizes(
   // string name = 1;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.CancelOperationRequest.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.longrunning.CancelOperationRequest)
   return target;
@@ -2100,11 +1552,6 @@ size_t CancelOperationRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.longrunning.CancelOperationRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2113,9 +1560,13 @@ size_t CancelOperationRequest::ByteSizeLong() const {
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -2167,10 +1618,6 @@ bool CancelOperationRequest::IsInitialized() const {
   return true;
 }
 
-void CancelOperationRequest::Swap(CancelOperationRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void CancelOperationRequest::InternalSwap(CancelOperationRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -2187,13 +1634,9 @@ void CancelOperationRequest::InternalSwap(CancelOperationRequest* other) {
 
 void DeleteOperationRequest::InitAsDefaultInstance() {
 }
-class DeleteOperationRequest::HasBitSetters {
+class DeleteOperationRequest::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DeleteOperationRequest::kNameFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 DeleteOperationRequest::DeleteOperationRequest()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -2205,7 +1648,7 @@ DeleteOperationRequest::DeleteOperationRequest(const DeleteOperationRequest& fro
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   // @@protoc_insertion_point(copy_constructor:google.longrunning.DeleteOperationRequest)
@@ -2244,7 +1687,6 @@ void DeleteOperationRequest::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* DeleteOperationRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -2255,7 +1697,9 @@ const char* DeleteOperationRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
       // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.longrunning.DeleteOperationRequest.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.longrunning.DeleteOperationRequest.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2278,78 +1722,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool DeleteOperationRequest::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.longrunning.DeleteOperationRequest)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.longrunning.DeleteOperationRequest.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.longrunning.DeleteOperationRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.longrunning.DeleteOperationRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void DeleteOperationRequest::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.longrunning.DeleteOperationRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.longrunning.DeleteOperationRequest.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.longrunning.DeleteOperationRequest)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* DeleteOperationRequest::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteOperationRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.longrunning.DeleteOperationRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2357,17 +1732,16 @@ void DeleteOperationRequest::SerializeWithCachedSizes(
   // string name = 1;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.longrunning.DeleteOperationRequest.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.longrunning.DeleteOperationRequest)
   return target;
@@ -2377,11 +1751,6 @@ size_t DeleteOperationRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.longrunning.DeleteOperationRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2390,9 +1759,13 @@ size_t DeleteOperationRequest::ByteSizeLong() const {
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -2444,10 +1817,6 @@ bool DeleteOperationRequest::IsInitialized() const {
   return true;
 }
 
-void DeleteOperationRequest::Swap(DeleteOperationRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void DeleteOperationRequest::InternalSwap(DeleteOperationRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

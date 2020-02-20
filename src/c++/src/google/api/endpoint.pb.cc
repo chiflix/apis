@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -35,7 +34,7 @@ static void InitDefaultsscc_info_Endpoint_google_2fapi_2fendpoint_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Endpoint_google_2fapi_2fendpoint_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_Endpoint_google_2fapi_2fendpoint_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Endpoint_google_2fapi_2fendpoint_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fendpoint_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_google_2fapi_2fendpoint_2eproto = nullptr;
@@ -61,7 +60,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_Endpoint_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fendpoint_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fendpoint_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\031google/api/endpoint.proto\022\ngoogle.api\032"
   "\034google/api/annotations.proto\"_\n\010Endpoin"
   "t\022\014\n\004name\030\001 \001(\t\022\017\n\007aliases\030\002 \003(\t\022\020\n\010feat"
@@ -95,17 +94,9 @@ namespace api {
 
 void Endpoint::InitAsDefaultInstance() {
 }
-class Endpoint::HasBitSetters {
+class Endpoint::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Endpoint::kNameFieldNumber;
-const int Endpoint::kAliasesFieldNumber;
-const int Endpoint::kFeaturesFieldNumber;
-const int Endpoint::kTargetFieldNumber;
-const int Endpoint::kAllowCorsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Endpoint::Endpoint()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -119,11 +110,11 @@ Endpoint::Endpoint(const Endpoint& from)
       features_(from.features_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
+  if (!from._internal_name().empty()) {
     name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   target_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.target().size() > 0) {
+  if (!from._internal_target().empty()) {
     target_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.target_);
   }
   allow_cors_ = from.allow_cors_;
@@ -170,7 +161,6 @@ void Endpoint::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Endpoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -181,7 +171,9 @@ const char* Endpoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_name(), ptr, ctx, "google.api.Endpoint.name");
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Endpoint.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -191,10 +183,12 @@ const char* Endpoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(add_aliases(), ptr, ctx, "google.api.Endpoint.aliases");
+            auto str = _internal_add_aliases();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Endpoint.aliases"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else goto handle_unusual;
         continue;
       // repeated string features = 4;
@@ -203,10 +197,12 @@ const char* Endpoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(add_features(), ptr, ctx, "google.api.Endpoint.features");
+            auto str = _internal_add_features();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Endpoint.features"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 34);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else goto handle_unusual;
         continue;
       // bool allow_cors = 5;
@@ -219,7 +215,9 @@ const char* Endpoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       // string target = 101;
       case 101:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_target(), ptr, ctx, "google.api.Endpoint.target");
+          auto str = _internal_mutable_target();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Endpoint.target"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -242,173 +240,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Endpoint::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Endpoint)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Endpoint.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // repeated string aliases = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->add_aliases()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->aliases(this->aliases_size() - 1).data(),
-            static_cast<int>(this->aliases(this->aliases_size() - 1).length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Endpoint.aliases"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated string features = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->add_features()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->features(this->features_size() - 1).data(),
-            static_cast<int>(this->features(this->features_size() - 1).length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Endpoint.features"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bool allow_cors = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (40 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &allow_cors_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string target = 101;
-      case 101: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (810 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_target()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->target().data(), static_cast<int>(this->target().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Endpoint.target"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Endpoint)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Endpoint)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Endpoint::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Endpoint)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Endpoint.name");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // repeated string aliases = 2;
-  for (int i = 0, n = this->aliases_size(); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->aliases(i).data(), static_cast<int>(this->aliases(i).length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Endpoint.aliases");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteString(
-      2, this->aliases(i), output);
-  }
-
-  // repeated string features = 4;
-  for (int i = 0, n = this->features_size(); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->features(i).data(), static_cast<int>(this->features(i).length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Endpoint.features");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteString(
-      4, this->features(i), output);
-  }
-
-  // bool allow_cors = 5;
-  if (this->allow_cors() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBool(5, this->allow_cors(), output);
-  }
-
-  // string target = 101;
-  if (this->target().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->target().data(), static_cast<int>(this->target().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Endpoint.target");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      101, this->target(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Endpoint)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Endpoint::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Endpoint::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Endpoint)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -416,53 +250,52 @@ void Endpoint::SerializeWithCachedSizes(
   // string name = 1;
   if (this->name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Endpoint.name");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // repeated string aliases = 2;
-  for (int i = 0, n = this->aliases_size(); i < n; i++) {
+  for (int i = 0, n = this->_internal_aliases_size(); i < n; i++) {
+    const auto& s = this->_internal_aliases(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->aliases(i).data(), static_cast<int>(this->aliases(i).length()),
+      s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Endpoint.aliases");
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      WriteStringToArray(2, this->aliases(i), target);
+    target = stream->WriteString(2, s, target);
   }
 
   // repeated string features = 4;
-  for (int i = 0, n = this->features_size(); i < n; i++) {
+  for (int i = 0, n = this->_internal_features_size(); i < n; i++) {
+    const auto& s = this->_internal_features(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->features(i).data(), static_cast<int>(this->features(i).length()),
+      s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Endpoint.features");
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      WriteStringToArray(4, this->features(i), target);
+    target = stream->WriteString(4, s, target);
   }
 
   // bool allow_cors = 5;
   if (this->allow_cors() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->allow_cors(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_allow_cors(), target);
   }
 
   // string target = 101;
   if (this->target().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->target().data(), static_cast<int>(this->target().length()),
+      this->_internal_target().data(), static_cast<int>(this->_internal_target().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Endpoint.target");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        101, this->target(), target);
+    target = stream->WriteStringMaybeAliased(
+        101, this->_internal_target(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Endpoint)
   return target;
@@ -472,43 +305,38 @@ size_t Endpoint::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Endpoint)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string aliases = 2;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->aliases_size());
-  for (int i = 0, n = this->aliases_size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(aliases_.size());
+  for (int i = 0, n = aliases_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      this->aliases(i));
+      aliases_.Get(i));
   }
 
   // repeated string features = 4;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->features_size());
-  for (int i = 0, n = this->features_size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(features_.size());
+  for (int i = 0, n = features_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      this->features(i));
+      features_.Get(i));
   }
 
   // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->name());
+        this->_internal_name());
   }
 
   // string target = 101;
   if (this->target().size() > 0) {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->target());
+        this->_internal_target());
   }
 
   // bool allow_cors = 5;
@@ -516,6 +344,10 @@ size_t Endpoint::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -554,7 +386,7 @@ void Endpoint::MergeFrom(const Endpoint& from) {
     target_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.target_);
   }
   if (from.allow_cors() != 0) {
-    set_allow_cors(from.allow_cors());
+    _internal_set_allow_cors(from._internal_allow_cors());
   }
 }
 
@@ -576,15 +408,11 @@ bool Endpoint::IsInitialized() const {
   return true;
 }
 
-void Endpoint::Swap(Endpoint* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Endpoint::InternalSwap(Endpoint* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  aliases_.InternalSwap(CastToBase(&other->aliases_));
-  features_.InternalSwap(CastToBase(&other->features_));
+  aliases_.InternalSwap(&other->aliases_);
+  features_.InternalSwap(&other->features_);
   name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   target_.Swap(&other->target_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),

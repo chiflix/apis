@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -36,7 +35,7 @@ static void InitDefaultsscc_info_Color_google_2ftype_2fcolor_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Color_google_2ftype_2fcolor_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_Color_google_2ftype_2fcolor_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Color_google_2ftype_2fcolor_2eproto}, {
       &scc_info_FloatValue_google_2fprotobuf_2fwrappers_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2ftype_2fcolor_2eproto[1];
@@ -62,7 +61,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::type::_Color_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2ftype_2fcolor_2eproto[] =
+const char descriptor_table_protodef_google_2ftype_2fcolor_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\027google/type/color.proto\022\013google.type\032\036"
   "google/protobuf/wrappers.proto\"]\n\005Color\022"
   "\013\n\003red\030\001 \001(\002\022\r\n\005green\030\002 \001(\002\022\014\n\004blue\030\003 \001("
@@ -97,13 +96,13 @@ void Color::InitAsDefaultInstance() {
   ::google::type::_Color_default_instance_._instance.get_mutable()->alpha_ = const_cast< PROTOBUF_NAMESPACE_ID::FloatValue*>(
       PROTOBUF_NAMESPACE_ID::FloatValue::internal_default_instance());
 }
-class Color::HasBitSetters {
+class Color::_Internal {
  public:
   static const PROTOBUF_NAMESPACE_ID::FloatValue& alpha(const Color* msg);
 };
 
 const PROTOBUF_NAMESPACE_ID::FloatValue&
-Color::HasBitSetters::alpha(const Color* msg) {
+Color::_Internal::alpha(const Color* msg) {
   return *msg->alpha_;
 }
 void Color::clear_alpha() {
@@ -112,13 +111,6 @@ void Color::clear_alpha() {
   }
   alpha_ = nullptr;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Color::kRedFieldNumber;
-const int Color::kGreenFieldNumber;
-const int Color::kBlueFieldNumber;
-const int Color::kAlphaFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 Color::Color()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -128,7 +120,7 @@ Color::Color(const Color& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_alpha()) {
+  if (from._internal_has_alpha()) {
     alpha_ = new PROTOBUF_NAMESPACE_ID::FloatValue(*from.alpha_);
   } else {
     alpha_ = nullptr;
@@ -180,7 +172,6 @@ void Color::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Color::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -212,7 +203,7 @@ const char* Color::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       // .google.protobuf.FloatValue alpha = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          ptr = ctx->ParseMessage(mutable_alpha(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_alpha(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -235,153 +226,42 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Color::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.type.Color)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // float red = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (13 & 0xFF)) {
 
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   float, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &red_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // float green = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (21 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   float, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &green_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // float blue = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (29 & 0xFF)) {
-
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   float, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &blue_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.protobuf.FloatValue alpha = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-               input, mutable_alpha()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.type.Color)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.type.Color)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Color::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.type.Color)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // float red = 1;
-  if (!(this->red() <= 0 && this->red() >= 0)) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloat(1, this->red(), output);
-  }
-
-  // float green = 2;
-  if (!(this->green() <= 0 && this->green() >= 0)) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloat(2, this->green(), output);
-  }
-
-  // float blue = 3;
-  if (!(this->blue() <= 0 && this->blue() >= 0)) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloat(3, this->blue(), output);
-  }
-
-  // .google.protobuf.FloatValue alpha = 4;
-  if (this->has_alpha()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, HasBitSetters::alpha(this), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.type.Color)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Color::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Color::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.type.Color)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // float red = 1;
   if (!(this->red() <= 0 && this->red() >= 0)) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->red(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_red(), target);
   }
 
   // float green = 2;
   if (!(this->green() <= 0 && this->green() >= 0)) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->green(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_green(), target);
   }
 
   // float blue = 3;
   if (!(this->blue() <= 0 && this->blue() >= 0)) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->blue(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_blue(), target);
   }
 
   // .google.protobuf.FloatValue alpha = 4;
   if (this->has_alpha()) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, HasBitSetters::alpha(this), target);
+      InternalWriteMessage(
+        4, _Internal::alpha(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.type.Color)
   return target;
@@ -391,11 +271,6 @@ size_t Color::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.type.Color)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -422,6 +297,10 @@ size_t Color::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -450,16 +329,16 @@ void Color::MergeFrom(const Color& from) {
   (void) cached_has_bits;
 
   if (from.has_alpha()) {
-    mutable_alpha()->PROTOBUF_NAMESPACE_ID::FloatValue::MergeFrom(from.alpha());
+    _internal_mutable_alpha()->PROTOBUF_NAMESPACE_ID::FloatValue::MergeFrom(from._internal_alpha());
   }
   if (!(from.red() <= 0 && from.red() >= 0)) {
-    set_red(from.red());
+    _internal_set_red(from._internal_red());
   }
   if (!(from.green() <= 0 && from.green() >= 0)) {
-    set_green(from.green());
+    _internal_set_green(from._internal_green());
   }
   if (!(from.blue() <= 0 && from.blue() >= 0)) {
-    set_blue(from.blue());
+    _internal_set_blue(from._internal_blue());
   }
 }
 
@@ -481,10 +360,6 @@ bool Color::IsInitialized() const {
   return true;
 }
 
-void Color::Swap(Color* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Color::InternalSwap(Color* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

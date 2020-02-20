@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -36,7 +35,7 @@ static void InitDefaultsscc_info_SourceInfo_google_2fapi_2fsource_5finfo_2eproto
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SourceInfo_google_2fapi_2fsource_5finfo_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_SourceInfo_google_2fapi_2fsource_5finfo_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SourceInfo_google_2fapi_2fsource_5finfo_2eproto}, {
       &scc_info_Any_google_2fprotobuf_2fany_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fsource_5finfo_2eproto[1];
@@ -59,7 +58,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_SourceInfo_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fsource_5finfo_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fsource_5finfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\034google/api/source_info.proto\022\ngoogle.a"
   "pi\032\031google/protobuf/any.proto\"8\n\nSourceI"
   "nfo\022*\n\014source_files\030\001 \003(\0132\024.google.proto"
@@ -92,17 +91,13 @@ namespace api {
 
 void SourceInfo::InitAsDefaultInstance() {
 }
-class SourceInfo::HasBitSetters {
+class SourceInfo::_Internal {
  public:
 };
 
 void SourceInfo::clear_source_files() {
   source_files_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SourceInfo::kSourceFilesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
 SourceInfo::SourceInfo()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -147,7 +142,6 @@ void SourceInfo::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* SourceInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -161,10 +155,10 @@ const char* SourceInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_source_files(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_source_files(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 10);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -186,88 +180,24 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool SourceInfo::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.SourceInfo)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.protobuf.Any source_files = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_source_files()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.SourceInfo)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.SourceInfo)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void SourceInfo::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.SourceInfo)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.protobuf.Any source_files = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->source_files_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->source_files(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.SourceInfo)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* SourceInfo::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* SourceInfo::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.SourceInfo)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.protobuf.Any source_files = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->source_files_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_source_files_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->source_files(static_cast<int>(i)), target);
+      InternalWriteMessage(1, this->_internal_source_files(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.SourceInfo)
   return target;
@@ -277,26 +207,21 @@ size_t SourceInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.SourceInfo)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.protobuf.Any source_files = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->source_files_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->source_files(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_source_files_size();
+  for (const auto& msg : this->source_files_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -345,14 +270,10 @@ bool SourceInfo::IsInitialized() const {
   return true;
 }
 
-void SourceInfo::Swap(SourceInfo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SourceInfo::InternalSwap(SourceInfo* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&source_files_)->InternalSwap(CastToBase(&other->source_files_));
+  source_files_.InternalSwap(&other->source_files_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SourceInfo::GetMetadata() const {

@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -40,7 +39,7 @@ static void InitDefaultsscc_info_Advice_google_2fapi_2fconfig_5fchange_2eproto()
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Advice_google_2fapi_2fconfig_5fchange_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_Advice_google_2fapi_2fconfig_5fchange_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Advice_google_2fapi_2fconfig_5fchange_2eproto}, {}};
 
 static void InitDefaultsscc_info_ConfigChange_google_2fapi_2fconfig_5fchange_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -54,7 +53,7 @@ static void InitDefaultsscc_info_ConfigChange_google_2fapi_2fconfig_5fchange_2ep
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ConfigChange_google_2fapi_2fconfig_5fchange_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_ConfigChange_google_2fapi_2fconfig_5fchange_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ConfigChange_google_2fapi_2fconfig_5fchange_2eproto}, {
       &scc_info_Advice_google_2fapi_2fconfig_5fchange_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fconfig_5fchange_2eproto[2];
@@ -89,7 +88,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_Advice_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fconfig_5fchange_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fconfig_5fchange_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\036google/api/config_change.proto\022\ngoogle"
   ".api\"\227\001\n\014ConfigChange\022\017\n\007element\030\001 \001(\t\022\021"
   "\n\told_value\030\002 \001(\t\022\021\n\tnew_value\030\003 \001(\t\022+\n\013"
@@ -142,17 +141,9 @@ bool ChangeType_IsValid(int value) {
 
 void ConfigChange::InitAsDefaultInstance() {
 }
-class ConfigChange::HasBitSetters {
+class ConfigChange::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ConfigChange::kElementFieldNumber;
-const int ConfigChange::kOldValueFieldNumber;
-const int ConfigChange::kNewValueFieldNumber;
-const int ConfigChange::kChangeTypeFieldNumber;
-const int ConfigChange::kAdvicesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ConfigChange::ConfigChange()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -165,15 +156,15 @@ ConfigChange::ConfigChange(const ConfigChange& from)
       advices_(from.advices_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   element_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.element().size() > 0) {
+  if (!from._internal_element().empty()) {
     element_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.element_);
   }
   old_value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.old_value().size() > 0) {
+  if (!from._internal_old_value().empty()) {
     old_value_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.old_value_);
   }
   new_value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.new_value().size() > 0) {
+  if (!from._internal_new_value().empty()) {
     new_value_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.new_value_);
   }
   change_type_ = from.change_type_;
@@ -222,7 +213,6 @@ void ConfigChange::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* ConfigChange::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -233,21 +223,27 @@ const char* ConfigChange::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // string element = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_element(), ptr, ctx, "google.api.ConfigChange.element");
+          auto str = _internal_mutable_element();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.ConfigChange.element"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string old_value = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_old_value(), ptr, ctx, "google.api.ConfigChange.old_value");
+          auto str = _internal_mutable_old_value();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.ConfigChange.old_value"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
       // string new_value = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_new_value(), ptr, ctx, "google.api.ConfigChange.new_value");
+          auto str = _internal_mutable_new_value();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.ConfigChange.new_value"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -256,7 +252,7 @@ const char* ConfigChange::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          set_change_type(static_cast<::google::api::ChangeType>(val));
+          _internal_set_change_type(static_cast<::google::api::ChangeType>(val));
         } else goto handle_unusual;
         continue;
       // repeated .google.api.Advice advices = 5;
@@ -265,10 +261,10 @@ const char* ConfigChange::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_advices(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_advices(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 42);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -290,168 +286,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool ConfigChange::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.ConfigChange)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string element = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_element()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->element().data(), static_cast<int>(this->element().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.ConfigChange.element"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // string old_value = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_old_value()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->old_value().data(), static_cast<int>(this->old_value().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.ConfigChange.old_value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string new_value = 3;
-      case 3: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_new_value()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->new_value().data(), static_cast<int>(this->new_value().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.ConfigChange.new_value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.api.ChangeType change_type = 4;
-      case 4: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
-          int value = 0;
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_change_type(static_cast< ::google::api::ChangeType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .google.api.Advice advices = 5;
-      case 5: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_advices()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.ConfigChange)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.ConfigChange)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void ConfigChange::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.ConfigChange)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string element = 1;
-  if (this->element().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->element().data(), static_cast<int>(this->element().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.ConfigChange.element");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->element(), output);
-  }
-
-  // string old_value = 2;
-  if (this->old_value().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->old_value().data(), static_cast<int>(this->old_value().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.ConfigChange.old_value");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->old_value(), output);
-  }
-
-  // string new_value = 3;
-  if (this->new_value().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->new_value().data(), static_cast<int>(this->new_value().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.ConfigChange.new_value");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->new_value(), output);
-  }
-
-  // .google.api.ChangeType change_type = 4;
-  if (this->change_type() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
-      4, this->change_type(), output);
-  }
-
-  // repeated .google.api.Advice advices = 5;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->advices_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5,
-      this->advices(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.ConfigChange)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* ConfigChange::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* ConfigChange::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.ConfigChange)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -459,53 +296,51 @@ void ConfigChange::SerializeWithCachedSizes(
   // string element = 1;
   if (this->element().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->element().data(), static_cast<int>(this->element().length()),
+      this->_internal_element().data(), static_cast<int>(this->_internal_element().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.ConfigChange.element");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->element(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_element(), target);
   }
 
   // string old_value = 2;
   if (this->old_value().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->old_value().data(), static_cast<int>(this->old_value().length()),
+      this->_internal_old_value().data(), static_cast<int>(this->_internal_old_value().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.ConfigChange.old_value");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->old_value(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_old_value(), target);
   }
 
   // string new_value = 3;
   if (this->new_value().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->new_value().data(), static_cast<int>(this->new_value().length()),
+      this->_internal_new_value().data(), static_cast<int>(this->_internal_new_value().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.ConfigChange.new_value");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        3, this->new_value(), target);
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_new_value(), target);
   }
 
   // .google.api.ChangeType change_type = 4;
   if (this->change_type() != 0) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      4, this->change_type(), target);
+      4, this->_internal_change_type(), target);
   }
 
   // repeated .google.api.Advice advices = 5;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->advices_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_advices_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        5, this->advices(static_cast<int>(i)), target);
+      InternalWriteMessage(5, this->_internal_advices(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.ConfigChange)
   return target;
@@ -515,53 +350,48 @@ size_t ConfigChange::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.ConfigChange)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.Advice advices = 5;
-  {
-    unsigned int count = static_cast<unsigned int>(this->advices_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->advices(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_advices_size();
+  for (const auto& msg : this->advices_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string element = 1;
   if (this->element().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->element());
+        this->_internal_element());
   }
 
   // string old_value = 2;
   if (this->old_value().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->old_value());
+        this->_internal_old_value());
   }
 
   // string new_value = 3;
   if (this->new_value().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->new_value());
+        this->_internal_new_value());
   }
 
   // .google.api.ChangeType change_type = 4;
   if (this->change_type() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->change_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_change_type());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -603,7 +433,7 @@ void ConfigChange::MergeFrom(const ConfigChange& from) {
     new_value_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.new_value_);
   }
   if (from.change_type() != 0) {
-    set_change_type(from.change_type());
+    _internal_set_change_type(from._internal_change_type());
   }
 }
 
@@ -625,14 +455,10 @@ bool ConfigChange::IsInitialized() const {
   return true;
 }
 
-void ConfigChange::Swap(ConfigChange* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void ConfigChange::InternalSwap(ConfigChange* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&advices_)->InternalSwap(CastToBase(&other->advices_));
+  advices_.InternalSwap(&other->advices_);
   element_.Swap(&other->element_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   old_value_.Swap(&other->old_value_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -651,13 +477,9 @@ void ConfigChange::InternalSwap(ConfigChange* other) {
 
 void Advice::InitAsDefaultInstance() {
 }
-class Advice::HasBitSetters {
+class Advice::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Advice::kDescriptionFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Advice::Advice()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -669,7 +491,7 @@ Advice::Advice(const Advice& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.description().size() > 0) {
+  if (!from._internal_description().empty()) {
     description_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.description_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.Advice)
@@ -708,7 +530,6 @@ void Advice::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Advice::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -719,7 +540,9 @@ const char* Advice::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
       // string description = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_description(), ptr, ctx, "google.api.Advice.description");
+          auto str = _internal_mutable_description();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Advice.description"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -742,78 +565,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Advice::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Advice)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string description = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_description()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->description().data(), static_cast<int>(this->description().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Advice.description"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Advice)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Advice)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Advice::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Advice)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string description = 2;
-  if (this->description().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->description().data(), static_cast<int>(this->description().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Advice.description");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->description(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Advice)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Advice::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Advice::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Advice)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -821,17 +575,16 @@ void Advice::SerializeWithCachedSizes(
   // string description = 2;
   if (this->description().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->description().data(), static_cast<int>(this->description().length()),
+      this->_internal_description().data(), static_cast<int>(this->_internal_description().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Advice.description");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->description(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_description(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Advice)
   return target;
@@ -841,11 +594,6 @@ size_t Advice::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Advice)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -854,9 +602,13 @@ size_t Advice::ByteSizeLong() const {
   if (this->description().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->description());
+        this->_internal_description());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -908,10 +660,6 @@ bool Advice::IsInitialized() const {
   return true;
 }
 
-void Advice::Swap(Advice* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Advice::InternalSwap(Advice* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

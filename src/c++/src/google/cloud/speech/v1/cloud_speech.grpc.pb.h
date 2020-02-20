@@ -32,6 +32,7 @@
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/server_callback_handlers.h>
 #include <grpcpp/impl/codegen/server_context.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/status.h>
@@ -274,13 +275,7 @@ class Speech final {
     ExperimentalWithCallbackMethod_Recognize() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::google::cloud::speech::v1::RecognizeRequest, ::google::cloud::speech::v1::RecognizeResponse>(
-          [this](::grpc::ServerContext* context,
-                 const ::google::cloud::speech::v1::RecognizeRequest* request,
-                 ::google::cloud::speech::v1::RecognizeResponse* response,
-                 ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   return this->Recognize(context, request, response, controller);
-                 }));
-    }
+          [this](::grpc::experimental::CallbackServerContext* context, const ::google::cloud::speech::v1::RecognizeRequest* request, ::google::cloud::speech::v1::RecognizeResponse* response) { return this->Recognize(context, request, response); }));}
     void SetMessageAllocatorFor_Recognize(
         ::grpc::experimental::MessageAllocator< ::google::cloud::speech::v1::RecognizeRequest, ::google::cloud::speech::v1::RecognizeResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::cloud::speech::v1::RecognizeRequest, ::google::cloud::speech::v1::RecognizeResponse>*>(
@@ -295,7 +290,7 @@ class Speech final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void Recognize(::grpc::ServerContext* /*context*/, const ::google::cloud::speech::v1::RecognizeRequest* /*request*/, ::google::cloud::speech::v1::RecognizeResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual ::grpc::experimental::ServerUnaryReactor* Recognize(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::cloud::speech::v1::RecognizeRequest* /*request*/, ::google::cloud::speech::v1::RecognizeResponse* /*response*/) { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_LongRunningRecognize : public BaseClass {
@@ -305,13 +300,7 @@ class Speech final {
     ExperimentalWithCallbackMethod_LongRunningRecognize() {
       ::grpc::Service::experimental().MarkMethodCallback(1,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::google::cloud::speech::v1::LongRunningRecognizeRequest, ::google::longrunning::Operation>(
-          [this](::grpc::ServerContext* context,
-                 const ::google::cloud::speech::v1::LongRunningRecognizeRequest* request,
-                 ::google::longrunning::Operation* response,
-                 ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   return this->LongRunningRecognize(context, request, response, controller);
-                 }));
-    }
+          [this](::grpc::experimental::CallbackServerContext* context, const ::google::cloud::speech::v1::LongRunningRecognizeRequest* request, ::google::longrunning::Operation* response) { return this->LongRunningRecognize(context, request, response); }));}
     void SetMessageAllocatorFor_LongRunningRecognize(
         ::grpc::experimental::MessageAllocator< ::google::cloud::speech::v1::LongRunningRecognizeRequest, ::google::longrunning::Operation>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::cloud::speech::v1::LongRunningRecognizeRequest, ::google::longrunning::Operation>*>(
@@ -326,7 +315,7 @@ class Speech final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void LongRunningRecognize(::grpc::ServerContext* /*context*/, const ::google::cloud::speech::v1::LongRunningRecognizeRequest* /*request*/, ::google::longrunning::Operation* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual ::grpc::experimental::ServerUnaryReactor* LongRunningRecognize(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::cloud::speech::v1::LongRunningRecognizeRequest* /*request*/, ::google::longrunning::Operation* /*response*/) { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingRecognize : public BaseClass {
@@ -336,7 +325,7 @@ class Speech final {
     ExperimentalWithCallbackMethod_StreamingRecognize() {
       ::grpc::Service::experimental().MarkMethodCallback(2,
         new ::grpc_impl::internal::CallbackBidiHandler< ::google::cloud::speech::v1::StreamingRecognizeRequest, ::google::cloud::speech::v1::StreamingRecognizeResponse>(
-          [this] { return this->StreamingRecognize(); }));
+          [this](::grpc::experimental::CallbackServerContext* context) { return this->StreamingRecognize(context); }));
     }
     ~ExperimentalWithCallbackMethod_StreamingRecognize() override {
       BaseClassMustBeDerivedFromService(this);
@@ -346,9 +335,7 @@ class Speech final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerBidiReactor< ::google::cloud::speech::v1::StreamingRecognizeRequest, ::google::cloud::speech::v1::StreamingRecognizeResponse>* StreamingRecognize() {
-      return new ::grpc_impl::internal::UnimplementedBidiReactor<
-        ::google::cloud::speech::v1::StreamingRecognizeRequest, ::google::cloud::speech::v1::StreamingRecognizeResponse>;}
+    virtual ::grpc::experimental::ServerBidiReactor< ::google::cloud::speech::v1::StreamingRecognizeRequest, ::google::cloud::speech::v1::StreamingRecognizeResponse>* StreamingRecognize(::grpc::experimental::CallbackServerContext* /*context*/) { return nullptr; }
   };
   typedef ExperimentalWithCallbackMethod_Recognize<ExperimentalWithCallbackMethod_LongRunningRecognize<ExperimentalWithCallbackMethod_StreamingRecognize<Service > > > ExperimentalCallbackService;
   template <class BaseClass>
@@ -470,12 +457,7 @@ class Speech final {
     ExperimentalWithRawCallbackMethod_Recognize() {
       ::grpc::Service::experimental().MarkMethodRawCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::ServerContext* context,
-                 const ::grpc::ByteBuffer* request,
-                 ::grpc::ByteBuffer* response,
-                 ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   this->Recognize(context, request, response, controller);
-                 }));
+          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Recognize(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_Recognize() override {
       BaseClassMustBeDerivedFromService(this);
@@ -485,7 +467,7 @@ class Speech final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void Recognize(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual ::grpc::experimental::ServerUnaryReactor* Recognize(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_LongRunningRecognize : public BaseClass {
@@ -495,12 +477,7 @@ class Speech final {
     ExperimentalWithRawCallbackMethod_LongRunningRecognize() {
       ::grpc::Service::experimental().MarkMethodRawCallback(1,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::ServerContext* context,
-                 const ::grpc::ByteBuffer* request,
-                 ::grpc::ByteBuffer* response,
-                 ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   this->LongRunningRecognize(context, request, response, controller);
-                 }));
+          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->LongRunningRecognize(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_LongRunningRecognize() override {
       BaseClassMustBeDerivedFromService(this);
@@ -510,7 +487,7 @@ class Speech final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void LongRunningRecognize(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual ::grpc::experimental::ServerUnaryReactor* LongRunningRecognize(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingRecognize : public BaseClass {
@@ -520,7 +497,7 @@ class Speech final {
     ExperimentalWithRawCallbackMethod_StreamingRecognize() {
       ::grpc::Service::experimental().MarkMethodRawCallback(2,
         new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this] { return this->StreamingRecognize(); }));
+          [this](::grpc::experimental::CallbackServerContext* context) { return this->StreamingRecognize(context); }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingRecognize() override {
       BaseClassMustBeDerivedFromService(this);
@@ -530,9 +507,7 @@ class Speech final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingRecognize() {
-      return new ::grpc_impl::internal::UnimplementedBidiReactor<
-        ::grpc::ByteBuffer, ::grpc::ByteBuffer>;}
+    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingRecognize(::grpc::experimental::CallbackServerContext* /*context*/) { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Recognize : public BaseClass {

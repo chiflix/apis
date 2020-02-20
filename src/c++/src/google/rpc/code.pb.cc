@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -26,7 +25,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_google_2frpc_2fcode_2eproto::o
 static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
-const char descriptor_table_protodef_google_2frpc_2fcode_2eproto[] =
+const char descriptor_table_protodef_google_2frpc_2fcode_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\025google/rpc/code.proto\022\ngoogle.rpc*\267\002\n\004"
   "Code\022\006\n\002OK\020\000\022\r\n\tCANCELLED\020\001\022\013\n\007UNKNOWN\020\002"
   "\022\024\n\020INVALID_ARGUMENT\020\003\022\025\n\021DEADLINE_EXCEE"

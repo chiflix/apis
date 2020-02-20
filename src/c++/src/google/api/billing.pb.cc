@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -40,7 +39,7 @@ static void InitDefaultsscc_info_Billing_google_2fapi_2fbilling_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Billing_google_2fapi_2fbilling_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_Billing_google_2fapi_2fbilling_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Billing_google_2fapi_2fbilling_2eproto}, {
       &scc_info_Billing_BillingDestination_google_2fapi_2fbilling_2eproto.base,}};
 
 static void InitDefaultsscc_info_Billing_BillingDestination_google_2fapi_2fbilling_2eproto() {
@@ -55,7 +54,7 @@ static void InitDefaultsscc_info_Billing_BillingDestination_google_2fapi_2fbilli
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Billing_BillingDestination_google_2fapi_2fbilling_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_Billing_BillingDestination_google_2fapi_2fbilling_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Billing_BillingDestination_google_2fapi_2fbilling_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_google_2fapi_2fbilling_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_google_2fapi_2fbilling_2eproto = nullptr;
@@ -86,7 +85,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::api::_Billing_default_instance_),
 };
 
-const char descriptor_table_protodef_google_2fapi_2fbilling_2eproto[] =
+const char descriptor_table_protodef_google_2fapi_2fbilling_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\030google/api/billing.proto\022\ngoogle.api\032\034"
   "google/api/annotations.proto\032\027google/api"
   "/metric.proto\"\223\001\n\007Billing\022E\n\025consumer_de"
@@ -124,14 +123,9 @@ namespace api {
 
 void Billing_BillingDestination::InitAsDefaultInstance() {
 }
-class Billing_BillingDestination::HasBitSetters {
+class Billing_BillingDestination::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Billing_BillingDestination::kMonitoredResourceFieldNumber;
-const int Billing_BillingDestination::kMetricsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Billing_BillingDestination::Billing_BillingDestination()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -144,7 +138,7 @@ Billing_BillingDestination::Billing_BillingDestination(const Billing_BillingDest
       metrics_(from.metrics_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   monitored_resource_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.monitored_resource().size() > 0) {
+  if (!from._internal_monitored_resource().empty()) {
     monitored_resource_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.monitored_resource_);
   }
   // @@protoc_insertion_point(copy_constructor:google.api.Billing.BillingDestination)
@@ -184,7 +178,6 @@ void Billing_BillingDestination::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Billing_BillingDestination::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -195,7 +188,9 @@ const char* Billing_BillingDestination::_InternalParse(const char* ptr, ::PROTOB
       // string monitored_resource = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_monitored_resource(), ptr, ctx, "google.api.Billing.BillingDestination.monitored_resource");
+          auto str = _internal_mutable_monitored_resource();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Billing.BillingDestination.monitored_resource"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -205,10 +200,12 @@ const char* Billing_BillingDestination::_InternalParse(const char* ptr, ::PROTOB
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(add_metrics(), ptr, ctx, "google.api.Billing.BillingDestination.metrics");
+            auto str = _internal_add_metrics();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.api.Billing.BillingDestination.metrics"));
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -230,104 +227,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Billing_BillingDestination::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Billing.BillingDestination)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string monitored_resource = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_monitored_resource()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->monitored_resource().data(), static_cast<int>(this->monitored_resource().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Billing.BillingDestination.monitored_resource"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // repeated string metrics = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->add_metrics()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->metrics(this->metrics_size() - 1).data(),
-            static_cast<int>(this->metrics(this->metrics_size() - 1).length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "google.api.Billing.BillingDestination.metrics"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Billing.BillingDestination)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Billing.BillingDestination)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Billing_BillingDestination::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Billing.BillingDestination)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string monitored_resource = 1;
-  if (this->monitored_resource().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->monitored_resource().data(), static_cast<int>(this->monitored_resource().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Billing.BillingDestination.monitored_resource");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->monitored_resource(), output);
-  }
-
-  // repeated string metrics = 2;
-  for (int i = 0, n = this->metrics_size(); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->metrics(i).data(), static_cast<int>(this->metrics(i).length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "google.api.Billing.BillingDestination.metrics");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteString(
-      2, this->metrics(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Billing.BillingDestination)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Billing_BillingDestination::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Billing_BillingDestination::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Billing.BillingDestination)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -335,27 +237,26 @@ void Billing_BillingDestination::SerializeWithCachedSizes(
   // string monitored_resource = 1;
   if (this->monitored_resource().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->monitored_resource().data(), static_cast<int>(this->monitored_resource().length()),
+      this->_internal_monitored_resource().data(), static_cast<int>(this->_internal_monitored_resource().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Billing.BillingDestination.monitored_resource");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->monitored_resource(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_monitored_resource(), target);
   }
 
   // repeated string metrics = 2;
-  for (int i = 0, n = this->metrics_size(); i < n; i++) {
+  for (int i = 0, n = this->_internal_metrics_size(); i < n; i++) {
+    const auto& s = this->_internal_metrics(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->metrics(i).data(), static_cast<int>(this->metrics(i).length()),
+      s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.api.Billing.BillingDestination.metrics");
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      WriteStringToArray(2, this->metrics(i), target);
+    target = stream->WriteString(2, s, target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Billing.BillingDestination)
   return target;
@@ -365,30 +266,29 @@ size_t Billing_BillingDestination::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Billing.BillingDestination)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string metrics = 2;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->metrics_size());
-  for (int i = 0, n = this->metrics_size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(metrics_.size());
+  for (int i = 0, n = metrics_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      this->metrics(i));
+      metrics_.Get(i));
   }
 
   // string monitored_resource = 1;
   if (this->monitored_resource().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->monitored_resource());
+        this->_internal_monitored_resource());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -441,14 +341,10 @@ bool Billing_BillingDestination::IsInitialized() const {
   return true;
 }
 
-void Billing_BillingDestination::Swap(Billing_BillingDestination* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Billing_BillingDestination::InternalSwap(Billing_BillingDestination* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  metrics_.InternalSwap(CastToBase(&other->metrics_));
+  metrics_.InternalSwap(&other->metrics_);
   monitored_resource_.Swap(&other->monitored_resource_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
 }
@@ -462,13 +358,9 @@ void Billing_BillingDestination::InternalSwap(Billing_BillingDestination* other)
 
 void Billing::InitAsDefaultInstance() {
 }
-class Billing::HasBitSetters {
+class Billing::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Billing::kConsumerDestinationsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Billing::Billing()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -514,7 +406,6 @@ void Billing::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* Billing::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
@@ -528,10 +419,10 @@ const char* Billing::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(add_consumer_destinations(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_consumer_destinations(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 66);
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -553,88 +444,24 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Billing::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.api.Billing)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.api.Billing.BillingDestination consumer_destinations = 8;
-      case 8: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (66 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
-                input, add_consumer_destinations()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:google.api.Billing)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:google.api.Billing)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Billing::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.api.Billing)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.api.Billing.BillingDestination consumer_destinations = 8;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->consumer_destinations_size()); i < n; i++) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8,
-      this->consumer_destinations(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.api.Billing)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* Billing::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Billing::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.api.Billing)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.api.Billing.BillingDestination consumer_destinations = 8;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->consumer_destinations_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_consumer_destinations_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        8, this->consumer_destinations(static_cast<int>(i)), target);
+      InternalWriteMessage(8, this->_internal_consumer_destinations(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.api.Billing)
   return target;
@@ -644,26 +471,21 @@ size_t Billing::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.api.Billing)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.api.Billing.BillingDestination consumer_destinations = 8;
-  {
-    unsigned int count = static_cast<unsigned int>(this->consumer_destinations_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          this->consumer_destinations(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_consumer_destinations_size();
+  for (const auto& msg : this->consumer_destinations_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -712,14 +534,10 @@ bool Billing::IsInitialized() const {
   return true;
 }
 
-void Billing::Swap(Billing* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Billing::InternalSwap(Billing* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&consumer_destinations_)->InternalSwap(CastToBase(&other->consumer_destinations_));
+  consumer_destinations_.InternalSwap(&other->consumer_destinations_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Billing::GetMetadata() const {

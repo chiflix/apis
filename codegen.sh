@@ -63,19 +63,19 @@ fi
 ProtoDirList="translation training media health"
 for protoDir in $ProtoDirList
 do
-    ./src/c++/tools/protoc-3.8.0.0 -I. --grpc_out=$CPlusPlusProtocOut \
-     --plugin=protoc-gen-grpc=`which ./src/c++/tools/osx_grpc_cpp_plugin_1_25` \
+    protoc -I. --grpc_out=$CPlusPlusProtocOut \
+     --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
       $protoDir/*/*.proto
 
-    ./src/c++/tools/protoc-3.8.0.0 -I. --cpp_out=$CPlusPlusProtocOut $protoDir/*/*.proto
+    protoc -I. --cpp_out=$CPlusPlusProtocOut $protoDir/*/*.proto
 done
 
 GoogleProtoList="type/*.proto cloud/speech/v1/*.proto api/*/*.proto api/*.proto longrunning/*.proto rpc/*.proto"
 for protofile in $GoogleProtoList
 do
-    ./src/c++/tools/protoc-3.8.0.0 -I. --grpc_out=$CPlusPlusProtocOut \
-     --plugin=protoc-gen-grpc=`which ./src/c++/tools/osx_grpc_cpp_plugin_1_25` \
+    protoc -I. --grpc_out=$CPlusPlusProtocOut \
+     --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
       google/$protofile
 
-    ./src/c++/tools/protoc-3.8.0.0 -I. --cpp_out=$CPlusPlusProtocOut google/$protofile
+    protoc -I. --cpp_out=$CPlusPlusProtocOut google/$protofile
 done

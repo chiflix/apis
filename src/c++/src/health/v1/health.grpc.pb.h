@@ -35,6 +35,7 @@
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/server_callback_handlers.h>
 #include <grpcpp/impl/codegen/server_context.h>
 #include <grpcpp/impl/codegen/service_type.h>
 #include <grpcpp/impl/codegen/status.h>
@@ -155,13 +156,7 @@ class Health final {
     ExperimentalWithCallbackMethod_Check() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>(
-          [this](::grpc::ServerContext* context,
-                 const ::sagittarius::health::v1::HealthCheckRequest* request,
-                 ::sagittarius::health::v1::HealthCheckResponse* response,
-                 ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   return this->Check(context, request, response, controller);
-                 }));
-    }
+          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response) { return this->Check(context, request, response); }));}
     void SetMessageAllocatorFor_Check(
         ::grpc::experimental::MessageAllocator< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>*>(
@@ -176,7 +171,7 @@ class Health final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void Check(::grpc::ServerContext* /*context*/, const ::sagittarius::health::v1::HealthCheckRequest* /*request*/, ::sagittarius::health::v1::HealthCheckResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual ::grpc::experimental::ServerUnaryReactor* Check(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::health::v1::HealthCheckRequest* /*request*/, ::sagittarius::health::v1::HealthCheckResponse* /*response*/) { return nullptr; }
   };
   typedef ExperimentalWithCallbackMethod_Check<Service > ExperimentalCallbackService;
   template <class BaseClass>
@@ -224,12 +219,7 @@ class Health final {
     ExperimentalWithRawCallbackMethod_Check() {
       ::grpc::Service::experimental().MarkMethodRawCallback(0,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::ServerContext* context,
-                 const ::grpc::ByteBuffer* request,
-                 ::grpc::ByteBuffer* response,
-                 ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   this->Check(context, request, response, controller);
-                 }));
+          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Check(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_Check() override {
       BaseClassMustBeDerivedFromService(this);
@@ -239,7 +229,7 @@ class Health final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void Check(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual ::grpc::experimental::ServerUnaryReactor* Check(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Check : public BaseClass {

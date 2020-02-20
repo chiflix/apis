@@ -5,7 +5,6 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -41,7 +40,7 @@ static void InitDefaultsscc_info_HealthCheckRequest_health_2fv1_2fhealth_2eproto
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_HealthCheckRequest_health_2fv1_2fhealth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_HealthCheckRequest_health_2fv1_2fhealth_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_HealthCheckRequest_health_2fv1_2fhealth_2eproto}, {}};
 
 static void InitDefaultsscc_info_HealthCheckResponse_health_2fv1_2fhealth_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -55,7 +54,7 @@ static void InitDefaultsscc_info_HealthCheckResponse_health_2fv1_2fhealth_2eprot
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_HealthCheckResponse_health_2fv1_2fhealth_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_HealthCheckResponse_health_2fv1_2fhealth_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_HealthCheckResponse_health_2fv1_2fhealth_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_health_2fv1_2fhealth_2eproto[2];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_health_2fv1_2fhealth_2eproto[1];
@@ -86,7 +85,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sagittarius::health::v1::_HealthCheckResponse_default_instance_),
 };
 
-const char descriptor_table_protodef_health_2fv1_2fhealth_2eproto[] =
+const char descriptor_table_protodef_health_2fv1_2fhealth_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\026health/v1/health.proto\022\025sagittarius.he"
   "alth.v1\"%\n\022HealthCheckRequest\022\017\n\007service"
   "\030\001 \001(\t\"\254\001\n\023HealthCheckResponse\022H\n\006status"
@@ -148,13 +147,9 @@ constexpr int HealthCheckResponse::ServingStatus_ARRAYSIZE;
 
 void HealthCheckRequest::InitAsDefaultInstance() {
 }
-class HealthCheckRequest::HasBitSetters {
+class HealthCheckRequest::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int HealthCheckRequest::kServiceFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 HealthCheckRequest::HealthCheckRequest()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -173,8 +168,8 @@ HealthCheckRequest::HealthCheckRequest(const HealthCheckRequest& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   service_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.service().size() > 0) {
-    service_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.service(),
+  if (!from._internal_service().empty()) {
+    service_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_service(),
       GetArenaNoVirtual());
   }
   // @@protoc_insertion_point(copy_constructor:sagittarius.health.v1.HealthCheckRequest)
@@ -220,7 +215,6 @@ void HealthCheckRequest::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* HealthCheckRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArenaNoVirtual(); (void)arena;
@@ -232,7 +226,9 @@ const char* HealthCheckRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
       // string service = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_service(), ptr, ctx, "sagittarius.health.v1.HealthCheckRequest.service");
+          auto str = _internal_mutable_service();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "sagittarius.health.v1.HealthCheckRequest.service"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -255,78 +251,9 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool HealthCheckRequest::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:sagittarius.health.v1.HealthCheckRequest)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string service = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_service()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->service().data(), static_cast<int>(this->service().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "sagittarius.health.v1.HealthCheckRequest.service"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:sagittarius.health.v1.HealthCheckRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:sagittarius.health.v1.HealthCheckRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void HealthCheckRequest::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:sagittarius.health.v1.HealthCheckRequest)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string service = 1;
-  if (this->service().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->service().data(), static_cast<int>(this->service().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sagittarius.health.v1.HealthCheckRequest.service");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->service(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:sagittarius.health.v1.HealthCheckRequest)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* HealthCheckRequest::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* HealthCheckRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:sagittarius.health.v1.HealthCheckRequest)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -334,17 +261,16 @@ void HealthCheckRequest::SerializeWithCachedSizes(
   // string service = 1;
   if (this->service().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->service().data(), static_cast<int>(this->service().length()),
+      this->_internal_service().data(), static_cast<int>(this->_internal_service().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "sagittarius.health.v1.HealthCheckRequest.service");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        1, this->service(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_service(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:sagittarius.health.v1.HealthCheckRequest)
   return target;
@@ -354,11 +280,6 @@ size_t HealthCheckRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:sagittarius.health.v1.HealthCheckRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -367,9 +288,13 @@ size_t HealthCheckRequest::ByteSizeLong() const {
   if (this->service().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->service());
+        this->_internal_service());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -398,7 +323,7 @@ void HealthCheckRequest::MergeFrom(const HealthCheckRequest& from) {
   (void) cached_has_bits;
 
   if (from.service().size() > 0) {
-    set_service(from.service());
+    _internal_set_service(from._internal_service());
   }
 }
 
@@ -420,25 +345,6 @@ bool HealthCheckRequest::IsInitialized() const {
   return true;
 }
 
-void HealthCheckRequest::Swap(HealthCheckRequest* other) {
-  if (other == this) return;
-  if (GetArenaNoVirtual() == other->GetArenaNoVirtual()) {
-    InternalSwap(other);
-  } else {
-    HealthCheckRequest* temp = New(GetArenaNoVirtual());
-    temp->MergeFrom(*other);
-    other->CopyFrom(*this);
-    InternalSwap(temp);
-    if (GetArenaNoVirtual() == nullptr) {
-      delete temp;
-    }
-  }
-}
-void HealthCheckRequest::UnsafeArenaSwap(HealthCheckRequest* other) {
-  if (other == this) return;
-  GOOGLE_DCHECK(GetArenaNoVirtual() == other->GetArenaNoVirtual());
-  InternalSwap(other);
-}
 void HealthCheckRequest::InternalSwap(HealthCheckRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -455,14 +361,9 @@ void HealthCheckRequest::InternalSwap(HealthCheckRequest* other) {
 
 void HealthCheckResponse::InitAsDefaultInstance() {
 }
-class HealthCheckResponse::HasBitSetters {
+class HealthCheckResponse::_Internal {
  public:
 };
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int HealthCheckResponse::kStatusFieldNumber;
-const int HealthCheckResponse::kVersionFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 HealthCheckResponse::HealthCheckResponse()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -481,8 +382,8 @@ HealthCheckResponse::HealthCheckResponse(const HealthCheckResponse& from)
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from.version().size() > 0) {
-    version_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.version(),
+  if (!from._internal_version().empty()) {
+    version_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_version(),
       GetArenaNoVirtual());
   }
   status_ = from.status_;
@@ -531,7 +432,6 @@ void HealthCheckResponse::Clear() {
   _internal_metadata_.Clear();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* HealthCheckResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArenaNoVirtual(); (void)arena;
@@ -545,13 +445,15 @@ const char* HealthCheckResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAME
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          set_status(static_cast<::sagittarius::health::v1::HealthCheckResponse_ServingStatus>(val));
+          _internal_set_status(static_cast<::sagittarius::health::v1::HealthCheckResponse_ServingStatus>(val));
         } else goto handle_unusual;
         continue;
       // string version = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_version(), ptr, ctx, "sagittarius.health.v1.HealthCheckResponse.version");
+          auto str = _internal_mutable_version();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "sagittarius.health.v1.HealthCheckResponse.version"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -574,122 +476,33 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool HealthCheckResponse::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-  // @@protoc_insertion_point(parse_start:sagittarius.health.v1.HealthCheckResponse)
-  for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .sagittarius.health.v1.HealthCheckResponse.ServingStatus status = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
-          int value = 0;
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_status(static_cast< ::sagittarius::health::v1::HealthCheckResponse_ServingStatus >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
 
-      // string version = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->mutable_version()));
-          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-            this->version().data(), static_cast<int>(this->version().length()),
-            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
-            "sagittarius.health.v1.HealthCheckResponse.version"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:sagittarius.health.v1.HealthCheckResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:sagittarius.health.v1.HealthCheckResponse)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void HealthCheckResponse::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:sagittarius.health.v1.HealthCheckResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .sagittarius.health.v1.HealthCheckResponse.ServingStatus status = 1;
-  if (this->status() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
-      1, this->status(), output);
-  }
-
-  // string version = 2;
-  if (this->version().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->version().data(), static_cast<int>(this->version().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sagittarius.health.v1.HealthCheckResponse.version");
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->version(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:sagittarius.health.v1.HealthCheckResponse)
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* HealthCheckResponse::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* HealthCheckResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:sagittarius.health.v1.HealthCheckResponse)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // .sagittarius.health.v1.HealthCheckResponse.ServingStatus status = 1;
   if (this->status() != 0) {
+    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      1, this->status(), target);
+      1, this->_internal_status(), target);
   }
 
   // string version = 2;
   if (this->version().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->version().data(), static_cast<int>(this->version().length()),
+      this->_internal_version().data(), static_cast<int>(this->_internal_version().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "sagittarius.health.v1.HealthCheckResponse.version");
-    target =
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
-        2, this->version(), target);
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_version(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:sagittarius.health.v1.HealthCheckResponse)
   return target;
@@ -699,11 +512,6 @@ size_t HealthCheckResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:sagittarius.health.v1.HealthCheckResponse)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -712,15 +520,19 @@ size_t HealthCheckResponse::ByteSizeLong() const {
   if (this->version().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->version());
+        this->_internal_version());
   }
 
   // .sagittarius.health.v1.HealthCheckResponse.ServingStatus status = 1;
   if (this->status() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->status());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_status());
   }
 
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -749,10 +561,10 @@ void HealthCheckResponse::MergeFrom(const HealthCheckResponse& from) {
   (void) cached_has_bits;
 
   if (from.version().size() > 0) {
-    set_version(from.version());
+    _internal_set_version(from._internal_version());
   }
   if (from.status() != 0) {
-    set_status(from.status());
+    _internal_set_status(from._internal_status());
   }
 }
 
@@ -774,25 +586,6 @@ bool HealthCheckResponse::IsInitialized() const {
   return true;
 }
 
-void HealthCheckResponse::Swap(HealthCheckResponse* other) {
-  if (other == this) return;
-  if (GetArenaNoVirtual() == other->GetArenaNoVirtual()) {
-    InternalSwap(other);
-  } else {
-    HealthCheckResponse* temp = New(GetArenaNoVirtual());
-    temp->MergeFrom(*other);
-    other->CopyFrom(*this);
-    InternalSwap(temp);
-    if (GetArenaNoVirtual() == nullptr) {
-      delete temp;
-    }
-  }
-}
-void HealthCheckResponse::UnsafeArenaSwap(HealthCheckResponse* other) {
-  if (other == this) return;
-  GOOGLE_DCHECK(GetArenaNoVirtual() == other->GetArenaNoVirtual());
-  InternalSwap(other);
-}
 void HealthCheckResponse::InternalSwap(HealthCheckResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
