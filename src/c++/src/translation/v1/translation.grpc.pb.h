@@ -22,12 +22,14 @@
 #include "translation/v1/translation.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
 #include <grpcpp/impl/codegen/client_callback.h>
 #include <grpcpp/impl/codegen/client_context.h>
 #include <grpcpp/impl/codegen/completion_queue.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
@@ -38,19 +40,6 @@
 #include <grpcpp/impl/codegen/status.h>
 #include <grpcpp/impl/codegen/stub_options.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
-
-namespace grpc_impl {
-class CompletionQueue;
-class ServerCompletionQueue;
-class ServerContext;
-}  // namespace grpc_impl
-
-namespace grpc {
-namespace experimental {
-template <typename RequestT, typename ResponseT>
-class MessageAllocator;
-}  // namespace experimental
-}  // namespace grpc
 
 namespace sagittarius {
 namespace translation {
@@ -130,37 +119,95 @@ class Translation final {
       // Translate media(audio or video) by media identity
       virtual void TranslateMedia(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void TranslateMedia(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void TranslateMedia(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void TranslateMedia(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void TranslateMedia(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void TranslateMedia(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // detect the language of text
       virtual void DetectLanguage(::grpc::ClientContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DetectLanguage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::DetectionResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void DetectLanguage(::grpc::ClientContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void DetectLanguage(::grpc::ClientContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void DetectLanguage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void DetectLanguage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       virtual void Transcript(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Transcript(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TranscriptResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Transcript(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void Transcript(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Transcript(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void Transcript(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Translate text by Google Translation Service
       virtual void TranslateText(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void TranslateText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TextTranslationResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void TranslateText(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void TranslateText(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void TranslateText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void TranslateText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Performs bidirectional streaming audio translation: receive results after or while
       // sending audio. This method is only available via the gRPC API (not REST).
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void StreamingTranslation(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest,::sagittarius::translation::v1::StreamingTranslationResponse>* reactor) = 0;
+      #else
       virtual void StreamingTranslation(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest,::sagittarius::translation::v1::StreamingTranslationResponse>* reactor) = 0;
+      #endif
       // Check StreamingTranslationTask results or estimate finish time
       // and maybe other informations related to the task
       virtual void StreamingTranslationTask(::grpc::ClientContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StreamingTranslationTask(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void StreamingTranslationTask(::grpc::ClientContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void StreamingTranslationTask(::grpc::ClientContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void StreamingTranslationTask(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void StreamingTranslationTask(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Get User Quota
       virtual void GetUserQuota(::grpc::ClientContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetUserQuota(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::UserQuotaResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetUserQuota(::grpc::ClientContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetUserQuota(::grpc::ClientContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetUserQuota(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetUserQuota(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef class experimental_async_interface async_interface;
+    #endif
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    async_interface* async() { return experimental_async(); }
+    #endif
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sagittarius::translation::v1::MediaTranslationResponse>* AsyncTranslateMediaRaw(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -238,29 +285,81 @@ class Translation final {
      public:
       void TranslateMedia(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, std::function<void(::grpc::Status)>) override;
       void TranslateMedia(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void TranslateMedia(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void TranslateMedia(::grpc::ClientContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void TranslateMedia(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void TranslateMedia(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::MediaTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void DetectLanguage(::grpc::ClientContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response, std::function<void(::grpc::Status)>) override;
       void DetectLanguage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::DetectionResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void DetectLanguage(::grpc::ClientContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void DetectLanguage(::grpc::ClientContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void DetectLanguage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void DetectLanguage(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::DetectionResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void Transcript(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response, std::function<void(::grpc::Status)>) override;
       void Transcript(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TranscriptResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Transcript(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void Transcript(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Transcript(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void Transcript(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TranscriptResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void TranslateText(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response, std::function<void(::grpc::Status)>) override;
       void TranslateText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TextTranslationResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void TranslateText(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void TranslateText(::grpc::ClientContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void TranslateText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void TranslateText(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::TextTranslationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void StreamingTranslation(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest,::sagittarius::translation::v1::StreamingTranslationResponse>* reactor) override;
+      #else
       void StreamingTranslation(::grpc::ClientContext* context, ::grpc::experimental::ClientBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest,::sagittarius::translation::v1::StreamingTranslationResponse>* reactor) override;
+      #endif
       void StreamingTranslationTask(::grpc::ClientContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, std::function<void(::grpc::Status)>) override;
       void StreamingTranslationTask(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void StreamingTranslationTask(::grpc::ClientContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void StreamingTranslationTask(::grpc::ClientContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void StreamingTranslationTask(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void StreamingTranslationTask(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void GetUserQuota(::grpc::ClientContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response, std::function<void(::grpc::Status)>) override;
       void GetUserQuota(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::UserQuotaResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetUserQuota(::grpc::ClientContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetUserQuota(::grpc::ClientContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetUserQuota(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetUserQuota(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::translation::v1::UserQuotaResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -464,13 +563,28 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_TranslateMedia() {
-      ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response) { return this->TranslateMedia(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::translation::v1::MediaTranslationRequest* request, ::sagittarius::translation::v1::MediaTranslationResponse* response) { return this->TranslateMedia(context, request, response); }));}
     void SetMessageAllocatorFor_TranslateMedia(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>*>(
-          ::grpc::Service::experimental().GetHandler(0))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::MediaTranslationRequest, ::sagittarius::translation::v1::MediaTranslationResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_TranslateMedia() override {
@@ -481,7 +595,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateMedia(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::MediaTranslationRequest* /*request*/, ::sagittarius::translation::v1::MediaTranslationResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* TranslateMedia(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::MediaTranslationRequest* /*request*/, ::sagittarius::translation::v1::MediaTranslationResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* TranslateMedia(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::MediaTranslationRequest* /*request*/, ::sagittarius::translation::v1::MediaTranslationResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_DetectLanguage : public BaseClass {
@@ -489,13 +610,28 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_DetectLanguage() {
-      ::grpc::Service::experimental().MarkMethodCallback(1,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response) { return this->DetectLanguage(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(1,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::translation::v1::DetectionRequest* request, ::sagittarius::translation::v1::DetectionResponse* response) { return this->DetectLanguage(context, request, response); }));}
     void SetMessageAllocatorFor_DetectLanguage(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>*>(
-          ::grpc::Service::experimental().GetHandler(1))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::DetectionRequest, ::sagittarius::translation::v1::DetectionResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_DetectLanguage() override {
@@ -506,7 +642,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DetectLanguage(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::DetectionRequest* /*request*/, ::sagittarius::translation::v1::DetectionResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* DetectLanguage(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::DetectionRequest* /*request*/, ::sagittarius::translation::v1::DetectionResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* DetectLanguage(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::DetectionRequest* /*request*/, ::sagittarius::translation::v1::DetectionResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_Transcript : public BaseClass {
@@ -514,13 +657,28 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_Transcript() {
-      ::grpc::Service::experimental().MarkMethodCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response) { return this->Transcript(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(2,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::translation::v1::TranscriptRequest* request, ::sagittarius::translation::v1::TranscriptResponse* response) { return this->Transcript(context, request, response); }));}
     void SetMessageAllocatorFor_Transcript(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>*>(
-          ::grpc::Service::experimental().GetHandler(2))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TranscriptRequest, ::sagittarius::translation::v1::TranscriptResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_Transcript() override {
@@ -531,7 +689,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* Transcript(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TranscriptRequest* /*request*/, ::sagittarius::translation::v1::TranscriptResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* Transcript(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TranscriptRequest* /*request*/, ::sagittarius::translation::v1::TranscriptResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Transcript(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TranscriptRequest* /*request*/, ::sagittarius::translation::v1::TranscriptResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_TranslateText : public BaseClass {
@@ -539,13 +704,28 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_TranslateText() {
-      ::grpc::Service::experimental().MarkMethodCallback(3,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response) { return this->TranslateText(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::translation::v1::TextTranslationRequest* request, ::sagittarius::translation::v1::TextTranslationResponse* response) { return this->TranslateText(context, request, response); }));}
     void SetMessageAllocatorFor_TranslateText(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>*>(
-          ::grpc::Service::experimental().GetHandler(3))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::TextTranslationRequest, ::sagittarius::translation::v1::TextTranslationResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_TranslateText() override {
@@ -556,7 +736,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateText(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TextTranslationRequest* /*request*/, ::sagittarius::translation::v1::TextTranslationResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* TranslateText(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TextTranslationRequest* /*request*/, ::sagittarius::translation::v1::TextTranslationResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* TranslateText(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::TextTranslationRequest* /*request*/, ::sagittarius::translation::v1::TextTranslationResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingTranslation : public BaseClass {
@@ -564,9 +751,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_StreamingTranslation() {
-      ::grpc::Service::experimental().MarkMethodCallback(4,
-        new ::grpc_impl::internal::CallbackBidiHandler< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context) { return this->StreamingTranslation(context); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc_impl::internal::CallbackBidiHandler< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context) { return this->StreamingTranslation(context); }));
     }
     ~ExperimentalWithCallbackMethod_StreamingTranslation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -576,7 +774,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>* StreamingTranslation(::grpc::experimental::CallbackServerContext* /*context*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>* StreamingTranslation(
+      ::grpc::CallbackServerContext* /*context*/)
+    #else
+    virtual ::grpc::experimental::ServerBidiReactor< ::sagittarius::translation::v1::StreamingTranslationRequest, ::sagittarius::translation::v1::StreamingTranslationResponse>* StreamingTranslation(
+      ::grpc::experimental::CallbackServerContext* /*context*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingTranslationTask : public BaseClass {
@@ -584,13 +789,28 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_StreamingTranslationTask() {
-      ::grpc::Service::experimental().MarkMethodCallback(5,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response) { return this->StreamingTranslationTask(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(5,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* request, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* response) { return this->StreamingTranslationTask(context, request, response); }));}
     void SetMessageAllocatorFor_StreamingTranslationTask(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>*>(
-          ::grpc::Service::experimental().GetHandler(5))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(5);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::StreamingTranslationTaskRequest, ::sagittarius::translation::v1::StreamingTranslationTaskResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_StreamingTranslationTask() override {
@@ -601,7 +821,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* StreamingTranslationTask(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* /*request*/, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* StreamingTranslationTask(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* /*request*/, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* StreamingTranslationTask(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::StreamingTranslationTaskRequest* /*request*/, ::sagittarius::translation::v1::StreamingTranslationTaskResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetUserQuota : public BaseClass {
@@ -609,13 +836,28 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetUserQuota() {
-      ::grpc::Service::experimental().MarkMethodCallback(6,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response) { return this->GetUserQuota(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(6,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::translation::v1::UserQuotaRequest* request, ::sagittarius::translation::v1::UserQuotaResponse* response) { return this->GetUserQuota(context, request, response); }));}
     void SetMessageAllocatorFor_GetUserQuota(
         ::grpc::experimental::MessageAllocator< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>*>(
-          ::grpc::Service::experimental().GetHandler(6))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(6);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::translation::v1::UserQuotaRequest, ::sagittarius::translation::v1::UserQuotaResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetUserQuota() override {
@@ -626,8 +868,19 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetUserQuota(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::UserQuotaRequest* /*request*/, ::sagittarius::translation::v1::UserQuotaResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetUserQuota(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::UserQuotaRequest* /*request*/, ::sagittarius::translation::v1::UserQuotaResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetUserQuota(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::translation::v1::UserQuotaRequest* /*request*/, ::sagittarius::translation::v1::UserQuotaResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
+  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+  typedef ExperimentalWithCallbackMethod_TranslateMedia<ExperimentalWithCallbackMethod_DetectLanguage<ExperimentalWithCallbackMethod_Transcript<ExperimentalWithCallbackMethod_TranslateText<ExperimentalWithCallbackMethod_StreamingTranslation<ExperimentalWithCallbackMethod_StreamingTranslationTask<ExperimentalWithCallbackMethod_GetUserQuota<Service > > > > > > > CallbackService;
+  #endif
+
   typedef ExperimentalWithCallbackMethod_TranslateMedia<ExperimentalWithCallbackMethod_DetectLanguage<ExperimentalWithCallbackMethod_Transcript<ExperimentalWithCallbackMethod_TranslateText<ExperimentalWithCallbackMethod_StreamingTranslation<ExperimentalWithCallbackMethod_StreamingTranslationTask<ExperimentalWithCallbackMethod_GetUserQuota<Service > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_TranslateMedia : public BaseClass {
@@ -894,9 +1147,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_TranslateMedia() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TranslateMedia(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TranslateMedia(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_TranslateMedia() override {
       BaseClassMustBeDerivedFromService(this);
@@ -906,7 +1170,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateMedia(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* TranslateMedia(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* TranslateMedia(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_DetectLanguage : public BaseClass {
@@ -914,9 +1185,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_DetectLanguage() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(1,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DetectLanguage(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(1,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DetectLanguage(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_DetectLanguage() override {
       BaseClassMustBeDerivedFromService(this);
@@ -926,7 +1208,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DetectLanguage(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* DetectLanguage(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* DetectLanguage(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_Transcript : public BaseClass {
@@ -934,9 +1223,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_Transcript() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Transcript(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(2,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Transcript(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_Transcript() override {
       BaseClassMustBeDerivedFromService(this);
@@ -946,7 +1246,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* Transcript(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* Transcript(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Transcript(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_TranslateText : public BaseClass {
@@ -954,9 +1261,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_TranslateText() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(3,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TranslateText(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TranslateText(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_TranslateText() override {
       BaseClassMustBeDerivedFromService(this);
@@ -966,7 +1284,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* TranslateText(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* TranslateText(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* TranslateText(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingTranslation : public BaseClass {
@@ -974,9 +1299,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_StreamingTranslation() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(4,
-        new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context) { return this->StreamingTranslation(context); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc_impl::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context) { return this->StreamingTranslation(context); }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingTranslation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -986,7 +1322,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingTranslation(::grpc::experimental::CallbackServerContext* /*context*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingTranslation(
+      ::grpc::CallbackServerContext* /*context*/)
+    #else
+    virtual ::grpc::experimental::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamingTranslation(
+      ::grpc::experimental::CallbackServerContext* /*context*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingTranslationTask : public BaseClass {
@@ -994,9 +1337,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_StreamingTranslationTask() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(5,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StreamingTranslationTask(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(5,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StreamingTranslationTask(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingTranslationTask() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1006,7 +1360,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* StreamingTranslationTask(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* StreamingTranslationTask(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* StreamingTranslationTask(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetUserQuota : public BaseClass {
@@ -1014,9 +1375,20 @@ class Translation final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetUserQuota() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(6,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetUserQuota(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(6,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetUserQuota(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_GetUserQuota() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1026,7 +1398,14 @@ class Translation final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetUserQuota(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetUserQuota(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetUserQuota(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_TranslateMedia : public BaseClass {

@@ -22,12 +22,14 @@
 #include "training/v1/training.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
 #include <grpcpp/impl/codegen/client_callback.h>
 #include <grpcpp/impl/codegen/client_context.h>
 #include <grpcpp/impl/codegen/completion_queue.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
@@ -38,19 +40,6 @@
 #include <grpcpp/impl/codegen/status.h>
 #include <grpcpp/impl/codegen/stub_options.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
-
-namespace grpc_impl {
-class CompletionQueue;
-class ServerCompletionQueue;
-class ServerContext;
-}  // namespace grpc_impl
-
-namespace grpc {
-namespace experimental {
-template <typename RequestT, typename ResponseT>
-class MessageAllocator;
-}  // namespace experimental
-}  // namespace grpc
 
 namespace sagittarius {
 namespace training {
@@ -90,12 +79,30 @@ class Trainng final {
       // Push accture traning data to server
       virtual void PushData(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) = 0;
       virtual void PushData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void PushData(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void PushData(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void PushData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void PushData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Performs bidirectional streaming audio translation: receive results while
       // sending audio. This method is only available via the gRPC API (not REST).
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void StreamingTraining(::grpc::ClientContext* context, ::google::rpc::Status* response, ::grpc::ClientWriteReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* reactor) = 0;
+      #else
       virtual void StreamingTraining(::grpc::ClientContext* context, ::google::rpc::Status* response, ::grpc::experimental::ClientWriteReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* reactor) = 0;
+      #endif
     };
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef class experimental_async_interface async_interface;
+    #endif
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    async_interface* async() { return experimental_async(); }
+    #endif
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::rpc::Status>* AsyncPushDataRaw(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData& request, ::grpc::CompletionQueue* cq) = 0;
@@ -128,9 +135,21 @@ class Trainng final {
      public:
       void PushData(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) override;
       void PushData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void PushData(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void PushData(::grpc::ClientContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void PushData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void PushData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void StreamingTraining(::grpc::ClientContext* context, ::google::rpc::Status* response, ::grpc::ClientWriteReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* reactor) override;
+      #else
       void StreamingTraining(::grpc::ClientContext* context, ::google::rpc::Status* response, ::grpc::experimental::ClientWriteReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -209,13 +228,28 @@ class Trainng final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_PushData() {
-      ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response) { return this->PushData(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::training::v1::TrainingData* request, ::google::rpc::Status* response) { return this->PushData(context, request, response); }));}
     void SetMessageAllocatorFor_PushData(
         ::grpc::experimental::MessageAllocator< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>*>(
-          ::grpc::Service::experimental().GetHandler(0))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::training::v1::TrainingData, ::google::rpc::Status>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_PushData() override {
@@ -226,7 +260,14 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* PushData(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::training::v1::TrainingData* /*request*/, ::google::rpc::Status* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* PushData(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::training::v1::TrainingData* /*request*/, ::google::rpc::Status* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* PushData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::training::v1::TrainingData* /*request*/, ::google::rpc::Status* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_StreamingTraining : public BaseClass {
@@ -234,9 +275,20 @@ class Trainng final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_StreamingTraining() {
-      ::grpc::Service::experimental().MarkMethodCallback(1,
-        new ::grpc_impl::internal::CallbackClientStreamingHandler< ::sagittarius::training::v1::StreamingTrainingRequest, ::google::rpc::Status>(
-          [this](::grpc::experimental::CallbackServerContext* context, ::google::rpc::Status* response) { return this->StreamingTraining(context, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(1,
+          new ::grpc_impl::internal::CallbackClientStreamingHandler< ::sagittarius::training::v1::StreamingTrainingRequest, ::google::rpc::Status>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, ::google::rpc::Status* response) { return this->StreamingTraining(context, response); }));
     }
     ~ExperimentalWithCallbackMethod_StreamingTraining() override {
       BaseClassMustBeDerivedFromService(this);
@@ -246,8 +298,19 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* StreamingTraining(::grpc::experimental::CallbackServerContext* /*context*/, ::google::rpc::Status* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerReadReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* StreamingTraining(
+      ::grpc::CallbackServerContext* /*context*/, ::google::rpc::Status* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerReadReactor< ::sagittarius::training::v1::StreamingTrainingRequest>* StreamingTraining(
+      ::grpc::experimental::CallbackServerContext* /*context*/, ::google::rpc::Status* /*response*/)
+    #endif
+      { return nullptr; }
   };
+  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+  typedef ExperimentalWithCallbackMethod_PushData<ExperimentalWithCallbackMethod_StreamingTraining<Service > > CallbackService;
+  #endif
+
   typedef ExperimentalWithCallbackMethod_PushData<ExperimentalWithCallbackMethod_StreamingTraining<Service > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_PushData : public BaseClass {
@@ -329,9 +392,20 @@ class Trainng final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_PushData() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PushData(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PushData(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_PushData() override {
       BaseClassMustBeDerivedFromService(this);
@@ -341,7 +415,14 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* PushData(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* PushData(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* PushData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StreamingTraining : public BaseClass {
@@ -349,9 +430,20 @@ class Trainng final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_StreamingTraining() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(1,
-        new ::grpc_impl::internal::CallbackClientStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, ::grpc::ByteBuffer* response) { return this->StreamingTraining(context, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(1,
+          new ::grpc_impl::internal::CallbackClientStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, ::grpc::ByteBuffer* response) { return this->StreamingTraining(context, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_StreamingTraining() override {
       BaseClassMustBeDerivedFromService(this);
@@ -361,7 +453,14 @@ class Trainng final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerReadReactor< ::grpc::ByteBuffer>* StreamingTraining(::grpc::experimental::CallbackServerContext* /*context*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerReadReactor< ::grpc::ByteBuffer>* StreamingTraining(
+      ::grpc::CallbackServerContext* /*context*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerReadReactor< ::grpc::ByteBuffer>* StreamingTraining(
+      ::grpc::experimental::CallbackServerContext* /*context*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_PushData : public BaseClass {

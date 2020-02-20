@@ -25,12 +25,14 @@
 #include "health/v1/health.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
 #include <grpcpp/impl/codegen/client_callback.h>
 #include <grpcpp/impl/codegen/client_context.h>
 #include <grpcpp/impl/codegen/completion_queue.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
@@ -41,19 +43,6 @@
 #include <grpcpp/impl/codegen/status.h>
 #include <grpcpp/impl/codegen/stub_options.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
-
-namespace grpc_impl {
-class CompletionQueue;
-class ServerCompletionQueue;
-class ServerContext;
-}  // namespace grpc_impl
-
-namespace grpc {
-namespace experimental {
-template <typename RequestT, typename ResponseT>
-class MessageAllocator;
-}  // namespace experimental
-}  // namespace grpc
 
 namespace sagittarius {
 namespace health {
@@ -79,9 +68,23 @@ class Health final {
       virtual ~experimental_async_interface() {}
       virtual void Check(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Check(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::health::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Check(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void Check(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Check(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void Check(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef class experimental_async_interface async_interface;
+    #endif
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    async_interface* async() { return experimental_async(); }
+    #endif
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sagittarius::health::v1::HealthCheckResponse>* AsyncCheckRaw(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -102,8 +105,16 @@ class Health final {
      public:
       void Check(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)>) override;
       void Check(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::health::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Check(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void Check(::grpc::ClientContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Check(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void Check(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::health::v1::HealthCheckResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -154,13 +165,28 @@ class Health final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_Check() {
-      ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response) { return this->Check(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::health::v1::HealthCheckRequest* request, ::sagittarius::health::v1::HealthCheckResponse* response) { return this->Check(context, request, response); }));}
     void SetMessageAllocatorFor_Check(
         ::grpc::experimental::MessageAllocator< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>*>(
-          ::grpc::Service::experimental().GetHandler(0))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::health::v1::HealthCheckRequest, ::sagittarius::health::v1::HealthCheckResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_Check() override {
@@ -171,8 +197,19 @@ class Health final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* Check(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::health::v1::HealthCheckRequest* /*request*/, ::sagittarius::health::v1::HealthCheckResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* Check(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::health::v1::HealthCheckRequest* /*request*/, ::sagittarius::health::v1::HealthCheckResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Check(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::health::v1::HealthCheckRequest* /*request*/, ::sagittarius::health::v1::HealthCheckResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
+  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+  typedef ExperimentalWithCallbackMethod_Check<Service > CallbackService;
+  #endif
+
   typedef ExperimentalWithCallbackMethod_Check<Service > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Check : public BaseClass {
@@ -217,9 +254,20 @@ class Health final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_Check() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Check(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Check(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_Check() override {
       BaseClassMustBeDerivedFromService(this);
@@ -229,7 +277,14 @@ class Health final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* Check(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* Check(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Check(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Check : public BaseClass {

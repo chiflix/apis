@@ -22,12 +22,14 @@
 #include "media/v1/media.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
 #include <grpcpp/impl/codegen/client_callback.h>
 #include <grpcpp/impl/codegen/client_context.h>
 #include <grpcpp/impl/codegen/completion_queue.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
@@ -38,19 +40,6 @@
 #include <grpcpp/impl/codegen/status.h>
 #include <grpcpp/impl/codegen/stub_options.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
-
-namespace grpc_impl {
-class CompletionQueue;
-class ServerCompletionQueue;
-class ServerContext;
-}  // namespace grpc_impl
-
-namespace grpc {
-namespace experimental {
-template <typename RequestT, typename ResponseT>
-class MessageAllocator;
-}  // namespace experimental
-}  // namespace grpc
 
 namespace sagittarius {
 namespace media {
@@ -111,29 +100,75 @@ class Media final {
       //
       virtual void GetInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       //
       virtual void UpdateInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) = 0;
       virtual void UpdateInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void UpdateInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void UpdateInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void UpdateInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void UpdateInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Query obtainable thumbnails time range and unavailable ones by media identity
       virtual void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Get thumbnail by timestamps
       virtual void GetThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Update thumbnail by timestamps
       virtual void UpdateThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) = 0;
       virtual void UpdateThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void UpdateThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void UpdateThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void UpdateThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void UpdateThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef class experimental_async_interface async_interface;
+    #endif
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    async_interface* async() { return experimental_async(); }
+    #endif
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sagittarius::media::v1::Info>* AsyncGetInfoRaw(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -190,24 +225,64 @@ class Media final {
      public:
       void GetInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) override;
       void GetInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void UpdateInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) override;
       void UpdateInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void UpdateInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void UpdateInfo(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void UpdateInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void UpdateInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::Info* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, std::function<void(::grpc::Status)>) override;
       void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetThumbnailTimeRanges(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void GetThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response, std::function<void(::grpc::Status)>) override;
       void GetThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::sagittarius::media::v1::ThumbnailResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void UpdateThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) override;
       void UpdateThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void UpdateThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void UpdateThumbnail(::grpc::ClientContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void UpdateThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void UpdateThumbnail(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::rpc::Status* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -359,13 +434,28 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetInfo() {
-      ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::GetInfoRequest, ::sagittarius::media::v1::Info>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response) { return this->GetInfo(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::GetInfoRequest, ::sagittarius::media::v1::Info>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::media::v1::GetInfoRequest* request, ::sagittarius::media::v1::Info* response) { return this->GetInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetInfo(
         ::grpc::experimental::MessageAllocator< ::sagittarius::media::v1::GetInfoRequest, ::sagittarius::media::v1::Info>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::GetInfoRequest, ::sagittarius::media::v1::Info>*>(
-          ::grpc::Service::experimental().GetHandler(0))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::GetInfoRequest, ::sagittarius::media::v1::Info>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetInfo() override {
@@ -376,7 +466,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetInfo(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::GetInfoRequest* /*request*/, ::sagittarius::media::v1::Info* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::GetInfoRequest* /*request*/, ::sagittarius::media::v1::Info* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetInfo(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::GetInfoRequest* /*request*/, ::sagittarius::media::v1::Info* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_UpdateInfo : public BaseClass {
@@ -384,13 +481,28 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_UpdateInfo() {
-      ::grpc::Service::experimental().MarkMethodCallback(1,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateInfoRequest, ::sagittarius::media::v1::Info>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response) { return this->UpdateInfo(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(1,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateInfoRequest, ::sagittarius::media::v1::Info>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::media::v1::UpdateInfoRequest* request, ::sagittarius::media::v1::Info* response) { return this->UpdateInfo(context, request, response); }));}
     void SetMessageAllocatorFor_UpdateInfo(
         ::grpc::experimental::MessageAllocator< ::sagittarius::media::v1::UpdateInfoRequest, ::sagittarius::media::v1::Info>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateInfoRequest, ::sagittarius::media::v1::Info>*>(
-          ::grpc::Service::experimental().GetHandler(1))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateInfoRequest, ::sagittarius::media::v1::Info>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_UpdateInfo() override {
@@ -401,7 +513,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* UpdateInfo(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::UpdateInfoRequest* /*request*/, ::sagittarius::media::v1::Info* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* UpdateInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::UpdateInfoRequest* /*request*/, ::sagittarius::media::v1::Info* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* UpdateInfo(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::UpdateInfoRequest* /*request*/, ::sagittarius::media::v1::Info* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetThumbnailTimeRanges : public BaseClass {
@@ -409,13 +528,28 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetThumbnailTimeRanges() {
-      ::grpc::Service::experimental().MarkMethodCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailTimeRangesRequest, ::sagittarius::media::v1::ThumbnailTimeRangesResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response) { return this->GetThumbnailTimeRanges(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(2,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailTimeRangesRequest, ::sagittarius::media::v1::ThumbnailTimeRangesResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* request, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* response) { return this->GetThumbnailTimeRanges(context, request, response); }));}
     void SetMessageAllocatorFor_GetThumbnailTimeRanges(
         ::grpc::experimental::MessageAllocator< ::sagittarius::media::v1::ThumbnailTimeRangesRequest, ::sagittarius::media::v1::ThumbnailTimeRangesResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailTimeRangesRequest, ::sagittarius::media::v1::ThumbnailTimeRangesResponse>*>(
-          ::grpc::Service::experimental().GetHandler(2))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailTimeRangesRequest, ::sagittarius::media::v1::ThumbnailTimeRangesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetThumbnailTimeRanges() override {
@@ -426,7 +560,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnailTimeRanges(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* /*request*/, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetThumbnailTimeRanges(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* /*request*/, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnailTimeRanges(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::ThumbnailTimeRangesRequest* /*request*/, ::sagittarius::media::v1::ThumbnailTimeRangesResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetThumbnail : public BaseClass {
@@ -434,13 +575,28 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetThumbnail() {
-      ::grpc::Service::experimental().MarkMethodCallback(3,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailRequest, ::sagittarius::media::v1::ThumbnailResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response) { return this->GetThumbnail(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailRequest, ::sagittarius::media::v1::ThumbnailResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::media::v1::ThumbnailRequest* request, ::sagittarius::media::v1::ThumbnailResponse* response) { return this->GetThumbnail(context, request, response); }));}
     void SetMessageAllocatorFor_GetThumbnail(
         ::grpc::experimental::MessageAllocator< ::sagittarius::media::v1::ThumbnailRequest, ::sagittarius::media::v1::ThumbnailResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailRequest, ::sagittarius::media::v1::ThumbnailResponse>*>(
-          ::grpc::Service::experimental().GetHandler(3))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::ThumbnailRequest, ::sagittarius::media::v1::ThumbnailResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetThumbnail() override {
@@ -451,7 +607,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnail(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::ThumbnailRequest* /*request*/, ::sagittarius::media::v1::ThumbnailResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetThumbnail(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::ThumbnailRequest* /*request*/, ::sagittarius::media::v1::ThumbnailResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnail(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::ThumbnailRequest* /*request*/, ::sagittarius::media::v1::ThumbnailResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_UpdateThumbnail : public BaseClass {
@@ -459,13 +622,28 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_UpdateThumbnail() {
-      ::grpc::Service::experimental().MarkMethodCallback(4,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateThumbnailRequest, ::google::rpc::Status>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response) { return this->UpdateThumbnail(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateThumbnailRequest, ::google::rpc::Status>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::sagittarius::media::v1::UpdateThumbnailRequest* request, ::google::rpc::Status* response) { return this->UpdateThumbnail(context, request, response); }));}
     void SetMessageAllocatorFor_UpdateThumbnail(
         ::grpc::experimental::MessageAllocator< ::sagittarius::media::v1::UpdateThumbnailRequest, ::google::rpc::Status>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateThumbnailRequest, ::google::rpc::Status>*>(
-          ::grpc::Service::experimental().GetHandler(4))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::sagittarius::media::v1::UpdateThumbnailRequest, ::google::rpc::Status>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_UpdateThumbnail() override {
@@ -476,8 +654,19 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* UpdateThumbnail(::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::UpdateThumbnailRequest* /*request*/, ::google::rpc::Status* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* UpdateThumbnail(
+      ::grpc::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::UpdateThumbnailRequest* /*request*/, ::google::rpc::Status* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* UpdateThumbnail(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::sagittarius::media::v1::UpdateThumbnailRequest* /*request*/, ::google::rpc::Status* /*response*/)
+    #endif
+      { return nullptr; }
   };
+  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+  typedef ExperimentalWithCallbackMethod_GetInfo<ExperimentalWithCallbackMethod_UpdateInfo<ExperimentalWithCallbackMethod_GetThumbnailTimeRanges<ExperimentalWithCallbackMethod_GetThumbnail<ExperimentalWithCallbackMethod_UpdateThumbnail<Service > > > > > CallbackService;
+  #endif
+
   typedef ExperimentalWithCallbackMethod_GetInfo<ExperimentalWithCallbackMethod_UpdateInfo<ExperimentalWithCallbackMethod_GetThumbnailTimeRanges<ExperimentalWithCallbackMethod_GetThumbnail<ExperimentalWithCallbackMethod_UpdateThumbnail<Service > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetInfo : public BaseClass {
@@ -670,9 +859,20 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetInfo() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetInfo(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetInfo(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_GetInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -682,7 +882,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetInfo(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetInfo(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_UpdateInfo : public BaseClass {
@@ -690,9 +897,20 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_UpdateInfo() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(1,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UpdateInfo(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(1,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UpdateInfo(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_UpdateInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -702,7 +920,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* UpdateInfo(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* UpdateInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* UpdateInfo(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetThumbnailTimeRanges : public BaseClass {
@@ -710,9 +935,20 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetThumbnailTimeRanges() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetThumbnailTimeRanges(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(2,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetThumbnailTimeRanges(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_GetThumbnailTimeRanges() override {
       BaseClassMustBeDerivedFromService(this);
@@ -722,7 +958,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnailTimeRanges(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetThumbnailTimeRanges(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnailTimeRanges(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetThumbnail : public BaseClass {
@@ -730,9 +973,20 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetThumbnail() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(3,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetThumbnail(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetThumbnail(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_GetThumbnail() override {
       BaseClassMustBeDerivedFromService(this);
@@ -742,7 +996,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnail(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetThumbnail(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetThumbnail(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_UpdateThumbnail : public BaseClass {
@@ -750,9 +1011,20 @@ class Media final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_UpdateThumbnail() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(4,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UpdateThumbnail(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UpdateThumbnail(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_UpdateThumbnail() override {
       BaseClassMustBeDerivedFromService(this);
@@ -762,7 +1034,14 @@ class Media final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* UpdateThumbnail(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* UpdateThumbnail(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* UpdateThumbnail(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetInfo : public BaseClass {

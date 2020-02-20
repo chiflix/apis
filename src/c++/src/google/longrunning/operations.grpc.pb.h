@@ -22,12 +22,14 @@
 #include "google/longrunning/operations.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
 #include <grpcpp/impl/codegen/client_callback.h>
 #include <grpcpp/impl/codegen/client_context.h>
 #include <grpcpp/impl/codegen/completion_queue.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/proto_utils.h>
 #include <grpcpp/impl/codegen/rpc_method.h>
@@ -38,19 +40,6 @@
 #include <grpcpp/impl/codegen/status.h>
 #include <grpcpp/impl/codegen/stub_options.h>
 #include <grpcpp/impl/codegen/sync_stream.h>
-
-namespace grpc_impl {
-class CompletionQueue;
-class ServerCompletionQueue;
-class ServerContext;
-}  // namespace grpc_impl
-
-namespace grpc {
-namespace experimental {
-template <typename RequestT, typename ResponseT>
-class MessageAllocator;
-}  // namespace experimental
-}  // namespace grpc
 
 namespace google {
 namespace longrunning {
@@ -132,23 +121,47 @@ class Operations final {
       // to use different resource name schemes, such as `users/*/operations`.
       virtual void ListOperations(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListOperations(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::ListOperationsResponse* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void ListOperations(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void ListOperations(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void ListOperations(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void ListOperations(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Gets the latest state of a long-running operation.  Clients can use this
       // method to poll the operation result at intervals as recommended by the API
       // service.
       virtual void GetOperation(::grpc::ClientContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::Operation* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetOperation(::grpc::ClientContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetOperation(::grpc::ClientContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::Operation* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void GetOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::Operation* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Deletes a long-running operation. This method indicates that the client is
       // no longer interested in the operation result. It does not cancel the
       // operation. If the server doesn't support this method, it returns
       // `google.rpc.Code.UNIMPLEMENTED`.
       virtual void DeleteOperation(::grpc::ClientContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DeleteOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void DeleteOperation(::grpc::ClientContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void DeleteOperation(::grpc::ClientContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void DeleteOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void DeleteOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // Starts asynchronous cancellation on a long-running operation.  The server
       // makes a best effort to cancel the operation, but success is not
       // guaranteed.  If the server doesn't support this method, it returns
@@ -161,9 +174,23 @@ class Operations final {
       // corresponding to `Code.CANCELLED`.
       virtual void CancelOperation(::grpc::ClientContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CancelOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void CancelOperation(::grpc::ClientContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void CancelOperation(::grpc::ClientContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void CancelOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
       virtual void CancelOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef class experimental_async_interface async_interface;
+    #endif
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    async_interface* async() { return experimental_async(); }
+    #endif
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::longrunning::ListOperationsResponse>* AsyncListOperationsRaw(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -211,20 +238,52 @@ class Operations final {
      public:
       void ListOperations(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response, std::function<void(::grpc::Status)>) override;
       void ListOperations(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::ListOperationsResponse* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void ListOperations(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void ListOperations(::grpc::ClientContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void ListOperations(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void ListOperations(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::ListOperationsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void GetOperation(::grpc::ClientContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response, std::function<void(::grpc::Status)>) override;
       void GetOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::Operation* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetOperation(::grpc::ClientContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetOperation(::grpc::ClientContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::Operation* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void GetOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::longrunning::Operation* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void DeleteOperation(::grpc::ClientContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void DeleteOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void DeleteOperation(::grpc::ClientContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void DeleteOperation(::grpc::ClientContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void DeleteOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void DeleteOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void CancelOperation(::grpc::ClientContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void CancelOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void CancelOperation(::grpc::ClientContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void CancelOperation(::grpc::ClientContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void CancelOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
       void CancelOperation(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -369,13 +428,28 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_ListOperations() {
-      ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response) { return this->ListOperations(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::longrunning::ListOperationsRequest* request, ::google::longrunning::ListOperationsResponse* response) { return this->ListOperations(context, request, response); }));}
     void SetMessageAllocatorFor_ListOperations(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>*>(
-          ::grpc::Service::experimental().GetHandler(0))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::ListOperationsRequest, ::google::longrunning::ListOperationsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_ListOperations() override {
@@ -386,7 +460,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* ListOperations(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::ListOperationsRequest* /*request*/, ::google::longrunning::ListOperationsResponse* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* ListOperations(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::longrunning::ListOperationsRequest* /*request*/, ::google::longrunning::ListOperationsResponse* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* ListOperations(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::ListOperationsRequest* /*request*/, ::google::longrunning::ListOperationsResponse* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetOperation : public BaseClass {
@@ -394,13 +475,28 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetOperation() {
-      ::grpc::Service::experimental().MarkMethodCallback(1,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response) { return this->GetOperation(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(1,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::longrunning::GetOperationRequest* request, ::google::longrunning::Operation* response) { return this->GetOperation(context, request, response); }));}
     void SetMessageAllocatorFor_GetOperation(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>*>(
-          ::grpc::Service::experimental().GetHandler(1))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::GetOperationRequest, ::google::longrunning::Operation>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetOperation() override {
@@ -411,7 +507,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::GetOperationRequest* /*request*/, ::google::longrunning::Operation* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetOperation(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::longrunning::GetOperationRequest* /*request*/, ::google::longrunning::Operation* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetOperation(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::GetOperationRequest* /*request*/, ::google::longrunning::Operation* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_DeleteOperation : public BaseClass {
@@ -419,13 +522,28 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_DeleteOperation() {
-      ::grpc::Service::experimental().MarkMethodCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response) { return this->DeleteOperation(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(2,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::longrunning::DeleteOperationRequest* request, ::google::protobuf::Empty* response) { return this->DeleteOperation(context, request, response); }));}
     void SetMessageAllocatorFor_DeleteOperation(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(2))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::DeleteOperationRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_DeleteOperation() override {
@@ -436,7 +554,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DeleteOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::DeleteOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* DeleteOperation(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::longrunning::DeleteOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* DeleteOperation(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::DeleteOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_CancelOperation : public BaseClass {
@@ -444,13 +569,28 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_CancelOperation() {
-      ::grpc::Service::experimental().MarkMethodCallback(3,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response) { return this->CancelOperation(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::longrunning::CancelOperationRequest* request, ::google::protobuf::Empty* response) { return this->CancelOperation(context, request, response); }));}
     void SetMessageAllocatorFor_CancelOperation(
         ::grpc::experimental::MessageAllocator< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(3))
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::longrunning::CancelOperationRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_CancelOperation() override {
@@ -461,8 +601,19 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* CancelOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::CancelOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* CancelOperation(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::longrunning::CancelOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* CancelOperation(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::longrunning::CancelOperationRequest* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
   };
+  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+  typedef ExperimentalWithCallbackMethod_ListOperations<ExperimentalWithCallbackMethod_GetOperation<ExperimentalWithCallbackMethod_DeleteOperation<ExperimentalWithCallbackMethod_CancelOperation<Service > > > > CallbackService;
+  #endif
+
   typedef ExperimentalWithCallbackMethod_ListOperations<ExperimentalWithCallbackMethod_GetOperation<ExperimentalWithCallbackMethod_DeleteOperation<ExperimentalWithCallbackMethod_CancelOperation<Service > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_ListOperations : public BaseClass {
@@ -618,9 +769,20 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_ListOperations() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(0,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ListOperations(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(0,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ListOperations(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_ListOperations() override {
       BaseClassMustBeDerivedFromService(this);
@@ -630,7 +792,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* ListOperations(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* ListOperations(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* ListOperations(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetOperation : public BaseClass {
@@ -638,9 +807,20 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetOperation() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(1,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetOperation(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(1,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetOperation(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_GetOperation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -650,7 +830,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* GetOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetOperation(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetOperation(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_DeleteOperation : public BaseClass {
@@ -658,9 +845,20 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_DeleteOperation() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteOperation(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(2,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteOperation(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_DeleteOperation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -670,7 +868,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* DeleteOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* DeleteOperation(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* DeleteOperation(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_CancelOperation : public BaseClass {
@@ -678,9 +883,20 @@ class Operations final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_CancelOperation() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(3,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-          [this](::grpc::experimental::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CancelOperation(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CancelOperation(context, request, response); }));
     }
     ~ExperimentalWithRawCallbackMethod_CancelOperation() override {
       BaseClassMustBeDerivedFromService(this);
@@ -690,7 +906,14 @@ class Operations final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::experimental::ServerUnaryReactor* CancelOperation(::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/) { return nullptr; }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* CancelOperation(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* CancelOperation(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ListOperations : public BaseClass {
