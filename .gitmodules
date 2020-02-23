@@ -1,0 +1,3 @@
+[submodule "src/swift"]
+	path = src/swift
+	url = https://github.com/chiflix/apis-swift.git
