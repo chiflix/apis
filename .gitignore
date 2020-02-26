@@ -1,3 +1,9 @@
 node_modules
 package-lock.json
 yarn.lock
+src/c++/build
+src/c++/bin/bin
+src/c++/bin/lib
+src/c++/bin/share
+src/c++/buildios
+src/c++/ios
