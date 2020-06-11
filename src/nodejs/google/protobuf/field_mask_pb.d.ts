@@ -2,7 +2,6 @@
 // file: google/protobuf/field_mask.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 

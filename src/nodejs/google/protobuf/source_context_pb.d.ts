@@ -2,7 +2,6 @@
 // file: google/protobuf/source_context.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 

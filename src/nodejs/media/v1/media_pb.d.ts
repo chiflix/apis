@@ -2,7 +2,6 @@
 // file: media/v1/media.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
@@ -35,8 +34,8 @@ export namespace Info {
 
 
     export class TrackInfo extends jspb.Message { 
-        getTypes(): Info.TrackInfo.Type;
-        setTypes(value: Info.TrackInfo.Type): void;
+    getTypes(): Info.TrackInfo.Type;
+    setTypes(value: Info.TrackInfo.Type): void;
 
 
         serializeBinary(): Uint8Array;
@@ -51,7 +50,7 @@ export namespace Info {
 
     export namespace TrackInfo {
         export type AsObject = {
-            types: Info.TrackInfo.Type,
+        types: Info.TrackInfo.Type,
         }
 
         export enum Type {

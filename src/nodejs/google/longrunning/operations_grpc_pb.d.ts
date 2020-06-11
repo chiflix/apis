@@ -2,7 +2,6 @@
 // file: google/longrunning/operations.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as grpc from "grpc";
 import * as google_longrunning_operations_pb from "../../google/longrunning/operations_pb";
@@ -64,32 +63,32 @@ export interface IOperationsServer {
 }
 
 export interface IOperationsClient {
-    listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
-    listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
-    listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
-    getOperation(request: google_longrunning_operations_pb.GetOperationRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, callback: (error: Error | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
+    listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
+    listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
+    getOperation(request: google_longrunning_operations_pb.GetOperationRequest, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
 }
 
 export class OperationsClient extends grpc.Client implements IOperationsClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
-    public listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
-    public listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
-    public getOperation(request: google_longrunning_operations_pb.GetOperationRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, callback: (error: Error | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
+    public listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
+    public listOperations(request: google_longrunning_operations_pb.ListOperationsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_longrunning_operations_pb.ListOperationsResponse) => void): grpc.ClientUnaryCall;
+    public getOperation(request: google_longrunning_operations_pb.GetOperationRequest, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public getOperation(request: google_longrunning_operations_pb.GetOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public deleteOperation(request: google_longrunning_operations_pb.DeleteOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public cancelOperation(request: google_longrunning_operations_pb.CancelOperationRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
 }

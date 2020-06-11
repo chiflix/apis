@@ -1,4 +1,3 @@
-// source: google/type/dayofweek.proto
 /**
  * @fileoverview
  * @enhanceable

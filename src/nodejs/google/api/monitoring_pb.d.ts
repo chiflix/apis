@@ -2,7 +2,6 @@
 // file: google/api/monitoring.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 
@@ -36,13 +35,13 @@ export namespace Monitoring {
 
 
     export class MonitoringDestination extends jspb.Message { 
-        getMonitoredResource(): string;
-        setMonitoredResource(value: string): void;
+    getMonitoredResource(): string;
+    setMonitoredResource(value: string): void;
 
-        clearMetricsList(): void;
-        getMetricsList(): Array<string>;
-        setMetricsList(value: Array<string>): void;
-        addMetrics(value: string, index?: number): string;
+    clearMetricsList(): void;
+    getMetricsList(): Array<string>;
+    setMetricsList(value: Array<string>): void;
+    addMetrics(value: string, index?: number): string;
 
 
         serializeBinary(): Uint8Array;
@@ -57,8 +56,8 @@ export namespace Monitoring {
 
     export namespace MonitoringDestination {
         export type AsObject = {
-            monitoredResource: string,
-            metricsList: Array<string>,
+        monitoredResource: string,
+        metricsList: Array<string>,
         }
     }
 

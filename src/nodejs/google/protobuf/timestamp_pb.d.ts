@@ -2,7 +2,6 @@
 // file: google/protobuf/timestamp.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 

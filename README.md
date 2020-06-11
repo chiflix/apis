@@ -32,6 +32,12 @@ go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 npm install -g grpc-tools
 npm install -g grpc_tools_node_protoc_ts
 npm install -g typedoc
+
+# install swift plugins
+git clone https://github.com/grpc/grpc-swift.git -b nio
+cd grpc-swift
+make plugins
+cp protoc-gen-* /usr/local/bin/
 ```
 
 Also look at [to build api with swift](./src/swift/README.md)

@@ -2,7 +2,6 @@
 // file: google/api/monitored_resource.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_api_label_pb from "../../google/api/label_pb";

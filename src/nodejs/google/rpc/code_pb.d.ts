@@ -2,7 +2,6 @@
 // file: google/rpc/code.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 

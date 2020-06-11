@@ -9,6 +9,8 @@
     - [DetectionResponse](#sagittarius.translation.v1.DetectionResponse)
     - [MediaTranslationRequest](#sagittarius.translation.v1.MediaTranslationRequest)
     - [MediaTranslationResponse](#sagittarius.translation.v1.MediaTranslationResponse)
+    - [ProcessOrderRequest](#sagittarius.translation.v1.ProcessOrderRequest)
+    - [ProcessOrderResponse](#sagittarius.translation.v1.ProcessOrderResponse)
     - [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest)
     - [StreamingTranslationRequestConfig](#sagittarius.translation.v1.StreamingTranslationRequestConfig)
     - [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationResponse)
@@ -119,6 +121,39 @@
 | error | [google.rpc.Status](#google.rpc.Status) |  | Output-only* If set, returns a [google.rpc.Status][google.rpc.Status] message that specifies the error for the operation. return 404 if no result, in this case, client should use StreamingTranslationRequest |
 | results | [TranscriptInfo](#sagittarius.translation.v1.TranscriptInfo) | repeated | best translation results |
 | stream_translation_task_id | [string](#string) |  | if there is a stream translation task running, return task id |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.ProcessOrderRequest"/>
+
+### ProcessOrderRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| order_id | [int64](#int64) |  | id of the order |
+| audio_uri | [string](#string) |  | uri to get the audio file |
+| audio_config | [google.cloud.speech.v1.RecognitionConfig](#google.cloud.speech.v1.RecognitionConfig) |  | information of the audio file |
+
+
+
+
+
+
+<a name="sagittarius.translation.v1.ProcessOrderResponse"/>
+
+### ProcessOrderResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| error | [google.rpc.Status](#google.rpc.Status) |  |  |
+| order_status | [int64](#int64) |  |  |
 
 
 
@@ -431,6 +466,7 @@ Service that implements Sagittarius Translation API
 | TranslateText | [TextTranslationRequest](#sagittarius.translation.v1.TextTranslationRequest) | [TextTranslationResponse](#sagittarius.translation.v1.TextTranslationRequest) | Translate text by Google Translation Service |
 | StreamingTranslation | [StreamingTranslationRequest](#sagittarius.translation.v1.StreamingTranslationRequest) | [StreamingTranslationResponse](#sagittarius.translation.v1.StreamingTranslationRequest) | Performs bidirectional streaming audio translation: receive results after or while sending audio. This method is only available via the gRPC API (not REST). |
 | StreamingTranslationTask | [StreamingTranslationTaskRequest](#sagittarius.translation.v1.StreamingTranslationTaskRequest) | [StreamingTranslationTaskResponse](#sagittarius.translation.v1.StreamingTranslationTaskRequest) | Check StreamingTranslationTask results or estimate finish time and maybe other informations related to the task |
+| ProcessOrder | [ProcessOrderRequest](#sagittarius.translation.v1.ProcessOrderRequest) | [ProcessOrderResponse](#sagittarius.translation.v1.ProcessOrderRequest) | Start an unpaid or failed order for internal use only |
 | GetUserQuota | [UserQuotaRequest](#sagittarius.translation.v1.UserQuotaRequest) | [UserQuotaResponse](#sagittarius.translation.v1.UserQuotaRequest) | Get User Quota |
 
  

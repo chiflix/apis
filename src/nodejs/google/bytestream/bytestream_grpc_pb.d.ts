@@ -2,7 +2,6 @@
 // file: google/bytestream/bytestream.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as grpc from "grpc";
 import * as google_bytestream_bytestream_pb from "../../google/bytestream/bytestream_pb";
@@ -51,26 +50,26 @@ export interface IByteStreamServer {
 }
 
 export interface IByteStreamClient {
-    read(request: google_bytestream_bytestream_pb.ReadRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadResponse>;
-    read(request: google_bytestream_bytestream_pb.ReadRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadResponse>;
-    write(callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    write(metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    write(options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    write(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
-    queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
-    queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
+    read(request: google_bytestream_bytestream_pb.ReadRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadRequest>;
+    read(request: google_bytestream_bytestream_pb.ReadRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadRequest>;
+    write(callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    write(metadata: grpc.Metadata, callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    write(options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    write(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, callback: (error: Error | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
+    queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
+    queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class ByteStreamClient extends grpc.Client implements IByteStreamClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public read(request: google_bytestream_bytestream_pb.ReadRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadResponse>;
-    public read(request: google_bytestream_bytestream_pb.ReadRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadResponse>;
-    public write(callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    public write(metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    public write(options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    public write(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
-    public queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
-    public queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
-    public queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
+    public read(request: google_bytestream_bytestream_pb.ReadRequest, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadRequest>;
+    public read(request: google_bytestream_bytestream_pb.ReadRequest, metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientReadableStream<google_bytestream_bytestream_pb.ReadRequest>;
+    public write(callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    public write(metadata: grpc.Metadata, callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    public write(options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    public write(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_bytestream_bytestream_pb.WriteResponse) => void): grpc.ClientWritableStream<google_bytestream_bytestream_pb.WriteRequest>;
+    public queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, callback: (error: Error | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
+    public queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
+    public queryWriteStatus(request: google_bytestream_bytestream_pb.QueryWriteStatusRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_bytestream_bytestream_pb.QueryWriteStatusResponse) => void): grpc.ClientUnaryCall;
 }

@@ -2,7 +2,6 @@
 // file: google/api/logging.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 
@@ -36,13 +35,13 @@ export namespace Logging {
 
 
     export class LoggingDestination extends jspb.Message { 
-        getMonitoredResource(): string;
-        setMonitoredResource(value: string): void;
+    getMonitoredResource(): string;
+    setMonitoredResource(value: string): void;
 
-        clearLogsList(): void;
-        getLogsList(): Array<string>;
-        setLogsList(value: Array<string>): void;
-        addLogs(value: string, index?: number): string;
+    clearLogsList(): void;
+    getLogsList(): Array<string>;
+    setLogsList(value: Array<string>): void;
+    addLogs(value: string, index?: number): string;
 
 
         serializeBinary(): Uint8Array;
@@ -57,8 +56,8 @@ export namespace Logging {
 
     export namespace LoggingDestination {
         export type AsObject = {
-            monitoredResource: string,
-            logsList: Array<string>,
+        monitoredResource: string,
+        logsList: Array<string>,
         }
     }
 

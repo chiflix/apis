@@ -26,7 +26,7 @@ function serialize_sagittarius_translation_v1_DetectionRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.DetectionRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.DetectionRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_DetectionRequest(buffer_arg) {
@@ -37,7 +37,7 @@ function serialize_sagittarius_translation_v1_DetectionResponse(arg) {
   if (!(arg instanceof translation_v1_translation_pb.DetectionResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.DetectionResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_DetectionResponse(buffer_arg) {
@@ -48,7 +48,7 @@ function serialize_sagittarius_translation_v1_MediaTranslationRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.MediaTranslationRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.MediaTranslationRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_MediaTranslationRequest(buffer_arg) {
@@ -59,7 +59,7 @@ function serialize_sagittarius_translation_v1_MediaTranslationResponse(arg) {
   if (!(arg instanceof translation_v1_translation_pb.MediaTranslationResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.MediaTranslationResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_MediaTranslationResponse(buffer_arg) {
@@ -70,7 +70,7 @@ function serialize_sagittarius_translation_v1_ProcessOrderRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.ProcessOrderRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.ProcessOrderRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_ProcessOrderRequest(buffer_arg) {
@@ -81,7 +81,7 @@ function serialize_sagittarius_translation_v1_ProcessOrderResponse(arg) {
   if (!(arg instanceof translation_v1_translation_pb.ProcessOrderResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.ProcessOrderResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_ProcessOrderResponse(buffer_arg) {
@@ -92,7 +92,7 @@ function serialize_sagittarius_translation_v1_StreamingTranslationRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_StreamingTranslationRequest(buffer_arg) {
@@ -103,7 +103,7 @@ function serialize_sagittarius_translation_v1_StreamingTranslationResponse(arg) 
   if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_StreamingTranslationResponse(buffer_arg) {
@@ -114,7 +114,7 @@ function serialize_sagittarius_translation_v1_StreamingTranslationTaskRequest(ar
   if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationTaskRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationTaskRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_StreamingTranslationTaskRequest(buffer_arg) {
@@ -125,7 +125,7 @@ function serialize_sagittarius_translation_v1_StreamingTranslationTaskResponse(a
   if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationTaskResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationTaskResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_StreamingTranslationTaskResponse(buffer_arg) {
@@ -136,7 +136,7 @@ function serialize_sagittarius_translation_v1_TextTranslationRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.TextTranslationRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.TextTranslationRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_TextTranslationRequest(buffer_arg) {
@@ -147,7 +147,7 @@ function serialize_sagittarius_translation_v1_TextTranslationResponse(arg) {
   if (!(arg instanceof translation_v1_translation_pb.TextTranslationResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.TextTranslationResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_TextTranslationResponse(buffer_arg) {
@@ -158,7 +158,7 @@ function serialize_sagittarius_translation_v1_TranscriptRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.TranscriptRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.TranscriptRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_TranscriptRequest(buffer_arg) {
@@ -169,7 +169,7 @@ function serialize_sagittarius_translation_v1_TranscriptResponse(arg) {
   if (!(arg instanceof translation_v1_translation_pb.TranscriptResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.TranscriptResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_TranscriptResponse(buffer_arg) {
@@ -180,7 +180,7 @@ function serialize_sagittarius_translation_v1_UserQuotaRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.UserQuotaRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.UserQuotaRequest');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_UserQuotaRequest(buffer_arg) {
@@ -191,7 +191,7 @@ function serialize_sagittarius_translation_v1_UserQuotaResponse(arg) {
   if (!(arg instanceof translation_v1_translation_pb.UserQuotaResponse)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.UserQuotaResponse');
   }
-  return Buffer.from(arg.serializeBinary());
+  return new Buffer(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_translation_v1_UserQuotaResponse(buffer_arg) {
@@ -202,7 +202,7 @@ function deserialize_sagittarius_translation_v1_UserQuotaResponse(buffer_arg) {
 // Service that implements Sagittarius Translation API
 var TranslationService = exports.TranslationService = {
   // Translate media(audio or video) by media identity
-translateMedia: {
+  translateMedia: {
     path: '/sagittarius.translation.v1.Translation/TranslateMedia',
     requestStream: false,
     responseStream: false,
@@ -214,7 +214,7 @@ translateMedia: {
     responseDeserialize: deserialize_sagittarius_translation_v1_MediaTranslationResponse,
   },
   // detect the language of text
-detectLanguage: {
+  detectLanguage: {
     path: '/sagittarius.translation.v1.Translation/DetectLanguage',
     requestStream: false,
     responseStream: false,
@@ -237,7 +237,7 @@ detectLanguage: {
     responseDeserialize: deserialize_sagittarius_translation_v1_TranscriptResponse,
   },
   // Translate text by Google Translation Service
-translateText: {
+  translateText: {
     path: '/sagittarius.translation.v1.Translation/TranslateText',
     requestStream: false,
     responseStream: false,
@@ -249,8 +249,8 @@ translateText: {
     responseDeserialize: deserialize_sagittarius_translation_v1_TextTranslationResponse,
   },
   // Performs bidirectional streaming audio translation: receive results after or while
-// sending audio. This method is only available via the gRPC API (not REST).
-streamingTranslation: {
+  // sending audio. This method is only available via the gRPC API (not REST).
+  streamingTranslation: {
     path: '/sagittarius.translation.v1.Translation/StreamingTranslation',
     requestStream: true,
     responseStream: true,
@@ -262,8 +262,8 @@ streamingTranslation: {
     responseDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationResponse,
   },
   // Check StreamingTranslationTask results or estimate finish time
-// and maybe other informations related to the task
-streamingTranslationTask: {
+  // and maybe other informations related to the task
+  streamingTranslationTask: {
     path: '/sagittarius.translation.v1.Translation/StreamingTranslationTask',
     requestStream: false,
     responseStream: false,
@@ -275,8 +275,8 @@ streamingTranslationTask: {
     responseDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskResponse,
   },
   // Start an unpaid or failed order
-// for internal use only
-processOrder: {
+  // for internal use only
+  processOrder: {
     path: '/sagittarius.translation.v1.Translation/ProcessOrder',
     requestStream: false,
     responseStream: false,
@@ -288,7 +288,7 @@ processOrder: {
     responseDeserialize: deserialize_sagittarius_translation_v1_ProcessOrderResponse,
   },
   // Get User Quota
-getUserQuota: {
+  getUserQuota: {
     path: '/sagittarius.translation.v1.Translation/GetUserQuota',
     requestStream: false,
     responseStream: false,

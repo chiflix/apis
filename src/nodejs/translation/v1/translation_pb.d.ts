@@ -2,7 +2,6 @@
 // file: translation/v1/translation.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
@@ -251,14 +250,14 @@ export namespace TranscriptResponse {
 
 
     export class Cue extends jspb.Message { 
-        getStartTime(): number;
-        setStartTime(value: number): void;
+    getStartTime(): number;
+    setStartTime(value: number): void;
 
-        getEndTime(): number;
-        setEndTime(value: number): void;
+    getEndTime(): number;
+    setEndTime(value: number): void;
 
-        getText(): string;
-        setText(value: string): void;
+    getText(): string;
+    setText(value: string): void;
 
 
         serializeBinary(): Uint8Array;
@@ -273,9 +272,9 @@ export namespace TranscriptResponse {
 
     export namespace Cue {
         export type AsObject = {
-            startTime: number,
-            endTime: number,
-            text: string,
+        startTime: number,
+        endTime: number,
+        text: string,
         }
     }
 
@@ -316,7 +315,7 @@ export namespace StreamingTranslationRequest {
     }
 
     export enum StreamingRequestCase {
-        STREAMING_REQUEST_NOT_SET = 0,
+        STREAMINGREQUEST_NOT_SET = 0,
     
     STREAMING_CONFIG = 1,
 
@@ -417,7 +416,7 @@ export namespace StreamingTranslationResponse {
     }
 
     export enum StreamingResponseCase {
-        STREAMING_RESPONSE_NOT_SET = 0,
+        STREAMINGRESPONSE_NOT_SET = 0,
     
     STREAMING_RESULT = 2,
 
@@ -490,7 +489,7 @@ export namespace StreamingTranslationTaskResponse {
     }
 
     export enum StreamingRequestCase {
-        STREAMING_REQUEST_NOT_SET = 0,
+        STREAMINGREQUEST_NOT_SET = 0,
     
     TASKINFO = 2,
 
@@ -624,11 +623,11 @@ export namespace TextTranslationResponse {
 
 
     export class Text extends jspb.Message { 
-        getSourceLanguage(): string;
-        setSourceLanguage(value: string): void;
+    getSourceLanguage(): string;
+    setSourceLanguage(value: string): void;
 
-        getText(): string;
-        setText(value: string): void;
+    getText(): string;
+    setText(value: string): void;
 
 
         serializeBinary(): Uint8Array;
@@ -643,8 +642,8 @@ export namespace TextTranslationResponse {
 
     export namespace Text {
         export type AsObject = {
-            sourceLanguage: string,
-            text: string,
+        sourceLanguage: string,
+        text: string,
         }
     }
 

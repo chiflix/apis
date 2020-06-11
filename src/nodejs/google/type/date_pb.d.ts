@@ -2,7 +2,6 @@
 // file: google/type/date.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 

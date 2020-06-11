@@ -1,4 +1,3 @@
-// source: google/rpc/code.proto
 /**
  * @fileoverview
  * @enhanceable

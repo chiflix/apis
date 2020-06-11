@@ -2,7 +2,6 @@
 // file: google/api/service.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_api_auth_pb from "../../google/api/auth_pb";

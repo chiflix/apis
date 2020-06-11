@@ -2,7 +2,6 @@
 // file: training/v1/training.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
@@ -124,7 +123,7 @@ export namespace StreamingTrainingRequest {
     }
 
     export enum StreamingRequestCase {
-        STREAMING_REQUEST_NOT_SET = 0,
+        STREAMINGREQUEST_NOT_SET = 0,
     
     STREAMING_CONFIG = 1,
 

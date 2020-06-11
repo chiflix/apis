@@ -2,7 +2,6 @@
 // file: google/api/billing.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_api_metric_pb from "../../google/api/metric_pb";
@@ -31,13 +30,13 @@ export namespace Billing {
 
 
     export class BillingDestination extends jspb.Message { 
-        getMonitoredResource(): string;
-        setMonitoredResource(value: string): void;
+    getMonitoredResource(): string;
+    setMonitoredResource(value: string): void;
 
-        clearMetricsList(): void;
-        getMetricsList(): Array<string>;
-        setMetricsList(value: Array<string>): void;
-        addMetrics(value: string, index?: number): string;
+    clearMetricsList(): void;
+    getMetricsList(): Array<string>;
+    setMetricsList(value: Array<string>): void;
+    addMetrics(value: string, index?: number): string;
 
 
         serializeBinary(): Uint8Array;
@@ -52,8 +51,8 @@ export namespace Billing {
 
     export namespace BillingDestination {
         export type AsObject = {
-            monitoredResource: string,
-            metricsList: Array<string>,
+        monitoredResource: string,
+        metricsList: Array<string>,
         }
     }
 

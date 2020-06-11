@@ -2,7 +2,6 @@
 // file: google/type/postal_address.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 

@@ -2,7 +2,6 @@
 // file: google/api/distribution.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
@@ -58,11 +57,11 @@ export namespace Distribution {
 
 
     export class Range extends jspb.Message { 
-        getMin(): number;
-        setMin(value: number): void;
+    getMin(): number;
+    setMin(value: number): void;
 
-        getMax(): number;
-        setMax(value: number): void;
+    getMax(): number;
+    setMax(value: number): void;
 
 
         serializeBinary(): Uint8Array;
@@ -77,32 +76,32 @@ export namespace Distribution {
 
     export namespace Range {
         export type AsObject = {
-            min: number,
-            max: number,
+        min: number,
+        max: number,
         }
     }
 
     export class BucketOptions extends jspb.Message { 
 
-        hasLinearBuckets(): boolean;
-        clearLinearBuckets(): void;
-        getLinearBuckets(): Distribution.BucketOptions.Linear | undefined;
-        setLinearBuckets(value?: Distribution.BucketOptions.Linear): void;
+    hasLinearBuckets(): boolean;
+    clearLinearBuckets(): void;
+    getLinearBuckets(): Distribution.BucketOptions.Linear | undefined;
+    setLinearBuckets(value?: Distribution.BucketOptions.Linear): void;
 
 
-        hasExponentialBuckets(): boolean;
-        clearExponentialBuckets(): void;
-        getExponentialBuckets(): Distribution.BucketOptions.Exponential | undefined;
-        setExponentialBuckets(value?: Distribution.BucketOptions.Exponential): void;
+    hasExponentialBuckets(): boolean;
+    clearExponentialBuckets(): void;
+    getExponentialBuckets(): Distribution.BucketOptions.Exponential | undefined;
+    setExponentialBuckets(value?: Distribution.BucketOptions.Exponential): void;
 
 
-        hasExplicitBuckets(): boolean;
-        clearExplicitBuckets(): void;
-        getExplicitBuckets(): Distribution.BucketOptions.Explicit | undefined;
-        setExplicitBuckets(value?: Distribution.BucketOptions.Explicit): void;
+    hasExplicitBuckets(): boolean;
+    clearExplicitBuckets(): void;
+    getExplicitBuckets(): Distribution.BucketOptions.Explicit | undefined;
+    setExplicitBuckets(value?: Distribution.BucketOptions.Explicit): void;
 
 
-        getOptionsCase(): BucketOptions.OptionsCase;
+    getOptionsCase(): BucketOptions.OptionsCase;
 
         serializeBinary(): Uint8Array;
         toObject(includeInstance?: boolean): BucketOptions.AsObject;
@@ -116,21 +115,21 @@ export namespace Distribution {
 
     export namespace BucketOptions {
         export type AsObject = {
-            linearBuckets?: Distribution.BucketOptions.Linear.AsObject,
-            exponentialBuckets?: Distribution.BucketOptions.Exponential.AsObject,
-            explicitBuckets?: Distribution.BucketOptions.Explicit.AsObject,
+        linearBuckets?: Distribution.BucketOptions.Linear.AsObject,
+        exponentialBuckets?: Distribution.BucketOptions.Exponential.AsObject,
+        explicitBuckets?: Distribution.BucketOptions.Explicit.AsObject,
         }
 
 
         export class Linear extends jspb.Message { 
-            getNumFiniteBuckets(): number;
-            setNumFiniteBuckets(value: number): void;
+    getNumFiniteBuckets(): number;
+    setNumFiniteBuckets(value: number): void;
 
-            getWidth(): number;
-            setWidth(value: number): void;
+    getWidth(): number;
+    setWidth(value: number): void;
 
-            getOffset(): number;
-            setOffset(value: number): void;
+    getOffset(): number;
+    setOffset(value: number): void;
 
 
             serializeBinary(): Uint8Array;
@@ -145,21 +144,21 @@ export namespace Distribution {
 
         export namespace Linear {
             export type AsObject = {
-                numFiniteBuckets: number,
-                width: number,
-                offset: number,
+        numFiniteBuckets: number,
+        width: number,
+        offset: number,
             }
         }
 
         export class Exponential extends jspb.Message { 
-            getNumFiniteBuckets(): number;
-            setNumFiniteBuckets(value: number): void;
+    getNumFiniteBuckets(): number;
+    setNumFiniteBuckets(value: number): void;
 
-            getGrowthFactor(): number;
-            setGrowthFactor(value: number): void;
+    getGrowthFactor(): number;
+    setGrowthFactor(value: number): void;
 
-            getScale(): number;
-            setScale(value: number): void;
+    getScale(): number;
+    setScale(value: number): void;
 
 
             serializeBinary(): Uint8Array;
@@ -174,17 +173,17 @@ export namespace Distribution {
 
         export namespace Exponential {
             export type AsObject = {
-                numFiniteBuckets: number,
-                growthFactor: number,
-                scale: number,
+        numFiniteBuckets: number,
+        growthFactor: number,
+        scale: number,
             }
         }
 
         export class Explicit extends jspb.Message { 
-            clearBoundsList(): void;
-            getBoundsList(): Array<number>;
-            setBoundsList(value: Array<number>): void;
-            addBounds(value: number, index?: number): number;
+    clearBoundsList(): void;
+    getBoundsList(): Array<number>;
+    setBoundsList(value: Array<number>): void;
+    addBounds(value: number, index?: number): number;
 
 
             serializeBinary(): Uint8Array;
@@ -199,7 +198,7 @@ export namespace Distribution {
 
         export namespace Explicit {
             export type AsObject = {
-                boundsList: Array<number>,
+        boundsList: Array<number>,
             }
         }
 

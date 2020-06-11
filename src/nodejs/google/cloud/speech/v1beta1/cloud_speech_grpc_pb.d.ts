@@ -2,7 +2,6 @@
 // file: google/cloud/speech/v1beta1/cloud_speech.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as grpc from "grpc";
 import * as google_cloud_speech_v1beta1_cloud_speech_pb from "../../../../google/cloud/speech/v1beta1/cloud_speech_pb";
@@ -54,12 +53,12 @@ export interface ISpeechServer {
 }
 
 export interface ISpeechClient {
-    syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, callback: (error: grpc.ServiceError | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
-    syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
-    syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
-    asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, callback: (error: Error | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
+    syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
+    syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
+    asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     streamingRecognize(): grpc.ClientDuplexStream<google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeRequest, google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeResponse>;
     streamingRecognize(options: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeRequest, google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeResponse>;
     streamingRecognize(metadata: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeRequest, google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeResponse>;
@@ -67,12 +66,12 @@ export interface ISpeechClient {
 
 export class SpeechClient extends grpc.Client implements ISpeechClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, callback: (error: grpc.ServiceError | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
-    public syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
-    public syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
-    public asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, callback: (error: Error | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
+    public syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
+    public syncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_cloud_speech_v1beta1_cloud_speech_pb.SyncRecognizeResponse) => void): grpc.ClientUnaryCall;
+    public asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public asyncRecognize(request: google_cloud_speech_v1beta1_cloud_speech_pb.AsyncRecognizeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     public streamingRecognize(options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeRequest, google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeResponse>;
     public streamingRecognize(metadata?: grpc.Metadata, options?: Partial<grpc.CallOptions>): grpc.ClientDuplexStream<google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeRequest, google_cloud_speech_v1beta1_cloud_speech_pb.StreamingRecognizeResponse>;
 }

@@ -2,7 +2,6 @@
 // file: google/cloud/speech/v1p1beta1/cloud_speech.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_longrunning_operations_pb from "../../../../google/longrunning/operations_pb";
@@ -108,7 +107,7 @@ export namespace StreamingRecognizeRequest {
     }
 
     export enum StreamingRequestCase {
-        STREAMING_REQUEST_NOT_SET = 0,
+        STREAMINGREQUEST_NOT_SET = 0,
     
     STREAMING_CONFIG = 1,
 
@@ -375,7 +374,7 @@ export namespace RecognitionAudio {
     }
 
     export enum AudioSourceCase {
-        AUDIO_SOURCE_NOT_SET = 0,
+        AUDIOSOURCE_NOT_SET = 0,
     
     CONTENT = 1,
 

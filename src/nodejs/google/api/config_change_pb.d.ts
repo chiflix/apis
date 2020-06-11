@@ -2,7 +2,6 @@
 // file: google/api/config_change.proto
 
 /* tslint:disable */
-/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 
