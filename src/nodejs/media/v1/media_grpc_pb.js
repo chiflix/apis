@@ -25,7 +25,7 @@ function serialize_google_rpc_Status(arg) {
   if (!(arg instanceof google_rpc_status_pb.Status)) {
     throw new Error('Expected argument of type google.rpc.Status');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_rpc_Status(buffer_arg) {
@@ -36,7 +36,7 @@ function serialize_sagittarius_media_v1_GetInfoRequest(arg) {
   if (!(arg instanceof media_v1_media_pb.GetInfoRequest)) {
     throw new Error('Expected argument of type sagittarius.media.v1.GetInfoRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_GetInfoRequest(buffer_arg) {
@@ -47,7 +47,7 @@ function serialize_sagittarius_media_v1_Info(arg) {
   if (!(arg instanceof media_v1_media_pb.Info)) {
     throw new Error('Expected argument of type sagittarius.media.v1.Info');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_Info(buffer_arg) {
@@ -58,7 +58,7 @@ function serialize_sagittarius_media_v1_ThumbnailRequest(arg) {
   if (!(arg instanceof media_v1_media_pb.ThumbnailRequest)) {
     throw new Error('Expected argument of type sagittarius.media.v1.ThumbnailRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_ThumbnailRequest(buffer_arg) {
@@ -69,7 +69,7 @@ function serialize_sagittarius_media_v1_ThumbnailResponse(arg) {
   if (!(arg instanceof media_v1_media_pb.ThumbnailResponse)) {
     throw new Error('Expected argument of type sagittarius.media.v1.ThumbnailResponse');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_ThumbnailResponse(buffer_arg) {
@@ -80,7 +80,7 @@ function serialize_sagittarius_media_v1_ThumbnailTimeRangesRequest(arg) {
   if (!(arg instanceof media_v1_media_pb.ThumbnailTimeRangesRequest)) {
     throw new Error('Expected argument of type sagittarius.media.v1.ThumbnailTimeRangesRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_ThumbnailTimeRangesRequest(buffer_arg) {
@@ -91,7 +91,7 @@ function serialize_sagittarius_media_v1_ThumbnailTimeRangesResponse(arg) {
   if (!(arg instanceof media_v1_media_pb.ThumbnailTimeRangesResponse)) {
     throw new Error('Expected argument of type sagittarius.media.v1.ThumbnailTimeRangesResponse');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_ThumbnailTimeRangesResponse(buffer_arg) {
@@ -102,7 +102,7 @@ function serialize_sagittarius_media_v1_UpdateInfoRequest(arg) {
   if (!(arg instanceof media_v1_media_pb.UpdateInfoRequest)) {
     throw new Error('Expected argument of type sagittarius.media.v1.UpdateInfoRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_UpdateInfoRequest(buffer_arg) {
@@ -113,7 +113,7 @@ function serialize_sagittarius_media_v1_UpdateThumbnailRequest(arg) {
   if (!(arg instanceof media_v1_media_pb.UpdateThumbnailRequest)) {
     throw new Error('Expected argument of type sagittarius.media.v1.UpdateThumbnailRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_media_v1_UpdateThumbnailRequest(buffer_arg) {
@@ -124,7 +124,7 @@ function deserialize_sagittarius_media_v1_UpdateThumbnailRequest(buffer_arg) {
 // Service that implements Sagittarius Media API
 var MediaService = exports.MediaService = {
   //
-  getInfo: {
+getInfo: {
     path: '/sagittarius.media.v1.Media/GetInfo',
     requestStream: false,
     responseStream: false,
@@ -136,7 +136,7 @@ var MediaService = exports.MediaService = {
     responseDeserialize: deserialize_sagittarius_media_v1_Info,
   },
   //
-  updateInfo: {
+updateInfo: {
     path: '/sagittarius.media.v1.Media/UpdateInfo',
     requestStream: false,
     responseStream: false,
@@ -148,7 +148,7 @@ var MediaService = exports.MediaService = {
     responseDeserialize: deserialize_sagittarius_media_v1_Info,
   },
   // Query obtainable thumbnails time range and unavailable ones by media identity
-  getThumbnailTimeRanges: {
+getThumbnailTimeRanges: {
     path: '/sagittarius.media.v1.Media/GetThumbnailTimeRanges',
     requestStream: false,
     responseStream: false,
@@ -160,7 +160,7 @@ var MediaService = exports.MediaService = {
     responseDeserialize: deserialize_sagittarius_media_v1_ThumbnailTimeRangesResponse,
   },
   // Get thumbnail by timestamps
-  getThumbnail: {
+getThumbnail: {
     path: '/sagittarius.media.v1.Media/GetThumbnail',
     requestStream: false,
     responseStream: false,
@@ -172,7 +172,7 @@ var MediaService = exports.MediaService = {
     responseDeserialize: deserialize_sagittarius_media_v1_ThumbnailResponse,
   },
   // Update thumbnail by timestamps
-  updateThumbnail: {
+updateThumbnail: {
     path: '/sagittarius.media.v1.Media/UpdateThumbnail',
     requestStream: false,
     responseStream: false,

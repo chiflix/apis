@@ -2,6 +2,7 @@
 // file: translation/v1/translation.proto
 
 /* tslint:disable */
+/* eslint-disable */
 
 import * as jspb from "google-protobuf";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
@@ -250,14 +251,14 @@ export namespace TranscriptResponse {
 
 
     export class Cue extends jspb.Message { 
-    getStartTime(): number;
-    setStartTime(value: number): void;
+        getStartTime(): number;
+        setStartTime(value: number): void;
 
-    getEndTime(): number;
-    setEndTime(value: number): void;
+        getEndTime(): number;
+        setEndTime(value: number): void;
 
-    getText(): string;
-    setText(value: string): void;
+        getText(): string;
+        setText(value: string): void;
 
 
         serializeBinary(): Uint8Array;
@@ -272,9 +273,9 @@ export namespace TranscriptResponse {
 
     export namespace Cue {
         export type AsObject = {
-        startTime: number,
-        endTime: number,
-        text: string,
+            startTime: number,
+            endTime: number,
+            text: string,
         }
     }
 
@@ -315,7 +316,7 @@ export namespace StreamingTranslationRequest {
     }
 
     export enum StreamingRequestCase {
-        STREAMINGREQUEST_NOT_SET = 0,
+        STREAMING_REQUEST_NOT_SET = 0,
     
     STREAMING_CONFIG = 1,
 
@@ -416,7 +417,7 @@ export namespace StreamingTranslationResponse {
     }
 
     export enum StreamingResponseCase {
-        STREAMINGRESPONSE_NOT_SET = 0,
+        STREAMING_RESPONSE_NOT_SET = 0,
     
     STREAMING_RESULT = 2,
 
@@ -489,7 +490,7 @@ export namespace StreamingTranslationTaskResponse {
     }
 
     export enum StreamingRequestCase {
-        STREAMINGREQUEST_NOT_SET = 0,
+        STREAMING_REQUEST_NOT_SET = 0,
     
     TASKINFO = 2,
 
@@ -623,11 +624,11 @@ export namespace TextTranslationResponse {
 
 
     export class Text extends jspb.Message { 
-    getSourceLanguage(): string;
-    setSourceLanguage(value: string): void;
+        getSourceLanguage(): string;
+        setSourceLanguage(value: string): void;
 
-    getText(): string;
-    setText(value: string): void;
+        getText(): string;
+        setText(value: string): void;
 
 
         serializeBinary(): Uint8Array;
@@ -642,8 +643,8 @@ export namespace TextTranslationResponse {
 
     export namespace Text {
         export type AsObject = {
-        sourceLanguage: string,
-        text: string,
+            sourceLanguage: string,
+            text: string,
         }
     }
 
@@ -695,6 +696,66 @@ export namespace UserQuotaResponse {
         quota: number,
         timeLeft: number,
         error?: google_rpc_status_pb.Status.AsObject,
+    }
+}
+
+export class ProcessOrderRequest extends jspb.Message { 
+    getOrderId(): number;
+    setOrderId(value: number): void;
+
+    getAudioUri(): string;
+    setAudioUri(value: string): void;
+
+
+    hasAudioConfig(): boolean;
+    clearAudioConfig(): void;
+    getAudioConfig(): google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig | undefined;
+    setAudioConfig(value?: google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ProcessOrderRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ProcessOrderRequest): ProcessOrderRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ProcessOrderRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ProcessOrderRequest;
+    static deserializeBinaryFromReader(message: ProcessOrderRequest, reader: jspb.BinaryReader): ProcessOrderRequest;
+}
+
+export namespace ProcessOrderRequest {
+    export type AsObject = {
+        orderId: number,
+        audioUri: string,
+        audioConfig?: google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.AsObject,
+    }
+}
+
+export class ProcessOrderResponse extends jspb.Message { 
+
+    hasError(): boolean;
+    clearError(): void;
+    getError(): google_rpc_status_pb.Status | undefined;
+    setError(value?: google_rpc_status_pb.Status): void;
+
+    getOrderStatus(): number;
+    setOrderStatus(value: number): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ProcessOrderResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ProcessOrderResponse): ProcessOrderResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ProcessOrderResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ProcessOrderResponse;
+    static deserializeBinaryFromReader(message: ProcessOrderResponse, reader: jspb.BinaryReader): ProcessOrderResponse;
+}
+
+export namespace ProcessOrderResponse {
+    export type AsObject = {
+        error?: google_rpc_status_pb.Status.AsObject,
+        orderStatus: number,
     }
 }
 

@@ -2,6 +2,7 @@
 // file: media/v1/media.proto
 
 /* tslint:disable */
+/* eslint-disable */
 
 import * as grpc from "grpc";
 import * as media_v1_media_pb from "../../media/v1/media_pb";
@@ -72,38 +73,38 @@ export interface IMediaServer {
 }
 
 export interface IMediaClient {
-    getInfo(request: media_v1_media_pb.GetInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    updateInfo(request: media_v1_media_pb.UpdateInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
-    getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
-    getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
-    getThumbnail(request: media_v1_media_pb.ThumbnailRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
-    getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
-    getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
-    updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    getInfo(request: media_v1_media_pb.GetInfoRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    updateInfo(request: media_v1_media_pb.UpdateInfoRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
+    getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
+    getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
+    getThumbnail(request: media_v1_media_pb.ThumbnailRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
+    getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
+    getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
+    updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
 }
 
 export class MediaClient extends grpc.Client implements IMediaClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public getInfo(request: media_v1_media_pb.GetInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
-    public getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
-    public getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
-    public getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
-    public getThumbnail(request: media_v1_media_pb.ThumbnailRequest, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
-    public getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
-    public getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
-    public updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    public updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    public updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    public getInfo(request: media_v1_media_pb.GetInfoRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    public getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    public getInfo(request: media_v1_media_pb.GetInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    public updateInfo(request: media_v1_media_pb.UpdateInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.Info) => void): grpc.ClientUnaryCall;
+    public getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
+    public getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
+    public getThumbnailTimeRanges(request: media_v1_media_pb.ThumbnailTimeRangesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailTimeRangesResponse) => void): grpc.ClientUnaryCall;
+    public getThumbnail(request: media_v1_media_pb.ThumbnailRequest, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
+    public getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
+    public getThumbnail(request: media_v1_media_pb.ThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: media_v1_media_pb.ThumbnailResponse) => void): grpc.ClientUnaryCall;
+    public updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    public updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    public updateThumbnail(request: media_v1_media_pb.UpdateThumbnailRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
 }

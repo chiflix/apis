@@ -26,7 +26,7 @@ function serialize_sagittarius_health_v1_HealthCheckRequest(arg) {
   if (!(arg instanceof health_v1_health_pb.HealthCheckRequest)) {
     throw new Error('Expected argument of type sagittarius.health.v1.HealthCheckRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_health_v1_HealthCheckRequest(buffer_arg) {
@@ -37,7 +37,7 @@ function serialize_sagittarius_health_v1_HealthCheckResponse(arg) {
   if (!(arg instanceof health_v1_health_pb.HealthCheckResponse)) {
     throw new Error('Expected argument of type sagittarius.health.v1.HealthCheckResponse');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_health_v1_HealthCheckResponse(buffer_arg) {

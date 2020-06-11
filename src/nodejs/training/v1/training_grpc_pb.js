@@ -26,7 +26,7 @@ function serialize_google_rpc_Status(arg) {
   if (!(arg instanceof google_rpc_status_pb.Status)) {
     throw new Error('Expected argument of type google.rpc.Status');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_rpc_Status(buffer_arg) {
@@ -37,7 +37,7 @@ function serialize_sagittarius_training_v1_StreamingTrainingRequest(arg) {
   if (!(arg instanceof training_v1_training_pb.StreamingTrainingRequest)) {
     throw new Error('Expected argument of type sagittarius.training.v1.StreamingTrainingRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_training_v1_StreamingTrainingRequest(buffer_arg) {
@@ -48,7 +48,7 @@ function serialize_sagittarius_training_v1_TrainingData(arg) {
   if (!(arg instanceof training_v1_training_pb.TrainingData)) {
     throw new Error('Expected argument of type sagittarius.training.v1.TrainingData');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_sagittarius_training_v1_TrainingData(buffer_arg) {
@@ -59,7 +59,7 @@ function deserialize_sagittarius_training_v1_TrainingData(buffer_arg) {
 // Trainng that implements Sagittarius Translation API
 var TrainngService = exports.TrainngService = {
   // Push accture traning data to server
-  pushData: {
+pushData: {
     path: '/sagittarius.training.v1.Trainng/PushData',
     requestStream: false,
     responseStream: false,
@@ -71,8 +71,8 @@ var TrainngService = exports.TrainngService = {
     responseDeserialize: deserialize_google_rpc_Status,
   },
   // Performs bidirectional streaming audio translation: receive results while
-  // sending audio. This method is only available via the gRPC API (not REST).
-  streamingTraining: {
+// sending audio. This method is only available via the gRPC API (not REST).
+streamingTraining: {
     path: '/sagittarius.training.v1.Trainng/StreamingTraining',
     requestStream: true,
     responseStream: false,

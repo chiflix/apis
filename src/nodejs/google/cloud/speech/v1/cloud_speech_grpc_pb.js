@@ -29,7 +29,7 @@ function serialize_google_cloud_speech_v1_LongRunningRecognizeRequest(arg) {
   if (!(arg instanceof google_cloud_speech_v1_cloud_speech_pb.LongRunningRecognizeRequest)) {
     throw new Error('Expected argument of type google.cloud.speech.v1.LongRunningRecognizeRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_cloud_speech_v1_LongRunningRecognizeRequest(buffer_arg) {
@@ -40,7 +40,7 @@ function serialize_google_cloud_speech_v1_RecognizeRequest(arg) {
   if (!(arg instanceof google_cloud_speech_v1_cloud_speech_pb.RecognizeRequest)) {
     throw new Error('Expected argument of type google.cloud.speech.v1.RecognizeRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_cloud_speech_v1_RecognizeRequest(buffer_arg) {
@@ -51,7 +51,7 @@ function serialize_google_cloud_speech_v1_RecognizeResponse(arg) {
   if (!(arg instanceof google_cloud_speech_v1_cloud_speech_pb.RecognizeResponse)) {
     throw new Error('Expected argument of type google.cloud.speech.v1.RecognizeResponse');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_cloud_speech_v1_RecognizeResponse(buffer_arg) {
@@ -62,7 +62,7 @@ function serialize_google_cloud_speech_v1_StreamingRecognizeRequest(arg) {
   if (!(arg instanceof google_cloud_speech_v1_cloud_speech_pb.StreamingRecognizeRequest)) {
     throw new Error('Expected argument of type google.cloud.speech.v1.StreamingRecognizeRequest');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_cloud_speech_v1_StreamingRecognizeRequest(buffer_arg) {
@@ -73,7 +73,7 @@ function serialize_google_cloud_speech_v1_StreamingRecognizeResponse(arg) {
   if (!(arg instanceof google_cloud_speech_v1_cloud_speech_pb.StreamingRecognizeResponse)) {
     throw new Error('Expected argument of type google.cloud.speech.v1.StreamingRecognizeResponse');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_cloud_speech_v1_StreamingRecognizeResponse(buffer_arg) {
@@ -84,7 +84,7 @@ function serialize_google_longrunning_Operation(arg) {
   if (!(arg instanceof google_longrunning_operations_pb.Operation)) {
     throw new Error('Expected argument of type google.longrunning.Operation');
   }
-  return new Buffer(arg.serializeBinary());
+  return Buffer.from(arg.serializeBinary());
 }
 
 function deserialize_google_longrunning_Operation(buffer_arg) {
@@ -95,8 +95,8 @@ function deserialize_google_longrunning_Operation(buffer_arg) {
 // Service that implements Google Cloud Speech API.
 var SpeechService = exports.SpeechService = {
   // Performs synchronous speech recognition: receive results after all audio
-  // has been sent and processed.
-  recognize: {
+// has been sent and processed.
+recognize: {
     path: '/google.cloud.speech.v1.Speech/Recognize',
     requestStream: false,
     responseStream: false,
@@ -108,10 +108,10 @@ var SpeechService = exports.SpeechService = {
     responseDeserialize: deserialize_google_cloud_speech_v1_RecognizeResponse,
   },
   // Performs asynchronous speech recognition: receive results via the
-  // google.longrunning.Operations interface. Returns either an
-  // `Operation.error` or an `Operation.response` which contains
-  // a `LongRunningRecognizeResponse` message.
-  longRunningRecognize: {
+// google.longrunning.Operations interface. Returns either an
+// `Operation.error` or an `Operation.response` which contains
+// a `LongRunningRecognizeResponse` message.
+longRunningRecognize: {
     path: '/google.cloud.speech.v1.Speech/LongRunningRecognize',
     requestStream: false,
     responseStream: false,
@@ -123,8 +123,8 @@ var SpeechService = exports.SpeechService = {
     responseDeserialize: deserialize_google_longrunning_Operation,
   },
   // Performs bidirectional streaming speech recognition: receive results while
-  // sending audio. This method is only available via the gRPC API (not REST).
-  streamingRecognize: {
+// sending audio. This method is only available via the gRPC API (not REST).
+streamingRecognize: {
     path: '/google.cloud.speech.v1.Speech/StreamingRecognize',
     requestStream: true,
     responseStream: true,

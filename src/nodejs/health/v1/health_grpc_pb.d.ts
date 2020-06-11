@@ -2,6 +2,7 @@
 // file: health/v1/health.proto
 
 /* tslint:disable */
+/* eslint-disable */
 
 import * as grpc from "grpc";
 import * as health_v1_health_pb from "../../health/v1/health_pb";
@@ -27,14 +28,14 @@ export interface IHealthServer {
 }
 
 export interface IHealthClient {
-    check(request: health_v1_health_pb.HealthCheckRequest, callback: (error: Error | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
-    check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
-    check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
+    check(request: health_v1_health_pb.HealthCheckRequest, callback: (error: grpc.ServiceError | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
+    check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
+    check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class HealthClient extends grpc.Client implements IHealthClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public check(request: health_v1_health_pb.HealthCheckRequest, callback: (error: Error | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
-    public check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, callback: (error: Error | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
-    public check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
+    public check(request: health_v1_health_pb.HealthCheckRequest, callback: (error: grpc.ServiceError | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
+    public check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
+    public check(request: health_v1_health_pb.HealthCheckRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: health_v1_health_pb.HealthCheckResponse) => void): grpc.ClientUnaryCall;
 }

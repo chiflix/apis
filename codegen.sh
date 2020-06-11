@@ -13,6 +13,8 @@ grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --
 protoc --plugin=protoc-gen-ts=`which protoc-gen-ts` --ts_out=./src/nodejs translation/*/*.proto training/*/*.proto media/*/*.proto health/*/*.proto
 grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` google/*/*.proto
 grpc_tools_node_protoc -I . --js_out=import_style=commonjs,binary:src/nodejs/ --grpc_out=src/nodejs --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` google/cloud/speech/*/*.proto
+protoc --plugin=protoc-gen-ts=`which protoc-gen-ts` --ts_out=./src/nodejs google/*/*.proto
+protoc --plugin=protoc-gen-ts=`which protoc-gen-ts` --ts_out=./src/nodejs google/cloud/speech/*/*.proto
 
 # swift
 

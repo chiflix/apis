@@ -2,6 +2,7 @@
 // file: training/v1/training.proto
 
 /* tslint:disable */
+/* eslint-disable */
 
 import * as grpc from "grpc";
 import * as training_v1_training_pb from "../../training/v1/training_pb";
@@ -40,22 +41,22 @@ export interface ITrainngServer {
 }
 
 export interface ITrainngClient {
-    pushData(request: training_v1_training_pb.TrainingData, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    streamingTraining(callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
-    streamingTraining(metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
-    streamingTraining(options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
-    streamingTraining(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    pushData(request: training_v1_training_pb.TrainingData, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    streamingTraining(callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    streamingTraining(metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    streamingTraining(options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    streamingTraining(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
 }
 
 export class TrainngClient extends grpc.Client implements ITrainngClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public pushData(request: training_v1_training_pb.TrainingData, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    public pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    public pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
-    public streamingTraining(callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
-    public streamingTraining(metadata: grpc.Metadata, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
-    public streamingTraining(options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
-    public streamingTraining(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: Error | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    public pushData(request: training_v1_training_pb.TrainingData, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    public pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    public pushData(request: training_v1_training_pb.TrainingData, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientUnaryCall;
+    public streamingTraining(callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    public streamingTraining(metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    public streamingTraining(options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
+    public streamingTraining(metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_rpc_status_pb.Status) => void): grpc.ClientWritableStream<training_v1_training_pb.StreamingTrainingRequest>;
 }

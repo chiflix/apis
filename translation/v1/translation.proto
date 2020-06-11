@@ -74,6 +74,15 @@ service Translation {
     };
   }
 
+  // Start an unpaid or failed order
+  // for internal use only
+  rpc ProcessOrder(ProcessOrderRequest) returns (ProcessOrderResponse) {
+    option (google.api.http) = {
+      post: "/v1/translation/order/{order_id}/process"
+      body: "*"
+    };
+  }
+
   // Get User Quota
   rpc GetUserQuota(UserQuotaRequest) returns (UserQuotaResponse) {
     option (google.api.http).get = "/v1/translation/userquota";
@@ -373,4 +382,18 @@ message UserQuotaResponse {
   // remaining quota in time(second)
   int64 time_left = 2;
   google.rpc.Status error = 3;
+}
+
+message ProcessOrderRequest {
+  // id of the order
+  int64 order_id = 1;
+  // uri to get the audio file
+  string audio_uri = 2;
+  // information of the audio file
+  google.cloud.speech.v1.RecognitionConfig audio_config = 3;  
+}
+
+message ProcessOrderResponse {
+  google.rpc.Status error = 1;
+  int64 order_status = 2;
 }
