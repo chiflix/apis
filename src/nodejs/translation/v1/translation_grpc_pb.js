@@ -66,6 +66,28 @@ function deserialize_sagittarius_translation_v1_MediaTranslationResponse(buffer_
   return translation_v1_translation_pb.MediaTranslationResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sagittarius_translation_v1_ProcessOrderRequest(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.ProcessOrderRequest)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.ProcessOrderRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_ProcessOrderRequest(buffer_arg) {
+  return translation_v1_translation_pb.ProcessOrderRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sagittarius_translation_v1_ProcessOrderResponse(arg) {
+  if (!(arg instanceof translation_v1_translation_pb.ProcessOrderResponse)) {
+    throw new Error('Expected argument of type sagittarius.translation.v1.ProcessOrderResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_sagittarius_translation_v1_ProcessOrderResponse(buffer_arg) {
+  return translation_v1_translation_pb.ProcessOrderResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sagittarius_translation_v1_StreamingTranslationRequest(arg) {
   if (!(arg instanceof translation_v1_translation_pb.StreamingTranslationRequest)) {
     throw new Error('Expected argument of type sagittarius.translation.v1.StreamingTranslationRequest');
@@ -251,6 +273,19 @@ var TranslationService = exports.TranslationService = {
     requestDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskRequest,
     responseSerialize: serialize_sagittarius_translation_v1_StreamingTranslationTaskResponse,
     responseDeserialize: deserialize_sagittarius_translation_v1_StreamingTranslationTaskResponse,
+  },
+  // Start an unpaid or failed order
+  // for internal use only
+  processOrder: {
+    path: '/sagittarius.translation.v1.Translation/ProcessOrder',
+    requestStream: false,
+    responseStream: false,
+    requestType: translation_v1_translation_pb.ProcessOrderRequest,
+    responseType: translation_v1_translation_pb.ProcessOrderResponse,
+    requestSerialize: serialize_sagittarius_translation_v1_ProcessOrderRequest,
+    requestDeserialize: deserialize_sagittarius_translation_v1_ProcessOrderRequest,
+    responseSerialize: serialize_sagittarius_translation_v1_ProcessOrderResponse,
+    responseDeserialize: deserialize_sagittarius_translation_v1_ProcessOrderResponse,
   },
   // Get User Quota
   getUserQuota: {

@@ -1,6 +1,6 @@
 {
   "name": "sagi-api",
-  "version": "0.0.20",
+  "version": "0.0.22",
   "description": "library of apis.sagittarius.ai",
   "main": "./build/index.js",
   "scripts": {

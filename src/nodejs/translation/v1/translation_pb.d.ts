@@ -698,6 +698,66 @@ export namespace UserQuotaResponse {
     }
 }
 
+export class ProcessOrderRequest extends jspb.Message { 
+    getOrderId(): number;
+    setOrderId(value: number): void;
+
+    getAudioUri(): string;
+    setAudioUri(value: string): void;
+
+
+    hasAudioConfig(): boolean;
+    clearAudioConfig(): void;
+    getAudioConfig(): google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig | undefined;
+    setAudioConfig(value?: google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ProcessOrderRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ProcessOrderRequest): ProcessOrderRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ProcessOrderRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ProcessOrderRequest;
+    static deserializeBinaryFromReader(message: ProcessOrderRequest, reader: jspb.BinaryReader): ProcessOrderRequest;
+}
+
+export namespace ProcessOrderRequest {
+    export type AsObject = {
+        orderId: number,
+        audioUri: string,
+        audioConfig?: google_cloud_speech_v1_cloud_speech_pb.RecognitionConfig.AsObject,
+    }
+}
+
+export class ProcessOrderResponse extends jspb.Message { 
+
+    hasError(): boolean;
+    clearError(): void;
+    getError(): google_rpc_status_pb.Status | undefined;
+    setError(value?: google_rpc_status_pb.Status): void;
+
+    getOrderStatus(): number;
+    setOrderStatus(value: number): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ProcessOrderResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ProcessOrderResponse): ProcessOrderResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ProcessOrderResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ProcessOrderResponse;
+    static deserializeBinaryFromReader(message: ProcessOrderResponse, reader: jspb.BinaryReader): ProcessOrderResponse;
+}
+
+export namespace ProcessOrderResponse {
+    export type AsObject = {
+        error?: google_rpc_status_pb.Status.AsObject,
+        orderStatus: number,
+    }
+}
+
 export enum StreamingTranslationTaskCode {
     OK = 0,
     CONTINUE = 9100,
